@@ -1,43 +1,53 @@
-import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
-import Topbar from "./scenes/global/Topbar";
-import Sidebar from "./scenes/global/Sidebar";
-import Dashboard from "./scenes/dashboard";
+import React from 'react'
+import { Routes, Route, useNavigate } from 'react-router-dom'
+import { CssBaseline, ThemeProvider } from '@mui/material'
 
-import { CssBaseline, ThemeProvider } from "@mui/material";
-import { ColorModeContext, useMode } from "./theme";
+import { ColorModeContext, useMode } from './theme'
+import { ROUTES } from './config/routes'
 
+import {
+  LoginScreen,
+  SignUpScreen,
+  ResetPasswordScreen,
+  ConfirmationScreen,
+  UnderDevelopmentScreen
+} from './screens'
 
-function App() {
-  const [theme, colorMode] = useMode();
-  const [isSidebar, setIsSidebar] = useState(true);
+import {
+  ParentDashboardLayout
+} from './components'
+
+const Redirect = ({ to }) => {
+  const navigate = useNavigate()
+
+  React.useEffect(() => {
+    navigate(to)
+  }, [navigate, to])
+
+  return <></>
+}
+
+const App = () => {
+  const [theme, colorMode] = useMode()
 
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <div className="app">
-          <Sidebar isSidebar={isSidebar} />
-          <main className="content">
-            <Topbar setIsSidebar={setIsSidebar} />
-            <Routes>
-              <Route path="/" element={<Dashboard />} />
-              {/* <Route path="/team" element={<Team />} />
-              <Route path="/contacts" element={<Contacts />} />
-              <Route path="/invoices" element={<Invoices />} />
-              <Route path="/form" element={<Form />} />
-              <Route path="/bar" element={<Bar />} />
-              <Route path="/pie" element={<Pie />} />
-              <Route path="/line" element={<Line />} />
-              <Route path="/faq" element={<FAQ />} />
-              <Route path="/calendar" element={<Calendar />} />
-              <Route path="/geography" element={<Geography />} /> */}
-            </Routes>
-          </main>
-        </div>
+        <Routes>
+          <Route path='/' element={<Redirect to={ROUTES.AUTHENTICATION.RESET_PASSWORD} />} />
+          <Route path={ROUTES.AUTHENTICATION.LOGIN} element={<LoginScreen />} />
+          <Route path={ROUTES.AUTHENTICATION.SIGN_UP} element={<SignUpScreen />} />
+          <Route path={ROUTES.AUTHENTICATION.RESET_PASSWORD} element={<ResetPasswordScreen />} />
+          <Route path={ROUTES.AUTHENTICATION.CONFIRMATION} element={<ConfirmationScreen />} />
+          <Route path={ROUTES.PARENT.DASHBOARD} element={<ParentDashboardLayout />}>
+            <Route path='*' element={<UnderDevelopmentScreen />} />
+          </Route>
+          <Route path='*' element={<UnderDevelopmentScreen />} />
+        </Routes>
       </ThemeProvider>
     </ColorModeContext.Provider>
-  );
+  )
 }
 
-export default App;
+export default App
