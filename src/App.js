@@ -14,6 +14,17 @@ import {
 } from './screens'
 
 import {
+  DashboardHome,
+  PerformanceHome,
+  LearnSubjectHome,
+  DailyQuizHome,
+  ImproveParentingHome,
+  ExploreHome,
+  JournalHome,
+  SettingsHome
+} from './screens/parent/index.js'
+
+import {
   ParentDashboardLayout
 } from './components'
 
@@ -40,7 +51,17 @@ const App = () => {
           <Route path={ROUTES.AUTHENTICATION.SIGN_UP} element={<SignUpScreen />} />
           <Route path={ROUTES.AUTHENTICATION.RESET_PASSWORD} element={<ResetPasswordScreen />} />
           <Route path={ROUTES.AUTHENTICATION.CONFIRMATION} element={<ConfirmationScreen />} />
+
           <Route path={ROUTES.PARENT.DASHBOARD} element={<ParentDashboardLayout />}>
+            <Route index element={<DashboardHome />} />
+            <Route index path={ROUTES.PARENT.PERFORMANCE} element={<PerformanceHome />} />
+            <Route index path={ROUTES.PARENT.LEARN_SUBJECT} element={<LearnSubjectHome />} />
+            <Route index path={ROUTES.PARENT.DAILY_QUIZ} element={<DailyQuizHome />} />
+            <Route index path={ROUTES.PARENT.IMPROVE_PARENTING} element={<ImproveParentingHome />} />
+            <Route index path={ROUTES.PARENT.EXPLORE} element={<ExploreHome />} />
+            <Route index path={ROUTES.PARENT.JOURNAL} element={<JournalHome />} />
+            <Route index path={ROUTES.PARENT.SETTINGS} element={<SettingsHome />} />
+            
             <Route path='*' element={<UnderDevelopmentScreen />} />
           </Route>
           <Route path='*' element={<UnderDevelopmentScreen />} />
