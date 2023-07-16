@@ -99,9 +99,9 @@ export const tokens = (mode) => ({
         100: "#0f2922",
         200: "#1e5245",
         300: "#2e7c67",
-        400: "#3da58a",
+        400: "#BDEE77", // For child card
         500: "#72B216", // For buttons
-        600: "#70d8bd",
+        600: "#88BF3A", // GreenPressed 
         700: "#94e2cd",
         800: "#b7ebde",
         900: "#dbf5ee",
@@ -136,6 +136,26 @@ export const tokens = (mode) => ({
         white: "#FFFFFF",
         purpleBright: '#C25BC5',
       },
+      extra: {
+        iconBackground: '#E7F4F8',
+        grey1: '#363636',
+        grey3: '#A7A7A7',
+        grey4: '#D8D8D8',
+        grey5: '#ECECEC',
+      },
+      likertScale: {
+        left: '#EC9C83',
+        right: '#BDEE77',
+        thumb: '#757575',
+        mark: '#757575',
+      },
+      verticalFiller: {
+        100: '#A1D8E4',
+        200: '#FC99CE',
+        300: '#ECC283',
+        400: '#BDEE77',
+        500: '#C792C8',
+      }
     }),
 });
 

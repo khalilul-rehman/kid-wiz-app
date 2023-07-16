@@ -8,6 +8,9 @@ export const ASSETS = {
       CONFIRMATION_LIKE: '/assets/images/authentication/confirmation-like.svg',
     }
   },
+  ON_BOARDING: {
+    CHILD: '/assets/images/on-boarding/child.png',
+  },
   PARENT: {
     ICONS: {
       DASHBOARD: '/assets/images/parent/dashboard.svg',
