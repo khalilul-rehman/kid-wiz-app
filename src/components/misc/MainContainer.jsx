@@ -13,7 +13,8 @@ const MainContainer = ({ children }) => {
       height: '100%',
       padding: '24px',
       backgroundColor: colors.white[900],
-      borderRadius: '12px'
+      borderRadius: '12px',
+      boxShadow: "2px 3px 12px -1px rgba(0,0,0,0.20)",
     }}>
       {children}
     </Box>
