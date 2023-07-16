@@ -1,9 +1,9 @@
-import { Box, Typography, useTheme } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 
 const ImproveParentingHome = () => {
   return (
     <Box>
-        <Typography>Improve Parenting</Typography>
+      <Typography>Improve Parenting</Typography>
     </Box>
   )
 }

@@ -1,9 +1,9 @@
-import { Box, Typography, useTheme } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 
 const JournalHome = () => {
   return (
     <Box>
-        <Typography>Journal</Typography>
+      <Typography>Journal</Typography>
     </Box>
   )
 }

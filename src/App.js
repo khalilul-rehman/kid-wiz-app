@@ -10,7 +10,13 @@ import {
   SignUpScreen,
   ResetPasswordScreen,
   ConfirmationScreen,
+} from './screens/authentication'
+
+import {
   UnderDevelopmentScreen,
+} from './screens/common'
+
+import {
   AddChildrenScreen,
   PersonalityTestsScreen,
   BigFivePersonalityTestIntroScreen,
@@ -25,7 +31,7 @@ import {
   ValuesAssessmentTestIntroScreen,
   ValuesAssessmentTestQuestionsScreen,
   ValuesAssessmentTestResultScreen,
-} from './screens'
+} from './screens/onBoarding'
 
 import {
   DashboardHome,
@@ -35,11 +41,11 @@ import {
   ImproveParentingHome,
   ExploreHome,
   JournalHome,
-  SettingsHome
+  SettingsHome,
 } from './screens/parent/index.js'
 
 import {
-  ParentDashboardLayout
+  ParentDashboardLayout,
 } from './components'
 
 const Redirect = ({ to }) => {
@@ -60,7 +66,7 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Routes>
-          <Route path='/' element={<Redirect to={ROUTES.ON_BOARDING.VALUES_ASSESSMENT.QUESTIONS} />} />
+          <Route path='/' element={<Redirect to={ROUTES.AUTHENTICATION.LOGIN} />} />
 
           <Route path={ROUTES.AUTHENTICATION.LOGIN} element={<LoginScreen />} />
           <Route path={ROUTES.AUTHENTICATION.SIGN_UP} element={<SignUpScreen />} />

@@ -1,9 +1,9 @@
-import { Box, Typography, useTheme } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 
 const SettingsHome = () => {
   return (
     <Box>
-        <Typography>Settings</Typography>
+      <Typography>Settings</Typography>
     </Box>
   )
 }

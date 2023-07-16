@@ -1,9 +1,9 @@
-import { Box, Typography, useTheme } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 
 const LearnSubjectHome = () => {
   return (
     <Box>
-        <Typography>Learn Subject</Typography>
+      <Typography>Learn Subject</Typography>
     </Box>
   )
 }

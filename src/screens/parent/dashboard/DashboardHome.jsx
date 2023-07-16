@@ -1,10 +1,9 @@
-import { Box, Typography, useTheme } from '@mui/material'
-
+import { Box, Typography } from '@mui/material'
 
 const DashboardHome = () => {
   return (
     <Box>
-        <Typography>Dashboard</Typography>
+      <Typography>Dashboard</Typography>
     </Box>
   )
 }

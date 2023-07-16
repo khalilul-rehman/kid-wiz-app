@@ -1,9 +1,9 @@
-import { Box, Typography, useTheme } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 
 const PerformanceHome = () => {
   return (
     <Box>
-        <Typography>Performance</Typography>
+      <Typography>Performance</Typography>
     </Box>
   )
 }
