@@ -53,7 +53,7 @@ const SideBar = () => {
   return (
     <Box
       sx={{
-        zIndex: '500',
+        zIndex: '50',
         border: `1px solid ${colors.white[800]}  !important`,
         boxShadow: `7px 2px 59px -1px ${colors.grey[100]}20`,
         borderRadius: '0px 24px 24px 0px !important',
