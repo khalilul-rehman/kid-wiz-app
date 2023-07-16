@@ -107,6 +107,7 @@ const SideBar = () => {
                   ].map((item) => {
                     return (
                       <Item
+                        key={item.title}
                         title={item.title}
                         to={item.to}
                         icon={item.icon}

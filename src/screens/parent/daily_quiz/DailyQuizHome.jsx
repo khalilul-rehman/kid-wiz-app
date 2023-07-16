@@ -1,9 +1,9 @@
-import { Box, Typography, useTheme } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 
 const DailyQuizHome = () => {
   return (
     <Box>
-        <Typography>Daily Quiz</Typography>
+      <Typography>Daily Quiz</Typography>
     </Box>
   )
 }
