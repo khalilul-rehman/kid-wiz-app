@@ -18,8 +18,8 @@ const TextInput = ({
   return (
     <Box sx={{ marginTop: topSpace || 'none', marginBottom: bottomSpace || 'none' }}>
       <Typography sx={{
-        fontSize: '18px',
-        fontWeight: '500',
+        fontSize: '16px',
+        fontWeight: '400',
         color: colors.solids.black,
         lineHeight: '30px',
         paddingBottom: '4px',
@@ -34,7 +34,7 @@ const TextInput = ({
           width: '100%',
           '& .MuiOutlinedInput-root': {
             '& input': {
-              fontSize: '18px',
+              fontSize: '16px',
               fontWeight: '400',
               color: colors.grey[500],
               lineHeight: '30px',

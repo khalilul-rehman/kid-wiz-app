@@ -26,13 +26,13 @@ const AuthenticationFormBackground = ({ children, title }) => {
               <Box sx={{ ...baseStyles, backgroundColor: '#F5BF82' }}>
                 <Box sx={{ ...baseStyles, backgroundColor: '#E89791' }}>
                   <Box sx={{ ...baseStyles, backgroundColor: colors.white[800] }}>
-                    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '10% 0' }}>
-                      <Box component='img' src={ASSETS.LOGO} alt='logo' sx={{ width: '55%' }} />
+                    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '5% 0' }}>
+                      <Box component='img' src={ASSETS.LOGO} alt='logo' sx={{ width: '35%' }} />
                     </Box>
-                    <Typography sx={{
-                      fontSize: '32px',
+                    <Typography variant='h3' sx={{
+                      // fontSize: '32px',
                       fontWeight: '600',
-                      lineHeight: '40px',
+                      // lineHeight: '40px',
                       textAlign: 'center',
                       color: colors.solids.black
                     }}>{title}</Typography>

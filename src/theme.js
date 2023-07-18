@@ -102,7 +102,7 @@ export const tokens = (mode) => ({
         400: "#BDEE77", // For child card
         500: "#72B216", // For buttons
         600: "#88BF3A", // GreenPressed 
-        700: "#94e2cd",
+        700: "#94e2cd", 
         800: "#b7ebde",
         900: "#dbf5ee",
       },

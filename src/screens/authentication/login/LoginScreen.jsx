@@ -33,7 +33,8 @@ const LoginScreen = () => {
       <Box sx={{
         display: 'flex',
         flexDirection: 'column',
-        width: '37%'
+        width: '32%',
+        // height: '100%',
       }}>
         <AuthenticationFormBackground title='Sign in to continue'>
           <Box>
@@ -41,7 +42,7 @@ const LoginScreen = () => {
               label='Email address'
               placeholder='you@email.com'
               type='email'
-              topSpace='16px'
+              topSpace='5px'
               value={email}
               onChange={e => setEmail(e.target.value)}
             />
@@ -187,16 +188,18 @@ const LoginScreen = () => {
       <Box sx={{
         display: 'flex',
         flexDirection: 'column',
-        width: '62.5%',
-        padding: '5%',
+        width: '68%',
+        height: '100%',
         alignItems: 'center',
       }}>
         <Typography sx={{
-          fontSize: '18px',
+          fontSize: '16px',
           fontWeight: '400',
           lineHeight: '25px',
           fontStyle: 'italic',
-          margin: '5% 0'
+          alignSelf:'start',
+          padding: '5%',
+          width: '55%',
         }}>
           "The future of early childhood education lies in unlocking the limitless potential of every child, nurturing their curiosity, and empowering them to become lifelong learners."
         </Typography>
@@ -205,7 +208,7 @@ const LoginScreen = () => {
           src={ASSETS.AUTHENTICATION.MAIN_BACKGROUND}
           alt='main-background'
           sx={{
-            width: '70%',
+            width: '55%',
             objectFit: 'contain',
             objectPosition: 'center'
           }}
