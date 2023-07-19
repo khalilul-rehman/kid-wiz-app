@@ -106,7 +106,7 @@ const ValuesAssessmentTestResultScreen = () => {
           sx={{ width: 'fit-content', marginBottom: '40px', marginRight: '40px', alignSelf: 'flex-end' }}
           rightIconSx={{ marginLeft: '16px' }}
           onClick={() => {
-            navigate(ROUTES.ON_BOARDING.PERSONALITY_TESTS)
+            navigate(ROUTES.PARENT.DASHBOARD)
           }}
         />
       </Box>

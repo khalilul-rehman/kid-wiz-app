@@ -97,7 +97,9 @@ const LoginScreen = () => {
 
             <Button
               label='Log in'
-              onClick={() => { }}
+              onClick={() => {
+                navigate(ROUTES.ON_BOARDING.ADD_CHILDREN)
+              }}
               topSpace='16px'
               bottomSpace='16px' />
 
@@ -197,7 +199,7 @@ const LoginScreen = () => {
           fontWeight: '400',
           lineHeight: '25px',
           fontStyle: 'italic',
-          alignSelf:'start',
+          alignSelf: 'start',
           padding: '5%',
           width: '55%',
         }}>
