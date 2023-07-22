@@ -22,6 +22,11 @@ export const ASSETS = {
       JOURNAL: '/assets/images/parent/journal.svg',
       SETTINGS: '/assets/images/parent/settings.svg',
       LOGOUT: '/assets/images/parent/logout.svg',
+    },
+    DASHBOARD: {
     }
+  },
+  PLACEHOLDER: {
+    CHILD: '/assets/images/on-boarding/child.png',
   }
 }

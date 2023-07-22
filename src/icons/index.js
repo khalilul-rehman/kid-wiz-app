@@ -1,3 +1,4 @@
+/* eslint-disable import/first */
 import AddIcon from './AddIcon'
 import BigFivePersonalityTestIcon from './BigFivePersonalityTestIcon'
 import ChildrenGroupIcon from './ChildrenGroupIcon'
@@ -11,6 +12,9 @@ import TrashIcon from './TrashIcon'
 import ThunderstormIcon from './ThunderstormIcon'
 import ShapesIcon from './ShapesIcon'
 import CheckIcon from './CheckIcon'
+import ChestIcon from './ChestIcon'
+import CompassIcon from './CompassIcon'
+import RibbonIcon from './RibbonIcon'
 
 export {
   AddIcon,
@@ -26,4 +30,17 @@ export {
   ThunderstormIcon,
   ShapesIcon,
   CheckIcon,
+  ChestIcon,
+  CompassIcon,
+  RibbonIcon,
+}
+
+import MathIcon from './subjects/MathIcon'
+import EnglishIcon from './subjects/EnglishIcon'
+import ScienceIcon from './subjects/ScienceIcon'
+
+export {
+  MathIcon,
+  EnglishIcon,
+  ScienceIcon,
 }

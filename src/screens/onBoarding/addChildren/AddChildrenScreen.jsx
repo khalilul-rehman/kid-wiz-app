@@ -4,7 +4,7 @@ import { alpha, useTheme } from '@mui/material/styles'
 import { useNavigate } from 'react-router-dom'
 
 import {
-  Button,
+  CustomButton,
 } from '../../../components'
 
 import {
@@ -171,7 +171,7 @@ const ChildInfoCard = ({
 
       {
         !hasInfo && !disabled &&
-        <Button
+        <CustomButton
           label='Add Child'
           rightIcon={<AddIcon />}
           sx={{
@@ -253,7 +253,7 @@ const AddChildrenScreen = () => {
           </Box>
         </Box>
 
-        <Button
+        <CustomButton
           label='Continue'
           rightIcon={<RightArrowIcon />}
           sx={{ width: 'fit-content', marginBottom: '40px', marginRight: '40px', alignSelf: 'flex-end' }}

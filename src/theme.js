@@ -102,7 +102,7 @@ export const tokens = (mode) => ({
         400: "#BDEE77", // For child card
         500: "#72B216", // For buttons
         600: "#88BF3A", // GreenPressed 
-        700: "#94e2cd", 
+        700: "#94e2cd",
         800: "#b7ebde",
         900: "#dbf5ee",
       },
@@ -155,6 +155,16 @@ export const tokens = (mode) => ({
         300: '#ECC283',
         400: '#BDEE77',
         500: '#C792C8',
+      },
+      personality: {
+        openness: '#51B4CB',
+        conscientious: '#DA78AD',
+        extraversion: '#D39A45',
+        agreeableness: '#8EC144',
+        neuroticism: '#C775C9',
+      },
+      parentDashboard: {
+        1: '#E9E6D1',
       }
     }),
 });

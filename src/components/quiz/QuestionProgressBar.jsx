@@ -7,20 +7,24 @@ import { tokens } from '../../theme'
 const QuestionProgressBar = ({
   totalQuestions = 10,
   currentQuestion = 1,
+  showQuestionNumber = true,
 }) => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
 
   return (
     <Box sx={{ width: '100%' }}>
-      <Typography sx={{
-        color: colors.extra.grey1,
-        fontSize: '18px',
-        fontWeight: '500',
-        lineHeight: '30px'
-      }}>
-        Question {currentQuestion} of {totalQuestions}
-      </Typography>
+      {
+        showQuestionNumber &&
+        <Typography sx={{
+          color: colors.extra.grey1,
+          fontSize: '18px',
+          fontWeight: '500',
+          lineHeight: '30px'
+        }}>
+          Question {currentQuestion} of {totalQuestions}
+        </Typography>
+      }
       <LinearProgress
         variant='determinate'
         value={currentQuestion / totalQuestions * 100}

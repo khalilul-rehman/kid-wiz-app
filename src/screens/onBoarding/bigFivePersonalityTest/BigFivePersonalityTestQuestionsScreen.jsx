@@ -4,7 +4,7 @@ import { alpha, useTheme } from '@mui/material/styles'
 import { useNavigate } from 'react-router-dom'
 
 import {
-  Button,
+  CustomButton,
   QuestionProgressBar,
   LikertScale,
 } from '../../../components'
@@ -130,7 +130,7 @@ const BigFivePersonalityTestQuestionsScreen = () => {
               onChange={(e, value) => setLikertScaleValue(value)}
             />
 
-            <Button
+            <CustomButton
               onClick={questions.length === currentQuestion ? HandleSubmit : HandleNext}
               label={questions.length === currentQuestion ? 'Submit' : 'Next'}
               sx={{ maxWidth: '175px', alignSelf: 'flex-end', marginTop: '16px' }}

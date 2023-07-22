@@ -3,8 +3,8 @@ import { Box, Typography } from '@mui/material'
 import { alpha, useTheme } from '@mui/material/styles'
 
 import {
-  TextInput,
-  Button
+  CustomTextInput,
+  CustomButton
 } from '../../../components'
 
 import { tokens } from '../../../theme'
@@ -47,8 +47,8 @@ const ResetPasswordScreen = () => {
             src={ASSETS.LOGO}
             alt='logo'
             sx={{
-              width: '50%',
-              padding: '16px 0 40px 0px'
+              width: '60%',
+              padding: '16px 0 48px 0px'
             }} />
           <Typography sx={{
             fontSize: '32px',
@@ -59,18 +59,18 @@ const ResetPasswordScreen = () => {
           }}>Recover your password</Typography>
         </Box>
         <Box sx={{ width: '100%', marginTop: '16px' }}>
-          <TextInput
+          <CustomTextInput
             label='Email address'
             placeholder='you@email.com'
             type='email'
-            topSpace='16px'
             value={email}
             onChange={e => setEmail(e.target.value)}
+            containerStyle={{ margin: '8px 0px' }}
           />
-          <Button
+          <CustomButton
             label='Reset Password'
             onClick={() => { }}
-            topSpace='48px' />
+            sx={{ margin: '32px 0px 32px 0px' }} />
         </Box>
       </Box>
     </Box>

@@ -1,13 +1,11 @@
 import React from 'react'
-import { Box, Button as MUIButton } from '@mui/material'
+import { Box, Button } from '@mui/material'
 import { alpha, useTheme } from '@mui/material/styles'
 import { tokens } from '../../theme'
 
-const Button = ({
+const CustomButton = ({
   label = 'Label',
   onClick = () => { },
-  topSpace = 'none',
-  bottomSpace = 'none',
   sx = {},
   leftIcon = null,
   rightIcon = null,
@@ -20,11 +18,9 @@ const Button = ({
   const colors = tokens(theme.palette.mode)
 
   return (
-    <MUIButton onClick={onClick}
+    <Button onClick={onClick}
       disabled={disabled}
       sx={{
-        marginTop: topSpace,
-        marginBottom: bottomSpace,
         backgroundColor: isSecondary ? colors.white[800] : colors.greenAccent[500],
         borderRadius: '100px',
         color: isSecondary ? colors.solids.black : colors.white[900],
@@ -58,8 +54,8 @@ const Button = ({
           ...rightIconSx
         }}>{rightIcon}</Box>
       }
-    </MUIButton>
+    </Button>
   )
 }
 
-export default Button
+export default CustomButton

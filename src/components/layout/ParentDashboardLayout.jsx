@@ -53,6 +53,7 @@ const SideBar = () => {
   return (
     <Box
       sx={{
+        backgroundColor: colors.white[800],
         zIndex: '50',
         border: `1px solid ${colors.white[800]}  !important`,
         boxShadow: `7px 2px 59px -1px ${colors.grey[100]}20`,
@@ -149,17 +150,10 @@ const TopBar = () => {
       width: '100%',
       height: '60px',
       padding: '2px',
-      boxShadow: '7px 1px 5px 0px rgba(0,0,0,0.2)'
+      boxShadow: '7px 1px 5px 0px rgba(0,0,0,0.2)',
+      backgroundColor: colors.white[800]
     }}>
-      <Box
-        display='flex'
-        backgroundColor={colors.primary[400]}
-        borderRadius='3px'>
-        <InputBase sx={{ ml: 2, flex: 1 }} placeholder='Search' />
-        <IconButton type='button' sx={{ p: 1 }}>
-          <SearchIcon />
-        </IconButton>
-      </Box>
+      <Box />
 
       <Box display='flex'>
         <IconButton onClick={colorMode.toggleColorMode}>
@@ -188,11 +182,25 @@ const ParentDashboardLayout = () => {
   const colors = tokens(theme.palette.mode)
 
   return (
-    <Box className='app'>
+    <Box className='app' sx={{ backgroundColor: colors.grey[900] }}>
       <SideBar />
       <Box sx={{ width: '100%', height: 'calc(100vh - 60px)' }}>
         <TopBar />
-        <Box sx={{ backgroundColor: colors.grey[900], width: '100%', height: '100%', padding: '24px' }}>
+        <Box sx={{
+          backgroundColor: colors.grey[900],
+          width: '100%',
+          height: '100%',
+          padding: '24px',
+          overflowY: 'scroll',
+          '&::-webkit-scrollbar': {
+            width: '12px',
+            borderRadius: '12px',
+          },
+          '&::-webkit-scrollbar-thumb': {
+            backgroundColor: colors.extra.grey3,
+            borderRadius: '12px',
+          }
+        }}>
           <Outlet />
         </Box>
       </Box>

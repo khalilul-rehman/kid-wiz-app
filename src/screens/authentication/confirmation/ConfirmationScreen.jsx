@@ -3,7 +3,7 @@ import { Box, Typography } from '@mui/material'
 import { alpha, useTheme } from '@mui/material/styles'
 
 import {
-  Button
+  CustomButton
 } from '../../../components'
 
 import { tokens } from '../../../theme'
@@ -55,7 +55,7 @@ const ConfirmationScreen = () => {
             color: colors.solids.black,
           }}>Your account was successfully created.</Typography>
         </Box>
-        <Button
+        <CustomButton
           label='Go to Home Page'
           onClick={() => { }}
           topSpace='48px' />

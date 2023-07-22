@@ -4,7 +4,7 @@ import { alpha, useTheme } from '@mui/material/styles'
 import { useNavigate } from 'react-router-dom'
 
 import {
-  Button,
+  CustomButton,
 } from '../../../components'
 
 import {
@@ -95,7 +95,7 @@ const ValuesAssessmentTestIntroScreen = () => {
           </Box>
 
           <Box sx={{ display: 'flex', width: '100%', justifyContent: 'center', gap: '24px', margin: '24px 0' }}>
-            <Button
+            <CustomButton
               label='Skip'
               isSecondary
               sx={{ maxWidth: '220px' }}
@@ -103,7 +103,7 @@ const ValuesAssessmentTestIntroScreen = () => {
                 navigate(ROUTES.ON_BOARDING.PERSONALITY_TESTS)
               }}
             />
-            <Button
+            <CustomButton
               label='Take Test'
               sx={{ maxWidth: '220px' }}
               rightIcon={<RightArrowIcon />}

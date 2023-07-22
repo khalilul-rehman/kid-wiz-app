@@ -1,12 +1,14 @@
 /* eslint-disable import/first */
 /*** MISC COMPONENTS *************************************************************************************/
-import TextInput from './misc/TextInput'
-import Button from './misc/Button'
+import CustomTextInput from './misc/CustomTextInput'
+import CustomButton from './misc/CustomButton'
+import CustomDropDown from './misc/CustomDropDown'
 import MainContainer from './misc/MainContainer'
 
 export {
-  TextInput,
-  Button,
+  CustomTextInput,
+  CustomButton,
+  CustomDropDown,
   MainContainer,
 }
 

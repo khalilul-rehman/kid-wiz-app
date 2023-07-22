@@ -4,15 +4,12 @@ import { useTheme } from '@mui/material/styles'
 import { tokens } from './../../theme'
 import { ASSETS } from './../../config/assets'
 
-const AuthenticationFormBackground = ({ children, title }) => {
+const AuthenticationFormBackground = ({ children, title, sx = {} }) => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
 
   const baseStyles = {
     height: '100%',
-    // display: 'flex',
-    // flexDirection: 'column',
-    // flexGrow: '1',
     width: '99%',
     borderRadius: '0px 40px 40px 0px',
   }
@@ -27,16 +24,18 @@ const AuthenticationFormBackground = ({ children, title }) => {
                 <Box sx={{ ...baseStyles, backgroundColor: '#E89791' }}>
                   <Box sx={{ ...baseStyles, backgroundColor: colors.white[800] }}>
                     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '5% 0' }}>
-                      <Box component='img' src={ASSETS.LOGO} alt='logo' sx={{ width: '35%' }} />
+                      <Box component='img' src={ASSETS.LOGO} alt='logo' sx={{ height: '55px' }} />
                     </Box>
-                    <Typography variant='h3' sx={{
-                      // fontSize: '32px',
+                    <Typography sx={{
+                      fontSize: '30px',
                       fontWeight: '600',
-                      // lineHeight: '40px',
                       textAlign: 'center',
                       color: colors.solids.black
                     }}>{title}</Typography>
-                    <Box sx={{ margin: '0 10%' }}>
+                    <Box sx={{
+                      margin: '0 10%',
+                      ...sx
+                    }}>
                       {children}
                     </Box>
                   </Box>
