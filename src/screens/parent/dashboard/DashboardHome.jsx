@@ -2,6 +2,7 @@ import React from 'react'
 import { Avatar, Box, Grid, Typography } from '@mui/material'
 import { alpha, useTheme } from '@mui/material/styles'
 import { Pie } from '@nivo/pie'
+import { useNavigate } from 'react-router-dom'
 
 import {
   CustomButton, CustomTextInput, QuestionProgressBar,
@@ -20,10 +21,13 @@ import {
 
 import { tokens } from '../../../theme'
 import { ASSETS } from '../../../config/assets'
+import { ROUTES } from '../../../config/routes'
 
 const DashboardHome = () => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
+
+  const navigate = useNavigate()
 
   const [isPersonalityTestCompleted, setIsPersonalityTestCompleted] = React.useState(false)
 
@@ -222,6 +226,7 @@ const DashboardHome = () => {
               textTransform: 'none',
               fontSize: '13px',
               padding: '6px 28px',
+              fontWeight: '600',
             }}
             rightIconSx={{ marginLeft: '12px' }}
             onClick={() => {
@@ -402,6 +407,7 @@ const DashboardHome = () => {
                 textTransform: 'none',
                 fontSize: '13px',
                 padding: '6px 28px',
+                fontWeight: '600',
               }}
               rightIconSx={{ marginLeft: '12px' }}
               onClick={() => { }}
@@ -466,9 +472,12 @@ const DashboardHome = () => {
                     textTransform: 'none',
                     fontSize: '13px',
                     padding: '6px 28px',
+                    fontWeight: '600',
                   }}
                   rightIconSx={{ marginLeft: '12px' }}
-                  onClick={() => { }}
+                  onClick={() => {
+                    navigate(ROUTES.PARENT.DAILY_QUIZ)
+                  }}
                 />
               </Box>
             </Grid>
@@ -530,6 +539,7 @@ const DashboardHome = () => {
                     textTransform: 'none',
                     fontSize: '13px',
                     padding: '6px 28px',
+                    fontWeight: '600',
                   }}
                   rightIconSx={{ marginLeft: '12px' }}
                   onClick={() => { }}

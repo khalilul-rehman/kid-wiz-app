@@ -1,9 +1,9 @@
 import React, { useState, useContext } from 'react'
-import { ProSidebar, Menu, MenuItem } from 'react-pro-sidebar'
-import { Box, Typography, useTheme, IconButton } from '@mui/material'
-import { Link, Outlet } from 'react-router-dom'
+import { ProSidebar, Menu, MenuItem, } from 'react-pro-sidebar'
+import { Box, Typography, IconButton } from '@mui/material'
+import { Link, Outlet, useNavigate } from 'react-router-dom'
+import { useTheme } from '@mui/material/styles'
 import 'react-pro-sidebar/dist/css/styles.css'
-import InputBase from '@mui/material/InputBase'
 
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined'
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined'
@@ -12,32 +12,43 @@ import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
 import SearchIcon from '@mui/icons-material/Search'
 
+import {
+  DashboardIcon,
+  PerformanceIcon,
+  LearnSubjectIcon,
+  RibbonIcon,
+  NotificationIcon,
+  CompassIcon,
+  JournalIcon,
+  SettingsIcon,
+  LogoutIcon,
+} from '../../icons'
+
 import { ColorModeContext, tokens } from '../../theme'
 import { ASSETS } from '../../config/assets'
 import { ROUTES } from '../../config/routes'
 
-const Item = ({ title, to, icon, selected, setSelected }) => {
+const Item = ({
+  title, to, icon, selected, setSelected, hovered, setHovered
+}) => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
 
   return (
     <MenuItem
-      active={selected === title}
+      onMouseEnter={() => setHovered(to)}
+      onMouseLeave={() => setHovered('')}
+      active={selected === to}
+      onClick={() => setSelected(to)}
+      icon={
+        selected === to || hovered === to
+          ? icon.active
+          : icon.inactive
+      }
       style={{
         color: colors.grey[500],
         marginBottom: '5px'
-      }}
-      onClick={() => setSelected(title)}
-      icon={
-        <Box
-          component='img'
-          src={icon}
-          alt={title}
-          sx={{
-            width: '20px',
-            height: '20px',
-          }} />
-      }>
+      }}>
       <Typography>{title}</Typography>
       <Link to={to} />
     </MenuItem>
@@ -48,7 +59,20 @@ const SideBar = () => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
   const [isCollapsed, setIsCollapsed] = useState(false)
-  const [selected, setSelected] = useState('Dashboard')
+
+  const [selected, setSelected] = useState('')
+  const [hovered, setHovered] = useState('')
+
+  const navigate = useNavigate()
+
+  React.useEffect(() => {
+    const path = window.location.pathname
+    if (path[path.length - 1] === '/') {
+      setSelected(path.slice(0, path.length - 1))
+    } else {
+      setSelected(path)
+    }
+  }, [navigate])
 
   return (
     <Box
@@ -97,14 +121,70 @@ const SideBar = () => {
               <Box paddingLeft={isCollapsed ? undefined : '5%'} mr='10px'>
                 {
                   [
-                    { title: 'Dashboard', to: ROUTES.PARENT.DASHBOARD, icon: ASSETS.PARENT.ICONS.DASHBOARD },
-                    { title: 'Performance', to: ROUTES.PARENT.PERFORMANCE, icon: ASSETS.PARENT.ICONS.PERFORMANCE },
-                    { title: 'Learn Subject', to: ROUTES.PARENT.LEARN_SUBJECT, icon: ASSETS.PARENT.ICONS.LEARN_SUBJECT },
-                    { title: 'Daily Quiz', to: ROUTES.PARENT.DAILY_QUIZ, icon: ASSETS.PARENT.ICONS.DAILY_QUIZ },
-                    { title: 'Improve Parenting', to: ROUTES.PARENT.IMPROVE_PARENTING, icon: ASSETS.PARENT.ICONS.IMPROVE_PARENTING },
-                    { title: 'Explore', to: ROUTES.PARENT.EXPLORE, icon: ASSETS.PARENT.ICONS.EXPLORE },
-                    { title: 'Journal', to: ROUTES.PARENT.JOURNAL, icon: ASSETS.PARENT.ICONS.JOURNAL },
-                    { title: 'Settings', to: ROUTES.PARENT.SETTINGS, icon: ASSETS.PARENT.ICONS.SETTINGS },
+                    {
+                      title: 'Dashboard',
+                      to: ROUTES.PARENT.DASHBOARD,
+                      icon: {
+                        active: <DashboardIcon color={colors.white[800]} />,
+                        inactive: <DashboardIcon />
+                      }
+                    },
+                    {
+                      title: 'Performance',
+                      to: ROUTES.PARENT.PERFORMANCE,
+                      icon: {
+                        active: <PerformanceIcon color={colors.white[800]} />,
+                        inactive: <PerformanceIcon />
+                      }
+                    },
+                    {
+                      title: 'Learn Subject',
+                      to: ROUTES.PARENT.LEARN_SUBJECT,
+                      icon: {
+                        active: <LearnSubjectIcon color={colors.white[800]} />,
+                        inactive: <LearnSubjectIcon />
+                      }
+                    },
+                    {
+                      title: 'Daily Quiz',
+                      to: ROUTES.PARENT.DAILY_QUIZ,
+                      icon: {
+                        active: <RibbonIcon color={colors.white[800]} size={20} />,
+                        inactive: <RibbonIcon color='#A7A7A7' size={20} />
+                      }
+                    },
+                    {
+                      title: 'Improve Parenting',
+                      to: ROUTES.PARENT.IMPROVE_PARENTING,
+                      icon: {
+                        active: <NotificationIcon color={colors.white[800]} />,
+                        inactive: <NotificationIcon />
+                      }
+                    },
+                    {
+                      title: 'Explore',
+                      to: ROUTES.PARENT.EXPLORE,
+                      icon: {
+                        active: <CompassIcon color={colors.white[800]} size={20} />,
+                        inactive: <CompassIcon color='#A7A7A7' size={20} />
+                      }
+                    },
+                    {
+                      title: 'Journal',
+                      to: ROUTES.PARENT.JOURNAL,
+                      icon: {
+                        active: <JournalIcon color={colors.white[800]} />,
+                        inactive: <JournalIcon />
+                      }
+                    },
+                    {
+                      title: 'Settings',
+                      to: ROUTES.PARENT.SETTINGS,
+                      icon: {
+                        active: <SettingsIcon color={colors.white[800]} />,
+                        inactive: <SettingsIcon />
+                      }
+                    },
                   ].map((item) => {
                     return (
                       <Item
@@ -114,6 +194,8 @@ const SideBar = () => {
                         icon={item.icon}
                         selected={selected}
                         setSelected={setSelected}
+                        hovered={hovered}
+                        setHovered={setHovered}
                       />
                     )
                   })
@@ -125,9 +207,14 @@ const SideBar = () => {
               <Item
                 title='Logout'
                 to={ROUTES.PARENT.LOGOUT}
-                icon={ASSETS.PARENT.ICONS.LOGOUT}
+                icon={{
+                  active: <LogoutIcon color={colors.white[800]} />,
+                  inactive: <LogoutIcon />
+                }}
                 selected={selected}
                 setSelected={setSelected}
+                hovered={hovered}
+                setHovered={setHovered}
               />
             </Box>
           </Box>

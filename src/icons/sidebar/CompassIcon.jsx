@@ -19,7 +19,6 @@ const CompassIcon = ({
         </clipPath>
       </defs>
     </svg>
-
   )
 }
 

@@ -20,7 +20,6 @@ const RibbonIcon = ({
         </clipPath>
       </defs>
     </svg>
-
   )
 }
 

@@ -3,13 +3,12 @@
 import CustomTextInput from './misc/CustomTextInput'
 import CustomButton from './misc/CustomButton'
 import CustomDropDown from './misc/CustomDropDown'
-import MainContainer from './misc/MainContainer'
 
 export {
   CustomTextInput,
   CustomButton,
   CustomDropDown,
-  MainContainer,
+
 }
 
 /*** AUTHENTICATION COMPONENTS ***************************************************************************/
@@ -21,9 +20,13 @@ export {
 
 /*** LAYOUT COMPONENTS ***********************************************************************************/
 import ParentDashboardLayout from './layout/ParentDashboardLayout'
+import MainContainer from './layout/MainContainer'
+import DashboardContainer from './layout/DashboardContainer'
 
 export {
   ParentDashboardLayout,
+  MainContainer,
+  DashboardContainer,
 }
 
 /*** QUIZ COMPONENTS *************************************************************************************/

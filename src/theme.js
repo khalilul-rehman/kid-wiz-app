@@ -111,7 +111,7 @@ export const tokens = (mode) => ({
         200: "#58201e",
         300: "#832f2c",
         400: "#af3f3b",
-        500: "#db4f4a",
+        500: "#E76A6A", // For buttons (danger, alert)
         600: "#e2726e",
         700: "#e99592",
         800: "#f1b9b7",
