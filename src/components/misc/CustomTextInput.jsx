@@ -63,6 +63,7 @@ const CustomTextInput = ({
             '&::placeholder': {
               color: colors.extra.grey2,
               opacity: 0.7,
+              ...inputStyle?.['&::placeholder'],
             },
             ...inputStyle,
           }}
