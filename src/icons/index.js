@@ -5,8 +5,11 @@ import EditIcon from './misc/EditIcon'
 import LockIcon from './misc/LockIcon'
 import PersonIcon from './misc/PersonIcon'
 import RightArrowIcon from './misc/RightArrowIcon'
+import LeftArrowIcon from './misc/LeftArrowIcon'
 import TrashIcon from './misc/TrashIcon'
 import CheckIcon from './misc/CheckIcon'
+import SearchIcon from './misc/SearchIcon'
+import HomeIcon from './misc/HomeIcon'
 
 export {
   AddIcon,
@@ -14,8 +17,11 @@ export {
   LockIcon,
   PersonIcon,
   RightArrowIcon,
+  LeftArrowIcon,
   TrashIcon,
   CheckIcon,
+  SearchIcon,
+  HomeIcon
 }
 
 /*** ONBOARDING ICONS ******************************************************************************************/

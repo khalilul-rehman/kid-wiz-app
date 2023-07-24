@@ -476,7 +476,9 @@ const DashboardHome = () => {
                   }}
                   rightIconSx={{ marginLeft: '12px' }}
                   onClick={() => {
-                    navigate(ROUTES.PARENT.DAILY_QUIZ)
+                    navigate(ROUTES.PARENT.DAILY_QUIZ, {
+                      state: { reRenderSideBarSelection: true }
+                    })
                   }}
                 />
               </Box>

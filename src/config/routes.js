@@ -1,4 +1,5 @@
 export const ROUTES = {
+  INDEX: '/',
   AUTHENTICATION: {
     LOGIN: '/login',
     SIGN_UP: '/sign-up',
@@ -32,7 +33,10 @@ export const ROUTES = {
   PARENT: {
     DASHBOARD: '/parent-dashboard',
     PERFORMANCE: '/parent-dashboard/performance',
-    LEARN_SUBJECT: '/parent-dashboard/learn-subject',
+    LEARN_SUBJECT: {
+      INDEX: '/parent-dashboard/learn-subject',
+      DETAIL: '/parent-dashboard/learn-subject/:subjectId',
+    },
     DAILY_QUIZ: '/parent-dashboard/daily-quiz',
     IMPROVE_PARENTING: '/parent-dashboard/improve-parenting',
     EXPLORE: '/parent-dashboard/explore',

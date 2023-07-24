@@ -1,14 +1,17 @@
 /* eslint-disable import/first */
 /*** MISC COMPONENTS *************************************************************************************/
 import CustomTextInput from './misc/CustomTextInput'
+import CustomSearchInput from './misc/CustomSearchInput'
 import CustomButton from './misc/CustomButton'
 import CustomDropDown from './misc/CustomDropDown'
+import CustomBreadcrumbs from './misc/CustomBreadcrumbs'
 
 export {
   CustomTextInput,
+  CustomSearchInput,
   CustomButton,
   CustomDropDown,
-
+  CustomBreadcrumbs,
 }
 
 /*** AUTHENTICATION COMPONENTS ***************************************************************************/

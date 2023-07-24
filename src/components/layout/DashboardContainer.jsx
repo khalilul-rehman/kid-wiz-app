@@ -3,6 +3,7 @@ import { Box, Grid } from '@mui/material'
 import { alpha, useTheme } from '@mui/material/styles'
 
 import { tokens } from '../../theme'
+import { $ } from '../../utils'
 
 const DashboardContainer = ({ children, containerStyle = {} }) => {
   const theme = useTheme()
@@ -14,12 +15,12 @@ const DashboardContainer = ({ children, containerStyle = {} }) => {
         display: 'flex',
         flexDirection: 'column',
         backgroundColor: colors.white[800],
-        boxShadow: `0px 0px 2px 0px ${alpha(colors.solids.black, 0.25)}`,
+        boxShadow: `0px 0px ${$({ size: 2 })} 0px ${alpha(colors.solids.black, 0.25)}`,
         width: '100%',
-        borderRadius: '12px',
+        borderRadius: $({ size: 12 }),
         height: '100%',
-        padding: '32px',
-        gap: '20px',
+        padding: $({ size: 40 }),
+        gap: $({ size: 40 }),
         flex: '1',
         ...containerStyle
       }}>{children}</Box>

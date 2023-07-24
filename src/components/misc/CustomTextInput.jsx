@@ -1,18 +1,23 @@
 import React from 'react'
-import { TextField, Box, Typography, } from '@mui/material'
+import { Box, Typography, InputBase } from '@mui/material'
 import { alpha, useTheme } from '@mui/material/styles'
+
 import { tokens } from '../../theme'
+import { $ } from '../../utils'
 
 const CustomTextInput = ({
   value = '',
   label = 'Label',
   placeholder = 'Placeholder',
   type = 'text',
+  disabled = false,
   onChange = () => { },
   containerStyle = {},
   labelStyle = {},
+  inputContainerStyle = {},
   inputStyle = {},
-  disabled = false,
+  leftIcon = null,
+  rightIcon = null,
 }) => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
@@ -22,16 +27,50 @@ const CustomTextInput = ({
       {
         label &&
         <Typography sx={{
-          fontSize: '16px',
+          fontSize: $({ size: 18 }),
           fontWeight: '500',
           color: colors.solids.black,
-          lineHeight: '30px',
-          paddingBottom: '4px',
+          lineHeight: $({ size: 30 }),
+          paddingBottom: $({ size: 8 }),
           ...labelStyle
         }}>{label}</Typography>
       }
 
-      <TextField
+      <Box sx={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        background: colors.grey[900],
+        boxShadow: `inset 0px 0px ${$({ size: 3 })} ${alpha(colors.solids.black, 0.30)}`,
+        padding: `${$({ size: 9 })} ${$({ size: 24 })}`,
+        borderRadius: $({ size: 16 }),
+        gap: $({ size: 12 }),
+        width: '100%',
+        ...inputContainerStyle
+      }}>
+        {leftIcon}
+        <InputBase
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+          disabled={disabled}
+          type={type}
+          sx={{
+            fontSize: $({ size: 18 }),
+            fontWeight: '400',
+            color: colors.extra.grey2,
+            lineHeight: $({ size: 30 }),
+            '&::placeholder': {
+              color: colors.extra.grey2,
+              opacity: 0.7,
+            },
+            ...inputStyle,
+          }}
+        />
+        {rightIcon}
+      </Box>
+
+      {/* <TextField
         value={value}
         onChange={onChange}
         placeholder={placeholder}
@@ -42,17 +81,17 @@ const CustomTextInput = ({
           '& .MuiOutlinedInput-root': {
             ...inputStyle?.['& .MuiOutlinedInput-root'],
             '& input': {
-              fontSize: '16px',
+              fontSize: $({ size: 18 }),
               fontWeight: '400',
-              color: colors.grey[500],
-              lineHeight: '30px',
+              color: colors.extra.grey2,
+              lineHeight: $({ size: 30 }),
               background: colors.grey[900],
-              boxShadow: `inset 0px 0px 3px ${alpha(colors.solids.black, 0.30)}`,
-              padding: '14px 24px',
-              borderRadius: '16px',
+              boxShadow: `inset 0px 0px ${$({ size: 3 })} ${alpha(colors.solids.black, 0.30)}`,
+              padding: `${$({ size: 14 })} ${$({ size: 24 })}`,
+              borderRadius: $({ size: 16 }),
               '&::placeholder': {
-                color: colors.grey[500],
-                opacity: 1,
+                color: colors.extra.grey2,
+                opacity: 0.7,
               },
               ...inputStyle?.['& .MuiOutlinedInput-root']?.['& input'],
             },
@@ -61,7 +100,11 @@ const CustomTextInput = ({
             },
           },
         }}
-      />
+        InputProps={{
+          startAdornment: leftIcon,
+          endAdornment: rightIcon,
+        }}
+      /> */}
     </Box>
   )
 }

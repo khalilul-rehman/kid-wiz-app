@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { ProSidebar, Menu, MenuItem, } from 'react-pro-sidebar'
 import { Box, Typography, IconButton } from '@mui/material'
-import { Link, Outlet, useNavigate } from 'react-router-dom'
+import { Link, Outlet, useNavigate, useLocation } from 'react-router-dom'
 import { useTheme } from '@mui/material/styles'
 import 'react-pro-sidebar/dist/css/styles.css'
 
@@ -64,15 +64,12 @@ const SideBar = () => {
   const [hovered, setHovered] = useState('')
 
   const navigate = useNavigate()
+  const { state } = useLocation()
 
   React.useEffect(() => {
     const path = window.location.pathname
-    if (path[path.length - 1] === '/') {
-      setSelected(path.slice(0, path.length - 1))
-    } else {
-      setSelected(path)
-    }
-  }, [navigate])
+    setSelected(path.split('/').slice(0, 3).join('/'))
+  }, [navigate, state])
 
   return (
     <Box
@@ -139,7 +136,7 @@ const SideBar = () => {
                     },
                     {
                       title: 'Learn Subject',
-                      to: ROUTES.PARENT.LEARN_SUBJECT,
+                      to: ROUTES.PARENT.LEARN_SUBJECT.INDEX,
                       icon: {
                         active: <LearnSubjectIcon color={colors.white[800]} />,
                         inactive: <LearnSubjectIcon />

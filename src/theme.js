@@ -96,7 +96,7 @@ export const tokens = (mode) => ({
         900: "#d0d1d5",
       },
       greenAccent: {
-        100: "#0f2922",
+        100: "#65AC00", // for search button
         200: "#1e5245",
         300: "#2e7c67",
         400: "#BDEE77", // For child card
@@ -139,6 +139,7 @@ export const tokens = (mode) => ({
       extra: {
         iconBackground: '#E7F4F8',
         grey1: '#363636',
+        grey2: '#757575',
         grey3: '#A7A7A7',
         grey4: '#D8D8D8',
         grey5: '#ECECEC',
