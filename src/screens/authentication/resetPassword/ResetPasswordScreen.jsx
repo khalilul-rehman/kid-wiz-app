@@ -7,8 +7,9 @@ import {
   CustomButton
 } from '../../../components'
 
-import { tokens } from '../../../theme'
 import { ASSETS } from '../../../config/assets'
+import { tokens } from '../../../theme'
+import { $ } from '../../../utils'
 
 const ResetPasswordScreen = () => {
   const theme = useTheme()
@@ -31,46 +32,38 @@ const ResetPasswordScreen = () => {
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: colors.white[800],
-        boxShadow: `0px 0px 8px 0px ${alpha(colors.solids.black, 0.25)}`,
-        borderRadius: '24px',
-        padding: '48px 64px',
-        marging: '16px',
-        width: '37.5%',
+        boxShadow: `0 0 ${$({ size: 8 })} 0 ${alpha(colors.solids.black, 0.25)}`,
+        borderRadius: $({ size: 24 }),
+        padding: `${$({ size: 64 })}`,
+        margin: `${$({ size: 16 })}`,
+        maxWidth: $({ size: 600 }),
+        gap: $({ size: 32 }),
       }}>
-        <Box sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}>
-          <Box component='img'
+        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: $({ size: 48 }) }}>
+          <img
             src={ASSETS.LOGO}
             alt='logo'
-            sx={{
-              width: '60%',
-              padding: '16px 0 48px 0px'
-            }} />
+            style={{ height: $({ size: 65 }) }} />
           <Typography sx={{
-            fontSize: '32px',
+            fontSize: $({ size: 31.98 }),
             fontWeight: '600',
-            lineHeight: '40px',
+            lineHeight: $({ size: 40 }),
             textAlign: 'center',
             color: colors.solids.black,
           }}>Recover your password</Typography>
         </Box>
-        <Box sx={{ width: '100%', marginTop: '16px' }}>
+
+        <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', gap: $({ size: 32 }) }}>
           <CustomTextInput
             label='Email address'
             placeholder='you@email.com'
             type='email'
             value={email}
             onChange={e => setEmail(e.target.value)}
-            containerStyle={{ margin: '8px 0px' }}
           />
           <CustomButton
             label='Reset Password'
-            onClick={() => { }}
-            sx={{ margin: '32px 0px 32px 0px' }} />
+            onClick={() => { }} />
         </Box>
       </Box>
     </Box>

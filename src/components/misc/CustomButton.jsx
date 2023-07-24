@@ -1,6 +1,7 @@
 import React from 'react'
 import { Box, Button } from '@mui/material'
 import { alpha, useTheme } from '@mui/material/styles'
+
 import { tokens } from '../../theme'
 import { $ } from '../../utils'
 
@@ -30,7 +31,7 @@ const CustomButton = ({
         fontWeight: '700',
         width: '100%',
         padding: `${$({ size: 12 })} ${$({ size: 32 })}`,
-        boxShadow: `0px 0px ${$({ size: 8 })} 0px ${alpha(colors.solids.black, 0.25)}`,
+        boxShadow: `0 0 ${$({ size: 8 })} 0 ${alpha(colors.solids.black, 0.25)}`,
         gap: $({ size: 14 }),
         '&:hover': {
           backgroundColor: alpha(isSecondary ? colors.white[800] : colors.greenAccent[500], 0.8),

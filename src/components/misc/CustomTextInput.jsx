@@ -41,7 +41,7 @@ const CustomTextInput = ({
         alignItems: 'center',
         justifyContent: 'space-between',
         background: colors.grey[900],
-        boxShadow: `inset 0px 0px ${$({ size: 3 })} ${alpha(colors.solids.black, 0.30)}`,
+        boxShadow: `inset 0 0 ${$({ size: 3 })} ${alpha(colors.solids.black, 0.30)}`,
         padding: `${$({ size: 9 })} ${$({ size: 24 })}`,
         borderRadius: $({ size: 16 }),
         gap: $({ size: 12 }),

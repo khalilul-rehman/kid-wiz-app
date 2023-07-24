@@ -9,9 +9,10 @@ import {
   CustomButton
 } from '../../../components'
 
-import { tokens } from '../../../theme'
 import { ASSETS } from '../../../config/assets'
 import { ROUTES } from '../../../config/routes'
+import { tokens } from '../../../theme'
+import { $ } from '../../../utils'
 
 const LoginScreen = () => {
   const theme = useTheme()
@@ -30,31 +31,35 @@ const LoginScreen = () => {
       height: 'max-content',
       minHeight: '100%'
     }}>
-      <Grid container sx={{
-        display: 'flex',
-        width: '100%',
-      }}>
+      <Grid container>
         <Grid item xs={12} lg={4}>
-          <AuthenticationFormBackground title='Sign in to continue'>
-            <Box>
+          <AuthenticationFormBackground title='Sign in to continue' sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            height: `calc(100% - ${$({ size: (45 + 60 + 60) + 31.98 })})`,
+            gap: $({ size: 16 }),
+          }}>
+            <Box sx={{
+              paddingTop: $({ size: 16 }),
+              gap: $({ size: 16 }),
+              display: 'flex',
+              flexDirection: 'column',
+            }}>
               <CustomTextInput
                 label='Email address'
                 placeholder='you@email.com'
                 type='email'
-                topSpace='5px'
                 value={email}
                 onChange={e => setEmail(e.target.value)}
-                containerStyle={{ marginTop: '8px' }}
               />
 
               <CustomTextInput
                 label='Password'
                 placeholder='•••••••••'
                 type='password'
-                topSpace='16px'
                 value={password}
                 onChange={e => setPassword(e.target.value)}
-                containerStyle={{ marginTop: '8px' }}
               />
 
               <FormControlLabel
@@ -63,17 +68,17 @@ const LoginScreen = () => {
                     onChange={() => setRememberMe(!rememberMe)}
                     sx={{
                       color: colors.grey[100],
-                      padding: '0px',
+                      padding: '0',
                       '&.Mui-checked': { color: colors.greenAccent[500] },
                       '&:hover': { backgroundColor: 'transparent' },
                     }} />
                 }
                 label={
                   <Typography sx={{
-                    fontSize: '13.5px',
+                    fontSize: $({ size: 13.5 }),
                     fontWeight: '400',
-                    lineHeight: '25px',
-                    marginLeft: '8px',
+                    lineHeight: $({ size: 25 }),
+                    marginLeft: $({ size: 8 }),
                     color: colors.grey[100]
                   }}>Remember me on this device</Typography>
                 }
@@ -81,53 +86,41 @@ const LoginScreen = () => {
                   display: 'flex',
                   flexDirection: 'row',
                   alignItems: 'start',
-                  margin: '12px 0px',
-                  padding: '0px'
+                  margin: '0',
+                  padding: '0'
                 }}
               />
 
-              <Typography sx={{
-                fontSize: '13.5px',
-                fontWeight: '400',
-                lineHeight: '25px',
-                color: colors.solids.purpleBright,
-                cursor: 'pointer',
-              }} onClick={() => {
-                navigate(ROUTES.AUTHENTICATION.RESET_PASSWORD)
-              }}>Forgot password?</Typography>
+              <Typography
+                onClick={() => { navigate(ROUTES.AUTHENTICATION.RESET_PASSWORD) }}
+                sx={{
+                  fontSize: $({ size: 13.5 }),
+                  fontWeight: '400',
+                  lineHeight: $({ size: 25 }),
+                  color: colors.solids.purpleBright,
+                  cursor: 'pointer',
+                }}>Forgot password?</Typography>
 
               <CustomButton
                 label='Log in'
-                onClick={() => {
-                  navigate(ROUTES.ON_BOARDING.ADD_CHILDREN)
-                }}
-                sx={{ margin: '12px 0px' }}
+                onClick={() => { navigate(ROUTES.ON_BOARDING.ADD_CHILDREN) }}
               />
 
               <Box sx={{
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'center',
-                margin: '12px 0px',
-                padding: '0px'
+                margin: `${$({ size: 8 })} 0`,
+                gap: $({ size: 8 }),
               }}>
-                <Box sx={{
-                  height: '1.5px',
-                  width: '100%',
-                  backgroundColor: colors.grey[800]
-                }} />
+                <Box sx={{ height: $({ size: 1.5 }), width: '100%', backgroundColor: colors.grey[800] }} />
                 <Typography sx={{
-                  fontSize: '13.5px',
+                  fontSize: $({ size: 13.5 }),
                   fontWeight: '400',
-                  lineHeight: '25px',
-                  margin: '0 8px',
+                  lineHeight: $({ size: 25 }),
                   color: colors.grey[500]
                 }}>or</Typography>
-                <Box sx={{
-                  height: '1.5px',
-                  width: '100%',
-                  backgroundColor: colors.grey[800]
-                }} />
+                <Box sx={{ height: $({ size: 1.5 }), width: '100%', backgroundColor: colors.grey[800] }} />
               </Box>
 
               <CustomButton label='Continue with Google'
@@ -138,11 +131,12 @@ const LoginScreen = () => {
                   color: colors.solids.black,
                   textTransform: 'none',
                   '&:hover': { backgroundColor: colors.grey[900] },
-                  margin: '12px 0px'
                 }}
                 leftIcon={
-                  <Box component='img' src={ASSETS.AUTHENTICATION.ICONS.GOOGLE}
-                    alt='google-icon' sx={{ height: '18px' }}
+                  <img
+                    alt='google-icon'
+                    src={ASSETS.AUTHENTICATION.ICONS.GOOGLE}
+                    sx={{ height: $({ size: 18 }) }}
                   />
                 }
               />
@@ -155,38 +149,39 @@ const LoginScreen = () => {
                   color: colors.solids.black,
                   textTransform: 'none',
                   '&:hover': { backgroundColor: colors.grey[900] },
-                  margin: '12px 0px'
                 }}
                 leftIcon={
-                  <Box component='img' src={ASSETS.AUTHENTICATION.ICONS.FACEBOOK}
-                    alt='facebook-icon' sx={{ height: '18px' }}
+                  <img
+                    alt='facebook-icon'
+                    src={ASSETS.AUTHENTICATION.ICONS.FACEBOOK}
+                    sx={{ height: $({ size: 18 }) }}
                   />
                 }
               />
             </Box>
 
-            <Box sx={{ marginBottom: '8%' }}>
+            <Box sx={{ margin: `${$({ size: 12 })} 0 ${$({ size: 24 })} 0`, textAlign: 'center' }}>
               <Typography sx={{
-                fontSize: '18px',
+                fontSize: $({ size: 18 }),
                 fontWeight: '400',
-                lineHeight: '27px',
+                lineHeight: $({ size: 27 }),
                 color: colors.grey[100],
-                margin: '12px 0px',
-                textAlign: 'center',
-              }}>{`Don't have an account? `}
-                <Box component='span'
-                  onClick={() => { navigate(ROUTES.AUTHENTICATION.SIGN_UP) }}
-                  sx={{
-                    fontSize: '18px',
-                    fontWeight: '600',
-                    lineHeight: '27px',
-                    color: colors.solids.purpleBright,
-                    cursor: 'pointer',
-                  }}>Create One!</Box>
-              </Typography>
+                display: 'inline',
+              }}>{`Don't have an account? `}</Typography>
+              <Typography
+                onClick={() => { navigate(ROUTES.AUTHENTICATION.SIGN_UP) }}
+                sx={{
+                  fontSize: $({ size: 18 }),
+                  fontWeight: '600',
+                  lineHeight: $({ size: 27 }),
+                  color: colors.solids.purpleBright,
+                  display: 'inline',
+                  cursor: 'pointer',
+                }}>{`Create One!`}</Typography>
             </Box>
           </AuthenticationFormBackground>
         </Grid>
+
         <Grid item xs={12} lg={8} sx={{
           display: 'flex',
           flexDirection: 'column',
@@ -194,9 +189,9 @@ const LoginScreen = () => {
           alignItems: 'center',
         }}>
           <Typography sx={{
-            fontSize: '16px',
+            fontSize: $({ size: 18 }),
             fontWeight: '400',
-            lineHeight: '25px',
+            lineHeight: $({ size: 25 }),
             fontStyle: 'italic',
             alignSelf: 'start',
             padding: '5%',
@@ -214,9 +209,10 @@ const LoginScreen = () => {
             sx={{
               objectFit: 'contain',
               objectPosition: 'center',
-              margin: '0px 0px 8% 0px',
+              margin: '0 0 8% 0',
               width: '80%',
-              maxHeight: '500px',
+              maxHeight: $({ size: 575 }),
+              maxWidth: $({ size: 650 }),
             }}
           />
         </Grid>

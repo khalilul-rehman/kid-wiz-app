@@ -6,8 +6,9 @@ import {
   CustomButton
 } from '../../../components'
 
-import { tokens } from '../../../theme'
 import { ASSETS } from '../../../config/assets'
+import { tokens } from '../../../theme'
+import { $ } from '../../../utils'
 
 const ConfirmationScreen = () => {
   const theme = useTheme()
@@ -28,37 +29,38 @@ const ConfirmationScreen = () => {
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: colors.white[800],
-        boxShadow: `0px 0px 8px 0px ${alpha(colors.solids.black, 0.25)}`,
-        borderRadius: '24px',
-        padding: '48px 64px',
-        marging: '16px',
-        width: '37.5%',
+        boxShadow: `0 0 ${$({ size: 8 })} 0 ${alpha(colors.solids.black, 0.25)}`,
+        borderRadius: $({ size: 24 }),
+        padding: `${$({ size: 64 })}`,
+        margin: `${$({ size: 16 })}`,
+        maxWidth: $({ size: 600 }),
+        gap: $({ size: 32 }),
       }}>
         <Box sx={{
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
+          gap: $({ size: 32 }),
         }}>
-          <Box component='img'
+          <img
             src={ASSETS.AUTHENTICATION.ICONS.CONFIRMATION_LIKE}
             alt='logo'
-            sx={{
-              width: '50%',
-              padding: '16px 0 40px 0px'
-            }} />
+            style={{ height: $({ size: 200 }) }}
+          />
           <Typography sx={{
-            fontSize: '18px',
+            fontSize: $({ size: 18 }),
             fontWeight: '500',
-            lineHeight: '30px',
+            lineHeight: $({ size: 30 }),
             textAlign: 'center',
             color: colors.solids.black,
           }}>Your account was successfully created.</Typography>
         </Box>
+
         <CustomButton
           label='Go to Home Page'
           onClick={() => { }}
-          topSpace='48px' />
+        />
       </Box>
     </Box>
   )

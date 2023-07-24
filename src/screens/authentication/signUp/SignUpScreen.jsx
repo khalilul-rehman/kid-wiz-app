@@ -9,9 +9,10 @@ import {
   CustomButton
 } from '../../../components'
 
-import { tokens } from '../../../theme'
 import { ASSETS } from '../../../config/assets'
 import { ROUTES } from '../../../config/routes'
+import { tokens } from '../../../theme'
+import { $ } from '../../../utils'
 
 const SignUpScreen = () => {
   const theme = useTheme()
@@ -31,19 +32,26 @@ const SignUpScreen = () => {
       height: 'max-content',
       minHeight: '100%'
     }}>
-      <Grid container sx={{
-        display: 'flex',
-        width: '100%',
-      }}>
+      <Grid container>
         <Grid item xs={12} lg={4}>
-          <AuthenticationFormBackground title='Create an account'>
-            <Box>
+          <AuthenticationFormBackground title='Create an account' sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            height: `calc(100% - ${$({ size: (45 + 60 + 60) + 31.98 })})`,
+            gap: $({ size: 16 }),
+          }}>
+            <Box sx={{
+              paddingTop: $({ size: 16 }),
+              gap: $({ size: 16 }),
+              display: 'flex',
+              flexDirection: 'column',
+            }}>
               <CustomTextInput
                 label='Full Name'
                 placeholder='First Last'
                 value={fullname}
                 onChange={e => setFullname(e.target.value)}
-                containerStyle={{ marginTop: '8px' }}
               />
 
               <CustomTextInput
@@ -52,7 +60,6 @@ const SignUpScreen = () => {
                 type='email'
                 value={email}
                 onChange={e => setEmail(e.target.value)}
-                containerStyle={{ marginTop: '8px' }}
               />
 
               <CustomTextInput
@@ -61,7 +68,6 @@ const SignUpScreen = () => {
                 type='password'
                 value={password}
                 onChange={e => setPassword(e.target.value)}
-                containerStyle={{ marginTop: '8px' }}
               />
 
               <FormControlLabel
@@ -70,78 +76,68 @@ const SignUpScreen = () => {
                     onChange={() => setAgreeToTerms(!agreeToTerms)}
                     sx={{
                       color: colors.grey[100],
-                      padding: '0px',
-                      marginTop: '4px',
+                      padding: '0',
                       '&.Mui-checked': { color: colors.greenAccent[500] },
                       '&:hover': { backgroundColor: 'transparent' },
                     }} />
                 }
                 label={
-                  <Typography sx={{
-                    fontSize: '13.5px',
-                    fontWeight: '400',
-                    lineHeight: '25px',
-                    marginLeft: '8px',
-                    color: colors.grey[100]
-                  }}>By creating an account you agree to the
-                    <Box component='span'
+                  <Typography
+                    sx={{
+                      fontSize: $({ size: 13.5 }),
+                      fontWeight: '400',
+                      lineHeight: $({ size: 25 }),
+                      marginLeft: $({ size: 8 }),
+                      color: colors.grey[100]
+                    }}>
+                    {'By creating an account you agree to the'}
+                    <span
                       onClick={() => { alert('Coming Soon...') }}
-                      sx={{
+                      style={{
                         color: colors.solids.purpleBright,
                         cursor: 'pointer',
                         textDecoration: 'underline',
-                      }}>{' terms of use '}</Box>
-                    and our
-                    <Box component='span'
+                      }}>{' terms of use '}</span>
+                    {'and our'}
+                    <span
                       onClick={() => { alert('Coming Soon...') }}
-                      sx={{
+                      style={{
                         color: colors.solids.purpleBright,
                         cursor: 'pointer',
                         textDecoration: 'underline',
-                      }}>{' privacy policy'}</Box>
-                    .
+                      }}>{' privacy policy'}</span>
+                    {'.'}
                   </Typography>
                 }
                 sx={{
                   display: 'flex',
                   flexDirection: 'row',
                   alignItems: 'start',
-                  margin: '12px 0px',
-                  padding: '0px'
+                  margin: '0',
+                  padding: '0'
                 }}
               />
 
               <CustomButton
                 label='Create Account'
-                onClick={() => {
-                  navigate(ROUTES.AUTHENTICATION.CONFIRMATION)
-                }}
-                sx={{ margin: '12px 0px' }} />
+                onClick={() => { navigate(ROUTES.AUTHENTICATION.CONFIRMATION) }}
+              />
 
               <Box sx={{
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'center',
-                margin: '12px 0px',
-                padding: '0px'
+                margin: `${$({ size: 8 })} 0`,
+                gap: $({ size: 8 }),
               }}>
-                <Box sx={{
-                  height: '1.5px',
-                  width: '100%',
-                  backgroundColor: colors.grey[800]
-                }} />
+                <Box sx={{ height: $({ size: 1.5 }), width: '100%', backgroundColor: colors.grey[800] }} />
                 <Typography sx={{
-                  fontSize: '13.5px',
+                  fontSize: $({ size: 13.5 }),
                   fontWeight: '400',
-                  lineHeight: '25px',
-                  margin: '0 8px',
+                  lineHeight: $({ size: 25 }),
                   color: colors.grey[500]
                 }}>or</Typography>
-                <Box sx={{
-                  height: '1.5px',
-                  width: '100%',
-                  backgroundColor: colors.grey[800]
-                }} />
+                <Box sx={{ height: $({ size: 1.5 }), width: '100%', backgroundColor: colors.grey[800] }} />
               </Box>
 
               <CustomButton label='Continue with Google'
@@ -152,11 +148,12 @@ const SignUpScreen = () => {
                   color: colors.solids.black,
                   textTransform: 'none',
                   '&:hover': { backgroundColor: colors.grey[900] },
-                  margin: '12px 0px'
                 }}
                 leftIcon={
-                  <Box component='img' src={ASSETS.AUTHENTICATION.ICONS.GOOGLE}
-                    alt='google-icon' sx={{ height: '18px' }}
+                  <img
+                    alt='google-icon'
+                    src={ASSETS.AUTHENTICATION.ICONS.GOOGLE}
+                    sx={{ height: $({ size: 18 }) }}
                   />
                 }
               />
@@ -169,38 +166,39 @@ const SignUpScreen = () => {
                   color: colors.solids.black,
                   textTransform: 'none',
                   '&:hover': { backgroundColor: colors.grey[900] },
-                  margin: '12px 0px'
                 }}
                 leftIcon={
-                  <Box component='img' src={ASSETS.AUTHENTICATION.ICONS.FACEBOOK}
-                    alt='facebook-icon' sx={{ height: '18px' }}
+                  <img
+                    alt='facebook-icon'
+                    src={ASSETS.AUTHENTICATION.ICONS.FACEBOOK}
+                    sx={{ height: $({ size: 18 }) }}
                   />
                 }
               />
             </Box>
 
-            <Box sx={{ marginBottom: '8%' }}>
+            <Box sx={{ margin: `${$({ size: 12 })} 0 ${$({ size: 24 })} 0`, textAlign: 'center' }}>
               <Typography sx={{
-                fontSize: '18px',
+                fontSize: $({ size: 18 }),
                 fontWeight: '400',
-                lineHeight: '27px',
+                lineHeight: $({ size: 27 }),
                 color: colors.grey[100],
-                margin: '12px 0px',
-                textAlign: 'center',
-              }}>{'Already have an account? '}
-                <Box component='span'
-                  onClick={() => { navigate(ROUTES.AUTHENTICATION.LOGIN) }}
-                  sx={{
-                    fontSize: '18px',
-                    fontWeight: '600',
-                    lineHeight: '27px',
-                    color: colors.solids.purpleBright,
-                    cursor: 'pointer',
-                  }}>Log in</Box>
-              </Typography>
+                display: 'inline',
+              }}>{'Already have an account? '}</Typography>
+              <Typography
+                onClick={() => { navigate(ROUTES.AUTHENTICATION.LOGIN) }}
+                sx={{
+                  fontSize: $({ size: 18 }),
+                  fontWeight: '600',
+                  lineHeight: $({ size: 27 }),
+                  color: colors.solids.purpleBright,
+                  display: 'inline',
+                  cursor: 'pointer',
+                }}>{`Log in`}</Typography>
             </Box>
           </AuthenticationFormBackground>
         </Grid>
+
         <Grid item xs={12} lg={8} sx={{
           display: 'flex',
           flexDirection: 'column',
@@ -208,9 +206,9 @@ const SignUpScreen = () => {
           alignItems: 'center',
         }}>
           <Typography sx={{
-            fontSize: '16px',
+            fontSize: $({ size: 18 }),
             fontWeight: '400',
-            lineHeight: '25px',
+            lineHeight: $({ size: 25 }),
             fontStyle: 'italic',
             alignSelf: 'start',
             padding: '5%',
@@ -228,14 +226,15 @@ const SignUpScreen = () => {
             sx={{
               objectFit: 'contain',
               objectPosition: 'center',
-              margin: '0px 0px 8% 0px',
+              margin: '0 0 8% 0',
               width: '80%',
-              maxHeight: '500px',
+              maxHeight: $({ size: 575 }),
+              maxWidth: $({ size: 650 }),
             }}
           />
         </Grid>
       </Grid>
-    </Box>
+    </Box >
   )
 }
 
