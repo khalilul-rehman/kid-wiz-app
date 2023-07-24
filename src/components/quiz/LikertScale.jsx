@@ -3,6 +3,7 @@ import { Box, Typography, Slider } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 
 import { tokens } from '../../theme'
+import { $ } from '../../utils'
 
 const LikertScale = ({
   value,
@@ -19,14 +20,14 @@ const LikertScale = ({
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
-      gap: '24px'
+      gap: $({ size: 24 })
     }}>
       <Typography sx={{
         fontWeight: '600',
-        fontSize: '13.5px',
-        lineHeight: '25px',
+        fontSize: $({ size: 13.5 }),
+        lineHeight: $({ size: 25 }),
         color: colors.extra.grey1,
-      }}>Diagree</Typography>
+      }}>Disagree</Typography>
 
       <Slider
         value={value}
@@ -35,25 +36,25 @@ const LikertScale = ({
           width: '100%',
           boxShadow: 'none',
           '& .MuiSlider-thumb': {
-            width: '16px',
-            height: '24px',
+            width: $({ size: 16 }),
+            height: $({ size: 24 }),
             backgroundColor: colors.likertScale.thumb,
             border: 'none',
-            borderRadius: '30px',
+            borderRadius: $({ size: 30 }),
             boxShadow: 'none',
             '&:hover': {
               boxShadow: 'none',
             }
           },
           '& .MuiSlider-track': {
-            height: '16px',
-            borderRadius: '66px',
+            height: $({ size: 16 }),
+            borderRadius: $({ size: 66 }),
             border: 'none',
             backgroundColor: colors.likertScale.left,
           },
           '& .MuiSlider-rail': {
-            height: '16px',
-            borderRadius: '66px',
+            height: $({ size: 16 }),
+            borderRadius: $({ size: 66 }),
             border: 'none',
             backgroundColor: colors.likertScale.right,
           },
@@ -64,10 +65,10 @@ const LikertScale = ({
                   (i === 0 || i === max)
                     ? { display: 'none' }
                     : {
-                      height: '16px',
-                      width: '1px',
+                      height: $({ size: 16 }),
+                      width: $({ size: 1 }),
                       backgroundColor: colors.likertScale.mark,
-                      borderRadius: '0px',
+                      borderRadius: '0',
                     },
               }
             )).reduce((acc, curr) => ({ ...acc, ...curr }), {})
@@ -82,8 +83,8 @@ const LikertScale = ({
 
       <Typography sx={{
         fontWeight: '600',
-        fontSize: '13.5px',
-        lineHeight: '25px',
+        fontSize: $({ size: 13.5 }),
+        lineHeight: $({ size: 25 }),
         color: colors.extra.grey1,
       }}>Agree</Typography>
     </Box>

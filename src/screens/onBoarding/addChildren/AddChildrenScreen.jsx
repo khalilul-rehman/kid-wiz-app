@@ -226,21 +226,26 @@ const AddChildrenScreen = () => {
           width: '100%',
           height: '100%',
         }}>
-          <Box component='img' src={ASSETS.LOGO} sx={{
-            width: $({ size: 160 }),
-            alignSelf: 'flex-start',
-            margin: `${$({ size: 40 })} 0 0 ${$({ size: 40 })}`
-          }} />
+          <img
+            alt='logo'
+            src={ASSETS.LOGO}
+            style={{
+              width: $({ size: 160 }),
+              alignSelf: 'flex-start',
+              margin: `${$({ size: 40 })} 0 0 ${$({ size: 40 })}`
+            }}
+          />
 
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <Box sx={{
               borderRadius: $({ size: 160 }),
               backgroundColor: colors.extra.iconBackground,
               padding: $({ size: 48 }),
+              width: $({ size: 160 }),
+              height: $({ size: 160 }),
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              width: 'fit-content',
             }}><ChildrenGroupIcon /></Box>
 
             <Typography sx={{

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Typography } from '@mui/material'
+import { Box, Grid, Typography } from '@mui/material'
 import { alpha, useTheme } from '@mui/material/styles'
 import { useNavigate } from 'react-router-dom'
 
@@ -17,9 +17,10 @@ import {
   CheckIcon
 } from '../../../icons'
 
-import { tokens } from '../../../theme'
 import { ASSETS } from '../../../config/assets'
 import { ROUTES } from '../../../config/routes'
+import { tokens } from '../../../theme'
+import { $ } from '../../../utils'
 
 const TestInfoCard = ({
   icon = <></>,
@@ -32,24 +33,20 @@ const TestInfoCard = ({
 
   return (
     <Box sx={{
-      borderRadius: '16px',
-      backgroundColor: colors.greenAccent[500],
-      padding: '16px',
-      minWidth: '220px',
-      maxWidth: '250px',
       display: 'flex',
       flexDirection: 'column',
-      gap: '8px',
+      gap: $({ size: 8 }),
+      borderRadius: $({ size: 16 }),
+      backgroundColor: colors.greenAccent[500],
+      padding: $({ size: 16 }),
+      width: $({ size: 256 }),
+      maxWidth: $({ size: 320 }),
     }}>
-      <Box sx={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-      }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <Box sx={{
-          width: '40px',
-          height: '40px',
-          borderRadius: '40px',
+          width: $({ size: 40 }),
+          height: $({ size: 40 }),
+          borderRadius: $({ size: 40 }),
           backgroundColor: colors.white[800],
           display: 'flex',
           alignItems: 'center',
@@ -58,11 +55,11 @@ const TestInfoCard = ({
 
         {
           isCompleted &&
-          <Box sx={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+          <Box sx={{ display: 'flex', gap: $({ size: 8 }), alignItems: 'center' }}>
             <Typography sx={{
-              fontSize: '13.5px',
+              fontSize: $({ size: 13.5 }),
               fontWeight: '500',
-              lineHeight: '25px',
+              lineHeight: $({ size: 25 }),
               color: colors.white[800],
             }}>Completed</Typography>
             <CheckIcon />
@@ -71,16 +68,16 @@ const TestInfoCard = ({
       </Box>
 
       <Typography sx={{
-        fontSize: '18px',
+        fontSize: $({ size: 18 }),
         fontWeight: '500',
-        lineHeight: '24px',
+        lineHeight: $({ size: 24 }),
         color: colors.white[800],
       }}>{title}</Typography>
 
       <Typography sx={{
-        fontSize: '13.5px',
+        fontSize: $({ size: 13.5 }),
         fontWeight: '400',
-        lineHeight: '20px',
+        lineHeight: $({ size: 20 }),
         color: colors.white[800],
       }}>{description}</Typography>
     </Box>
@@ -101,17 +98,18 @@ const PersonalityTestsScreen = () => {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      padding: '2.5%',
+      padding: $({ size: 40 }),
     }}>
       <Box sx={{
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
         backgroundColor: colors.white[800],
-        boxShadow: `0px 0px 8px 0px ${alpha(colors.solids.black, 0.25)}`,
+        boxShadow: `0 0 ${$({ size: 8 })} 0 ${alpha(colors.solids.black, 0.25)}`,
         width: '100%',
-        borderRadius: '12px',
+        borderRadius: $({ size: 12 }),
         flexGrow: 1,
+        gap: $({ size: 24 }),
       }}>
         <Box sx={{
           display: 'flex',
@@ -120,88 +118,101 @@ const PersonalityTestsScreen = () => {
           width: '100%',
           height: '100%',
         }}>
-          <Box component='img' src={ASSETS.LOGO} sx={{
-            width: '200px',
-            alignSelf: 'flex-start',
-            margin: '40px 0px 0px 40px',
-          }} />
+          <img
+            alt='logo'
+            src={ASSETS.LOGO}
+            style={{
+              width: $({ size: 160 }),
+              alignSelf: 'flex-start',
+              margin: `${$({ size: 40 })} 0 0 ${$({ size: 40 })}`
+            }}
+          />
 
-          <Box sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <Box sx={{
-              borderRadius: '150px',
+              borderRadius: $({ size: 160 }),
               backgroundColor: colors.extra.iconBackground,
-              padding: '48px',
+              padding: $({ size: 48 }),
+              width: $({ size: 160 }),
+              height: $({ size: 160 }),
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              width: '150px',
-              height: '150px',
-            }}>
-              <PersonalityTestIcon />
-            </Box>
+            }}><PersonalityTestIcon /></Box>
 
             <Typography sx={{
-              fontSize: '32px',
+              fontSize: $({ size: 32 }),
               fontWeight: '600',
-              lineHeight: '40px',
+              lineHeight: $({ size: 40 }),
               textAlign: 'center',
               color: colors.grey[200],
-              margin: '24px 0px',
+              margin: `${$({ size: 24 })} 0`,
             }}>Personality Tests</Typography>
 
             <Typography sx={{
-              fontSize: '18px',
+              fontSize: $({ size: 18 }),
               fontWeight: '400',
-              lineHeight: '24px',
+              lineHeight: $({ size: 24 }),
               textAlign: 'center',
               color: colors.solids.black,
-              width: '60%',
-              margin: '-8px 0 24px 0',
+              width: '100%',
+              maxWidth: $({ size: 540 }),
+              margin: `-${$({ size: 8 })} 0 ${$({ size: 24 })} 0`,
             }}>
               Taking any of these tests and quizzes is optional and will allow us to personalize your experience more.
             </Typography>
           </Box>
 
-          <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '24px' }}>
-            <TestInfoCard
-              icon={<BigFivePersonalityTestIcon />}
-              title='Big Five Personality Test'
-              description='Assess your personality traits in five dimensions.'
-              isCompleted={true}
-            />
-
-            <TestInfoCard
-              icon={<EmotionalIntelligenceIcon />}
-              title='Emotional Intelligence'
-              description='Measure your ability to perceive and manage emotions.'
-              isCompleted={false}
-            />
-
-            <TestInfoCard
-              icon={<ThunderstormIcon />}
-              title='Conflict Resolution Style'
-              description='Determine your preferred approach to resolving conflicts.'
-              isCompleted={false}
-            />
-
-            <TestInfoCard
-              icon={<ShapesIcon />}
-              title='Values Assessment'
-              description='Explore and learn about your core values.'
-              isCompleted={false}
-            />
-          </Box>
+          <Grid container sx={{
+            minWidth: $({ size: 256 }),
+            width: $({ size: (256 * 3) + (24 * 2) }),
+            maxWidth: '100%',
+            rowGap: $({ size: 24 }),
+          }}>
+            <Grid item xs={12} md={6} lg={4} sx={{ display: 'flex', justifyContent: 'center' }}>
+              <TestInfoCard
+                icon={<BigFivePersonalityTestIcon size={$({ size: 24, numeric: true })} />}
+                title='Big Five Personality Test'
+                description='Assess your personality traits in five dimensions.'
+                isCompleted={true}
+              />
+            </Grid>
+            <Grid item xs={12} md={6} lg={4} sx={{ display: 'flex', justifyContent: 'center' }}>
+              <TestInfoCard
+                icon={<EmotionalIntelligenceIcon size={$({ size: 24, numeric: true })} />}
+                title='Emotional Intelligence'
+                description='Measure your ability to perceive and manage emotions.'
+                isCompleted={false}
+              />
+            </Grid>
+            <Grid item xs={12} md={6} lg={4} sx={{ display: 'flex', justifyContent: 'center' }}>
+              <TestInfoCard
+                icon={<ThunderstormIcon size={$({ size: 24, numeric: true })} />}
+                title='Conflict Resolution Style'
+                description='Determine your preferred approach to resolving conflicts.'
+                isCompleted={false}
+              />
+            </Grid>
+            <Grid item xs={12} md={6} lg={4} sx={{ display: 'flex', justifyContent: 'center' }}>
+              <TestInfoCard
+                icon={<ShapesIcon size={$({ size: 24, numeric: true })} />}
+                title='Values Assessment'
+                description='Explore and learn about your core values.'
+                isCompleted={false}
+              />
+            </Grid>
+          </Grid>
         </Box>
 
         <CustomButton
           label='Continue'
           rightIcon={<RightArrowIcon />}
-          sx={{ width: 'fit-content', marginBottom: '40px', marginRight: '40px', alignSelf: 'flex-end' }}
-          rightIconSx={{ marginLeft: '16px' }}
+          sx={{
+            width: 'fit-content',
+            marginBottom: $({ size: 40 }),
+            marginRight: $({ size: 40 }),
+            alignSelf: 'flex-end'
+          }}
           onClick={() => {
             navigate(ROUTES.ON_BOARDING.BIG_FIVE_PERSONALITY.INTRO)
           }}

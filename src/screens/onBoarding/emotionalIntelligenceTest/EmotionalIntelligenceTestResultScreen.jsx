@@ -12,9 +12,10 @@ import {
   EmotionalIntelligenceIcon
 } from '../../../icons'
 
-import { tokens } from '../../../theme'
 import { ASSETS } from '../../../config/assets'
 import { ROUTES } from '../../../config/routes'
+import { tokens } from '../../../theme'
+import { $ } from '../../../utils'
 
 const EmotionalIntelligenceTestResultScreen = () => {
   const theme = useTheme()
@@ -30,17 +31,18 @@ const EmotionalIntelligenceTestResultScreen = () => {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      padding: '2.5%',
+      padding: $({ size: 40 }),
     }}>
       <Box sx={{
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
         backgroundColor: colors.white[800],
-        boxShadow: `0px 0px 8px 0px ${alpha(colors.solids.black, 0.25)}`,
+        boxShadow: `0 0 ${$({ size: 8 })} 0 ${alpha(colors.solids.black, 0.25)}`,
         width: '100%',
-        borderRadius: '12px',
+        borderRadius: $({ size: 12 }),
         flexGrow: 1,
+        gap: $({ size: 24 }),
       }}>
         <Box sx={{
           display: 'flex',
@@ -48,66 +50,65 @@ const EmotionalIntelligenceTestResultScreen = () => {
           alignItems: 'center',
           width: '100%',
           height: '100%',
+          gap: $({ size: 8 }),
+          marginBottom: $({ size: 40 }),
         }}>
-          <Box component='img' src={ASSETS.LOGO} sx={{
-            width: '200px',
-            alignSelf: 'flex-start',
-            margin: '40px 0px 0px 40px',
-          }} />
+          <img
+            alt='logo'
+            src={ASSETS.LOGO}
+            style={{
+              width: $({ size: 160 }),
+              alignSelf: 'flex-start',
+              margin: `${$({ size: 40 })} 0 0 ${$({ size: 40 })}`
+            }}
+          />
 
-          <Box sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <Box sx={{
-              borderRadius: '150px',
+              borderRadius: $({ size: 160 }),
               backgroundColor: colors.extra.iconBackground,
-              padding: '48px',
+              padding: $({ size: 48 }),
+              width: $({ size: 160 }),
+              height: $({ size: 160 }),
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              width: 'fit-content',
-            }}>
-              <EmotionalIntelligenceIcon size={64} />
-            </Box>
+            }}><EmotionalIntelligenceIcon size={$({ size: 64, numeric: true })} /></Box>
 
             <Typography sx={{
-              fontSize: '32px',
+              fontSize: $({ size: 32 }),
               fontWeight: '600',
-              lineHeight: '40px',
+              lineHeight: $({ size: 40 }),
               textAlign: 'center',
               color: colors.grey[200],
-              margin: '24px 0px',
+              margin: `${$({ size: 16 })} 0`,
             }}>Emotional Intelligence Assessment<br />Your Result</Typography>
 
             <Typography sx={{
-              fontSize: '18px',
+              fontSize: $({ size: 18 }),
               fontWeight: '400',
-              lineHeight: '24px',
+              lineHeight: $({ size: 24 }),
               textAlign: 'left',
               color: colors.solids.black,
-              width: '60%',
-              margin: '-8px 0 24px 0',
-              maxWidth: '1400px',
+              width: '100%',
+              maxWidth: $({ size: 620 }),
+              margin: `${$({ size: 4 })} 0 0 0`,
             }}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </Typography>
           </Box>
-          <Box component='span' sx={{
-            minHeight: '40px',
-            maxHeight: '112px',
-          }} />
         </Box>
 
         <CustomButton
           label='Continue'
-          rightIcon={<RightArrowIcon />}
-          sx={{ width: 'fit-content', marginBottom: '40px', marginRight: '40px', alignSelf: 'flex-end' }}
-          rightIconSx={{ marginLeft: '16px' }}
-          onClick={() => {
-            navigate(ROUTES.ON_BOARDING.CONFLICT_RESOLUTION_STYLE.INTRO)
+          rightIcon={<RightArrowIcon size={$({ size: 24, numeric: true })} />}
+          sx={{
+            width: 'fit-content',
+            marginBottom: $({ size: 40 }),
+            marginRight: $({ size: 40 }),
+            alignSelf: 'flex-end',
           }}
+          onClick={() => { navigate(ROUTES.ON_BOARDING.CONFLICT_RESOLUTION_STYLE.INTRO) }}
         />
       </Box>
     </Box>

@@ -14,9 +14,10 @@ import {
   BigFivePersonalityTestIcon
 } from '../../../icons'
 
-import { tokens } from '../../../theme'
 import { ASSETS } from '../../../config/assets'
 import { ROUTES } from '../../../config/routes'
+import { tokens } from '../../../theme'
+import { $ } from '../../../utils'
 
 const BigFivePersonalityTestQuestionsScreen = () => {
   const theme = useTheme()
@@ -54,17 +55,18 @@ const BigFivePersonalityTestQuestionsScreen = () => {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      padding: '2.5%',
+      padding: $({ size: 40 }),
     }}>
       <Box sx={{
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
         backgroundColor: colors.white[800],
-        boxShadow: `0px 0px 8px 0px ${alpha(colors.solids.black, 0.25)}`,
+        boxShadow: `0 0 ${$({ size: 8 })} 0 ${alpha(colors.solids.black, 0.25)}`,
         width: '100%',
-        borderRadius: '12px',
+        borderRadius: $({ size: 12 }),
         flexGrow: 1,
+        gap: $({ size: 24 }),
       }}>
         <Box sx={{
           display: 'flex',
@@ -72,37 +74,38 @@ const BigFivePersonalityTestQuestionsScreen = () => {
           alignItems: 'center',
           width: '100%',
           height: '100%',
+          gap: $({ size: 8 }),
+          marginBottom: $({ size: 40 }),
         }}>
-          <Box component='img' src={ASSETS.LOGO} sx={{
-            width: '200px',
-            alignSelf: 'flex-start',
-            margin: '40px 0px 0px 40px',
-          }} />
+          <img
+            alt='logo'
+            src={ASSETS.LOGO}
+            style={{
+              width: $({ size: 160 }),
+              alignSelf: 'flex-start',
+              margin: `${$({ size: 40 })} 0 0 ${$({ size: 40 })}`
+            }}
+          />
 
-          <Box sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <Box sx={{
-              borderRadius: '150px',
+              borderRadius: $({ size: 160 }),
               backgroundColor: colors.extra.iconBackground,
-              padding: '48px',
+              padding: $({ size: 48 }),
+              width: $({ size: 160 }),
+              height: $({ size: 160 }),
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              width: 'fit-content',
-            }}>
-              <BigFivePersonalityTestIcon size={64} />
-            </Box>
+            }}><BigFivePersonalityTestIcon size={$({ size: 64, numeric: true })} /></Box>
 
             <Typography sx={{
-              fontSize: '32px',
+              fontSize: $({ size: 32 }),
               fontWeight: '600',
-              lineHeight: '40px',
+              lineHeight: $({ size: 40 }),
               textAlign: 'center',
               color: colors.grey[200],
-              margin: '24px 0px',
+              margin: `${$({ size: 16 })} 0`,
             }}>Big Five Personality Test</Typography>
           </Box>
 
@@ -111,15 +114,15 @@ const BigFivePersonalityTestQuestionsScreen = () => {
             flexDirection: 'column',
             alignItems: 'center',
             width: '100%',
-            maxWidth: '450px',
-            gap: '24px',
+            maxWidth: $({ size: 450 }),
+            gap: $({ size: 24 }),
           }}>
             <QuestionProgressBar totalQuestions={questions.length} currentQuestion={currentQuestion} />
 
             <Typography sx={{
-              fontSize: '18px',
+              fontSize: $({ size: 18 }),
               fontWeight: '400',
-              lineHeight: '30px',
+              lineHeight: $({ size: 30 }),
               color: colors.extra.grey1,
               alignSelf: 'flex-start',
             }}>{questions[currentQuestion - 1]}</Typography>
@@ -133,15 +136,14 @@ const BigFivePersonalityTestQuestionsScreen = () => {
             <CustomButton
               onClick={questions.length === currentQuestion ? HandleSubmit : HandleNext}
               label={questions.length === currentQuestion ? 'Submit' : 'Next'}
-              sx={{ maxWidth: '175px', alignSelf: 'flex-end', marginTop: '16px' }}
-              rightIcon={<RightArrowIcon />}
-              rightIconSx={{ marginLeft: '16px' }} />
+              sx={{
+                maxWidth: $({ size: 175 }),
+                alignSelf: 'flex-end',
+                marginTop: $({ size: 16 })
+              }}
+              rightIcon={<RightArrowIcon size={$({ size: 24, numeric: true })} />}
+            />
           </Box>
-
-          <Box component='span' sx={{
-            minHeight: '40px',
-            maxHeight: '112px',
-          }} />
         </Box>
       </Box>
     </Box>

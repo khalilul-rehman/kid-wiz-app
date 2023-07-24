@@ -3,6 +3,7 @@ import { Box, LinearProgress, Typography } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 
 import { tokens } from '../../theme'
+import { $ } from '../../utils'
 
 const QuestionProgressBar = ({
   totalQuestions = 10,
@@ -18,9 +19,9 @@ const QuestionProgressBar = ({
         showQuestionNumber &&
         <Typography sx={{
           color: colors.extra.grey1,
-          fontSize: '18px',
+          fontSize: $({ size: 18 }),
           fontWeight: '500',
-          lineHeight: '30px'
+          lineHeight: $({ size: 30 }),
         }}>
           Question {currentQuestion} of {totalQuestions}
         </Typography>
@@ -29,11 +30,11 @@ const QuestionProgressBar = ({
         variant='determinate'
         value={currentQuestion / totalQuestions * 100}
         sx={{
-          height: 8,
-          borderRadius: 66,
+          height: $({ size: 8 }),
+          borderRadius: $({ size: 66 }),
           backgroundColor: colors.extra.grey4,
           '& .MuiLinearProgress-bar': {
-            borderRadius: 66,
+            borderRadius: $({ size: 66 }),
             backgroundColor: colors.greenAccent[500]
           }
         }}

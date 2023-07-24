@@ -12,9 +12,10 @@ import {
   EmotionalIntelligenceIcon,
 } from '../../../icons'
 
-import { tokens } from '../../../theme'
 import { ASSETS } from '../../../config/assets'
 import { ROUTES } from '../../../config/routes'
+import { tokens } from '../../../theme'
+import { $ } from '../../../utils'
 
 const EmotionalIntelligenceTestIntroScreen = () => {
   const theme = useTheme()
@@ -30,17 +31,18 @@ const EmotionalIntelligenceTestIntroScreen = () => {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      padding: '2.5%',
+      padding: $({ size: 40 }),
     }}>
       <Box sx={{
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
         backgroundColor: colors.white[800],
-        boxShadow: `0px 0px 8px 0px ${alpha(colors.solids.black, 0.25)}`,
+        boxShadow: `0 0 ${$({ size: 8 })} 0 ${alpha(colors.solids.black, 0.25)}`,
         width: '100%',
-        borderRadius: '12px',
+        borderRadius: $({ size: 12 }),
         flexGrow: 1,
+        gap: $({ size: 24 }),
       }}>
         <Box sx={{
           display: 'flex',
@@ -48,76 +50,72 @@ const EmotionalIntelligenceTestIntroScreen = () => {
           alignItems: 'center',
           width: '100%',
           height: '100%',
+          gap: $({ size: 8 }),
         }}>
-          <Box component='img' src={ASSETS.LOGO} sx={{
-            width: '200px',
-            alignSelf: 'flex-start',
-            margin: '40px 0px 0px 40px',
-          }} />
+          <img
+            alt='logo'
+            src={ASSETS.LOGO}
+            style={{
+              width: $({ size: 160 }),
+              alignSelf: 'flex-start',
+              margin: `${$({ size: 40 })} 0 0 ${$({ size: 40 })}`
+            }}
+          />
 
-          <Box sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <Box sx={{
-              borderRadius: '150px',
+              borderRadius: $({ size: 160 }),
               backgroundColor: colors.extra.iconBackground,
-              padding: '48px',
+              padding: $({ size: 48 }),
+              width: $({ size: 160 }),
+              height: $({ size: 160 }),
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              width: 'fit-content',
-            }}>
-              <EmotionalIntelligenceIcon size={64} />
-            </Box>
+            }}><EmotionalIntelligenceIcon size={$({ size: 64, numeric: true })} /></Box>
 
             <Typography sx={{
-              fontSize: '32px',
+              fontSize: $({ size: 32 }),
               fontWeight: '600',
-              lineHeight: '40px',
+              lineHeight: $({ size: 40 }),
               textAlign: 'center',
               color: colors.grey[200],
-              margin: '24px 0px',
+              margin: `${$({ size: 16 })} 0`,
             }}>Emotional Intelligence Assessment</Typography>
 
             <Typography sx={{
-              fontSize: '18px',
+              fontSize: $({ size: 18 }),
               fontWeight: '400',
-              lineHeight: '24px',
+              lineHeight: $({ size: 24 }),
               textAlign: 'center',
               color: colors.solids.black,
-              width: '60%',
-              margin: '-8px 0 24px 0',
+              width: '100%',
+              maxWidth: $({ size: 540 }),
+              margin: `-${$({ size: 8 })} 0 ${$({ size: 16 })} 0`,
             }}>
               By completing this test, we are able to personalize your experience according to your emotional intelligence.
             </Typography>
           </Box>
 
-          <Box sx={{ display: 'flex', width: '100%', justifyContent: 'center', gap: '24px', margin: '24px 0' }}>
+          <Box sx={{
+            display: 'flex', width: '100%',
+            justifyContent: 'center',
+            gap: $({ size: 24 }),
+            margin: `${$({ size: 24 })} 0 ${$({ size: 40 })} 0`
+          }}>
             <CustomButton
               label='Skip'
               isSecondary
-              sx={{ maxWidth: '220px' }}
-              onClick={() => {
-                navigate(ROUTES.ON_BOARDING.CONFLICT_RESOLUTION_STYLE.INTRO)
-              }}
+              sx={{ maxWidth: $({ size: 220 }) }}
+              onClick={() => { navigate(ROUTES.ON_BOARDING.CONFLICT_RESOLUTION_STYLE.INTRO) }}
             />
             <CustomButton
               label='Take Test'
-              sx={{ maxWidth: '220px' }}
-              rightIcon={<RightArrowIcon />}
-              rightIconSx={{ marginLeft: '16px' }}
-              onClick={() => {
-                navigate(ROUTES.ON_BOARDING.EMOTIONAL_INTELLIGENCE.QUESTIONS)
-              }}
+              sx={{ maxWidth: $({ size: 220 }) }}
+              rightIcon={<RightArrowIcon size={$({ size: 24, numeric: true })} />}
+              onClick={() => { navigate(ROUTES.ON_BOARDING.EMOTIONAL_INTELLIGENCE.QUESTIONS) }}
             />
           </Box>
-
-          <Box component='span' sx={{
-            minHeight: '40px',
-            maxHeight: '112px',
-          }} />
         </Box>
       </Box>
     </Box>
