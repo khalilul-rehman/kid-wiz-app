@@ -1,10 +1,14 @@
-import { Box, Typography } from '@mui/material'
+import React from 'react'
+
+import {
+  DashboardContainer,
+} from '../../../components'
 
 const PerformanceHome = () => {
   return (
-    <Box>
-      <Typography>Performance</Typography>
-    </Box>
+    <DashboardContainer>
+
+    </DashboardContainer>
   )
 }
 

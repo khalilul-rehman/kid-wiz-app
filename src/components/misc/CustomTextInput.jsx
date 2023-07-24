@@ -5,6 +5,22 @@ import { alpha, useTheme } from '@mui/material/styles'
 import { tokens } from '../../theme'
 import { $ } from '../../utils'
 
+const CustomLabel = ({ label = 'Label', labelStyle = {} }) => {
+  const theme = useTheme()
+  const colors = tokens(theme.palette.mode)
+
+  return (
+    <Typography sx={{
+      fontSize: $({ size: 18 }),
+      fontWeight: '500',
+      color: colors.solids.black,
+      lineHeight: $({ size: 30 }),
+      paddingBottom: $({ size: 8 }),
+      ...labelStyle
+    }}>{label}</Typography>
+  )
+}
+
 const CustomTextInput = ({
   value = '',
   label = 'Label',
@@ -75,3 +91,4 @@ const CustomTextInput = ({
 }
 
 export default CustomTextInput
+export { CustomLabel }

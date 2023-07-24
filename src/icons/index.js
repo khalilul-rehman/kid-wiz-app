@@ -10,6 +10,8 @@ import TrashIcon from './misc/TrashIcon'
 import CheckIcon from './misc/CheckIcon'
 import SearchIcon from './misc/SearchIcon'
 import HomeIcon from './misc/HomeIcon'
+import CaretUpIcon from './misc/CaretUpIcon'
+import CaretDownIcon from './misc/CaretDownIcon'
 
 export {
   AddIcon,
@@ -21,7 +23,9 @@ export {
   TrashIcon,
   CheckIcon,
   SearchIcon,
-  HomeIcon
+  HomeIcon,
+  CaretUpIcon,
+  CaretDownIcon,
 }
 
 /*** ONBOARDING ICONS ******************************************************************************************/
