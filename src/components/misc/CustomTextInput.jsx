@@ -58,10 +58,10 @@ const CustomTextInput = ({
           sx={{
             fontSize: $({ size: 18 }),
             fontWeight: '400',
-            color: colors.extra.grey2,
+            color: colors.extra.grey1,
             lineHeight: $({ size: 30 }),
             '&::placeholder': {
-              color: colors.extra.grey2,
+              color: colors.extra.grey3,
               opacity: 0.7,
               ...inputStyle?.['&::placeholder'],
             },
