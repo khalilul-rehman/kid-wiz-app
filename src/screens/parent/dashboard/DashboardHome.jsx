@@ -44,7 +44,10 @@ const DashboardHome = () => {
   const [selectedChild, setSelectedChild] = React.useState(childData[0])
 
   const [datesDropDownOpen, setDatesDropDownOpen] = React.useState(false)
-  const [selectedDates, setSelectedDates] = React.useState({})
+  const [selectedDates, setSelectedDates] = React.useState({
+    startDate: 'April 9, 2023',
+    endDate: 'May 6, 2023',
+  })
 
   const [isPersonalityTestCompleted, setIsPersonalityTestCompleted] = React.useState(false)
 
@@ -367,13 +370,15 @@ const DashboardHome = () => {
             <Typography sx={{
               fontSize: $({ size: 13.5 }),
               fontWeight: '600',
-              color: colors.extra.grey3
+              color: colors.extra.grey3,
+              visibility: selectedDates?.startDate ? 'visible' : 'hidden',
             }}>Currently Selected</Typography>
             <Typography sx={{
               fontSize: $({ size: 13.5 }),
               fontWeight: '500',
-              color: colors.extra.grey1
-            }}>April 9, 2023 🡢 May 6, 2023</Typography>
+              color: colors.extra.grey1,
+              visibility: selectedDates?.startDate ? 'visible' : 'hidden',
+            }}>{`${selectedDates?.startDate} 🡢 ${selectedDates?.endDate}`}</Typography>
           </Grid>
         </Grid>
 
