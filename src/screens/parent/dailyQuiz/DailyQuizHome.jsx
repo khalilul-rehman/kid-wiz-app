@@ -14,6 +14,7 @@ import {
 } from '../../../icons'
 
 import { tokens } from '../../../theme'
+import { $ } from '../../../utils'
 
 const DailyQuizHome = () => {
   const theme = useTheme()
@@ -59,12 +60,12 @@ const DailyQuizHome = () => {
   }
 
   return (
-    <DashboardContainer>
+    <DashboardContainer containerStyle={{ gap: $({ size: 24 }) }}>
       <Box>
-        <Typography sx={{ fontSize: '32px', fontWeight: '600', color: colors.extra.grey1, display: 'inline' }}>
+        <Typography sx={{ fontSize: $({ size: 31.98 }), fontWeight: '600', color: colors.extra.grey1, display: 'inline' }}>
           {`Daily Quiz: `}
         </Typography>
-        <Typography sx={{ fontSize: '32px', fontWeight: '600', color: colors.greenAccent[600], display: 'inline' }}>
+        <Typography sx={{ fontSize: $({ size: 31.98 }), fontWeight: '600', color: colors.greenAccent[600], display: 'inline' }}>
           {`Animals and Their Habitats`}
         </Typography>
       </Box>
@@ -74,7 +75,7 @@ const DailyQuizHome = () => {
         currentQuestion={currentQuestion === -1 ? questions.length : currentQuestion}
       />
 
-      <Typography sx={{ fontSize: '18px', fontWeight: '400', color: colors.extra.grey1 }}>
+      <Typography sx={{ fontSize: $({ size: 18 }), fontWeight: '400', color: colors.extra.grey1 }}>
         {questions[currentQuestion - 1]}
       </Typography>
 
@@ -84,12 +85,8 @@ const DailyQuizHome = () => {
         onChange={(e) => setCurrentAnswer(e.target.value)}
         placeholder={'Type in your answer...'}
         disabled={isChecked}
-        inputStyle={{
-          '& .MuiOutlinedInput-root': {
-            '& input': {
-              ...(isChecked && { boxShadow: `inset 0px 0px 0px 3px ${isCorrect ? colors.greenAccent[500] : colors.redAccent[500]}`, })
-            }
-          },
+        inputContainerStyle={{
+          ...(isChecked && { boxShadow: `inset 0 0 0 ${$({ size: 3 })} ${isCorrect ? colors.greenAccent[500] : colors.redAccent[500]}`, })
         }}
       />
 
@@ -104,27 +101,26 @@ const DailyQuizHome = () => {
             ? isChecked ? 'Submit' : 'Answer'
             : isChecked ? 'Next' : 'Answer'
         }
-        sx={{ maxWidth: '175px', alignSelf: 'flex-end' }}
-        rightIcon={<RightArrowIcon />}
-        rightIconSx={{ marginLeft: '16px' }}
+        sx={{ maxWidth: $({ size: 175 }), alignSelf: 'flex-end' }}
+        rightIcon={<RightArrowIcon size={$({ size: 24, numeric: true })} />}
       />
 
       {
         isChecked &&
-        <Box marginTop='-8px'>
+        <Box marginTop={`-${$({ size: 8 })}`}>
           {
             isCorrect
               ?
-              <Typography sx={{ fontSize: '18px', fontWeight: '700', color: colors.greenAccent[500] }}>
+              <Typography sx={{ fontSize: $({ size: 18 }), fontWeight: '700', color: colors.greenAccent[500] }}>
                 Correct!
               </Typography>
               :
-              <Typography sx={{ fontSize: '18px', fontWeight: '700', color: colors.redAccent[500] }}>
+              <Typography sx={{ fontSize: $({ size: 18 }), fontWeight: '700', color: colors.redAccent[500] }}>
                 False!
               </Typography>
           }
 
-          <Typography sx={{ fontSize: '18px', fontWeight: '400', color: colors.extra.grey1 }}>
+          <Typography sx={{ fontSize: $({ size: 18 }), fontWeight: '400', color: colors.extra.grey1 }}>
             {
               isCorrect
                 ? <>Yes, Your Answer Is Correct!</>

@@ -86,7 +86,7 @@ const LearnSubjectHome = () => {
                 sx={{
                   padding: $({ size: 16 }),
                   borderRadius: $({ size: 16 }),
-                  boxShadow: `0px 0px ${$({ size: 2 })} ${alpha(colors.solids.black, 0.25)}`,
+                  boxShadow: `0 0 ${$({ size: 2 })} ${alpha(colors.solids.black, 0.25)}`,
                   backgroundColor: subject.isUnlocked ? subject.color : colors.extra.grey4,
                   gap: $({ size: 8 }),
                   display: 'flex',

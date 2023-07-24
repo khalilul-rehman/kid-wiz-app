@@ -15,7 +15,7 @@ const DashboardContainer = ({ children, containerStyle = {} }) => {
         display: 'flex',
         flexDirection: 'column',
         backgroundColor: colors.white[800],
-        boxShadow: `0px 0px ${$({ size: 2 })} 0px ${alpha(colors.solids.black, 0.25)}`,
+        boxShadow: `0 0 ${$({ size: 2 })} 0 ${alpha(colors.solids.black, 0.25)}`,
         width: '100%',
         borderRadius: $({ size: 12 }),
         height: '100%',

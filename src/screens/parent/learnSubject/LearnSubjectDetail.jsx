@@ -126,7 +126,7 @@ const LearnSubjectTopic = () => {
                 sx={{
                   padding: $({ size: 16 }),
                   borderRadius: $({ size: 16 }),
-                  boxShadow: `0px 0px ${$({ size: 2 })} ${alpha(colors.solids.black, 0.25)}`,
+                  boxShadow: `0 0 ${$({ size: 2 })} ${alpha(colors.solids.black, 0.25)}`,
                   backgroundColor: selection.id === subjectDetail.id
                     ? DarkenHexColor({ hex: state?.color })
                     : state?.color,
