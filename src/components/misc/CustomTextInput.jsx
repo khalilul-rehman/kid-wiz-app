@@ -29,6 +29,8 @@ const CustomTextInput = ({
   type = 'text',
   disabled = false,
   onChange = () => { },
+  onEnter = () => { },
+  onKeyUp = () => { },
   containerStyle = {},
   labelStyle = {},
   inputContainerStyle = {},
@@ -73,6 +75,13 @@ const CustomTextInput = ({
           onChange={onChange}
           disabled={disabled}
           type={type}
+          onKeyUp={(e) => {
+            if (e.key === 'Enter') {
+              onEnter()
+              return
+            }
+            onKeyUp()
+          }}
           sx={{
             fontSize: $({ size: 18 }),
             fontWeight: '400',

@@ -37,9 +37,9 @@ const ImproveParentingHome = () => {
 
   React.useEffect(() => {
     document.title = 'Improve Parenting | Parent Dashboard | KidWiz'
-    setTopicsData(TopicsData)
-    setSelectedTopic(TopicsData[0])
-    setTopicDetailData(TopicsData[0].subTopics)
+    setTopicsData(TopicsData || [])
+    setSelectedTopic(TopicsData[0] || {})
+    setTopicDetailData(TopicsData[0]?.subTopics || [])
   }, [])
 
   const HandleBeginLearning = () => {
@@ -50,6 +50,15 @@ const ImproveParentingHome = () => {
     }
 
     alert(`You have selected the following:\n\nTopic: ${selectedTopic.title}\nSub Topic: ${selectedSubTopic.title}\nSection: ${selectedSection.title}`)
+  }
+
+  const handleSearch = () => {
+    const filteredData = TopicsData.filter((topic) => {
+      return topic.title.toLowerCase().includes(search.toLowerCase())
+    })
+    setTopicsData(filteredData || [])
+    setSelectedTopic(filteredData[0] || {})
+    setTopicDetailData(filteredData[0]?.subTopics || [])
   }
 
   return (
@@ -77,249 +86,268 @@ const ImproveParentingHome = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             containerStyle={{ maxWidth: $({ size: 352 }) }}
+            handleSearch={handleSearch}
+            handleSearchOnEveryKeyStroke={handleSearch}
           />
         </Box>
 
-        <Grid container sx={{ mt: $({ size: 24 }), maxWidth: $({ size: 1536 }) }}>
-          <Grid item xs={12} md={6} lg={5} xl={4}>
-            <Box sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: $({ size: 12 }),
-              width: '100%',
-              pr: {
-                xs: 0,
-                md: $({ size: 36 }),
-              },
-              borderRight: {
-                xs: 'none',
-                md: `${$({ size: 1 })} solid ${colors.extra.grey4}`
-              },
-            }}>
-              {
-                topicsData.map((topic, index) => {
-                  return (
-                    <Box key={index}
-                      onClick={() => {
-                        if (!topic.isEnabled) return
+        {
+          topicsData.length === 0 &&
+          <Typography
+            sx={{
+              fontSize: $({ size: 24 }),
+              fontWeight: '400',
+              lineHeight: $({ size: 30 }),
+              color: colors.extra.grey3,
+              mt: `${$({ size: 24 })}`
+            }}>No Topic Found...</Typography>
+        }
 
-                        setSelectedTopic(topic)
+        {
+          topicsData.length > 0 &&
+          <>
+            <Grid container sx={{ mt: $({ size: 24 }), maxWidth: $({ size: 1536 }) }}>
+              <Grid item xs={12} md={6} lg={5} xl={4}>
+                <Box sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: $({ size: 12 }),
+                  width: '100%',
+                  pr: {
+                    xs: 0,
+                    md: $({ size: 36 }),
+                  },
+                  borderRight: {
+                    xs: 'none',
+                    md: `${$({ size: 1 })} solid ${colors.extra.grey4}`
+                  },
+                }}>
+                  {
+                    topicsData.map((topic, index) => {
+                      return (
+                        <Box key={index}
+                          onClick={() => {
+                            if (!topic.isEnabled) return
+
+                            setSelectedTopic(topic)
+                            setSelectedSubTopic({})
+                            setSelectedSection({})
+
+                            setTopicDetailData(topic.subTopics)
+                            setRenderBreadcrumbs(false)
+                          }}
+                          sx={{
+                            display: 'flex',
+                            justifyContent: topic.isEnabled ? 'space-between' : 'flex-start',
+                            alignItems: 'center',
+                            gap: $({ size: 12 }),
+                            borderRadius: $({ size: 8 }),
+                            padding: `${$({ size: 14 })} ${$({ size: 24 })}`,
+                            backgroundColor: topic.id === selectedTopic?.id
+                              ? colors.greenAccent[400]
+                              : 'transparent',
+                            width: '100%',
+                            cursor: 'pointer',
+                            '&:hover': {
+                              backgroundColor: topic.id === selectedTopic?.id
+                                ? colors.greenAccent[400]
+                                : topic.isEnabled
+                                  ? alpha(colors.greenAccent[400], 0.25)
+                                  : alpha(colors.extra.grey1, 0.05)
+                            },
+                          }}>
+                          <Typography sx={{
+                            fontWeight: topic.id === selectedTopic?.id ? '600' : '500',
+                            fontSize: $({ size: 18 }),
+                            lineHeight: $({ size: 24 }),
+                            color: topic.isEnabled ? colors.solids.black : colors.extra.grey3,
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                          }}>{topic.title}</Typography>
+
+                          {
+                            !topic.isEnabled &&
+                            <Box sx={{
+                              display: 'flex',
+                              justifyContent: 'center',
+                              alignItems: 'center',
+                            }}><LockIcon size={$({ size: 14, numeric: true })} color={colors.extra.grey2} /></Box>
+                          }
+
+                          {
+                            topic.id === selectedTopic?.id &&
+                            <Box sx={{
+                              display: 'flex',
+                              justifyContent: 'center',
+                              alignItems: 'center',
+                            }}><ChevronForwardIcon size={$({ size: 14, numeric: true })} color={colors.extra.grey2} /></Box>
+                          }
+                        </Box>
+                      )
+                    })
+                  }
+                </Box>
+              </Grid>
+              <Grid item xs={12} md={6} lg={7} xl={8}>
+                <Box sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  flexDirection: 'column',
+                  pl: {
+                    xs: 0,
+                    md: $({ size: 36 }),
+                  },
+                  width: 'fit-content',
+                  gap: $({ size: 16 }),
+                }}>
+                  <Box sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'flex-start',
+                    gap: $({ size: 16 }),
+                    width: '100%',
+                    visibility: renderBreadcrumbs ? 'visible' : 'hidden',
+                  }}>
+                    <Box
+                      onClick={() => {
+                        setTopicDetailData(selectedTopic.subTopics)
                         setSelectedSubTopic({})
                         setSelectedSection({})
-
-                        setTopicDetailData(topic.subTopics)
                         setRenderBreadcrumbs(false)
                       }}
                       sx={{
                         display: 'flex',
-                        justifyContent: topic.isEnabled ? 'space-between' : 'flex-start',
                         alignItems: 'center',
-                        gap: $({ size: 12 }),
-                        borderRadius: $({ size: 8 }),
-                        padding: `${$({ size: 14 })} ${$({ size: 24 })}`,
-                        backgroundColor: topic.id === selectedTopic?.id
-                          ? colors.greenAccent[400]
-                          : 'transparent',
-                        width: '100%',
+                        justifyContent: 'center',
                         cursor: 'pointer',
-                        '&:hover': {
-                          backgroundColor: topic.id === selectedTopic?.id
-                            ? colors.greenAccent[400]
-                            : topic.isEnabled
-                              ? alpha(colors.greenAccent[400], 0.25)
-                              : alpha(colors.extra.grey1, 0.05)
-                        },
                       }}>
-                      <Typography sx={{
-                        fontWeight: topic.id === selectedTopic?.id ? '600' : '500',
-                        fontSize: $({ size: 18 }),
-                        lineHeight: $({ size: 24 }),
-                        color: topic.isEnabled ? colors.solids.black : colors.extra.grey3,
-                        overflow: 'hidden',
-                        textOverflow: 'ellipsis',
-                        whiteSpace: 'nowrap',
-                      }}>{topic.title}</Typography>
-
-                      {
-                        !topic.isEnabled &&
-                        <Box sx={{
-                          display: 'flex',
-                          justifyContent: 'center',
-                          alignItems: 'center',
-                        }}><LockIcon size={$({ size: 14, numeric: true })} color={colors.extra.grey2} /></Box>
-                      }
-
-                      {
-                        topic.id === selectedTopic?.id &&
-                        <Box sx={{
-                          display: 'flex',
-                          justifyContent: 'center',
-                          alignItems: 'center',
-                        }}><ChevronForwardIcon size={$({ size: 14, numeric: true })} color={colors.extra.grey2} /></Box>
-                      }
+                      <LeftArrowIcon size={$({ size: 24, numeric: true })} />
                     </Box>
-                  )
-                })
-              }
-            </Box>
-          </Grid>
-          <Grid item xs={12} md={6} lg={7} xl={8}>
-            <Box sx={{
-              display: 'flex',
-              alignItems: 'center',
-              flexDirection: 'column',
-              pl: {
-                xs: 0,
-                md: $({ size: 36 }),
-              },
-              width: 'fit-content',
-              gap: $({ size: 16 }),
-            }}>
-              <Box sx={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'flex-start',
-                gap: $({ size: 16 }),
-                width: '100%',
-                visibility: renderBreadcrumbs ? 'visible' : 'hidden',
-              }}>
-                <Box
-                  onClick={() => {
-                    setTopicDetailData(selectedTopic.subTopics)
-                    setSelectedSubTopic({})
-                    setSelectedSection({})
-                    setRenderBreadcrumbs(false)
-                  }}
-                  sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    cursor: 'pointer',
-                  }}>
-                  <LeftArrowIcon size={$({ size: 24, numeric: true })} />
-                </Box>
-                <Box sx={{
-                  display: 'flex',
-                  cursor: 'pointer',
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  gap: $({ size: 8 }),
-                }}>
-                  <Typography
-                    onClick={() => {
-                      setTopicDetailData(selectedTopic.subTopics)
-                      setSelectedSubTopic({})
-                      setSelectedSection({})
-                      setRenderBreadcrumbs(false)
-                    }}
-                    sx={{
-                      fontSize: $({ size: 13.5 }),
-                      fontWeight: '400',
-                      lineHeight: $({ size: 25 }),
-                      color: colors.extra.grey2,
-                    }}>{selectedTopic?.title || 'N/A'}
-                  </Typography>
-
-                  <Typography sx={{
-                    fontSize: $({ size: 15 }),
-                    fontWeight: '400',
-                    lineHeight: $({ size: 25 }),
-                    color: colors.extra.grey2,
-                  }}>{'>'}</Typography>
-                </Box>
-              </Box>
-
-              <Box sx={{
-                display: 'grid',
-                gridTemplateColumns: `repeat(auto-fill, minmax(${$({ size: 160 })}, 1fr))`,
-                gridAutoRows: `minmax(${$({ size: 160 })}, auto)`, // to make all the rows the same height
-                gridGap: $({ size: 20 }),
-                width: {
-                  xs: '100%',
-                  lg: $({ size: (160 * 2) + (40 * 2) }),
-                  xl: $({ size: (160 * 3) + (40 * 3) }),
-                },
-                maxHeight: {
-                  xs: 'none',
-                  md: $({ size: (160 * 2) + (20 * 1) })
-                },
-                overflowY: 'scroll',
-                overflowX: 'hidden',
-                '&::-webkit-scrollbar': {
-                  width: '12px',
-                  borderRadius: '12px',
-                },
-                '&::-webkit-scrollbar-thumb': {
-                  backgroundColor: colors.extra.grey3,
-                  borderRadius: '12px',
-                },
-                pr: {
-                  xs: 0,
-                  md: $({ size: 36 }),
-                },
-              }}>
-                {
-                  topicDetailData.map((topicDetail, index) => {
-                    return (
-                      <Box key={index}
+                    <Box sx={{
+                      display: 'flex',
+                      cursor: 'pointer',
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      gap: $({ size: 8 }),
+                    }}>
+                      <Typography
                         onClick={() => {
-                          if (renderBreadcrumbs) {
-                            setSelectedSection(topicDetail)
-                            return
-                          }
-
-                          setSelectedSubTopic(topicDetail)
+                          setTopicDetailData(selectedTopic.subTopics)
+                          setSelectedSubTopic({})
+                          setSelectedSection({})
+                          setRenderBreadcrumbs(false)
                         }}
                         sx={{
-                          padding: $({ size: 16 }),
-                          borderRadius: $({ size: 16 }),
-                          boxShadow: `0 0 ${$({ size: 2 })} ${alpha(colors.solids.black, 0.25)
-                            }`,
-                          backgroundColor: (
-                            renderBreadcrumbs
-                              ? topicDetail.id === selectedSection.id
-                              : topicDetail.id === selectedSubTopic.id
-                          )
-                            ? DarkenHexColor({ hex: colors.greenAccent[400], percentage: 20 })
-                            : colors.greenAccent[400],
-                          gap: $({ size: 8 }),
-                          display: 'inline-flex',
-                          flexDirection: 'column',
-                          cursor: 'pointer',
-                          maxWidth: {
-                            xs: '100%',
-                            lg: $({ size: 160 }),
-                          },
-                        }}>
-                        <Typography sx={{
-                          fontSize: $({ size: 18 }),
-                          fontWeight: '500',
-                          lineHeight: $({ size: 24 }),
-                          color: colors.solids.black,
-                          overflow: 'hidden',
-                          textOverflow: 'ellipsis',
-                          width: '100%',
-                          whiteSpace: 'break-spaces',
-                        }}>{topicDetail.title}</Typography>
-                      </Box>
-                    )
-                  })
-                }
-              </Box>
-            </Box>
-          </Grid>
-        </Grid>
+                          fontSize: $({ size: 13.5 }),
+                          fontWeight: '400',
+                          lineHeight: $({ size: 25 }),
+                          color: colors.extra.grey2,
+                        }}>{selectedTopic?.title || 'N/A'}
+                      </Typography>
 
-        <Box sx={{ flex: '1' }} />
+                      <Typography sx={{
+                        fontSize: $({ size: 15 }),
+                        fontWeight: '400',
+                        lineHeight: $({ size: 25 }),
+                        color: colors.extra.grey2,
+                      }}>{'>'}</Typography>
+                    </Box>
+                  </Box>
 
-        {
-          selectedSubTopic?.title &&
-          <CustomButton
-            onClick={HandleBeginLearning}
-            label='Begin Learning'
-            sx={{ maxWidth: 'max-content', alignSelf: 'flex-end', mt: $({ size: 16 }) }}
-            rightIcon={<RightArrowIcon size={$({ size: 24, numeric: true })} />}
-          />
+                  <Box sx={{
+                    display: 'grid',
+                    gridTemplateColumns: `repeat(auto-fill, minmax(${$({ size: 160 })}, 1fr))`,
+                    gridAutoRows: `minmax(${$({ size: 160 })}, auto)`, // to make all the rows the same height
+                    gridGap: $({ size: 20 }),
+                    width: {
+                      xs: '100%',
+                      lg: $({ size: (160 * 2) + (40 * 2) }),
+                      xl: $({ size: (160 * 3) + (40 * 3) }),
+                    },
+                    maxHeight: {
+                      xs: 'none',
+                      md: $({ size: (160 * 2) + (20 * 1) })
+                    },
+                    overflowY: 'scroll',
+                    overflowX: 'hidden',
+                    '&::-webkit-scrollbar': {
+                      width: '12px',
+                      borderRadius: '12px',
+                    },
+                    '&::-webkit-scrollbar-thumb': {
+                      backgroundColor: colors.extra.grey3,
+                      borderRadius: '12px',
+                    },
+                    pr: {
+                      xs: 0,
+                      md: $({ size: 36 }),
+                    },
+                  }}>
+                    {
+                      topicDetailData.map((topicDetail, index) => {
+                        return (
+                          <Box key={index}
+                            onClick={() => {
+                              if (renderBreadcrumbs) {
+                                setSelectedSection(topicDetail)
+                                return
+                              }
+
+                              setSelectedSubTopic(topicDetail)
+                            }}
+                            sx={{
+                              padding: $({ size: 16 }),
+                              borderRadius: $({ size: 16 }),
+                              boxShadow: `0 0 ${$({ size: 2 })} ${alpha(colors.solids.black, 0.25)
+                                }`,
+                              backgroundColor: (
+                                renderBreadcrumbs
+                                  ? topicDetail.id === selectedSection.id
+                                  : topicDetail.id === selectedSubTopic.id
+                              )
+                                ? DarkenHexColor({ hex: colors.greenAccent[400], percentage: 20 })
+                                : colors.greenAccent[400],
+                              gap: $({ size: 8 }),
+                              display: 'inline-flex',
+                              flexDirection: 'column',
+                              cursor: 'pointer',
+                              maxWidth: {
+                                xs: '100%',
+                                lg: $({ size: 160 }),
+                              },
+                            }}>
+                            <Typography sx={{
+                              fontSize: $({ size: 18 }),
+                              fontWeight: '500',
+                              lineHeight: $({ size: 24 }),
+                              color: colors.solids.black,
+                              overflow: 'hidden',
+                              textOverflow: 'ellipsis',
+                              width: '100%',
+                              whiteSpace: 'break-spaces',
+                            }}>{topicDetail.title}</Typography>
+                          </Box>
+                        )
+                      })
+                    }
+                  </Box>
+                </Box>
+              </Grid>
+            </Grid>
+
+            <Box sx={{ flex: '1' }} />
+
+            {
+              selectedSubTopic?.title &&
+              <CustomButton
+                onClick={HandleBeginLearning}
+                label='Begin Learning'
+                sx={{ maxWidth: 'max-content', alignSelf: 'flex-end', mt: $({ size: 16 }) }}
+                rightIcon={<RightArrowIcon size={$({ size: 24, numeric: true })} />}
+              />
+            }
+          </>
         }
       </Box>
     </DashboardContainer>

@@ -33,6 +33,13 @@ const LearnSubjectHome = () => {
     setSubjectData(SubjectData)
   }, [])
 
+  const handleSearch = () => {
+    const filteredData = SubjectData.filter((subject) => {
+      return subject.title.toLowerCase().includes(search.toLowerCase())
+    })
+    setSubjectData(filteredData)
+  }
+
   return (
     <DashboardContainer>
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: $({ size: 8 }) }}>
@@ -62,9 +69,23 @@ const LearnSubjectHome = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             containerStyle={{ maxWidth: $({ size: 352 }) }}
+            handleSearch={handleSearch}
+            handleSearchOnEveryKeyStroke={handleSearch}
           />
         </Box>
       </Box>
+
+      {
+        subjectData.length === 0 &&
+        <Typography
+          sx={{
+            fontSize: $({ size: 24 }),
+            fontWeight: '400',
+            lineHeight: $({ size: 30 }),
+            color: colors.extra.grey3,
+            mt: `-${$({ size: 8 })}`
+          }}>No Subject Found...</Typography>
+      }
 
       <Box sx={{
         display: 'grid',
