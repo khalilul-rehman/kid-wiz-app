@@ -224,7 +224,7 @@ const SideBar = () => {
 const TopBar = () => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
-  const colorMode = useContext(ColorModeContext)
+  // const colorMode = useContext(ColorModeContext)
 
   return (
     <Box sx={{
@@ -240,13 +240,13 @@ const TopBar = () => {
       <Box />
 
       <Box display='flex'>
-        <IconButton onClick={colorMode.toggleColorMode}>
+        {/* <IconButton onClick={colorMode.toggleColorMode}>
           {
             theme.palette.mode === 'dark'
               ? <DarkModeOutlinedIcon />
               : <LightModeOutlinedIcon />
           }
-        </IconButton>
+        </IconButton> */}
         <IconButton>
           <NotificationsOutlinedIcon />
         </IconButton>
