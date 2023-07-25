@@ -275,23 +275,7 @@ const ParentDashboardLayout = () => {
       <SideBar />
       <Box sx={{ width: '100%', height: 'calc(100vh - 60px)' }}>
         <TopBar />
-        <Box sx={{
-          backgroundColor: colors.grey[900],
-          width: '100%',
-          height: '100%',
-          padding: '24px',
-          overflowY: 'scroll',
-          '&::-webkit-scrollbar': {
-            width: '12px',
-            borderRadius: '12px',
-          },
-          '&::-webkit-scrollbar-thumb': {
-            backgroundColor: colors.extra.grey3,
-            borderRadius: '12px',
-          }
-        }}>
-          <Outlet />
-        </Box>
+        <Outlet />
       </Box>
     </Box>
   )

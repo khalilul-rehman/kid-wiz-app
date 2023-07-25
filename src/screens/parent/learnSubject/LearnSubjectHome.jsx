@@ -34,7 +34,7 @@ const LearnSubjectHome = () => {
   }, [])
 
   return (
-    <DashboardContainer containerStyle={{ paddintTop: $({ size: 32 }) }}>
+    <DashboardContainer>
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: $({ size: 8 }) }}>
         <CustomBreadcrumbs
           data={[
