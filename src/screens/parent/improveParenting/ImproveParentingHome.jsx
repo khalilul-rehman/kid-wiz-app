@@ -272,12 +272,12 @@ const ImproveParentingHome = () => {
                     overflowY: 'scroll',
                     overflowX: 'hidden',
                     '&::-webkit-scrollbar': {
-                      width: '12px',
-                      borderRadius: '12px',
+                      width: $({ size: 12 }),
+                      borderRadius: $({ size: 12 }),
                     },
                     '&::-webkit-scrollbar-thumb': {
                       backgroundColor: colors.extra.grey3,
-                      borderRadius: '12px',
+                      borderRadius: $({ size: 12 }),
                     },
                     pr: {
                       xs: 0,

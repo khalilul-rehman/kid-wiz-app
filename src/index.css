@@ -18,3 +18,14 @@ body,
 .MuiSlider-track > .MuiSlider-mark:nth-child(2) {
   display: none !important;
 }
+
+/* scrollbar styles */
+::-webkit-scrollbar {
+  width: 12px;
+  border-radius: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #A7A7A7;
+  border-radius: 12px;
+}

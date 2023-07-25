@@ -20,15 +20,15 @@ const DashboardContainer = ({
       backgroundColor: colors.grey[900],
       width: '100%',
       height: '100%',
-      padding: '24px',
+      padding: $({ size: 24 }),
       overflowY: 'scroll',
       '&::-webkit-scrollbar': {
-        width: '12px',
-        borderRadius: '12px',
+        width: $({ size: 12 }),
+        borderRadius: $({ size: 12 }),
       },
       '&::-webkit-scrollbar-thumb': {
         backgroundColor: colors.extra.grey3,
-        borderRadius: '12px',
+        borderRadius: $({ size: 12 }),
       },
       ...wrapperStyle
     }}>
@@ -44,12 +44,12 @@ const DashboardContainer = ({
           display: 'flex',
           flexDirection: 'column',
           '&::-webkit-scrollbar': {
-            width: '12px',
-            borderRadius: '12px',
+            width: $({ size: 12 }),
+            borderRadius: $({ size: 12 }),
           },
           '&::-webkit-scrollbar-thumb': {
             backgroundColor: colors.extra.grey3,
-            borderRadius: '12px',
+            borderRadius: $({ size: 12 }),
           },
           ...gridStyle
         }}>
@@ -65,12 +65,12 @@ const DashboardContainer = ({
             gap: $({ size: 40 }),
             flex: '1',
             '&::-webkit-scrollbar': {
-              width: '12px',
-              borderRadius: '12px',
+              width: $({ size: 12 }),
+              borderRadius: $({ size: 12 }),
             },
             '&::-webkit-scrollbar-thumb': {
               backgroundColor: colors.extra.grey3,
-              borderRadius: '12px',
+              borderRadius: $({ size: 12 }),
             },
             ...containerStyle
           }}>{children}</Box>

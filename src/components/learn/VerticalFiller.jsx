@@ -3,6 +3,7 @@ import { Box, Slider, Typography } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 
 import { tokens } from '../../theme'
+import { $ } from '../../utils'
 
 const VerticalFillerItem = ({
   label = '',
@@ -13,11 +14,16 @@ const VerticalFillerItem = ({
   const colors = tokens(theme.palette.mode)
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
+    <Box sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      gap: $({ size: 20 }),
+    }}>
       <Box sx={{
-        width: '70px',
-        height: '200px',
-        borderRadius: '100px',
+        width: $({ size: 70 }),
+        height: $({ size: 200 }),
+        borderRadius: $({ size: 100 }),
         backgroundColor: colors.extra.grey4,
         display: 'flex',
         flexDirection: 'column',
@@ -25,16 +31,16 @@ const VerticalFillerItem = ({
         alignItems: 'center',
         overflow: 'hidden',
         position: 'relative',
-        marging: '0px 10%',
+        marging: '0 10%',
       }}>
         <Slider
           disabled
           orientation='vertical'
           sx={{
             overflow: 'hidden',
-            width: '70px',
-            height: '200px',
-            borderRadius: '100px',
+            width: $({ size: 70 }),
+            height: $({ size: 200 }),
+            borderRadius: $({ size: 100 }),
             backgroundColor: colors.extra.grey4,
             '& .MuiSlider-track': { backgroundColor: color, border: 'none' },
             '& .MuiSlider-rail': { backgroundColor: colors.extra.grey4, border: 'none' },
@@ -51,19 +57,19 @@ const VerticalFillerItem = ({
 
         <Typography sx={{
           fontWeight: '700',
-          fontSize: '18px',
-          lineHeight: '30px',
+          fontSize: $({ size: 18 }),
+          lineHeight: $({ size: 30 }),
           color: colors.extra.grey1,
           position: 'absolute',
-          bottom: '0px',
+          bottom: '0',
           paddingBottom: `${value * 100}%`,
         }}>{(value * 100).toFixed(0)}%</Typography>
       </Box>
 
       <Typography sx={{
         fontWeight: '600',
-        fontSize: '13.5px',
-        lineHeight: '16px',
+        fontSize: $({ size: 13.5 }),
+        lineHeight: $({ size: 16 }),
         color: colors.extra.grey1,
       }}>{label}</Typography>
     </Box>
@@ -78,7 +84,7 @@ const VerticalFiller = ({
       display: 'flex',
       justifyContent: 'space-between',
       width: '100%',
-      gap: '48px',
+      gap: $({ size: 36 }),
     }}>
       {
         data.map((item, index) => {
