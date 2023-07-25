@@ -21,6 +21,7 @@ const Separator = ({ color = '#72B316', content = '>' }) => {
 const CustomBreadcrumbs = ({
   data = [],
   sx = {},
+  showHome = true,
 }) => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
@@ -47,7 +48,7 @@ const CustomBreadcrumbs = ({
                 gap: $({ size: 8 }),
               }}>
                 {
-                  index === 0 && <HomeIcon size={$({ size: 14, numeric: true })} />
+                  (showHome && index === 0) && <HomeIcon size={$({ size: 14, numeric: true })} />
                 }
                 {
                   index > 0 && <Separator color={colors.extra.grey2} />

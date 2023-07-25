@@ -38,7 +38,9 @@ export const ROUTES = {
       DETAIL: '/parent-dashboard/learn-subject/:subjectId',
     },
     DAILY_QUIZ: '/parent-dashboard/daily-quiz',
-    IMPROVE_PARENTING: '/parent-dashboard/improve-parenting',
+    IMPROVE_PARENTING: {
+      INDEX: '/parent-dashboard/improve-parenting',
+    },
     EXPLORE: '/parent-dashboard/explore',
     JOURNAL: '/parent-dashboard/journal',
     SETTINGS: '/parent-dashboard/settings',

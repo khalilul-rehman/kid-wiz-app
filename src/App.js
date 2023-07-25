@@ -95,7 +95,7 @@ const App = () => {
             <Route index path={ROUTES.PARENT.LEARN_SUBJECT.INDEX} element={<LearnSubjectHome />} />
             <Route index path={ROUTES.PARENT.LEARN_SUBJECT.DETAIL} element={<LearnSubjectDetail />} />
             <Route index path={ROUTES.PARENT.DAILY_QUIZ} element={<DailyQuizHome />} />
-            <Route index path={ROUTES.PARENT.IMPROVE_PARENTING} element={<ImproveParentingHome />} />
+            <Route index path={ROUTES.PARENT.IMPROVE_PARENTING.INDEX} element={<ImproveParentingHome />} />
             <Route index path={ROUTES.PARENT.EXPLORE} element={<ExploreHome />} />
             <Route index path={ROUTES.PARENT.JOURNAL} element={<JournalHome />} />
             <Route index path={ROUTES.PARENT.SETTINGS} element={<SettingsHome />} />

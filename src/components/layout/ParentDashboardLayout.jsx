@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import { ProSidebar, Menu, MenuItem, } from 'react-pro-sidebar'
 import { Box, Typography, IconButton } from '@mui/material'
 import { Link, Outlet, useNavigate, useLocation } from 'react-router-dom'
@@ -6,11 +6,11 @@ import { useTheme } from '@mui/material/styles'
 import 'react-pro-sidebar/dist/css/styles.css'
 
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined'
-import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined'
-import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
+// import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined'
+// import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined'
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
-import SearchIcon from '@mui/icons-material/Search'
+// import SearchIcon from '@mui/icons-material/Search'
 
 import {
   DashboardIcon,
@@ -24,7 +24,10 @@ import {
   LogoutIcon,
 } from '../../icons'
 
-import { ColorModeContext, tokens } from '../../theme'
+import {
+  // ColorModeContext,
+  tokens
+} from '../../theme'
 import { ASSETS } from '../../config/assets'
 import { ROUTES } from '../../config/routes'
 
@@ -69,6 +72,8 @@ const SideBar = () => {
   React.useEffect(() => {
     const path = window.location.pathname
     setSelected(path.split('/').slice(0, 3).join('/'))
+
+    setIsCollapsed(false)
   }, [navigate, state])
 
   return (
@@ -152,7 +157,7 @@ const SideBar = () => {
                     },
                     {
                       title: 'Improve Parenting',
-                      to: ROUTES.PARENT.IMPROVE_PARENTING,
+                      to: ROUTES.PARENT.IMPROVE_PARENTING.INDEX,
                       icon: {
                         active: <NotificationIcon color={colors.white[800]} />,
                         inactive: <NotificationIcon />
@@ -224,7 +229,7 @@ const SideBar = () => {
 const TopBar = () => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
-  // const colorMode = useContext(ColorModeContext)
+  // const colorMode = React.useContext(ColorModeContext)
 
   return (
     <Box sx={{
