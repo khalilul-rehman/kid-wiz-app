@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 
 import {
   CustomButton,
-  CustomLabel,
+  CustomDropDown,
   QuestionProgressBar,
 } from '../../../components'
 
@@ -19,8 +19,6 @@ import {
   MathIcon,
   RibbonIcon,
   CompassIcon,
-  CaretUpIcon,
-  CaretDownIcon
 } from '../../../icons'
 
 import { ASSETS } from '../../../config/assets'
@@ -44,10 +42,14 @@ const DashboardHome = () => {
   const [selectedChild, setSelectedChild] = React.useState(childData[0])
 
   const [datesDropDownOpen, setDatesDropDownOpen] = React.useState(false)
-  const [selectedDates, setSelectedDates] = React.useState({
-    startDate: 'April 9, 2023',
-    endDate: 'May 6, 2023',
-  })
+  const [selectedDates, setSelectedDates] = React.useState({})
+
+  React.useEffect(() => {
+    setSelectedDates({
+      startDate: 'April 9, 2023',
+      endDate: 'May 6, 2023',
+    })
+  }, [])
 
   const [isPersonalityTestCompleted, setIsPersonalityTestCompleted] = React.useState(false)
 
@@ -130,122 +132,77 @@ const DashboardHome = () => {
               (childDropDownOpen || datesDropDownOpen) && <RenderCover color={colors.extra.grey1} />
             }
 
-            <CustomLabel label='Child' labelStyle={{
-              fontWeight: '600',
-              fontSize: $({ size: 13.5 }),
-              lineHeight: $({ size: 25 }),
-            }} />
-
-            <Box sx={{ position: 'relative' }}>
-              <Box
-                onClick={() => {
-                  if (childDropDownOpen) return
-                  setChildDropDownOpen(true)
-                }}
-                sx={{
-                  borderRadius: $({ size: 12 }),
-                  background: colors.extra.grey5,
-                  boxShadow: `inset 0 0 ${$({ size: 2 })} ${alpha(colors.solids.black, 0.25)}`,
-                  padding: `${$({ size: 12 })} ${$({ size: 24 })}`,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  width: '100%',
-                  cursor: 'pointer',
-                  gap: $({ size: 12 }),
-                  visibility: childDropDownOpen ? 'hidden' : 'visible',
-                }}>
-                <Typography sx={{
-                  fontSize: $({ size: 13.5 }),
-                  fontWeight: '400',
-                  color: colors.extra.grey1,
-                  lineHeight: $({ size: 25 }),
-                }}>Choose a child</Typography>
-                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <CaretDownIcon size={$({ size: 11, numeric: true })} />
-                </Box>
-              </Box>
-
-              {
-                childDropDownOpen &&
-                <Box
-                  onClick={() => { setChildDropDownOpen(false) }}
-                  sx={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    width: '100%',
-                    background: colors.extra.grey5,
-                    borderRadius: $({ size: 12 }),
-                    boxShadow: `0 0 ${$({ size: 2 })} ${alpha(colors.solids.black, 0.25)}`,
-                    padding: `${$({ size: 12 })} ${$({ size: 24 })}`,
-                    zIndex: 100,
-                  }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <Typography sx={{
-                      fontSize: $({ size: 13.5 }),
-                      fontWeight: '400',
-                      color: colors.extra.grey1,
-                      lineHeight: $({ size: 25 }),
-                    }}>Choose a child</Typography>
-                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <CaretUpIcon size={$({ size: 11, numeric: true })} />
-                    </Box>
-                  </Box>
-
-                  {
-                    childData.map((item, index, data) => {
-                      return (
-                        <Box
-                          onClick={() => { setSelectedChild(item) }}
-                          sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'flex-start',
-                            gap: $({ size: 12 }),
-                            paddingTop: $({ size: 8 }),
-                            paddingBottom: index === data.length - 1 ? 0 : $({ size: 8 }),
-                            borderBottom: index === data.length - 1 ? 'none' : `${$({ size: 1 })} solid ${colors.extra.grey4}`,
-                            cursor: 'pointer',
-                          }}>
-                          <img
-                            src={item.photo}
-                            alt={item.fullname}
-                            style={{
-                              width: $({ size: 40 }),
-                              height: $({ size: 40 }),
-                              borderRadius: $({ size: 40 }),
-                              border: `${$({ size: 1 })} solid ${colors.extra.grey4}`,
-                              objectFit: 'cover',
-                            }}
-                          />
-                          <Box sx={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'flex-start',
-                            justifyContent: 'center',
-                          }}>
-                            <Typography sx={{
-                              fontSize: $({ size: 13.5 }),
-                              fontWeight: '500',
-                              color: colors.extra.grey1,
-                              lineHeight: $({ size: 22 }),
-                            }}>{item.fullname}</Typography>
-                            <Typography sx={{
-                              fontSize: $({ size: 12 }),
-                              fontWeight: '400',
-                              color: colors.extra.grey2,
-                              lineHeight: $({ size: 22 }),
-                            }}>{item.email}</Typography>
-                          </Box>
+            <CustomDropDown
+              label='Child'
+              value='Choose a child'
+              placeholder='Choose a child'
+              dropDownOpen={childDropDownOpen}
+              setDropDownOpen={setChildDropDownOpen}
+              labelStyle={{
+                fontWeight: '600',
+                fontSize: $({ size: 13.5 }),
+                lineHeight: $({ size: 25 }),
+              }}
+              placeholderClosedStyle={{
+                fontSize: $({ size: 13.5 }),
+                lineHeight: $({ size: 25 }),
+              }}
+              placeholderOpenStyle={{
+                fontSize: $({ size: 13.5 }),
+                lineHeight: $({ size: 25 }),
+              }}
+              data={
+                childData.map(item => {
+                  return {
+                    onClick: () => { setSelectedChild(item) },
+                    component: (
+                      <>
+                        <img
+                          src={item.photo}
+                          alt={item.fullname}
+                          style={{
+                            width: $({ size: 40 }),
+                            height: $({ size: 40 }),
+                            borderRadius: $({ size: 40 }),
+                            border: `${$({ size: 1 })} solid ${colors.extra.grey4}`,
+                            objectFit: 'cover',
+                          }}
+                        />
+                        <Box sx={{
+                          display: 'flex',
+                          flexDirection: 'column',
+                          alignItems: 'flex-start',
+                          justifyContent: 'center',
+                          width: '100%',
+                          overflow: 'hidden',
+                        }}>
+                          <Typography sx={{
+                            fontSize: $({ size: 13.5 }),
+                            fontWeight: '500',
+                            color: colors.extra.grey1,
+                            lineHeight: $({ size: 22 }),
+                            width: '100%',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                            overflow: 'hidden',
+                          }}>{item.fullname}</Typography>
+                          <Typography sx={{
+                            fontSize: $({ size: 12 }),
+                            fontWeight: '400',
+                            color: colors.extra.grey2,
+                            lineHeight: $({ size: 22 }),
+                            width: '100%',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                            overflow: 'hidden',
+                          }}>{item.email}</Typography>
                         </Box>
-                      )
-                    })
+                      </>
+                    )
                   }
-                </Box>
+                })
               }
-            </Box>
+            />
 
             <Box height={`${$({ size: 24 })}`} />
 
@@ -298,72 +255,26 @@ const DashboardHome = () => {
           </Grid>
 
           <Grid item xs={12} md={6} lg={12}>
-            <CustomLabel label='Dates' labelStyle={{
-              fontWeight: '600',
-              fontSize: $({ size: 13.5 }),
-              lineHeight: $({ size: 25 }),
-            }} />
-
-            <Box sx={{ position: 'relative' }}>
-              <Box
-                onClick={() => {
-                  if (datesDropDownOpen) return
-                  setDatesDropDownOpen(true)
-                }}
-                sx={{
-                  borderRadius: $({ size: 12 }),
-                  background: colors.extra.grey5,
-                  boxShadow: `inset 0 0 ${$({ size: 2 })} ${alpha(colors.solids.black, 0.25)}`,
-                  padding: `${$({ size: 12 })} ${$({ size: 24 })}`,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  width: '100%',
-                  cursor: 'pointer',
-                  gap: $({ size: 12 }),
-                  visibility: datesDropDownOpen ? 'hidden' : 'visible',
-                }}>
-                <Typography sx={{
-                  fontSize: $({ size: 13.5 }),
-                  fontWeight: '400',
-                  color: colors.extra.grey1,
-                  lineHeight: $({ size: 25 }),
-                }}>Choose dates</Typography>
-                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <CaretDownIcon size={$({ size: 11, numeric: true })} />
-                </Box>
-              </Box>
-
-              {
-                datesDropDownOpen &&
-                <Box
-                  onClick={() => { setDatesDropDownOpen(false) }}
-                  sx={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    width: '100%',
-                    background: colors.extra.grey5,
-                    borderRadius: $({ size: 12 }),
-                    boxShadow: `0 0 ${$({ size: 2 })} ${alpha(colors.solids.black, 0.25)}`,
-                    padding: `${$({ size: 12 })} ${$({ size: 24 })}`,
-                    zIndex: 100,
-                  }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <Typography sx={{
-                      fontSize: $({ size: 13.5 }),
-                      fontWeight: '400',
-                      color: colors.extra.grey1,
-                      lineHeight: $({ size: 25 }),
-                    }}>Choose dates</Typography>
-                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <CaretUpIcon size={$({ size: 11, numeric: true })} />
-                    </Box>
-                  </Box>
-                </Box>
-              }
-            </Box>
+            <CustomDropDown
+              label='Dates'
+              value='Choose dates'
+              placeholder='Choose dates'
+              dropDownOpen={datesDropDownOpen}
+              setDropDownOpen={setDatesDropDownOpen}
+              labelStyle={{
+                fontWeight: '600',
+                fontSize: $({ size: 13.5 }),
+                lineHeight: $({ size: 25 }),
+              }}
+              placeholderClosedStyle={{
+                fontSize: $({ size: 13.5 }),
+                lineHeight: $({ size: 25 }),
+              }}
+              placeholderOpenStyle={{
+                fontSize: $({ size: 13.5 }),
+                lineHeight: $({ size: 25 }),
+              }}
+            />
 
             <Box height={`${$({ size: 24 })}`} />
 
@@ -525,6 +436,7 @@ const DashboardHome = () => {
                   height: $({ size: 112 }),
                   borderRadius: $({ size: 112 }),
                   border: `${$({ size: 3 })} solid ${colors.greenAccent[500]}`,
+                  objectFit: 'cover',
                 }}
               />
 
@@ -591,21 +503,23 @@ const DashboardHome = () => {
 
               <Box sx={{ display: 'flex', gap: $({ size: 24 }), flexDirection: { xs: 'column', md: 'row' } }}>
                 <Box sx={{ position: 'relative', height: $({ size: 160 }), width: $({ size: 160 }) }}>
-                  <Pie
-                    data={gradeGraphData}
-                    innerRadius={0.65}
-                    padAngle={0}
-                    legends={[]}
-                    enableArcLabels={false}
-                    enableArcLinkLabels={false}
-                    isInteractive={false}
-                    width={$({ size: 160, numeric: true })}
-                    height={$({ size: 160, numeric: true })}
-                    animate={false}
-                    fit={true}
-                    colors={(d) => d.data.color}
-                    sortByValue={true}
-                  />
+                  <Box sx={{ filter: `drop-shadow(0 0 ${$({ size: 5 })} ${alpha(colors.solids.black, 0.1)})` }}>
+                    <Pie
+                      data={gradeGraphData}
+                      innerRadius={0.65}
+                      padAngle={0}
+                      legends={[]}
+                      enableArcLabels={false}
+                      enableArcLinkLabels={false}
+                      isInteractive={false}
+                      width={$({ size: 160, numeric: true })}
+                      height={$({ size: 160, numeric: true })}
+                      animate={false}
+                      fit={true}
+                      colors={(d) => d.data.color}
+                      sortByValue={true}
+                    />
+                  </Box>
 
                   <Typography sx={{
                     fontWeight: '700', fontSize: $({ size: 42 }), color: colors.extra.grey1,
@@ -613,7 +527,7 @@ const DashboardHome = () => {
                   }}>B-</Typography>
                 </Box>
 
-                <Box sx={{ display: 'flex', gap: $({ size: 12 }), flex: '1', width: '100%', flexDirection: { xs: 'column', lg: 'row' } }}>
+                <Box sx={{ display: 'flex', gap: $({ size: 12 }), flex: '1', width: '100%', flexDirection: { xs: 'column', md: 'row' } }}>
                   <Box sx={{ display: 'flex', gap: $({ size: 8 }), flexDirection: 'column', flex: '1' }}>
                     <Typography sx={{ fontWeight: '600', fontSize: $({ size: 13.5 }), color: colors.extra.grey1 }}>
                       Hightest Grade
@@ -625,7 +539,7 @@ const DashboardHome = () => {
                             flex: `0 0 ${$({ size: 16 })}`,
                             display: 'flex',
                             justifyContent: 'center',
-                            alignItems: 'center'
+                            alignItems: 'center',
                           }}>{item.icon}</Box>
                           <Box>
                             <Typography sx={{ fontWeight: '500', fontSize: $({ size: 13.5 }), color: colors.extra.grey1, display: 'inline' }}>

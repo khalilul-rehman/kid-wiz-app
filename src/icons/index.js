@@ -12,6 +12,9 @@ import SearchIcon from './misc/SearchIcon'
 import HomeIcon from './misc/HomeIcon'
 import CaretUpIcon from './misc/CaretUpIcon'
 import CaretDownIcon from './misc/CaretDownIcon'
+import CloseIcon from './misc/CloseIcon'
+import UploadIcon from './misc/UploadIcon'
+import SaveIcon from './misc/SaveIcon'
 
 export {
   AddIcon,
@@ -26,6 +29,9 @@ export {
   HomeIcon,
   CaretUpIcon,
   CaretDownIcon,
+  CloseIcon,
+  UploadIcon,
+  SaveIcon,
 }
 
 /*** ONBOARDING ICONS ******************************************************************************************/

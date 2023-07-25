@@ -25,6 +25,7 @@ const CustomTextInput = ({
   value = '',
   label = 'Label',
   placeholder = 'Placeholder',
+  error = '',
   type = 'text',
   disabled = false,
   onChange = () => { },
@@ -32,6 +33,7 @@ const CustomTextInput = ({
   labelStyle = {},
   inputContainerStyle = {},
   inputStyle = {},
+  errorStyle = {},
   leftIcon = null,
   rightIcon = null,
 }) => {
@@ -76,6 +78,7 @@ const CustomTextInput = ({
             fontWeight: '400',
             color: colors.extra.grey1,
             lineHeight: $({ size: 30 }),
+            width: '100%',
             '&::placeholder': {
               color: colors.extra.grey3,
               opacity: 0.7,
@@ -86,6 +89,18 @@ const CustomTextInput = ({
         />
         {rightIcon}
       </Box>
+
+      {
+        error &&
+        <Typography sx={{
+          fontSize: $({ size: 16 }),
+          fontWeight: '400',
+          color: colors.redAccent[500],
+          lineHeight: $({ size: 30 }),
+          paddingTop: $({ size: 4 }),
+          ...errorStyle
+        }}>{error}</Typography>
+      }
     </Box>
   )
 }

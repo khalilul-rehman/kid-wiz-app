@@ -5,6 +5,8 @@ import CustomSearchInput from './misc/CustomSearchInput'
 import CustomButton from './misc/CustomButton'
 import CustomDropDown from './misc/CustomDropDown'
 import CustomBreadcrumbs from './misc/CustomBreadcrumbs'
+import CustomModal from './misc/CustomModal'
+import CustomFileUploader from './misc/CustomFileUploader'
 
 export {
   CustomTextInput, CustomLabel,
@@ -12,6 +14,8 @@ export {
   CustomButton,
   CustomDropDown,
   CustomBreadcrumbs,
+  CustomModal,
+  CustomFileUploader,
 }
 
 /*** AUTHENTICATION COMPONENTS ***************************************************************************/
@@ -32,13 +36,15 @@ export {
   DashboardContainer,
 }
 
-/*** QUIZ COMPONENTS *************************************************************************************/
-import QuestionProgressBar from './quiz/QuestionProgressBar'
-import LikertScale from './quiz/LikertScale'
-import VerticalFiller from './quiz/VerticalFiller'
+/*** LEARN COMPONENTS ************************************************************************************/
+import QuestionProgressBar from './learn/QuestionProgressBar'
+import LikertScale from './learn/LikertScale'
+import VerticalFiller from './learn/VerticalFiller'
+import CustomSubjectFoucsSlider from './learn/CustomSubjectFoucsSlider'
 
 export {
   QuestionProgressBar,
   LikertScale,
   VerticalFiller,
+  CustomSubjectFoucsSlider
 }

@@ -166,6 +166,13 @@ export const tokens = (mode) => ({
       },
       parentDashboard: {
         1: '#E9E6D1',
+      },
+      subjectsFocus: {
+        100: '#BDEE77',
+        200: '#ECC283',
+        300: '#A1D8E4',
+        400: '#FC99CE',
+        500: '#C792C8',
       }
     }),
 });
