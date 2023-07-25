@@ -78,13 +78,22 @@ const VerticalFillerItem = ({
 
 const VerticalFiller = ({
   data = [],
+  sx = {},
 }) => {
   return (
     <Box sx={{
       display: 'flex',
       justifyContent: 'space-between',
       width: '100%',
-      gap: $({ size: 36 }),
+      gap: {
+        xs: $({ size: 24 }),
+        lg: $({ size: 36 })
+      },
+      padding: {
+        xs: $({ size: 24 }),
+        lg: 0
+      },
+      ...sx,
     }}>
       {
         data.map((item, index) => {

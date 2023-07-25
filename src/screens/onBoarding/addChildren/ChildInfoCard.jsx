@@ -55,6 +55,10 @@ const ChildInfoCard = ({
       flexDirection: 'column',
       gap: $({ size: 24 }),
       alignItems: 'center',
+      padding: {
+        xs: `0 ${$({ size: 24 })}`,
+        lg: 0
+      }
     }}>
       <Box sx={{
         borderRadius: $({ size: 24 }),
@@ -62,7 +66,10 @@ const ChildInfoCard = ({
         padding: `${$({ size: 16 })} ${$({ size: 24 })}`,
         display: 'flex',
         maxWidth: $({ size: 450 }),
-        width: $({ size: 320 }),
+        width: {
+          xs: '100%',
+          lg: $({ size: 320 }),
+        },
         position: 'relative',
       }}>
         {

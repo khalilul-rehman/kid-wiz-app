@@ -143,7 +143,7 @@ const AddChildModal = ({
             top: 0,
             left: 0,
             right: 0,
-            bottom: $({ size: 64 }),
+            bottom: $({ size: 20 }),
             borderRadius: $({ size: 12 }),
             zIndex: 80,
           }}

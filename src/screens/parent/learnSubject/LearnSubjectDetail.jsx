@@ -58,11 +58,20 @@ const LearnSubjectTopic = () => {
 
         <Box sx={{
           display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
+          flexDirection: {
+            xs: 'column',
+            md: 'row',
+          },
+          alignItems: {
+            xs: 'flex-start',
+            md: 'center',
+          },
           justifyContent: 'space-between',
           flexWrap: 'wrap',
-          gap: $({ size: 16 }),
+          gap: {
+            xs: $({ size: 24 }),
+            md: $({ size: 16 }),
+          },
         }}>
           <Box sx={{
             display: 'flex',
@@ -108,7 +117,16 @@ const LearnSubjectTopic = () => {
             placeholder='Search for your subject'
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            containerStyle={{ maxWidth: $({ size: 352 }) }}
+            containerStyle={{
+              maxWidth: {
+                xs: '100%',
+                md: $({ size: 352 }),
+              },
+              minWidth: {
+                xs: '100%',
+                md: $({ size: 300 }),
+              },
+            }}
             handleSearch={handleSearch}
             handleSearchOnEveryKeyStroke={handleSearch}
           />
@@ -130,7 +148,10 @@ const LearnSubjectTopic = () => {
       <Box sx={{
         display: 'grid',
         gridTemplateColumns: `repeat(auto-fill, minmax(${$({ size: 160 })}, 1fr))`,
-        gridGap: $({ size: 40 }),
+        gridGap: {
+          xs: $({ size: 24 }),
+          md: $({ size: 40 }),
+        },
         gridAutoRows: '1fr', // to make all the rows the same height
       }}>
         {

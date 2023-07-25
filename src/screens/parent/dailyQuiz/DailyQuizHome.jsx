@@ -60,7 +60,12 @@ const DailyQuizHome = () => {
   }
 
   return (
-    <DashboardContainer containerStyle={{ gap: $({ size: 24 }) }}>
+    <DashboardContainer containerStyle={{
+      gap: {
+        xs: $({ size: 20 }),
+        md: $({ size: 24 }),
+      }
+    }}>
       <Box>
         <Typography sx={{ fontSize: $({ size: 31.98 }), fontWeight: '600', color: colors.extra.grey1, display: 'inline' }}>
           {`Daily Quiz: `}

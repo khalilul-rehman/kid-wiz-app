@@ -1,18 +1,22 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material'
 import { alpha, useTheme } from '@mui/material/styles'
+import { useNavigate } from 'react-router-dom'
 
 import {
   CustomButton
 } from '../../../components'
 
 import { ASSETS } from '../../../config/assets'
+import { ROUTES } from '../../../config/routes'
 import { tokens } from '../../../theme'
 import { $ } from '../../../utils'
 
 const ConfirmationScreen = () => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
+
+  const navigate = useNavigate()
 
   return (
     <Box sx={{
@@ -31,7 +35,10 @@ const ConfirmationScreen = () => {
         backgroundColor: colors.white[800],
         boxShadow: `0 0 ${$({ size: 8 })} 0 ${alpha(colors.solids.black, 0.25)}`,
         borderRadius: $({ size: 24 }),
-        padding: `${$({ size: 64 })}`,
+        padding: {
+          xs: `${$({ size: 48 })} ${$({ size: 32 })}`,
+          lg: `${$({ size: 64 })}`
+        },
         margin: `${$({ size: 16 })}`,
         maxWidth: $({ size: 600 }),
         gap: $({ size: 32 }),
@@ -41,7 +48,10 @@ const ConfirmationScreen = () => {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          gap: $({ size: 32 }),
+          gap: {
+            xs: $({ size: 24 }),
+            lg: $({ size: 32 }),
+          }
         }}>
           <img
             src={ASSETS.AUTHENTICATION.ICONS.CONFIRMATION_LIKE}
@@ -59,7 +69,7 @@ const ConfirmationScreen = () => {
 
         <CustomButton
           label='Go to Home Page'
-          onClick={() => { }}
+          onClick={() => { navigate(ROUTES.PARENT.DASHBOARD) }}
         />
       </Box>
     </Box>

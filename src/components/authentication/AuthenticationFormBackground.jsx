@@ -43,7 +43,10 @@ const AuthenticationFormBackground = ({ children, title, sx = {} }) => {
                       color: colors.solids.black
                     }}>{title}</Typography>
                     <Box sx={{
-                      margin: `0 ${$({ size: 64 })}`,
+                      margin: {
+                        xs: `0 ${$({ size: 30 })}`,
+                        lg: `0 ${$({ size: 64 })}`,
+                      },
                       ...sx,
                     }}>
                       {children}

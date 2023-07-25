@@ -11,6 +11,7 @@ import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined'
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined'
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
 // import SearchIcon from '@mui/icons-material/Search'
+import MenuIcon from '@mui/icons-material/Menu'
 
 import {
   DashboardIcon,
@@ -22,6 +23,7 @@ import {
   JournalIcon,
   SettingsIcon,
   LogoutIcon,
+  CloseIcon,
 } from '../../icons'
 
 import {
@@ -30,6 +32,7 @@ import {
 } from '../../theme'
 import { ASSETS } from '../../config/assets'
 import { ROUTES } from '../../config/routes'
+import { $ } from '../../utils'
 
 const Item = ({
   title, to, icon, selected, setSelected, hovered, setHovered
@@ -58,10 +61,12 @@ const Item = ({
   )
 }
 
-const SideBar = () => {
+const SideBar = ({
+  isToggled = false,
+  setIsToggled = () => { }
+}) => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
-  const [isCollapsed, setIsCollapsed] = useState(false)
 
   const [selected, setSelected] = useState('')
   const [hovered, setHovered] = useState('')
@@ -73,8 +78,8 @@ const SideBar = () => {
     const path = window.location.pathname
     setSelected(path.split('/').slice(0, 3).join('/'))
 
-    setIsCollapsed(false)
-  }, [navigate, state])
+    setIsToggled(false)
+  }, [navigate, setIsToggled, state])
 
   return (
     <Box
@@ -84,7 +89,6 @@ const SideBar = () => {
         border: `1px solid ${colors.white[800]}  !important`,
         boxShadow: `7px 2px 59px -1px ${colors.grey[100]}20`,
         borderRadius: '0px 24px 24px 0px !important',
-        '& .pro-sidebar-inner': { background: 'transparent !important' },
         '& .pro-icon-wrapper': { backgroundColor: 'transparent !important' },
         '& .pro-inner-item': { padding: '2px 35px 2px 20px !important' },
         '& .pro-menu-item.active p': { fontWeight: '600 !important' },
@@ -101,26 +105,51 @@ const SideBar = () => {
           borderRadius: '8px !important',
           fontWeight: 'bold !important',
         },
+        '& .pro-sidebar-inner': {
+          xs: { backgroundColor: colors.white[800], },
+          md: { background: 'transparent !important' }
+        },
+        position: 'relative',
       }}>
-      <ProSidebar collapsed={isCollapsed}>
+      <ProSidebar
+        breakPoint='md'
+        toggled={isToggled}
+        onToggle={() => setIsToggled(!isToggled)}>
+        <Box
+          onClick={() => setIsToggled(!isToggled)}
+          sx={{
+            position: 'absolute',
+            top: $({ size: 12 }),
+            right: $({ size: 12 }),
+            display: {
+              xs: 'block',
+              md: 'none'
+            },
+          }}>
+          <CloseIcon size={$({ size: 32, numeric: true })} />
+        </Box>
+
         <Menu iconShape='square'>
           <Box display='flex' flexDirection='column' justifyContent='space-between' height='100%'>
-            <Box>
-              {!isCollapsed && (
-                <Box mb='20%'>
-                  <Box display='flex' justifyContent='center' alignItems='center' mt='40px'>
-                    <img
-                      alt='profile-user'
-                      width='160px'
-                      height='45px'
-                      src={ASSETS.LOGO}
-                      style={{ cursor: 'pointer' }}
-                    />
-                  </Box>
+            <Box sx={{
+              mt: {
+                xs: $({ size: 22 }),
+                md: 0
+              }
+            }}>
+              <Box mb='20%'>
+                <Box display='flex' justifyContent='center' alignItems='center' mt='40px'>
+                  <img
+                    alt='profile-user'
+                    width='160px'
+                    height='45px'
+                    src={ASSETS.LOGO}
+                    style={{ cursor: 'pointer' }}
+                  />
                 </Box>
-              )}
+              </Box>
 
-              <Box paddingLeft={isCollapsed ? undefined : '5%'} mr='10px'>
+              <Box paddingLeft={'5%'} mr='10px'>
                 {
                   [
                     {
@@ -226,10 +255,15 @@ const SideBar = () => {
   )
 }
 
-const TopBar = () => {
+const TopBar = ({
+  isToggled = false,
+  setIsToggled = () => { }
+}) => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
   // const colorMode = React.useContext(ColorModeContext)
+
+  const navigate = useNavigate()
 
   return (
     <Box sx={{
@@ -237,12 +271,41 @@ const TopBar = () => {
       justifyContent: 'space-between',
       alignItems: 'center',
       width: '100%',
-      height: '60px',
-      padding: '2px',
+      height: {
+        xs: $({ size: 80 }),
+        md: $({ size: 60 })
+      },
+      padding: {
+        xs: `${$({ size: 8 })} ${$({ size: 16 })}`,
+        md: $({ size: 4 }),
+      },
       boxShadow: '7px 1px 5px 0px rgba(0,0,0,0.2)',
       backgroundColor: colors.white[800]
     }}>
-      <Box />
+      <Box
+        sx={{
+          display: {
+            xs: 'flex',
+            md: 'none'
+          },
+          cursor: 'pointer',
+          alignItems: 'center',
+          gap: $({ size: 16 }),
+        }}>
+        <IconButton onClick={() => { setIsToggled(!isToggled) }}>
+          <MenuIcon sx={{ fontSize: $({ size: 32 }), color: colors.extra.grey1 }} />
+        </IconButton>
+        <Box
+          onClick={() => { navigate(ROUTES.PARENT.DASHBOARD) }}
+          component='img'
+          alt='logo'
+          src={ASSETS.LOGO}
+          sx={{
+            cursor: 'pointer',
+            height: $({ size: 30 }),
+          }}
+        />
+      </Box>
 
       <Box display='flex'>
         {/* <IconButton onClick={colorMode.toggleColorMode}>
@@ -270,11 +333,25 @@ const ParentDashboardLayout = () => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
 
+  const [isToggled, setIsToggled] = useState(false)
+
   return (
     <Box className='app' sx={{ backgroundColor: colors.grey[900] }}>
-      <SideBar />
-      <Box sx={{ width: '100%', height: 'calc(100vh - 60px)' }}>
-        <TopBar />
+      <SideBar
+        isToggled={isToggled}
+        setIsToggled={setIsToggled}
+      />
+      <Box sx={{
+        width: '100%',
+        height: {
+          xs: 'calc(100vh - 70px)',
+          md: 'calc(100vh - 60px)',
+        }
+      }}>
+        <TopBar
+          isToggled={isToggled}
+          setIsToggled={setIsToggled}
+        />
         <Outlet />
       </Box>
     </Box>

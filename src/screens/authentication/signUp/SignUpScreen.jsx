@@ -33,7 +33,7 @@ const SignUpScreen = () => {
       minHeight: '100%'
     }}>
       <Grid container>
-        <Grid item xs={12} lg={4}>
+        <Grid item xs={12} md={6} lg={4}>
           <AuthenticationFormBackground title='Create an account' sx={{
             display: 'flex',
             flexDirection: 'column',
@@ -199,7 +199,7 @@ const SignUpScreen = () => {
           </AuthenticationFormBackground>
         </Grid>
 
-        <Grid item xs={12} lg={8} sx={{
+        <Grid item xs={12} md={6} lg={8} sx={{
           display: 'flex',
           flexDirection: 'column',
           width: '100%',
@@ -214,7 +214,8 @@ const SignUpScreen = () => {
             padding: '5%',
             width: {
               xs: '100%',
-              md: '65%'
+              md: '88%',
+              lg: '66%'
             }
           }}>
             "The future of early childhood education lies in unlocking the limitless potential of every child, nurturing their curiosity, and empowering them to become lifelong learners."

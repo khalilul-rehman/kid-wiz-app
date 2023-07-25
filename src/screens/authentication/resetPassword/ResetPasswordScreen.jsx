@@ -34,12 +34,24 @@ const ResetPasswordScreen = () => {
         backgroundColor: colors.white[800],
         boxShadow: `0 0 ${$({ size: 8 })} 0 ${alpha(colors.solids.black, 0.25)}`,
         borderRadius: $({ size: 24 }),
-        padding: `${$({ size: 64 })}`,
+        padding: {
+          xs: `${$({ size: 48 })} ${$({ size: 32 })}`,
+          lg: `${$({ size: 64 })}`
+        },
         margin: `${$({ size: 16 })}`,
         maxWidth: $({ size: 600 }),
         gap: $({ size: 32 }),
       }}>
-        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: $({ size: 48 }) }}>
+        <Box sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: {
+            xs: $({ size: 24 }),
+            lg: $({ size: 48 }),
+          }
+        }}>
           <img
             src={ASSETS.LOGO}
             alt='logo'

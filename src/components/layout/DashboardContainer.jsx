@@ -20,7 +20,10 @@ const DashboardContainer = ({
       backgroundColor: colors.grey[900],
       width: '100%',
       height: '100%',
-      padding: $({ size: 24 }),
+      padding: {
+        xs: $({ size: 16 }),
+        md: $({ size: 24 }),
+      },
       overflowY: 'scroll',
       '&::-webkit-scrollbar': {
         width: $({ size: 12 }),
@@ -61,8 +64,14 @@ const DashboardContainer = ({
             width: '100%',
             borderRadius: $({ size: 12 }),
             height: '100%',
-            padding: $({ size: 40 }),
-            gap: $({ size: 40 }),
+            padding: {
+              xs: $({ size: 24 }),
+              md: $({ size: 40 }),
+            },
+            gap: {
+              xs: $({ size: 24 }),
+              md: $({ size: 40 }),
+            },
             flex: '1',
             '&::-webkit-scrollbar': {
               width: $({ size: 12 }),

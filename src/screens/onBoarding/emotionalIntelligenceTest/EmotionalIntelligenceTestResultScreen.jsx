@@ -31,7 +31,10 @@ const EmotionalIntelligenceTestResultScreen = () => {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      padding: $({ size: 40 }),
+      padding: {
+        xs: $({ size: 20 }),
+        lg: $({ size: 40 })
+      },
     }}>
       <Box sx={{
         display: 'flex',
@@ -53,23 +56,51 @@ const EmotionalIntelligenceTestResultScreen = () => {
           gap: $({ size: 8 }),
           marginBottom: $({ size: 40 }),
         }}>
-          <img
+          <Box
+            component='img'
             alt='logo'
             src={ASSETS.LOGO}
-            style={{
-              width: $({ size: 160 }),
+            sx={{
+              width: {
+                xs: $({ size: 140 }),
+                lg: $({ size: 160 }),
+              },
               alignSelf: 'flex-start',
-              margin: `${$({ size: 40 })} 0 0 ${$({ size: 40 })}`
+              margin: {
+                xs: `${$({ size: 32 })} 0 0 ${$({ size: 32 })}`,
+                lg: `${$({ size: 40 })} 0 0 ${$({ size: 40 })}`,
+              }
             }}
           />
 
-          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <Box sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            mt: {
+              xs: $({ size: 24 }),
+              lg: 0
+            },
+            padding: {
+              xs: `0 ${$({ size: 24 })}`,
+              lg: 0
+            }
+          }}>
             <Box sx={{
               borderRadius: $({ size: 160 }),
               backgroundColor: colors.extra.iconBackground,
-              padding: $({ size: 48 }),
-              width: $({ size: 160 }),
-              height: $({ size: 160 }),
+              padding: {
+                xs: $({ size: 24 }),
+                lg: $({ size: 48 }),
+              },
+              width: {
+                xs: $({ size: 140 }),
+                lg: $({ size: 160 }),
+              },
+              height: {
+                xs: $({ size: 140 }),
+                lg: $({ size: 160 }),
+              },
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -82,7 +113,16 @@ const EmotionalIntelligenceTestResultScreen = () => {
               textAlign: 'center',
               color: colors.grey[200],
               margin: `${$({ size: 16 })} 0`,
-            }}>Emotional Intelligence Assessment<br />Your Result</Typography>
+            }}>Emotional Intelligence Assessment</Typography>
+
+            <Typography sx={{
+              fontSize: $({ size: 32 }),
+              fontWeight: '600',
+              lineHeight: $({ size: 40 }),
+              textAlign: 'center',
+              color: colors.grey[200],
+              margin: `${$({ size: 16 })} 0`,
+            }}>Your Result</Typography>
 
             <Typography sx={{
               fontSize: $({ size: 18 }),
@@ -104,8 +144,10 @@ const EmotionalIntelligenceTestResultScreen = () => {
           rightIcon={<RightArrowIcon size={$({ size: 24, numeric: true })} />}
           sx={{
             width: 'fit-content',
-            marginBottom: $({ size: 40 }),
-            marginRight: $({ size: 40 }),
+            margin: {
+              xs: `0 ${$({ size: 24 })} ${$({ size: 24 })} 0`,
+              lg: `0 ${$({ size: 40 })} ${$({ size: 40 })} 0`,
+            },
             alignSelf: 'flex-end',
           }}
           onClick={() => { navigate(ROUTES.ON_BOARDING.CONFLICT_RESOLUTION_STYLE.INTRO) }}

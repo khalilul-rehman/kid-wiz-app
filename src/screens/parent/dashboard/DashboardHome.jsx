@@ -86,35 +86,36 @@ const DashboardHome = () => {
     { subject: 'Money', topic: 'Management', grade: 'C+', icon: <EnglishIcon /> },
   ]
 
-  const RenderCover = ({ color }) => {
-    return (
-      <Box
-        onClick={() => {
-          setChildDropDownOpen(false)
-          setDatesDropDownOpen(false)
-        }}
-        sx={{
-          background: alpha(color, 0.4),
-          width: '100%',
-          height: '100%',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          borderRadius: $({ size: 12 }),
-          zIndex: 80,
-        }} />
-    )
-  }
-
   return (
-    <DashboardContainer disableContainer>
-      <Grid container sx={{ height: 'max-content', minHeight: '100%' }}>
+    <DashboardContainer disableContainer wrapperStyle={{ position: 'relative' }}>
+      <Grid container sx={{ height: 'max-content', minHeight: '100%', position: 'relative' }}>
+        {
+          (childDropDownOpen || datesDropDownOpen) &&
+          <Box
+            onClick={() => {
+              setChildDropDownOpen(false)
+              setDatesDropDownOpen(false)
+            }}
+            sx={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: 'rgba(0, 0, 0, 0.4)',
+              zIndex: 99,
+              borderRadius: $({ size: 12 }),
+            }}
+          />
+        }
+
         <Grid item xs={12} lg={3} sx={{
           flex: '1',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
           gap: $({ size: 24 }),
+          gridArea: 'child',
         }}>
           <Grid container sx={{
             backgroundColor: colors.white[800],
@@ -126,14 +127,11 @@ const DashboardHome = () => {
           }}>
             <Grid item xs={12} md={6} lg={12} sx={{
               padding: {
-                xs: `0 ${$({ size: 24 })} 0 0`,
+                xs: `0 0 ${$({ size: 24 })} 0`,
+                md: `0 ${$({ size: 24 })} 0 0`,
                 lg: `0 0 ${$({ size: 24 })} 0`,
               },
             }}>
-              {
-                (childDropDownOpen || datesDropDownOpen) && <RenderCover color={colors.extra.grey1} />
-              }
-
               <CustomDropDown
                 label='Child'
                 value='Choose a child'
@@ -308,9 +306,6 @@ const DashboardHome = () => {
             gap: $({ size: 24 }),
             position: 'relative',
           }}>
-            {
-              (childDropDownOpen || datesDropDownOpen) && <RenderCover color={colors.extra.grey1} />
-            }
 
             <Box sx={{ display: 'flex', gap: $({ size: 24 }), flexDirection: 'column' }}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: $({ size: 12 }), }}>
@@ -400,25 +395,6 @@ const DashboardHome = () => {
             },
             position: 'relative',
           }}>
-            {
-              (childDropDownOpen || datesDropDownOpen) &&
-              <Box sx={{
-                padding: {
-                  xs: `${$({ size: 20 })} 0 0 0`,
-                  lg: `0 0 0 ${$({ size: 20 })}`,
-                },
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-              }}>
-                <Box sx={{ position: 'relative', height: '100%', width: '100%' }}>
-                  <RenderCover color={colors.extra.grey1} />
-                </Box>
-              </Box>
-            }
-
             <Box sx={{
               display: 'flex',
               flexDirection: 'column',
@@ -430,7 +406,12 @@ const DashboardHome = () => {
               padding: $({ size: 24 }),
               gap: $({ size: 24 }),
             }}>
-              <Box sx={{ display: 'flex', gap: $({ size: 24 }), alignItems: 'center' }}>
+              <Box sx={{
+                display: 'flex',
+                gap: $({ size: 24 }),
+                alignItems: { xs: 'flex-start', sm: 'center' },
+                flexDirection: { xs: 'column', sm: 'row' },
+              }}>
                 <Avatar
                   src={selectedChild.photo}
                   sx={{
@@ -499,7 +480,12 @@ const DashboardHome = () => {
                 marginTop: $({ size: 12 }),
               }}>
 
-                <Typography sx={{ fontWeight: '600', fontSize: $({ size: 18 }), color: colors.extra.grey1 }}>
+                <Typography sx={{
+                  fontWeight: '600',
+                  fontSize: $({ size: 18 }),
+                  color: colors.extra.grey1,
+                  mb: { xs: $({ size: 8 }), md: 0, }
+                }}>
                   Overall Grade
                 </Typography>
 

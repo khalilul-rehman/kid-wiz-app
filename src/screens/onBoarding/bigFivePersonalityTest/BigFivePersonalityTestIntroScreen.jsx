@@ -31,7 +31,10 @@ const BigFivePersonalityTestIntroScreen = () => {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      padding: $({ size: 40 }),
+      padding: {
+        xs: $({ size: 20 }),
+        lg: $({ size: 40 })
+      },
     }}>
       <Box sx={{
         display: 'flex',
@@ -52,23 +55,51 @@ const BigFivePersonalityTestIntroScreen = () => {
           height: '100%',
           gap: $({ size: 8 }),
         }}>
-          <img
+          <Box
+            component='img'
             alt='logo'
             src={ASSETS.LOGO}
-            style={{
-              width: $({ size: 160 }),
+            sx={{
+              width: {
+                xs: $({ size: 140 }),
+                lg: $({ size: 160 }),
+              },
               alignSelf: 'flex-start',
-              margin: `${$({ size: 40 })} 0 0 ${$({ size: 40 })}`
+              margin: {
+                xs: `${$({ size: 32 })} 0 0 ${$({ size: 32 })}`,
+                lg: `${$({ size: 40 })} 0 0 ${$({ size: 40 })}`,
+              }
             }}
           />
 
-          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <Box sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            mt: {
+              xs: $({ size: 24 }),
+              lg: 0
+            },
+            padding: {
+              xs: `0 ${$({ size: 24 })}`,
+              lg: 0
+            }
+          }}>
             <Box sx={{
               borderRadius: $({ size: 160 }),
               backgroundColor: colors.extra.iconBackground,
-              padding: $({ size: 48 }),
-              width: $({ size: 160 }),
-              height: $({ size: 160 }),
+              padding: {
+                xs: $({ size: 24 }),
+                lg: $({ size: 48 }),
+              },
+              width: {
+                xs: $({ size: 140 }),
+                lg: $({ size: 160 }),
+              },
+              height: {
+                xs: $({ size: 140 }),
+                lg: $({ size: 160 }),
+              },
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -101,7 +132,12 @@ const BigFivePersonalityTestIntroScreen = () => {
             display: 'flex', width: '100%',
             justifyContent: 'center',
             gap: $({ size: 24 }),
-            margin: `${$({ size: 24 })} 0 ${$({ size: 40 })} 0`
+            margin: `${$({ size: 24 })} 0 ${$({ size: 40 })} 0`,
+            flexDirection: {
+              xs: 'column',
+              lg: 'row'
+            },
+            alignItems: 'center'
           }}>
             <CustomButton
               label='Skip'

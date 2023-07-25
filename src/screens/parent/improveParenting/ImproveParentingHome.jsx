@@ -38,7 +38,7 @@ const ImproveParentingHome = () => {
   React.useEffect(() => {
     document.title = 'Improve Parenting | Parent Dashboard | KidWiz'
     setTopicsData(TopicsData || [])
-    setSelectedTopic(TopicsData[0] || {})
+    setSelectedTopic(TopicsData?.[0] || {})
     setTopicDetailData(TopicsData[0]?.subTopics || [])
   }, [])
 
@@ -57,7 +57,7 @@ const ImproveParentingHome = () => {
       return topic.title.toLowerCase().includes(search.toLowerCase())
     })
     setTopicsData(filteredData || [])
-    setSelectedTopic(filteredData[0] || {})
+    setSelectedTopic(filteredData?.[0] || {})
     setTopicDetailData(filteredData[0]?.subTopics || [])
   }
 
@@ -68,11 +68,20 @@ const ImproveParentingHome = () => {
 
         <Box sx={{
           display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
+          flexDirection: {
+            xs: 'column',
+            md: 'row',
+          },
+          alignItems: {
+            xs: 'flex-start',
+            md: 'center',
+          },
           justifyContent: 'space-between',
           flexWrap: 'wrap',
-          gap: $({ size: 16 }),
+          gap: {
+            xs: $({ size: 24 }),
+            md: $({ size: 16 }),
+          },
         }}>
           <Typography sx={{
             fontSize: $({ size: 31.98 }),
@@ -85,7 +94,16 @@ const ImproveParentingHome = () => {
             placeholder='Search for your topic'
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            containerStyle={{ maxWidth: $({ size: 352 }) }}
+            containerStyle={{
+              maxWidth: {
+                xs: '100%',
+                md: $({ size: 352 }),
+              },
+              minWidth: {
+                xs: '100%',
+                md: $({ size: 300 }),
+              },
+            }}
             handleSearch={handleSearch}
             handleSearchOnEveryKeyStroke={handleSearch}
           />
@@ -121,6 +139,14 @@ const ImproveParentingHome = () => {
                     xs: 'none',
                     md: `${$({ size: 1 })} solid ${colors.extra.grey4}`
                   },
+                  borderBottom: {
+                    xs: `${$({ size: 1 })} solid ${colors.extra.grey4}`,
+                    md: 'none',
+                  },
+                  pb: {
+                    xs: $({ size: 16 }),
+                    md: 0,
+                  }
                 }}>
                   {
                     topicsData.map((topic, index) => {
@@ -198,7 +224,11 @@ const ImproveParentingHome = () => {
                     xs: 0,
                     md: $({ size: 36 }),
                   },
-                  width: 'fit-content',
+                  // width: 'fit-content',
+                  width: {
+                    xs: '100%',
+                    md: 'fit-content'
+                  },
                   gap: $({ size: 16 }),
                 }}>
                   <Box sx={{
@@ -208,6 +238,10 @@ const ImproveParentingHome = () => {
                     gap: $({ size: 16 }),
                     width: '100%',
                     visibility: renderBreadcrumbs ? 'visible' : 'hidden',
+                    margin: {
+                      xs: renderBreadcrumbs ? `${$({ size: 24 })} 0 ${$({ size: 16 })} 0` : 0,
+                      md: 0
+                    }
                   }}>
                     <Box
                       onClick={() => {
@@ -230,6 +264,7 @@ const ImproveParentingHome = () => {
                       flexDirection: 'row',
                       alignItems: 'center',
                       gap: $({ size: 8 }),
+                      overflow: 'hidden'
                     }}>
                       <Typography
                         onClick={() => {
@@ -243,6 +278,9 @@ const ImproveParentingHome = () => {
                           fontWeight: '400',
                           lineHeight: $({ size: 25 }),
                           color: colors.extra.grey2,
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                          whiteSpace: 'nowrap',
                         }}>{selectedTopic?.title || 'N/A'}
                       </Typography>
 
@@ -326,6 +364,10 @@ const ImproveParentingHome = () => {
                               textOverflow: 'ellipsis',
                               width: '100%',
                               whiteSpace: 'break-spaces',
+                              maxWidth: {
+                                xs: '100%',
+                                lg: $({ size: 160 }),
+                              },
                             }}>{topicDetail.title}</Typography>
                           </Box>
                         )

@@ -76,7 +76,7 @@ const CustomModal = ({
           {children}
         </Box>
 
-        <Box sx={{ height: $({ size: 64 }) }} />
+        <Box sx={{ height: $({ size: 20 }) }} />
       </Box>
     </>
   )
