@@ -88,7 +88,13 @@ const DashboardHome = () => {
 
   return (
     <DashboardContainer disableContainer wrapperStyle={{ position: 'relative' }}>
-      <Grid container sx={{ height: 'max-content', minHeight: '100%', position: 'relative' }}>
+      <Grid container sx={{
+        height: 'max-content',
+        minHeight: '100%',
+        position: 'relative',
+        display: 'flex',
+        flexDirection: { xs: 'column', lg: 'row' },
+      }}>
         {
           (childDropDownOpen || datesDropDownOpen) &&
           <Box
@@ -115,7 +121,6 @@ const DashboardHome = () => {
           flexDirection: 'column',
           justifyContent: 'space-between',
           gap: $({ size: 24 }),
-          gridArea: 'child',
         }}>
           <Grid container sx={{
             backgroundColor: colors.white[800],
@@ -125,9 +130,10 @@ const DashboardHome = () => {
             padding: $({ size: 24 }),
             position: 'relative'
           }}>
-            <Grid item xs={12} md={6} lg={12} sx={{
+            <Grid item xs={12} sm={6} md={6} lg={12} sx={{
               padding: {
                 xs: `0 0 ${$({ size: 24 })} 0`,
+                sm: `0 ${$({ size: 24 })} 0 0`,
                 md: `0 ${$({ size: 24 })} 0 0`,
                 lg: `0 0 ${$({ size: 24 })} 0`,
               },
@@ -254,7 +260,7 @@ const DashboardHome = () => {
               </Box>
             </Grid>
 
-            <Grid item xs={12} md={6} lg={12}>
+            <Grid item xs={12} sm={6} md={6} lg={12}>
               <CustomDropDown
                 label='Dates'
                 value='Choose dates'

@@ -110,9 +110,15 @@ const SideBar = ({
           md: { background: 'transparent !important' }
         },
         position: 'relative',
+        '& .pro-sidebar.lg': {
+          md: {
+            position: 'relative',
+            left: '0px !important',
+          }
+        }
       }}>
       <ProSidebar
-        breakPoint='md'
+        breakPoint='lg'
         toggled={isToggled}
         onToggle={() => setIsToggled(!isToggled)}>
         <Box
@@ -271,10 +277,7 @@ const TopBar = ({
       justifyContent: 'space-between',
       alignItems: 'center',
       width: '100%',
-      height: {
-        xs: $({ size: 80 }),
-        md: $({ size: 60 })
-      },
+      height: $({ size: 60 }),
       padding: {
         xs: `${$({ size: 8 })} ${$({ size: 16 })}`,
         md: $({ size: 4 }),
@@ -343,10 +346,7 @@ const ParentDashboardLayout = () => {
       />
       <Box sx={{
         width: '100%',
-        height: {
-          xs: 'calc(100vh - 70px)',
-          md: 'calc(100vh - 60px)',
-        }
+        height: `calc(100vh - ${$({ size: 60 })})`,
       }}>
         <TopBar
           isToggled={isToggled}

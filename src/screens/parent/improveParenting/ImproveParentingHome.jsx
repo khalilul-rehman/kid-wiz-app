@@ -70,17 +70,17 @@ const ImproveParentingHome = () => {
           display: 'flex',
           flexDirection: {
             xs: 'column',
-            md: 'row',
+            sm: 'row',
           },
           alignItems: {
             xs: 'flex-start',
-            md: 'center',
+            sm: 'center',
           },
           justifyContent: 'space-between',
           flexWrap: 'wrap',
           gap: {
             xs: $({ size: 24 }),
-            md: $({ size: 16 }),
+            sm: $({ size: 16 }),
           },
         }}>
           <Typography sx={{
@@ -97,11 +97,11 @@ const ImproveParentingHome = () => {
             containerStyle={{
               maxWidth: {
                 xs: '100%',
-                md: $({ size: 352 }),
+                sm: $({ size: 352 }),
               },
               minWidth: {
                 xs: '100%',
-                md: $({ size: 300 }),
+                sm: $({ size: 300 }),
               },
             }}
             handleSearch={handleSearch}
@@ -125,7 +125,7 @@ const ImproveParentingHome = () => {
           topicsData.length > 0 &&
           <>
             <Grid container sx={{ mt: $({ size: 24 }), maxWidth: $({ size: 1536 }) }}>
-              <Grid item xs={12} md={6} lg={5} xl={4}>
+              <Grid item xs={12} sm={6} md={6} lg={5} xl={4}>
                 <Box sx={{
                   display: 'flex',
                   flexDirection: 'column',
@@ -133,18 +133,22 @@ const ImproveParentingHome = () => {
                   width: '100%',
                   pr: {
                     xs: 0,
+                    sm: $({ size: 24 }),
                     md: $({ size: 36 }),
                   },
                   borderRight: {
                     xs: 'none',
+                    sm: `${$({ size: 1 })} solid ${colors.extra.grey4}`,
                     md: `${$({ size: 1 })} solid ${colors.extra.grey4}`
                   },
                   borderBottom: {
                     xs: `${$({ size: 1 })} solid ${colors.extra.grey4}`,
+                    sm: 'none',
                     md: 'none',
                   },
                   pb: {
                     xs: $({ size: 16 }),
+                    sm: 0,
                     md: 0,
                   }
                 }}>
@@ -215,18 +219,20 @@ const ImproveParentingHome = () => {
                   }
                 </Box>
               </Grid>
-              <Grid item xs={12} md={6} lg={7} xl={8}>
+              <Grid item xs={12} sm={6} md={6} lg={7} xl={8}>
                 <Box sx={{
                   display: 'flex',
                   alignItems: 'center',
                   flexDirection: 'column',
                   pl: {
                     xs: 0,
+                    sm: $({ size: 24 }),
                     md: $({ size: 36 }),
                   },
                   // width: 'fit-content',
                   width: {
                     xs: '100%',
+                    sm: '100%',
                     md: 'fit-content'
                   },
                   gap: $({ size: 16 }),
@@ -240,6 +246,7 @@ const ImproveParentingHome = () => {
                     visibility: renderBreadcrumbs ? 'visible' : 'hidden',
                     margin: {
                       xs: renderBreadcrumbs ? `${$({ size: 24 })} 0 ${$({ size: 16 })} 0` : 0,
+                      sm: renderBreadcrumbs ? `0 ${$({ size: 24 })}` : 0,
                       md: 0
                     }
                   }}>
@@ -304,7 +311,8 @@ const ImproveParentingHome = () => {
                       xl: $({ size: (160 * 3) + (40 * 3) }),
                     },
                     maxHeight: {
-                      xs: 'none',
+                      // xs: 'none',
+                      xs: $({ size: (160 * 2) + (20 * 1) }),
                       md: $({ size: (160 * 2) + (20 * 1) })
                     },
                     overflowY: 'scroll',
@@ -319,6 +327,7 @@ const ImproveParentingHome = () => {
                     },
                     pr: {
                       xs: 0,
+                      sm: $({ size: 24 }),
                       md: $({ size: 36 }),
                     },
                   }}>

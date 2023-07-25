@@ -53,17 +53,17 @@ const LearnSubjectHome = () => {
           display: 'flex',
           flexDirection: {
             xs: 'column',
-            md: 'row',
+            sm: 'row',
           },
           alignItems: {
             xs: 'flex-start',
-            md: 'center',
+            sm: 'center',
           },
           justifyContent: 'space-between',
           flexWrap: 'wrap',
           gap: {
             xs: $({ size: 24 }),
-            md: $({ size: 16 }),
+            sm: $({ size: 16 }),
           },
         }}>
           <Typography sx={{
@@ -80,11 +80,11 @@ const LearnSubjectHome = () => {
             containerStyle={{
               maxWidth: {
                 xs: '100%',
-                md: $({ size: 352 }),
+                sm: $({ size: 352 }),
               },
               minWidth: {
                 xs: '100%',
-                md: $({ size: 300 }),
+                sm: $({ size: 300 }),
               },
             }}
             handleSearch={handleSearch}

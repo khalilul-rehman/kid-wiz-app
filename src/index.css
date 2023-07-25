@@ -29,3 +29,10 @@ body,
   background-color: #A7A7A7;
   border-radius: 12px;
 }
+
+@media (max-width: 900px) {
+  .pro-sidebar .lg {
+      position: fixed !important;
+      left: -270px !important;
+    }
+}
