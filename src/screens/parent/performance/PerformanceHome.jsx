@@ -10,8 +10,7 @@ const PerformanceHome = () => {
     <DashboardContainer
       wrapperStyle={{ overflowY: 'hidden' }}
       gridStyle={{ overflowY: 'hidden', height: '100%' }}
-      containerStyle={{ height: '100%', overflowY: 'scroll' }}
-    >
+      containerStyle={{ height: '100%', overflowY: 'scroll' }}>
 
     </DashboardContainer>
   )

@@ -109,12 +109,12 @@ export const tokens = (mode) => ({
       redAccent: {
         100: "#2c100f",
         200: "#58201e",
-        300: "#832f2c",
+        300: "#E44A4A", //
         400: "#af3f3b",
         500: "#E76A6A", // For buttons (danger, alert)
         600: "#e2726e",
         700: "#e99592",
-        800: "#f1b9b7",
+        800: "#F3A8A8", // 
         900: "#f8dcdb",
       },
       blueAccent: {

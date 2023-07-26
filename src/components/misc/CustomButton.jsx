@@ -20,7 +20,8 @@ const CustomButton = ({
   const colors = tokens(theme.palette.mode)
 
   return (
-    <Button onClick={onClick}
+    <Button
+      onClick={onClick}
       disabled={disabled}
       sx={{
         backgroundColor: isSecondary ? colors.white[800] : colors.greenAccent[500],
