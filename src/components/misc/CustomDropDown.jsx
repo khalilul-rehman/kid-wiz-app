@@ -28,9 +28,12 @@ const CustomDropDown = ({
   inputClosedStyle = {},
   inputOpenStyle = {},
   itemContainerStyle = {},
+  itemsContainerStyle = {},
   errorStyle = {},
   showBackdrop = false,
   closeWhenClickedOnBackdrop = true,
+  header = <></>,
+  preventDefault = false,
 }) => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
@@ -56,7 +59,7 @@ const CustomDropDown = ({
         />
       }
 
-      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', userSelect: 'none' }}>
         <CustomLabel label={label} labelStyle={labelStyle} />
         <Box sx={{ position: 'relative' }}>
           <Box
@@ -93,7 +96,10 @@ const CustomDropDown = ({
           {
             dropDownOpen &&
             <Box
-              onClick={() => { setDropDownOpen(false) }}
+              onClick={() => {
+                if (preventDefault) return
+                setDropDownOpen(false)
+              }}
               sx={{
                 position: 'absolute',
                 top: 0,
@@ -107,7 +113,16 @@ const CustomDropDown = ({
                 zIndex: 100,
                 ...inputOpenStyle,
               }}>
-              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <Box
+                onClick={() => {
+                  setDropDownOpen(false)
+                }}
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  cursor: 'pointer',
+                }}>
                 <Typography sx={{
                   fontSize: $({ size: 18 }),
                   fontWeight: '400',
@@ -121,27 +136,33 @@ const CustomDropDown = ({
               </Box>
 
               {
-                data.map((item, index) => {
-                  return (
-                    <Box
-                      key={index}
-                      onClick={item.onClick}
-                      sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'flex-start',
-                        gap: $({ size: 12 }),
-                        paddingTop: $({ size: 8 }),
-                        paddingBottom: index === data.length - 1 ? 0 : $({ size: 8 }),
-                        borderBottom: index === data.length - 1 ? 'none' : `${$({ size: 1 })} solid ${colors.extra.grey4}`,
-                        cursor: 'pointer',
-                        ...itemContainerStyle,
-                      }}>
-                      {item.component}
-                    </Box>
-                  )
-                })
+                header && header
               }
+
+              <Box sx={{ ...itemsContainerStyle }}>
+                {
+                  data.map((item, index) => {
+                    return (
+                      <Box
+                        key={index}
+                        onClick={item.onClick}
+                        sx={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'flex-start',
+                          gap: $({ size: 12 }),
+                          paddingTop: $({ size: 8 }),
+                          paddingBottom: index === data.length - 1 ? 0 : $({ size: 8 }),
+                          borderBottom: index === data.length - 1 ? 'none' : `${$({ size: 1 })} solid ${colors.extra.grey4}`,
+                          cursor: 'pointer',
+                          ...itemContainerStyle,
+                        }}>
+                        {item.component}
+                      </Box>
+                    )
+                  })
+                }
+              </Box>
             </Box>
           }
         </Box>

@@ -16,6 +16,7 @@ import CloseIcon from './misc/CloseIcon'
 import UploadIcon from './misc/UploadIcon'
 import SaveIcon from './misc/SaveIcon'
 import ChevronForwardIcon from './misc/ChevronForwardIcon'
+import InfoIcon from './misc/InfoIcon'
 
 export {
   AddIcon,
@@ -33,7 +34,8 @@ export {
   CloseIcon,
   UploadIcon,
   SaveIcon,
-  ChevronForwardIcon
+  ChevronForwardIcon,
+  InfoIcon,
 }
 
 /*** ONBOARDING ICONS ******************************************************************************************/

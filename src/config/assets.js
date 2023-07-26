@@ -28,5 +28,11 @@ export const ASSETS = {
   },
   PLACEHOLDER: {
     CHILD: '/assets/images/on-boarding/child.png',
+  },
+  SUBJECTS: {
+    SCIENCE: '/assets/icons/science.svg',
+    BIOLOGY: '/assets/icons/biology.svg',
+    ENVIRONMENT: '/assets/icons/environment.svg',
+    ENGLISH: '/assets/icons/english.svg',
   }
 }

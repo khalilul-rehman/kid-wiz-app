@@ -107,11 +107,11 @@ const SideBar = ({
         },
         '& .pro-sidebar-inner': {
           xs: { backgroundColor: colors.white[800], },
-          md: { background: 'transparent !important' }
+          lg: { background: 'transparent !important' }
         },
         position: 'relative',
         '& .pro-sidebar.lg': {
-          md: {
+          lg: {
             position: 'relative',
             left: '0px !important',
           }
@@ -129,7 +129,7 @@ const SideBar = ({
             right: $({ size: 12 }),
             display: {
               xs: 'block',
-              md: 'none'
+              lg: 'none'
             },
           }}>
           <CloseIcon size={$({ size: 32, numeric: true })} />
@@ -280,7 +280,7 @@ const TopBar = ({
       height: $({ size: 60 }),
       padding: {
         xs: `${$({ size: 8 })} ${$({ size: 16 })}`,
-        md: $({ size: 4 }),
+        lg: $({ size: 4 }),
       },
       boxShadow: '7px 1px 5px 0px rgba(0,0,0,0.2)',
       backgroundColor: colors.white[800]
@@ -289,7 +289,7 @@ const TopBar = ({
         sx={{
           display: {
             xs: 'flex',
-            md: 'none'
+            lg: 'none'
           },
           cursor: 'pointer',
           alignItems: 'center',

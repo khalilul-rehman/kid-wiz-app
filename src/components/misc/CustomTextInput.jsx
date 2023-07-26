@@ -43,7 +43,10 @@ const CustomTextInput = ({
   const colors = tokens(theme.palette.mode)
 
   return (
-    <Box sx={{ ...containerStyle }}>
+    <Box sx={{
+      userSelect: 'none',
+      ...containerStyle
+    }}>
       {
         label &&
         <Typography sx={{

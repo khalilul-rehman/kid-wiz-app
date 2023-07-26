@@ -90,3 +90,11 @@ const DashboardContainer = ({
 }
 
 export default DashboardContainer
+
+/**
+    <DashboardContainer
+    wrapperStyle={{ overflowY: 'hidden' }}
+    gridStyle={{ overflowY: 'hidden', height: '100%' }}
+    containerStyle={{ height: '100%', overflowY: 'scroll'}}>
+    </DashboardContainer>
+ */

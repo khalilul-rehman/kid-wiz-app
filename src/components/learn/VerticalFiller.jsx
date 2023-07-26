@@ -9,6 +9,7 @@ const VerticalFillerItem = ({
   label = '',
   value = 0,
   color = '',
+  labelStyle = {},
 }) => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
@@ -31,7 +32,6 @@ const VerticalFillerItem = ({
         alignItems: 'center',
         overflow: 'hidden',
         position: 'relative',
-        marging: '0 10%',
       }}>
         <Slider
           disabled
@@ -63,7 +63,8 @@ const VerticalFillerItem = ({
           position: 'absolute',
           bottom: '0',
           paddingBottom: `${value * 100}%`,
-        }}>{(value * 100).toFixed(0)}%</Typography>
+          ...(!(value * 100 > 0 || value > 0) && { top: '50%' }),
+        }}>{value * 100 > 0 || value > 0 ? `${(value * 100).toFixed(0)}%` : 'N/A'}</Typography>
       </Box>
 
       <Typography sx={{
@@ -71,6 +72,9 @@ const VerticalFillerItem = ({
         fontSize: $({ size: 13.5 }),
         lineHeight: $({ size: 16 }),
         color: colors.extra.grey1,
+        textAlign: 'center',
+        maxWidth: $({ size: 90 }),
+        ...labelStyle,
       }}>{label}</Typography>
     </Box>
   )
@@ -81,20 +85,22 @@ const VerticalFiller = ({
   sx = {},
 }) => {
   return (
-    <Box sx={{
-      display: 'flex',
-      justifyContent: 'space-between',
-      width: '100%',
-      gap: {
-        xs: $({ size: 24 }),
-        lg: $({ size: 36 })
-      },
-      padding: {
-        xs: $({ size: 24 }),
-        lg: 0
-      },
-      ...sx,
-    }}>
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        width: '100%',
+        gap: {
+          xs: $({ size: 24 }),
+          lg: $({ size: 36 })
+        },
+        padding: {
+          xs: $({ size: 24 }),
+          lg: 0
+        },
+        cursor: 'pointer',
+        ...sx,
+      }}>
       {
         data.map((item, index) => {
           return (
@@ -103,6 +109,7 @@ const VerticalFiller = ({
               label={item.label}
               value={item.value}
               color={item.color}
+              labelStyle={item.labelStyle}
             />
           )
         })

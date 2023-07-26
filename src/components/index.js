@@ -7,6 +7,7 @@ import CustomDropDown from './misc/CustomDropDown'
 import CustomBreadcrumbs from './misc/CustomBreadcrumbs'
 import CustomModal from './misc/CustomModal'
 import CustomFileUploader from './misc/CustomFileUploader'
+import CustomTabs from './misc/CustomTabs'
 
 export {
   CustomTextInput, CustomLabel,
@@ -16,6 +17,7 @@ export {
   CustomBreadcrumbs,
   CustomModal,
   CustomFileUploader,
+  CustomTabs,
 }
 
 /*** AUTHENTICATION COMPONENTS ***************************************************************************/
