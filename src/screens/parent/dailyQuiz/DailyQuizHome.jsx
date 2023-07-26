@@ -172,7 +172,7 @@ const DailyQuizHome = () => {
 
       {
         isChecked &&
-        <Box marginTop={`-${$({ size: 8 })}`}>
+        <Box>
           {
             isCorrect
               ?
