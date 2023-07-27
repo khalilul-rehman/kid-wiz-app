@@ -62,6 +62,39 @@ const Redirect = ({ to }) => {
 const App = () => {
   const [theme, colorMode] = useMode()
 
+  /* PATCH: ADDED THIS TO DISABLE ALL VIEWS EXCEPT DESKTOP */
+  const [isTablet, setIsTablet] = React.useState(false)
+  const [isMobile, setIsMobile] = React.useState(false)
+
+  /* PATCH: ADDED THIS TO DISABLE ALL VIEWS EXCEPT DESKTOP */
+  React.useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 600)
+      setIsTablet(window.innerWidth < 900)
+    }
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  /* PATCH: ADDED THIS TO DISABLE ALL VIEWS EXCEPT DESKTOP */
+  if ((isMobile || isTablet) && !process.env.REACT_APP_DEV_MODE) {
+    return (
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+      }}>
+        {
+          isMobile
+            ? <h3>Mobile Version Not Available!</h3>
+            : <h3>Tablet Version Not Available!</h3>
+        }
+      </div>
+    )
+  }
+
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>

@@ -14,7 +14,7 @@ const CustomSubjectFoucsSlider = ({
   const colors = tokens(theme.palette.mode)
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', userSelect: 'none', }}>
       <Box sx={{ display: 'flex', alignItems: 'center', gap: $({ size: 8 }) }}>
         <Box sx={{ width: $({ size: 24 }), height: $({ size: 24 }), borderRadius: $({ size: 4 }), backgroundColor: color }} />
         <Typography sx={{

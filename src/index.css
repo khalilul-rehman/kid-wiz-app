@@ -36,3 +36,10 @@ body,
       left: -270px !important;
     }
 }
+
+/* PATCH: ADDED THIS TO DISABLE ALL VIEWS EXCEPT DESKTOP */
+/* @media (max-width: 900px) {
+  *{
+    overflow: hidden;
+  }
+} */

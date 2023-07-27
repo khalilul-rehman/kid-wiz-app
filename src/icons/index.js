@@ -17,6 +17,7 @@ import UploadIcon from './misc/UploadIcon'
 import SaveIcon from './misc/SaveIcon'
 import ChevronForwardIcon from './misc/ChevronForwardIcon'
 import InfoIcon from './misc/InfoIcon'
+import AlarmIcon from './misc/AlarmIcon'
 
 export {
   AddIcon,
@@ -36,6 +37,7 @@ export {
   SaveIcon,
   ChevronForwardIcon,
   InfoIcon,
+  AlarmIcon,
 }
 
 /*** ONBOARDING ICONS ******************************************************************************************/

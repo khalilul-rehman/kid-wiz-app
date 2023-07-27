@@ -1,24 +1,12 @@
 import React from 'react'
-import { Box, Typography } from '@mui/material'
-import { useTheme } from '@mui/material/styles'
+import { Box } from '@mui/material'
 import { Wheel } from 'react-custom-roulette'
-
 
 import {
   DashboardContainer,
 } from '../../../components'
 
-import {
-  RightArrowIcon,
-} from '../../../icons'
-
-import { tokens } from '../../../theme'
-
-
-
 const ExploreHome = () => {
-  const theme = useTheme()
-  const colors = tokens(theme.palette.mode)
 
   const [mustSpin, setMustSpin] = React.useState(false)
   const [prizeNumber, setPrizeNumber] = React.useState(0)

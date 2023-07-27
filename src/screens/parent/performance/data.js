@@ -223,7 +223,27 @@ const StrengthsData = [
   },
 ]
 
+const OverallScoreData = {
+  graph: [
+    { id: '1', label: 'A', color: '#BDEE77', value: 47 },
+    { id: '2', label: 'B', color: '#ECC283', value: 18 },
+    { id: '3', label: 'B', color: '#A1D8E4', value: 16 },
+    { id: '4', label: 'C', color: '#FC99CE', value: 10 },
+    { id: '5', label: 'C+', color: '#C792C8', value: 14 },
+  ],
+  grade: 'B-',
+  summary: 'Your child has demonstrated a basic understanding of the subject matter in all areas. They meet minimum expectations, but there are areas that could benefit from improvement. Encourage them to continue working hard!',
+  legend: [
+    { label: 'Science, biology, & Environment', color: '#BDEE77' },
+    { label: 'English & Coding', color: '#ECC283' },
+    { label: 'Math, Money, & Music', color: '#A1D8E4' },
+    { label: 'Social Study & Languages', color: '#FC99CE' },
+    { label: 'Logic, Life Skills, Emotions, & Innovation', color: '#C792C8' },
+  ]
+}
+
 export {
   SubjectData,
-  StrengthsData
+  StrengthsData,
+  OverallScoreData,
 }

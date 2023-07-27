@@ -399,28 +399,47 @@ const PerformanceHome = () => {
                   }}
                 />
               </Box>
+
               {
-                [
-                  <OverallScoreTab topSectionHeight={topSectionHeight} />,
-                  (
-                    renderSubjectDetails.render
-                      ? <SubjectDetailsTab
-                        topSectionHeight={topSectionHeight}
-                        subjectDetails={renderSubjectDetails.details}
-                        setRenderSubjectDetails={setRenderSubjectDetails}
-                        searchDropDownOpen={searchDropDownOpen}
-                        setSearchDropDownOpen={setSearchDropDownOpen}
-                        subjectsData={SubjectData}
-                      />
-                      : <SubjectsTab
-                        topSectionHeight={topSectionHeight}
-                        setRenderSubjectDetails={setRenderSubjectDetails}
-                      />
-                  ),
-                  <StrengthsTab topSectionHeight={topSectionHeight} />,
-                  <AreasForImprovementTab topSectionHeight={topSectionHeight} />,
-                  <GoalSettingTab topSectionHeight={topSectionHeight} />,
-                ][tabsData.findIndex(item => item.isSelected)]
+                tabsData.findIndex(item => item.isSelected) === 0 &&
+                <OverallScoreTab topSectionHeight={topSectionHeight} />
+              }
+
+              {
+                tabsData.findIndex(item => item.isSelected) === 1 &&
+                renderSubjectDetails.render &&
+                <SubjectDetailsTab
+                  topSectionHeight={topSectionHeight}
+                  subjectDetails={renderSubjectDetails.details}
+                  setRenderSubjectDetails={setRenderSubjectDetails}
+                  searchDropDownOpen={searchDropDownOpen}
+                  setSearchDropDownOpen={setSearchDropDownOpen}
+                  subjectsData={SubjectData}
+                />
+              }
+
+              {
+                tabsData.findIndex(item => item.isSelected) === 1 &&
+                !renderSubjectDetails.render &&
+                <SubjectsTab
+                  topSectionHeight={topSectionHeight}
+                  setRenderSubjectDetails={setRenderSubjectDetails}
+                />
+              }
+
+              {
+                tabsData.findIndex(item => item.isSelected) === 2 &&
+                <StrengthsTab topSectionHeight={topSectionHeight} />
+              }
+
+              {
+                tabsData.findIndex(item => item.isSelected) === 3 &&
+                <AreasForImprovementTab topSectionHeight={topSectionHeight} />
+              }
+
+              {
+                tabsData.findIndex(item => item.isSelected) === 4 &&
+                <GoalSettingTab topSectionHeight={topSectionHeight} />
               }
             </Box>
           </Grid>

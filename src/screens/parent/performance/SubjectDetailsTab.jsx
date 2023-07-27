@@ -327,29 +327,31 @@ const SubjectDetailsTab = ({
           },
         }}>
           <Box sx={{ width: $({ size: 224 }), height: $({ size: 224 }), position: 'relative' }}>
-            <Pie
-              data={[
-                {
-                  color: subjectDetails?.color || colors.extra.grey1,
-                  value: subjectDetails?.details?.percentage || 0
-                },
-                {
-                  color: colors.extra.grey4,
-                  value: (100 - subjectDetails?.details?.percentage || 0)
-                },
-              ]}
-              innerRadius={0.725}
-              padAngle={0}
-              legends={[]}
-              enableArcLabels={false}
-              enableArcLinkLabels={false}
-              isInteractive={false}
-              width={$({ size: 224, numeric: true })}
-              height={$({ size: 224, numeric: true })}
-              animate={false}
-              fit={true}
-              colors={(d) => d.data.color}
-            />
+            <Box sx={{ filter: `drop-shadow(0 0 ${$({ size: 5 })} ${alpha(colors.solids.black, 0.1)})` }}>
+              <Pie
+                data={[
+                  {
+                    color: subjectDetails?.color || colors.extra.grey1,
+                    value: subjectDetails?.details?.percentage || 0
+                  },
+                  {
+                    color: colors.extra.grey4,
+                    value: (100 - subjectDetails?.details?.percentage || 0)
+                  },
+                ]}
+                innerRadius={0.725}
+                padAngle={0}
+                legends={[]}
+                enableArcLabels={false}
+                enableArcLinkLabels={false}
+                isInteractive={false}
+                width={$({ size: 224, numeric: true })}
+                height={$({ size: 224, numeric: true })}
+                animate={false}
+                fit={true}
+                colors={(d) => d.data.color}
+              />
+            </Box>
 
             <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
               <Typography sx={{
@@ -393,7 +395,10 @@ const SubjectDetailsTab = ({
               fontWeight: '400',
               lineHeight: $({ size: 28 }),
               color: colors.solids.black,
-              maxWidth: $({ size: 525 }),
+              maxWidth: {
+                xs: '100%',
+                md: $({ size: 525 })
+              },
             }}>{subjectDetails?.details?.summary || 'Subject Summary'}</Typography>
           </Box>
 
@@ -402,10 +407,7 @@ const SubjectDetailsTab = ({
 
         <Box
           sx={{
-            mt: {
-              xs: $({ size: 16 }),
-              md: $({ size: 24 })
-            },
+            mt: $({ size: 24 }),
             width: '100%',
             overflowX: 'scroll',
             overflowY: 'hidden',
