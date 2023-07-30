@@ -7,6 +7,7 @@ import { $ } from '../../utils'
 const CustomTabs = ({
   tabsData = [],
   setTabsData = () => { },
+  containerStyle = {},
 }) => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
@@ -22,6 +23,7 @@ const CustomTabs = ({
         position: 'relative',
         // width: '100%',
         // maxWidth: `calc(100% - ${$({ size: 0 })})`
+        ...containerStyle,
       }}>
       <Box
         sx={{

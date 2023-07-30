@@ -33,7 +33,6 @@ const LearnSubjectTopic = () => {
   const [subjectDetailData, setSubjectDetailData] = React.useState([])
 
   React.useEffect(() => {
-    document.title = `${state?.title} | Learn Subject | Parent Dashboard | KidWiz`
     setSubjectDetailData(SubjectDetailData)
   }, [state])
 

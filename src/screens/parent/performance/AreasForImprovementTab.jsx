@@ -13,7 +13,6 @@ const AreasForImprovementTab = ({ topSectionHeight = 0 }) => {
   const [strengthsData, setStrengthsData] = React.useState([])
 
   React.useEffect(() => {
-    document.title = 'Performance | Parent Dashboard | KidWiz'
     setStrengthsData(StrengthsData)
   }, [])
 

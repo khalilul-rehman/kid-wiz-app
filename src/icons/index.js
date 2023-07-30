@@ -18,6 +18,8 @@ import SaveIcon from './misc/SaveIcon'
 import ChevronForwardIcon from './misc/ChevronForwardIcon'
 import InfoIcon from './misc/InfoIcon'
 import AlarmIcon from './misc/AlarmIcon'
+import DownloadIcon from './misc/DownloadIcon'
+import TickIcon from './misc/TickIcon'
 
 export {
   AddIcon,
@@ -38,6 +40,8 @@ export {
   ChevronForwardIcon,
   InfoIcon,
   AlarmIcon,
+  DownloadIcon,
+  TickIcon,
 }
 
 /*** ONBOARDING ICONS ******************************************************************************************/

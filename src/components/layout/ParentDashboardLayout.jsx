@@ -110,7 +110,7 @@ const SideBar = ({
           lg: { background: 'transparent !important' }
         },
         position: 'relative',
-        '& .pro-sidebar.lg': {
+        '& .pro-sidebar.xl': {
           lg: {
             position: 'relative',
             left: '0px !important',
@@ -118,7 +118,7 @@ const SideBar = ({
         }
       }}>
       <ProSidebar
-        breakPoint='lg'
+        breakPoint='xl'
         toggled={isToggled}
         onToggle={() => setIsToggled(!isToggled)}>
         <Box

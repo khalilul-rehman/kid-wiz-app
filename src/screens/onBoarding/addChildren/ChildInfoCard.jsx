@@ -29,6 +29,9 @@ const ChildInfoCard = ({
   handleAddChild = () => { },
   handleEditChild = () => { },
   handleDeleteChild = () => { },
+  containerStyle = {},
+  wrapperStyle = {},
+  addButtonStyle = {},
 }) => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
@@ -58,7 +61,8 @@ const ChildInfoCard = ({
       padding: {
         xs: `0 ${$({ size: 24 })}`,
         lg: 0
-      }
+      },
+      ...wrapperStyle
     }}>
       <Box sx={{
         borderRadius: $({ size: 24 }),
@@ -71,6 +75,7 @@ const ChildInfoCard = ({
           lg: $({ size: 320 }),
         },
         position: 'relative',
+        ...containerStyle,
       }}>
         {
           hasInfo &&
@@ -193,6 +198,7 @@ const ChildInfoCard = ({
             },
             maxWidth: $({ size: 450 }),
             width: $({ size: 320 }),
+            ...addButtonStyle
           }}
           onClick={handleAddChild}
         />

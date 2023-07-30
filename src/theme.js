@@ -134,7 +134,12 @@ export const tokens = (mode) => ({
       solids: {
         black: "#000000",
         white: "#FFFFFF",
+        purple: '#C792C8',
         purpleBright: '#C25BC5',
+        orange: '#ECC283',
+        orangeBright: '#D48B1D',
+        green: '#BDEE77',
+        mainButton: '#72B216'
       },
       extra: {
         iconBackground: '#E7F4F8',

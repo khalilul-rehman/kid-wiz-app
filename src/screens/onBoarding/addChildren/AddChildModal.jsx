@@ -25,6 +25,7 @@ const AddChildModal = ({
   setChildrenData = () => { },
   isModalOpen = { isOpen: false, index: -1 },
   setIsModalOpen = () => { },
+  offset = {}
 }) => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
@@ -119,6 +120,7 @@ const AddChildModal = ({
       showBackdrop={true}
       title='New Child'
       onClose={() => setIsModalOpen({ isOpen: false, index: -1 })}
+      offset={offset}
       containerStyle={{
         maxWidth: $({ size: 1040 }),
         display: 'flex',

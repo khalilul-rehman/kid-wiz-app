@@ -36,7 +36,6 @@ const ImproveParentingHome = () => {
   const [topicDetailData, setTopicDetailData] = React.useState([])
 
   React.useEffect(() => {
-    document.title = 'Improve Parenting | Parent Dashboard | KidWiz'
     setTopicsData(TopicsData || [])
     setSelectedTopic(TopicsData?.[0] || {})
     setTopicDetailData(TopicsData[0]?.subTopics || [])

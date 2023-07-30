@@ -3,13 +3,7 @@ import { Box, Typography, alpha, useTheme } from '@mui/material'
 import { Pie } from '@nivo/pie'
 
 import {
-  CustomTextInput,
-  CustomButton,
-  CustomSubjectFoucsSlider,
-} from '../../../components'
-
-import {
-  AlarmIcon, InfoIcon,
+  InfoIcon,
 } from '../../../icons'
 
 import { tokens } from '../../../theme'
@@ -20,10 +14,6 @@ import { OverallScoreData } from './data'
 const OverallScoreTab = ({ topSectionHeight = 0 }) => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
-
-  React.useEffect(() => {
-    document.title = 'Performance | Parent Dashboard | KidWiz'
-  }, [])
 
   return (
     <Box sx={{
@@ -73,35 +63,35 @@ const OverallScoreTab = ({ topSectionHeight = 0 }) => {
                 bottom: $({ size: (70 / 2.5) + (2 * (2 * 1.5)), numeric: true }),
               }}
               arcLabelsComponent={({ datum }) => {
-                const arc = datum.arc;
+                const arc = datum.arc
                 const radiusOfLabelCircle = $({ size: 70 / 2.5, numeric: true })
                 const x = 100 + radiusOfLabelCircle // x-coordinate of point A
-                const y = 0; // y-coordinate of point A
-                const theta = (arc.endAngle - arc.startAngle) / 2 + arc.startAngle;
+                const y = 0 // y-coordinate of point A
+                const theta = (arc.endAngle - arc.startAngle) / 2 + arc.startAngle
 
                 // Calculate the new coordinates after rotation
-                const newX = x * Math.cos(theta) - y * Math.sin(theta);
-                const newY = x * Math.sin(theta) + y * Math.cos(theta);
+                const newX = x * Math.cos(theta) - y * Math.sin(theta)
+                const newY = x * Math.sin(theta) + y * Math.cos(theta)
 
                 // Calculate the angle in degrees for rotation (45 degrees)
-                const rotationAngle = -90;
+                const rotationAngle = -90
 
                 // Calculate the rotated coordinates after applying the rotation transformation
-                const rotatedX = newX * Math.cos(rotationAngle * (Math.PI / 180)) - newY * Math.sin(rotationAngle * (Math.PI / 180));
-                const rotatedY = newX * Math.sin(rotationAngle * (Math.PI / 180)) + newY * Math.cos(rotationAngle * (Math.PI / 180));
+                const rotatedX = newX * Math.cos(rotationAngle * (Math.PI / 180)) - newY * Math.sin(rotationAngle * (Math.PI / 180))
+                const rotatedY = newX * Math.sin(rotationAngle * (Math.PI / 180)) + newY * Math.cos(rotationAngle * (Math.PI / 180))
 
                 return (
                   <g>
-                    <filter id="shadow">
-                      <feDropShadow dx="1.5" dy="1.5" stdDeviation="1.5" floodColor="rgba(0, 0, 0, 0.25)" />
+                    <filter id='shadow'>
+                      <feDropShadow dx='1.5' dy='1.5' stdDeviation='1.5' floodColor='rgba(0, 0, 0, 0.25)' />
                     </filter>
 
-                    <circle cx={rotatedX} cy={rotatedY} r={radiusOfLabelCircle} fill="white" filter="url(#shadow)" />
+                    <circle cx={rotatedX} cy={rotatedY} r={radiusOfLabelCircle} fill='white' filter='url(#shadow)' />
                     <text
                       x={rotatedX}
                       y={rotatedY - $({ size: 18 / 2, numeric: true })}
-                      textAnchor="middle"
-                      dominantBaseline="central"
+                      textAnchor='middle'
+                      dominantBaseline='central'
                       style={{
                         fontSize: $({ size: 18 }),
                         fontWeight: '600',
@@ -112,17 +102,16 @@ const OverallScoreTab = ({ topSectionHeight = 0 }) => {
                     <text
                       x={rotatedX}
                       y={rotatedY + $({ size: 18 / 2, numeric: true })}
-                      textAnchor="middle"
-                      dominantBaseline="central"
+                      textAnchor='middle'
+                      dominantBaseline='central'
                       style={{
                         fontSize: $({ size: 18 }),
                         fontWeight: '500',
                         fill: colors.extra.grey2
                       }}>{datum.label}</text>
                   </g>
-                );
+                )
               }}
-
             />
           </Box>
 

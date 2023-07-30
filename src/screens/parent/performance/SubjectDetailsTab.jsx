@@ -29,10 +29,6 @@ const SubjectDetailsTab = ({
   const [search, setSearch] = React.useState('')
   const [filteredSubjectData, setFilteredSubjectData] = React.useState(subjectsData || [])
 
-  React.useEffect(() => {
-    document.title = 'Learn Subject | Parent Dashboard | KidWiz'
-  }, [])
-
   const handleSearch = () => {
     const filteredData = subjectsData.filter((subject) => {
       return subject.title.toLowerCase().includes(search.toLowerCase())

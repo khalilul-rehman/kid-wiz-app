@@ -55,10 +55,6 @@ const GoalSettingTab = ({ topSectionHeight = 0 }) => {
     },
   ])
 
-  React.useEffect(() => {
-    document.title = 'Performance | Parent Dashboard | KidWiz'
-  }, [])
-
   return (
     <Box sx={{
       display: 'flex',
@@ -209,7 +205,10 @@ const GoalSettingTab = ({ topSectionHeight = 0 }) => {
           md: $({ size: 36 }),
         },
         width: '100%',
-        alignItems: 'center',
+        alignItems: {
+          xs: 'flex-start',
+          md: 'center',
+        },
         mt: $({ size: 12 }),
       }}>
         <Box sx={{ position: 'relative', height: $({ size: 280 }), width: $({ size: 280 }), userSelect: 'none', }}>

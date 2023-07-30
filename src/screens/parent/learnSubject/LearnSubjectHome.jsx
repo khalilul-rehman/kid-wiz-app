@@ -29,7 +29,6 @@ const LearnSubjectHome = () => {
   const [subjectData, setSubjectData] = React.useState([])
 
   React.useEffect(() => {
-    document.title = 'Learn Subject | Parent Dashboard | KidWiz'
     setSubjectData(SubjectData)
   }, [])
 

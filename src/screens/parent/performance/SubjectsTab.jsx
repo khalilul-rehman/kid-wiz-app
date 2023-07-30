@@ -21,7 +21,6 @@ const SubjectsTab = ({
   const [subjectData, setSubjectData] = React.useState([])
 
   React.useEffect(() => {
-    document.title = 'Performance | Parent Dashboard | KidWiz'
     setSubjectData(SubjectData)
   }, [])
 
