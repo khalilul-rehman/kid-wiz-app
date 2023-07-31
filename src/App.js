@@ -97,7 +97,7 @@ const App = () => {
   }, [])
 
   /* PATCH: ADDED THIS TO DISABLE ALL VIEWS EXCEPT DESKTOP */
-  if ((isMobile || isTablet) && !process.env.REACT_APP_DEV_MODE) {
+  if ((isMobile || isTablet) && process.env.REACT_APP_DEV_MODE === '0') {
     return (
       <div style={{
         display: 'flex',
