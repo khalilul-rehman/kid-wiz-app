@@ -14,14 +14,9 @@ import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
 import MenuIcon from '@mui/icons-material/Menu'
 
 import {
-  DashboardIcon,
-  PerformanceIcon,
   LearnSubjectIcon,
   RibbonIcon,
   NotificationIcon,
-  CompassIcon,
-  JournalIcon,
-  SettingsIcon,
   LogoutIcon,
   CloseIcon,
   PromptsIcon,

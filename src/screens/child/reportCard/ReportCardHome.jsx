@@ -1,7 +1,6 @@
 import React from 'react'
 import { Avatar, Box, Typography, alpha, useTheme } from '@mui/material'
 import { Pie } from '@nivo/pie'
-import { useNavigate } from 'react-router-dom'
 
 import {
   DashboardContainer,
