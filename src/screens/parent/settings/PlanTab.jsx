@@ -7,7 +7,7 @@ import {
 
 import {
   CheckIcon,
-  DownloadIcon,
+  DownArrowIcon,
   SaveIcon,
   TickIcon
 } from '../../../icons'
@@ -228,7 +228,7 @@ const PlanTab = ({ topSectionHeight = 0 }) => {
               backgroundColor: alpha(colors.extra.grey1, 0.8),
             },
           }}
-          rightIcon={<DownloadIcon size={$({ size: 24, numeric: true })} color={colors.white[900]} />}
+          rightIcon={<DownArrowIcon size={$({ size: 24, numeric: true })} color={colors.white[900]} />}
         />
 
         <CustomButton

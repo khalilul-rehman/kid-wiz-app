@@ -38,6 +38,7 @@ const OverallScoreTab = ({ topSectionHeight = 0 }) => {
         },
       }}>
         <Box sx={{
+          userSelect: 'none',
           position: 'relative',
           height: $({ size: 280 + (2 * (70 / 2.5)) + (2 * (2 * 1.5)) }),
           width: $({ size: 280 + (2 * (70 / 2.5)) + (2 * (2 * 1.5)) }),
@@ -65,18 +66,15 @@ const OverallScoreTab = ({ topSectionHeight = 0 }) => {
               arcLabelsComponent={({ datum }) => {
                 const arc = datum.arc
                 const radiusOfLabelCircle = $({ size: 70 / 2.5, numeric: true })
-                const x = 100 + radiusOfLabelCircle // x-coordinate of point A
-                const y = 0 // y-coordinate of point A
+                const x = 100 + radiusOfLabelCircle
+                const y = 0
                 const theta = (arc.endAngle - arc.startAngle) / 2 + arc.startAngle
 
-                // Calculate the new coordinates after rotation
                 const newX = x * Math.cos(theta) - y * Math.sin(theta)
                 const newY = x * Math.sin(theta) + y * Math.cos(theta)
 
-                // Calculate the angle in degrees for rotation (45 degrees)
                 const rotationAngle = -90
 
-                // Calculate the rotated coordinates after applying the rotation transformation
                 const rotatedX = newX * Math.cos(rotationAngle * (Math.PI / 180)) - newY * Math.sin(rotationAngle * (Math.PI / 180))
                 const rotatedY = newX * Math.sin(rotationAngle * (Math.PI / 180)) + newY * Math.cos(rotationAngle * (Math.PI / 180))
 
@@ -195,7 +193,7 @@ const OverallScoreTab = ({ topSectionHeight = 0 }) => {
           })
         }
       </Box>
-    </Box >
+    </Box>
   )
 }
 

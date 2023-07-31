@@ -51,10 +51,7 @@ const ChildrenTab = ({ topSectionHeight = 0 }) => {
                 wrapperStyle={{
                   padding: '0',
                   minWidth: $({ size: 288 }),
-                  flex: {
-                    xs: 1,
-                    md: 'unset'
-                  }
+                  flex: 1,
                 }}
                 addButtonStyle={{
                   width: '100%',

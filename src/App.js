@@ -38,15 +38,34 @@ import {
   PerformanceHome,
   LearnSubjectHome,
   LearnSubjectDetail,
+  LearnSubjectChat,
   DailyQuizHome,
   ImproveParentingHome,
   ExploreHome,
   JournalHome,
   SettingsHome,
-} from './screens/parent/index.js'
+} from './screens/parent'
+
+import {
+  ReportCardHome,
+  LearnSubjectHome as ChildLearnSubjectHome,
+  LearnSubjectDetail as ChildLearnSubjectDetail,
+  LearnSubjectChat as ChildLearnSubjectChat,
+} from './screens/child'
+
+import {
+  AITrainingHome,
+  KeywordsAlertHome,
+  PromptsHome,
+  QuizzesHome,
+  RolePlayingHome,
+  SubjectsHome,
+} from './screens/admin'
 
 import {
   ParentDashboardLayout,
+  ChildDashboardLayout,
+  AdminDashboardLayout,
 } from './components'
 
 const Redirect = ({ to }) => {
@@ -122,16 +141,41 @@ const App = () => {
           <Route path={ROUTES.ON_BOARDING.VALUES_ASSESSMENT.QUESTIONS} element={<ValuesAssessmentTestQuestionsScreen />} />
           <Route path={ROUTES.ON_BOARDING.VALUES_ASSESSMENT.RESULT} element={<ValuesAssessmentTestResultScreen />} />
 
-          <Route path={ROUTES.PARENT.DASHBOARD} element={<ParentDashboardLayout />}>
+          <Route path={ROUTES.PARENT.DASHBOARD.INDEX} element={<ParentDashboardLayout />}>
             <Route index element={<DashboardHome />} />
-            <Route index path={ROUTES.PARENT.PERFORMANCE} element={<PerformanceHome />} />
+            <Route index path={ROUTES.PARENT.PERFORMANCE.INDEX} element={<PerformanceHome />} />
             <Route index path={ROUTES.PARENT.LEARN_SUBJECT.INDEX} element={<LearnSubjectHome />} />
             <Route index path={ROUTES.PARENT.LEARN_SUBJECT.DETAIL} element={<LearnSubjectDetail />} />
-            <Route index path={ROUTES.PARENT.DAILY_QUIZ} element={<DailyQuizHome />} />
+            <Route index path={ROUTES.PARENT.LEARN_SUBJECT.CHAT} element={<LearnSubjectChat />} />
+            <Route index path={ROUTES.PARENT.DAILY_QUIZ.INDEX} element={<DailyQuizHome />} />
             <Route index path={ROUTES.PARENT.IMPROVE_PARENTING.INDEX} element={<ImproveParentingHome />} />
-            <Route index path={ROUTES.PARENT.EXPLORE} element={<ExploreHome />} />
-            <Route index path={ROUTES.PARENT.JOURNAL} element={<JournalHome />} />
-            <Route index path={ROUTES.PARENT.SETTINGS} element={<SettingsHome />} />
+            <Route index path={ROUTES.PARENT.EXPLORE.INDEX} element={<ExploreHome />} />
+            <Route index path={ROUTES.PARENT.JOURNAL.INDEX} element={<JournalHome />} />
+            <Route index path={ROUTES.PARENT.SETTINGS.INDEX} element={<SettingsHome />} />
+
+            <Route path='*' element={<UnderDevelopmentScreen />} />
+          </Route>
+
+          <Route path={ROUTES.CHILD.DASHBOARD.INDEX} element={<ChildDashboardLayout />}>
+            <Route index element={<Redirect to={ROUTES.CHILD.REPORT_CARD.INDEX} />} />
+            <Route index path={ROUTES.CHILD.REPORT_CARD.INDEX} element={<ReportCardHome />} />
+            <Route index path={ROUTES.CHILD.LEARN_SUBJECT.INDEX} element={<ChildLearnSubjectHome />} />
+            <Route index path={ROUTES.CHILD.LEARN_SUBJECT.DETAIL} element={<ChildLearnSubjectDetail />} />
+            <Route index path={ROUTES.CHILD.LEARN_SUBJECT.CHAT} element={<ChildLearnSubjectChat />} />
+            <Route index path={ROUTES.CHILD.DAILY_QUIZ.INDEX} element={<DailyQuizHome />} />
+            <Route index path={ROUTES.CHILD.EXPLORE.INDEX} element={<ExploreHome />} />
+
+            <Route path='*' element={<UnderDevelopmentScreen />} />
+          </Route>
+
+          <Route path={ROUTES.ADMIN.DASHBOARD.INDEX} element={<AdminDashboardLayout />}>
+            <Route index element={<Redirect to={ROUTES.ADMIN.PROMPTS.INDEX} />} />
+            <Route index path={ROUTES.ADMIN.PROMPTS.INDEX} element={<PromptsHome />} />
+            <Route index path={ROUTES.ADMIN.QUIZZES.INDEX} element={<QuizzesHome />} />
+            <Route index path={ROUTES.ADMIN.SUBJECTS.INDEX} element={<SubjectsHome />} />
+            <Route index path={ROUTES.ADMIN.ROLE_PLAYING.INDEX} element={<RolePlayingHome />} />
+            <Route index path={ROUTES.ADMIN.AI_TRAINING.INDEX} element={<AITrainingHome />} />
+            <Route index path={ROUTES.ADMIN.KEYWORDS_ALERT.INDEX} element={<KeywordsAlertHome />} />
 
             <Route path='*' element={<UnderDevelopmentScreen />} />
           </Route>

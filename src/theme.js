@@ -97,7 +97,7 @@ export const tokens = (mode) => ({
       },
       greenAccent: {
         100: "#65AC00", // for search button
-        200: "#1e5245",
+        200: "#93CA45", // billing tab
         300: "#2e7c67",
         400: "#BDEE77", // For child card
         500: "#72B216", // For buttons

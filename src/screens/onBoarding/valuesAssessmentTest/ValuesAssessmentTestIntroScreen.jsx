@@ -143,7 +143,7 @@ const ValuesAssessmentTestIntroScreen = () => {
               label='Skip'
               isSecondary
               sx={{ maxWidth: $({ size: 220 }) }}
-              onClick={() => { navigate(ROUTES.PARENT.DASHBOARD) }}
+              onClick={() => { navigate(ROUTES.PARENT.DASHBOARD.INDEX) }}
             />
             <CustomButton
               label='Take Test'

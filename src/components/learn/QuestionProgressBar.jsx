@@ -9,6 +9,7 @@ const QuestionProgressBar = ({
   totalQuestions = 10,
   currentQuestion = 1,
   showQuestionNumber = true,
+  progressBarStyle = {},
 }) => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
@@ -36,7 +37,8 @@ const QuestionProgressBar = ({
           '& .MuiLinearProgress-bar': {
             borderRadius: $({ size: 66 }),
             backgroundColor: colors.greenAccent[500]
-          }
+          },
+          ...progressBarStyle
         }}
       />
     </Box>

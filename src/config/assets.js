@@ -34,5 +34,15 @@ export const ASSETS = {
     BIOLOGY: '/assets/icons/biology.svg',
     ENVIRONMENT: '/assets/icons/environment.svg',
     ENGLISH: '/assets/icons/english.svg',
+    MATH: '/assets/icons/math.svg',
+    MONEY: '/assets/icons/money.svg',
+    MUSIC: '/assets/icons/music.svg',
+    SOCIAL_STUDY: '/assets/icons/social-study.svg',
+    LOGIC: '/assets/icons/logic.svg',
+    LIFE_SKILLS: '/assets/icons/life-skills.svg',
+    EMOTIONS: '/assets/icons/emotions.svg',
+    INNOVATION: '/assets/icons/innovation.svg',
+    CODING: '/assets/icons/coding.svg',
+    LANGUAGES: '/assets/icons/languages.svg',
   }
 }

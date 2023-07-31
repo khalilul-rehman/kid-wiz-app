@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, useTheme, alpha, Typography } from '@mui/material'
+import { Box, useTheme, Typography } from '@mui/material'
 
 import {
   CustomTabs,

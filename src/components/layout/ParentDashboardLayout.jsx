@@ -160,7 +160,7 @@ const SideBar = ({
                   [
                     {
                       title: 'Dashboard',
-                      to: ROUTES.PARENT.DASHBOARD,
+                      to: ROUTES.PARENT.DASHBOARD.INDEX,
                       icon: {
                         active: <DashboardIcon color={colors.white[800]} />,
                         inactive: <DashboardIcon />
@@ -168,7 +168,7 @@ const SideBar = ({
                     },
                     {
                       title: 'Performance',
-                      to: ROUTES.PARENT.PERFORMANCE,
+                      to: ROUTES.PARENT.PERFORMANCE.INDEX,
                       icon: {
                         active: <PerformanceIcon color={colors.white[800]} />,
                         inactive: <PerformanceIcon />
@@ -184,7 +184,7 @@ const SideBar = ({
                     },
                     {
                       title: 'Daily Quiz',
-                      to: ROUTES.PARENT.DAILY_QUIZ,
+                      to: ROUTES.PARENT.DAILY_QUIZ.INDEX,
                       icon: {
                         active: <RibbonIcon color={colors.white[800]} size={20} />,
                         inactive: <RibbonIcon color='#A7A7A7' size={20} />
@@ -200,7 +200,7 @@ const SideBar = ({
                     },
                     {
                       title: 'Explore',
-                      to: ROUTES.PARENT.EXPLORE,
+                      to: ROUTES.PARENT.EXPLORE.INDEX,
                       icon: {
                         active: <CompassIcon color={colors.white[800]} size={20} />,
                         inactive: <CompassIcon color='#A7A7A7' size={20} />
@@ -208,7 +208,7 @@ const SideBar = ({
                     },
                     {
                       title: 'Journal',
-                      to: ROUTES.PARENT.JOURNAL,
+                      to: ROUTES.PARENT.JOURNAL.INDEX,
                       icon: {
                         active: <JournalIcon color={colors.white[800]} />,
                         inactive: <JournalIcon />
@@ -216,7 +216,7 @@ const SideBar = ({
                     },
                     {
                       title: 'Settings',
-                      to: ROUTES.PARENT.SETTINGS,
+                      to: ROUTES.PARENT.SETTINGS.INDEX,
                       icon: {
                         active: <SettingsIcon color={colors.white[800]} />,
                         inactive: <SettingsIcon />
@@ -243,7 +243,7 @@ const SideBar = ({
             <Box paddingLeft='5%' mr='10px'>
               <Item
                 title='Logout'
-                to={ROUTES.PARENT.LOGOUT}
+                to={ROUTES.PARENT.LOGOUT.INDEX}
                 icon={{
                   active: <LogoutIcon color={colors.white[800]} />,
                   inactive: <LogoutIcon />
@@ -299,7 +299,7 @@ const TopBar = ({
           <MenuIcon sx={{ fontSize: $({ size: 32 }), color: colors.extra.grey1 }} />
         </IconButton>
         <Box
-          onClick={() => { navigate(ROUTES.PARENT.DASHBOARD) }}
+          onClick={() => { navigate(ROUTES.PARENT.DASHBOARD.INDEX) }}
           component='img'
           alt='logo'
           src={ASSETS.LOGO}

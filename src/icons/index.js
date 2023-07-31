@@ -18,8 +18,16 @@ import SaveIcon from './misc/SaveIcon'
 import ChevronForwardIcon from './misc/ChevronForwardIcon'
 import InfoIcon from './misc/InfoIcon'
 import AlarmIcon from './misc/AlarmIcon'
-import DownloadIcon from './misc/DownloadIcon'
+import DownArrowIcon from './misc/DownArrowIcon'
 import TickIcon from './misc/TickIcon'
+import VisaIcon from './misc/VisaIcon'
+import DownloadIcon from './misc/DownloadIcon'
+import MailIcon from './misc/MailIcon'
+import CheckBoxCheckedIcon from './misc/CheckBoxCheckedIcon'
+import CheckBoxOutlineIcon from './misc/CheckBoxOutlineIcon'
+import LocationIcon from './misc/LocationIcon'
+import RefreshIcon from './misc/RefreshIcon'
+import DownArrowSlimIcon from './misc/DownArrowSlimIcon'
 
 export {
   AddIcon,
@@ -40,8 +48,16 @@ export {
   ChevronForwardIcon,
   InfoIcon,
   AlarmIcon,
-  DownloadIcon,
+  DownArrowIcon,
   TickIcon,
+  VisaIcon,
+  DownloadIcon,
+  MailIcon,
+  CheckBoxCheckedIcon,
+  CheckBoxOutlineIcon,
+  LocationIcon,
+  RefreshIcon,
+  DownArrowSlimIcon,
 }
 
 /*** ONBOARDING ICONS ******************************************************************************************/
@@ -78,6 +94,10 @@ import CompassIcon from './sidebar/CompassIcon'
 import JournalIcon from './sidebar/JournalIcon'
 import SettingsIcon from './sidebar/SettingsIcon'
 import LogoutIcon from './sidebar/LogoutIcon'
+import ReportCardIcon from './sidebar/ReportCardIcon'
+import AITrainingIcon from './sidebar/AITrainingIcon'
+import KeywordsAlertIcon from './sidebar/KeywordsAlertIcon'
+import PromptsIcon from './sidebar/PromptsIcon'
 
 export {
   DashboardIcon,
@@ -89,6 +109,10 @@ export {
   JournalIcon,
   SettingsIcon,
   LogoutIcon,
+  ReportCardIcon,
+  AITrainingIcon,
+  KeywordsAlertIcon,
+  PromptsIcon,
 }
 
 /*** SUBJECTS ICONS ******************************************************************************************/

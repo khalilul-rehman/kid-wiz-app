@@ -31,25 +31,82 @@ export const ROUTES = {
     }
   },
   PARENT: {
-    DASHBOARD: '/parent-dashboard',
-    PERFORMANCE: '/parent-dashboard/performance',
+    DASHBOARD: {
+      INDEX: '/parent-dashboard',
+    },
+    PERFORMANCE: {
+      INDEX: '/parent-dashboard/performance',
+    },
     LEARN_SUBJECT: {
       INDEX: '/parent-dashboard/learn-subject',
       DETAIL: '/parent-dashboard/learn-subject/:subjectId',
+      CHAT: '/parent-dashboard/learn-subject/chat',
     },
-    DAILY_QUIZ: '/parent-dashboard/daily-quiz',
+    DAILY_QUIZ: {
+      INDEX: '/parent-dashboard/daily-quiz',
+    },
     IMPROVE_PARENTING: {
       INDEX: '/parent-dashboard/improve-parenting',
     },
-    EXPLORE: '/parent-dashboard/explore',
-    JOURNAL: '/parent-dashboard/journal',
-    SETTINGS: '/parent-dashboard/settings',
-    LOGOUT: '/parent-dashboard/logout',
+    EXPLORE: {
+      INDEX: '/parent-dashboard/explore',
+    },
+    JOURNAL: {
+      INDEX: '/parent-dashboard/journal',
+    },
+    SETTINGS: {
+      INDEX: '/parent-dashboard/settings',
+    },
+    LOGOUT: {
+      INDEX: '/parent-dashboard/logout',
+    },
   },
   CHILD: {
-    DASHBOARD: '/child-dashboard',
+    DASHBOARD: {
+      INDEX: '/child-dashboard',
+    },
+    REPORT_CARD: {
+      INDEX: '/child-dashboard/report-card',
+    },
+    LEARN_SUBJECT: {
+      INDEX: '/child-dashboard/learn-subject',
+      DETAIL: '/child-dashboard/learn-subject/:subjectId',
+      CHAT: '/child-dashboard/learn-subject/chat',
+    },
+    DAILY_QUIZ: {
+      INDEX: '/child-dashboard/daily-quiz',
+    },
+    EXPLORE: {
+      INDEX: '/child-dashboard/explore',
+    },
+    LOGOUT: {
+      INDEX: '/child-dashboard/logout',
+    },
   },
   ADMIN: {
-    DASHBOARD: '/admin-dashboard',
+    DASHBOARD: {
+      INDEX: '/admin-dashboard',
+    },
+    PROMPTS: {
+      INDEX: '/admin-dashboard/prompts',
+    },
+    QUIZZES: {
+      INDEX: '/admin-dashboard/quizzes',
+    },
+    SUBJECTS: {
+      INDEX: '/admin-dashboard/subjects',
+    },
+    ROLE_PLAYING: {
+      INDEX: '/admin-dashboard/role-playing',
+    },
+    AI_TRAINING: {
+      INDEX: '/admin-dashboard/ai-training',
+    },
+    KEYWORDS_ALERT: {
+      INDEX: '/admin-dashboard/keywords-alert',
+    },
+    LOGOUT: {
+      INDEX: '/admin-dashboard/logout',
+    },
   },
 }

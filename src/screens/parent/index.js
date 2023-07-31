@@ -1,5 +1,5 @@
 /* eslint-disable import/first */
-import DashboardHome from '../parent/dashboard/DashboardHome.jsx'
+import DashboardHome from './dashboard/DashboardHome.jsx'
 import PerformanceHome from './performance/PerformanceHome.jsx'
 import DailyQuizHome from './dailyQuiz/DailyQuizHome.jsx'
 import ImproveParentingHome from './improveParenting/ImproveParentingHome.jsx'
@@ -14,14 +14,16 @@ export {
   ImproveParentingHome,
   ExploreHome,
   JournalHome,
-  SettingsHome
+  SettingsHome,
 }
 
 /*** LEARN SUBJECT SCREENS *************************************************************************************/
 import LearnSubjectHome from './learnSubject/LearnSubjectHome.jsx'
 import LearnSubjectDetail from './learnSubject/LearnSubjectDetail.jsx'
+import LearnSubjectChat from './learnSubject/LearnSubjectChat.jsx'
 
 export {
   LearnSubjectHome,
-  LearnSubjectDetail
+  LearnSubjectDetail,
+  LearnSubjectChat,
 }

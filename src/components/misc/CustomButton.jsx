@@ -15,12 +15,14 @@ const CustomButton = ({
   rightIconSx = {},
   disabled = false,
   isSecondary = false,
+  innerRef = null,
 }) => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
 
   return (
     <Button
+      ref={innerRef}
       onClick={onClick}
       disabled={disabled}
       sx={{

@@ -429,7 +429,7 @@ const DashboardHome = () => {
                   }}
                 />
 
-                <Box sx={{ width: { xs: '100%', md: '70%', lg: '50%' } }}>
+                <Box sx={{ width: { xs: '100%', md: '70%', lg: '50%' }, maxWidth: $({ size: 800 }) }}>
                   <Typography sx={{ fontWeight: '600', fontSize: $({ size: 24 }), color: colors.solids.black, marginBottom: $({ size: 8 }) }}>
                     {selectedChild.fullname}
                   </Typography>
@@ -657,7 +657,7 @@ const DashboardHome = () => {
                         padding: `${$({ size: 6 })} ${$({ size: 24 })}`,
                         fontWeight: '600',
                       }}
-                      onClick={() => { navigate(ROUTES.PARENT.DAILY_QUIZ) }}
+                      onClick={() => { navigate(ROUTES.PARENT.DAILY_QUIZ.INDEX) }}
                     />
                   </Box>
                 </Grid>

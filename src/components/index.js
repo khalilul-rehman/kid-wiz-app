@@ -8,6 +8,8 @@ import CustomBreadcrumbs from './misc/CustomBreadcrumbs'
 import CustomModal from './misc/CustomModal'
 import CustomFileUploader from './misc/CustomFileUploader'
 import CustomTabs from './misc/CustomTabs'
+import CustomCheckBox from './misc/CustomCheckBox'
+import CustomToggleSwitch from './misc/CustomToggleSwitch'
 
 export {
   CustomTextInput, CustomLabel,
@@ -18,6 +20,8 @@ export {
   CustomModal,
   CustomFileUploader,
   CustomTabs,
+  CustomCheckBox,
+  CustomToggleSwitch
 }
 
 /*** AUTHENTICATION COMPONENTS ***************************************************************************/
@@ -28,14 +32,18 @@ export {
 }
 
 /*** LAYOUT COMPONENTS ***********************************************************************************/
-import ParentDashboardLayout from './layout/ParentDashboardLayout'
 import MainContainer from './layout/MainContainer'
 import DashboardContainer from './layout/DashboardContainer'
+import ParentDashboardLayout from './layout/ParentDashboardLayout'
+import ChildDashboardLayout from './layout/ChildDashboardLayout'
+import AdminDashboardLayout from './layout/AdminDashboardLayout'
 
 export {
-  ParentDashboardLayout,
   MainContainer,
   DashboardContainer,
+  ParentDashboardLayout,
+  ChildDashboardLayout,
+  AdminDashboardLayout,
 }
 
 /*** LEARN COMPONENTS ************************************************************************************/
@@ -49,4 +57,13 @@ export {
   LikertScale,
   VerticalFiller,
   CustomSubjectFoucsSlider
+}
+
+/*** WHEEL OF FORTUNE ************************************************************************************/
+import Spinner from './wheelOfFortune/spinner'
+import SPINNER_POINTS from './wheelOfFortune/points'
+
+export {
+  Spinner,
+  SPINNER_POINTS
 }

@@ -10,7 +10,8 @@ import {
 } from '../../../components'
 
 import {
-  LeftArrowIcon, RightArrowIcon
+  LeftArrowIcon,
+  RightArrowIcon
 } from '../../../icons'
 
 import { ASSETS } from '../../../config/assets'
@@ -36,7 +37,9 @@ const LearnSubjectTopic = () => {
     setSubjectDetailData(SubjectDetailData)
   }, [state])
 
-  const HandleBeginLearning = () => { }
+  const HandleBeginLearning = () => {
+    navigate(ROUTES.PARENT.LEARN_SUBJECT.CHAT)
+  }
 
   const handleSearch = () => {
     const filteredData = SubjectDetailData.filter((subjectDetail) => {

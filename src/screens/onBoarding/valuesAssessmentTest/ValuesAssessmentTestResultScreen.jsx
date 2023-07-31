@@ -150,7 +150,7 @@ const ValuesAssessmentTestResultScreen = () => {
             },
             alignSelf: 'flex-end',
           }}
-          onClick={() => { navigate(ROUTES.PARENT.DASHBOARD) }}
+          onClick={() => { navigate(ROUTES.PARENT.DASHBOARD.INDEX) }}
         />
       </Box>
     </Box>

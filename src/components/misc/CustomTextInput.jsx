@@ -24,7 +24,7 @@ const CustomLabel = ({ label = 'Label', labelStyle = {} }) => {
 const CustomTextInput = ({
   value = '',
   label = 'Label',
-  placeholder = 'Placeholder',
+  placeholder = '',
   error = '',
   type = 'text',
   disabled = false,
