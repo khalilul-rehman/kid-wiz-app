@@ -1,25 +1,28 @@
-import React from 'react'
-import { Box, Typography, InputBase } from '@mui/material'
-import { alpha, useTheme } from '@mui/material/styles'
+import React from 'react';
+import { Box, Typography, InputBase } from '@mui/material';
+import { alpha, useTheme } from '@mui/material/styles';
 
-import { tokens } from '../../theme'
-import { $ } from '../../utils'
+import { tokens } from '../../theme';
+import { $ } from '../../utils';
 
 const CustomLabel = ({ label = 'Label', labelStyle = {} }) => {
-  const theme = useTheme()
-  const colors = tokens(theme.palette.mode)
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
 
   return (
-    <Typography sx={{
-      fontSize: $({ size: 18 }),
-      fontWeight: '500',
-      color: colors.solids.black,
-      lineHeight: $({ size: 30 }),
-      paddingBottom: $({ size: 8 }),
-      ...labelStyle
-    }}>{label}</Typography>
-  )
-}
+    <Typography
+      sx={{
+        fontSize: $({ size: 18 }),
+        fontWeight: '500',
+        color: colors.solids.black,
+        lineHeight: $({ size: 30 }),
+        paddingBottom: $({ size: 8 }),
+        ...labelStyle,
+      }}>
+      {label}
+    </Typography>
+  );
+};
 
 const CustomTextInput = ({
   value = '',
@@ -28,9 +31,12 @@ const CustomTextInput = ({
   error = '',
   type = 'text',
   disabled = false,
-  onChange = () => { },
-  onEnter = () => { },
-  onKeyUp = () => { },
+  multiline = false,
+  maxRows = 1,
+  minRows = 1,
+  onChange = () => {},
+  onEnter = () => {},
+  onKeyUp = () => {},
   containerStyle = {},
   labelStyle = {},
   inputContainerStyle = {},
@@ -39,38 +45,45 @@ const CustomTextInput = ({
   leftIcon = null,
   rightIcon = null,
 }) => {
-  const theme = useTheme()
-  const colors = tokens(theme.palette.mode)
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
 
   return (
-    <Box sx={{
-      userSelect: 'none',
-      ...containerStyle
-    }}>
-      {
-        label &&
-        <Typography sx={{
-          fontSize: $({ size: 18 }),
-          fontWeight: '500',
-          color: colors.solids.black,
-          lineHeight: $({ size: 30 }),
-          paddingBottom: $({ size: 8 }),
-          ...labelStyle
-        }}>{label}</Typography>
-      }
-
-      <Box sx={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        background: colors.grey[900],
-        boxShadow: `inset 0 0 ${$({ size: 3 })} ${alpha(colors.solids.black, 0.30)}`,
-        padding: `${$({ size: 9 })} ${$({ size: 24 })}`,
-        borderRadius: $({ size: 16 }),
-        gap: $({ size: 12 }),
-        width: '100%',
-        ...inputContainerStyle
+    <Box
+      sx={{
+        userSelect: 'none',
+        ...containerStyle,
       }}>
+      {label && (
+        <Typography
+          sx={{
+            fontSize: $({ size: 18 }),
+            fontWeight: '500',
+            color: colors.solids.black,
+            lineHeight: $({ size: 30 }),
+            paddingBottom: $({ size: 8 }),
+            ...labelStyle,
+          }}>
+          {label}
+        </Typography>
+      )}
+
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          background: colors.grey[900],
+          boxShadow: `inset 0 0 ${$({ size: 3 })} ${alpha(
+            colors.solids.black,
+            0.3
+          )}`,
+          padding: `${$({ size: 9 })} ${$({ size: 24 })}`,
+          borderRadius: $({ size: 16 }),
+          gap: $({ size: 12 }),
+          width: '100%',
+          ...inputContainerStyle,
+        }}>
         {leftIcon}
         <InputBase
           placeholder={placeholder}
@@ -78,19 +91,22 @@ const CustomTextInput = ({
           onChange={onChange}
           disabled={disabled}
           type={type}
+          multiline={multiline}
+          maxRows={maxRows}
+          minRows={minRows}
           onKeyUp={(e) => {
             if (e.key === 'Enter') {
-              onEnter()
-              return
+              onEnter();
+              return;
             }
-            onKeyUp()
+            onKeyUp();
           }}
           sx={{
-            fontSize: $({ size: 18 }),
-            fontWeight: '400',
-            color: colors.extra.grey1,
-            lineHeight: $({ size: 30 }),
-            width: '100%',
+            'fontSize': $({ size: 18 }),
+            'fontWeight': '400',
+            'color': colors.extra.grey1,
+            'lineHeight': $({ size: 30 }),
+            'width': '100%',
             '&::placeholder': {
               color: colors.extra.grey3,
               opacity: 0.7,
@@ -102,20 +118,22 @@ const CustomTextInput = ({
         {rightIcon}
       </Box>
 
-      {
-        error &&
-        <Typography sx={{
-          fontSize: $({ size: 16 }),
-          fontWeight: '400',
-          color: colors.redAccent[500],
-          lineHeight: $({ size: 30 }),
-          paddingTop: $({ size: 4 }),
-          ...errorStyle
-        }}>{error}</Typography>
-      }
+      {error && (
+        <Typography
+          sx={{
+            fontSize: $({ size: 16 }),
+            fontWeight: '400',
+            color: colors.redAccent[500],
+            lineHeight: $({ size: 30 }),
+            paddingTop: $({ size: 4 }),
+            ...errorStyle,
+          }}>
+          {error}
+        </Typography>
+      )}
     </Box>
-  )
-}
+  );
+};
 
-export default CustomTextInput
-export { CustomLabel }
+export default CustomTextInput;
+export { CustomLabel };

@@ -1,36 +1,47 @@
-import React from 'react'
-import { Box, Typography, Slider, useTheme } from '@mui/material'
+import React from 'react';
+import { Box, Typography, Slider, useTheme } from '@mui/material';
 
-import { tokens } from '../../theme'
-import { $, DarkenHexColor } from '../../utils'
+import { tokens } from '../../theme';
+import { $, DarkenHexColor } from '../../utils';
 
 const CustomSubjectFoucsSlider = ({
   label = 'Subject Focus',
   color = '#BDEE77',
   value = 50,
-  onChange = () => { },
+  onChange = () => {},
 }) => {
-  const theme = useTheme()
-  const colors = tokens(theme.palette.mode)
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', userSelect: 'none', }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', userSelect: 'none' }}>
       <Box sx={{ display: 'flex', alignItems: 'center', gap: $({ size: 8 }) }}>
-        <Box sx={{ width: $({ size: 24 }), height: $({ size: 24 }), borderRadius: $({ size: 4 }), backgroundColor: color }} />
-        <Typography sx={{
-          fontSize: $({ size: 13.5 }),
-          fontWeight: '500',
-          color: colors.extra.grey1,
-          lineHeight: $({ size: 25 }),
-        }}>{label}</Typography>
+        <Box
+          sx={{
+            width: $({ size: 24 }),
+            height: $({ size: 24 }),
+            borderRadius: $({ size: 4 }),
+            backgroundColor: color,
+          }}
+        />
+        <Typography
+          sx={{
+            fontSize: $({ size: 13.5 }),
+            fontWeight: '500',
+            color: colors.extra.grey1,
+            lineHeight: $({ size: 25 }),
+          }}>
+          {label}
+        </Typography>
       </Box>
 
-      <Box sx={{
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        gap: $({ size: 12 })
-      }}>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: $({ size: 12 }),
+        }}>
         <Slider
           value={value}
           onChange={onChange}
@@ -39,16 +50,16 @@ const CustomSubjectFoucsSlider = ({
           min={1}
           max={100}
           sx={{
-            width: '100%',
-            boxShadow: 'none',
+            'width': '100%',
+            'boxShadow': 'none',
             '& .MuiSlider-thumb': {
-              width: $({ size: 20 }),
-              height: $({ size: 20 }),
-              backgroundColor: DarkenHexColor({ hex: color, percentage: 15 }),
-              border: 'none',
-              borderRadius: $({ size: 20 }),
-              boxShadow: 'none',
-              zIndex: 1,
+              'width': $({ size: 20 }),
+              'height': $({ size: 20 }),
+              'backgroundColor': DarkenHexColor({ hex: color, percentage: 15 }),
+              'border': 'none',
+              'borderRadius': $({ size: 20 }),
+              'boxShadow': 'none',
+              'zIndex': 1,
               '&:hover': { boxShadow: 'none' },
               '&:focus': { boxShadow: 'none' },
               '&::before': { boxShadow: 'none' },
@@ -67,18 +78,19 @@ const CustomSubjectFoucsSlider = ({
             },
           }}
         />
-        <Typography sx={{
-          fontSize: $({ size: 13.5 }),
-          fontWeight: '600',
-          color: colors.extra.grey1,
-          lineHeight: $({ size: 25 }),
-          width: '100%',
-          maxWidth: $({ size: 28 }),
-          textAlign: 'right',
-        }}>{`${value.toFixed(0)}%`}</Typography>
+        <Typography
+          sx={{
+            fontSize: $({ size: 13.5 }),
+            fontWeight: '600',
+            color: colors.extra.grey1,
+            lineHeight: $({ size: 25 }),
+            width: '100%',
+            maxWidth: $({ size: 28 }),
+            textAlign: 'right',
+          }}>{`${value.toFixed(0)}%`}</Typography>
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default CustomSubjectFoucsSlider
+export default CustomSubjectFoucsSlider;

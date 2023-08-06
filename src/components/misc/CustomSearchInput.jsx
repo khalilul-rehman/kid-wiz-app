@@ -1,30 +1,26 @@
-import React from 'react'
-import { Box, useTheme } from '@mui/material'
+import React from 'react';
+import { Box, useTheme } from '@mui/material';
 
-import {
-  CustomTextInput,
-} from '../../components'
+import { CustomTextInput } from '../../components';
 
-import {
-  SearchIcon,
-} from '../../icons'
+import { SearchIcon } from '../../icons';
 
-import { tokens } from '../../theme'
-import { $ } from '../../utils'
+import { tokens } from '../../theme';
+import { $ } from '../../utils';
 
 const CustomSearchInput = ({
   placeholder = 'Search...',
   value = '',
-  onChange = () => { },
-  handleSearch = () => { },
-  handleSearchOnEveryKeyStroke = () => { },
+  onChange = () => {},
+  handleSearch = () => {},
+  handleSearchOnEveryKeyStroke = () => {},
   containerStyle = {},
   inputContainerStyle = {},
   inputStyle = {},
   searchIconContainerStyle = {},
 }) => {
-  const theme = useTheme()
-  const colors = tokens(theme.palette.mode)
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
 
   return (
     <CustomTextInput
@@ -35,7 +31,10 @@ const CustomSearchInput = ({
       onEnter={handleSearch}
       onKeyUp={handleSearchOnEveryKeyStroke}
       containerStyle={{ ...containerStyle }}
-      inputContainerStyle={{ paddingRight: $({ size: 12 }), ...inputContainerStyle }}
+      inputContainerStyle={{
+        paddingRight: $({ size: 12 }),
+        ...inputContainerStyle,
+      }}
       inputStyle={{ ...inputStyle }}
       rightIcon={
         <Box
@@ -51,13 +50,16 @@ const CustomSearchInput = ({
             cursor: 'pointer',
             paddingBottom: $({ size: 2 }),
             paddingRight: $({ size: 2 }),
-            ...searchIconContainerStyle
+            ...searchIconContainerStyle,
           }}>
-          <SearchIcon size={$({ size: 16, numeric: true })} color={colors.white[800]} />
+          <SearchIcon
+            size={$({ size: 16, numeric: true })}
+            color={colors.white[800]}
+          />
         </Box>
       }
     />
-  )
-}
+  );
+};
 
-export default CustomSearchInput
+export default CustomSearchInput;

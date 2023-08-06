@@ -28,7 +28,7 @@ export const ROUTES = {
       INTRO: '/personality-tests/values-assessment/',
       QUESTIONS: '/personality-tests/values-assessment/questions',
       RESULT: '/personality-tests/values-assessment/result',
-    }
+    },
   },
   PARENT: {
     DASHBOARD: {
@@ -109,4 +109,4 @@ export const ROUTES = {
       INDEX: '/admin-dashboard/logout',
     },
   },
-}
+};

@@ -1,4 +1,4 @@
-import { ASSETS } from "../../../config/assets"
+import { ASSETS } from '../../../config/assets';
 
 const WheelSegmentColors = [
   '#BDEE77',
@@ -6,7 +6,7 @@ const WheelSegmentColors = [
   '#A1D8E4',
   '#C792C8',
   '#FC99CE',
-]
+];
 
 const WheelData = [
   {
@@ -37,7 +37,7 @@ const WheelData = [
           {
             id: `category-1-subject-1-topic-5`,
             name: 'Data & Measurements',
-          }
+          },
         ],
       },
       {
@@ -417,6 +417,6 @@ const WheelData = [
       },
     ],
   },
-]
+];
 
-export { WheelData, WheelSegmentColors }
+export { WheelData, WheelSegmentColors };

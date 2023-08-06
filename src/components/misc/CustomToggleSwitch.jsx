@@ -1,15 +1,12 @@
-import React from 'react'
-import { Switch, useTheme } from '@mui/material'
+import React from 'react';
+import { Switch, useTheme } from '@mui/material';
 
-import { tokens } from '../../theme'
-import { $ } from '../../utils'
+import { tokens } from '../../theme';
+import { $ } from '../../utils';
 
-const CustomToggleSwitch = ({
-  checked = true,
-  onChange = () => { }
-}) => {
-  const theme = useTheme()
-  const colors = tokens(theme.palette.mode)
+const CustomToggleSwitch = ({ checked = true, onChange = () => {} }) => {
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
 
   return (
     <Switch
@@ -19,17 +16,17 @@ const CustomToggleSwitch = ({
       disableFocusRipple
       disableTouchRipple
       sx={{
-        width: $({ size: 80 }),
-        height: $({ size: 40 }),
-        padding: 0,
+        'width': $({ size: 80 }),
+        'height': $({ size: 40 }),
+        'padding': 0,
         '& .MuiSwitch-switchBase': {
-          padding: `${$({ size: 4 })}`,
-          transitionDuration: '300ms',
+          'padding': `${$({ size: 4 })}`,
+          'transitionDuration': '300ms',
           '&.Mui-checked': {
-            width: $({ size: 80 }),
-            height: $({ size: 40 }),
-            color: colors.solids.white,
-            transform: `translateX(${$({ size: 20 })})`,
+            'width': $({ size: 80 }),
+            'height': $({ size: 40 }),
+            'color': colors.solids.white,
+            'transform': `translateX(${$({ size: 20 })})`,
             '& + .MuiSwitch-track': {
               backgroundColor: colors.solids.mainButton,
               opacity: 1,
@@ -59,8 +56,9 @@ const CustomToggleSwitch = ({
             duration: 500,
           },
         },
-      }} />
-  )
-}
+      }}
+    />
+  );
+};
 
-export default CustomToggleSwitch
+export default CustomToggleSwitch;

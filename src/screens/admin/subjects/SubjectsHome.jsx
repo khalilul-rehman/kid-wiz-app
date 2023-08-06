@@ -1,11 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const SubjectsHome = () => {
-  return (
-    <div>
+  return <div></div>;
+};
 
-    </div>
-  )
-}
-
-export default SubjectsHome
+export default SubjectsHome;

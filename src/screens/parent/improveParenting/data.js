@@ -10,15 +10,15 @@ const TopicsData = [
         sections: [
           {
             id: 't1s1s1',
-            title: 'How to set boundaries and consequences'
+            title: 'How to set boundaries and consequences',
           },
           {
             id: 't1s1s2',
-            title: 'How to set rules and expectations'
+            title: 'How to set rules and expectations',
           },
           {
             id: 't1s1s3',
-            title: 'How to set limits'
+            title: 'How to set limits',
           },
         ],
       },
@@ -28,19 +28,19 @@ const TopicsData = [
         sections: [
           {
             id: 't1s2s1',
-            title: 'How to use positive reinforcement'
+            title: 'How to use positive reinforcement',
           },
           {
             id: 't1s2s2',
-            title: 'How to use rewards'
+            title: 'How to use rewards',
           },
           {
             id: 't1s2s3',
-            title: 'How to use praise'
+            title: 'How to use praise',
           },
           {
             id: 't1s2s4',
-            title: 'How to use incentives'
+            title: 'How to use incentives',
           },
         ],
       },
@@ -50,35 +50,35 @@ const TopicsData = [
         sections: [
           {
             id: 't1s3s1',
-            title: 'Emotional coping skills'
+            title: 'Emotional coping skills',
           },
           {
             id: 't1s3s2',
-            title: 'How to deal with sadness'
+            title: 'How to deal with sadness',
           },
           {
             id: 't1s3s3',
-            title: 'Self-regulation techniques'
+            title: 'Self-regulation techniques',
           },
           {
             id: 't1s3s4',
-            title: 'How to understand emotions'
+            title: 'How to understand emotions',
           },
           {
             id: 't1s3s5',
-            title: 'Establishing routines and predictability'
+            title: 'Establishing routines and predictability',
           },
           {
             id: 't1s3s6',
-            title: 'How to deal with anger'
+            title: 'How to deal with anger',
           },
           {
             id: 't1s3s7',
-            title: 'How to deal with fear'
+            title: 'How to deal with fear',
           },
           {
             id: 't1s3s8',
-            title: 'How to deal with anxiety'
+            title: 'How to deal with anxiety',
           },
         ],
       },
@@ -88,11 +88,11 @@ const TopicsData = [
         sections: [
           {
             id: 't1s4s1',
-            title: 'How to use time-outs'
+            title: 'How to use time-outs',
           },
           {
             id: 't1s4s2',
-            title: 'How to use time-ins'
+            title: 'How to use time-ins',
           },
         ],
       },
@@ -102,19 +102,19 @@ const TopicsData = [
         sections: [
           {
             id: 't1s5s1',
-            title: 'How to deal with lying'
+            title: 'How to deal with lying',
           },
           {
             id: 't1s5s2',
-            title: 'How to deal with stealing'
+            title: 'How to deal with stealing',
           },
           {
             id: 't1s5s3',
-            title: 'How to deal with cheating'
-          }
+            title: 'How to deal with cheating',
+          },
         ],
       },
-    ]
+    ],
   },
   {
     id: 't2',
@@ -127,23 +127,23 @@ const TopicsData = [
         sections: [
           {
             id: 't2s1s1',
-            title: 'How to talk to your child'
+            title: 'How to talk to your child',
           },
           {
             id: 't2s1s2',
-            title: 'How to talk to your teen'
+            title: 'How to talk to your teen',
           },
           {
             id: 't2s1s3',
-            title: 'How to talk to your toddler'
+            title: 'How to talk to your toddler',
           },
           {
             id: 't2s1s4',
-            title: 'How to talk to your baby'
+            title: 'How to talk to your baby',
           },
           {
             id: 't2s1s5',
-            title: 'How to talk to your preschooler'
+            title: 'How to talk to your preschooler',
           },
         ],
       },
@@ -153,39 +153,39 @@ const TopicsData = [
         sections: [
           {
             id: 't2s2s1',
-            title: 'How to listen to your child'
+            title: 'How to listen to your child',
           },
           {
             id: 't2s2s2',
-            title: 'How to listen to your teen'
+            title: 'How to listen to your teen',
           },
-        ]
+        ],
       },
-    ]
+    ],
   },
   {
     id: 't3',
     title: 'Education and Learning',
     isEnabled: false,
-    subTopics: []
+    subTopics: [],
   },
   {
     id: 't4',
     title: 'Child Development',
     isEnabled: false,
-    subTopics: []
+    subTopics: [],
   },
   {
     id: 't5',
     title: 'Health and Safety',
     isEnabled: false,
-    subTopics: []
+    subTopics: [],
   },
   {
     id: 't6',
     title: 'Parent Self-Care',
     isEnabled: false,
-    subTopics: []
+    subTopics: [],
   },
   {
     id: 't7',
@@ -198,17 +198,17 @@ const TopicsData = [
         sections: [
           {
             id: 't7s1s1',
-            title: 'How to keep your child safe online'
+            title: 'How to keep your child safe online',
           },
           {
             id: 't7s1s2',
-            title: 'How to keep your teen safe online'
+            title: 'How to keep your teen safe online',
           },
           {
             id: 't7s1s3',
-            title: 'How to keep your toddler safe online'
+            title: 'How to keep your toddler safe online',
           },
-        ]
+        ],
       },
       {
         id: 't7s2',
@@ -216,16 +216,16 @@ const TopicsData = [
         sections: [
           {
             id: 't7s2s1',
-            title: 'How to keep your child healthy online'
+            title: 'How to keep your child healthy online',
           },
           {
             id: 't7s2s2',
-            title: 'How to keep your teen healthy online'
+            title: 'How to keep your teen healthy online',
           },
-        ]
+        ],
       },
-    ]
+    ],
   },
-]
+];
 
-export { TopicsData }
+export { TopicsData };

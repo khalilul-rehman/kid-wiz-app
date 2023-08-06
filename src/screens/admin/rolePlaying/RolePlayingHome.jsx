@@ -1,11 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const RolePlayingHome = () => {
-  return (
-    <div>
+  return <div></div>;
+};
 
-    </div>
-  )
-}
-
-export default RolePlayingHome
+export default RolePlayingHome;

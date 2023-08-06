@@ -1,5 +1,3 @@
-import UnderDevelopmentScreen from './UnderDevelopmentScreen'
+import UnderDevelopmentScreen from './UnderDevelopmentScreen';
 
-export {
-  UnderDevelopmentScreen
-}
+export { UnderDevelopmentScreen };

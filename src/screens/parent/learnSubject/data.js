@@ -111,7 +111,7 @@ const SubjectData = [
     color: '#FC99CE',
     isUnlocked: true,
   },
-]
+];
 
 const SubjectDetailData = [
   {
@@ -134,9 +134,6 @@ const SubjectDetailData = [
     id: 5,
     title: 'Weather and Climate',
   },
-]
+];
 
-export {
-  SubjectData,
-  SubjectDetailData,
-}
+export { SubjectData, SubjectDetailData };

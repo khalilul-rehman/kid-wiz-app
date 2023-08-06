@@ -1,25 +1,22 @@
-import React from 'react'
-import { Box } from '@mui/material'
-import { useTheme } from '@mui/material/styles'
+import React from 'react';
+import { Box } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 
-import {
-  CheckBoxCheckedIcon,
-  CheckBoxOutlineIcon,
-} from '../../icons'
+import { CheckBoxCheckedIcon, CheckBoxOutlineIcon } from '../../icons';
 
-import { tokens } from '../../theme'
-import { $ } from '../../utils'
+import { tokens } from '../../theme';
+import { $ } from '../../utils';
 
 const CustomCheckBox = ({
   isChecked = false,
-  onChange = () => { },
+  onChange = () => {},
   checkedIconSize = $({ size: 32, numeric: true }),
   checkedIconColor = null,
   uncheckedIconSize = $({ size: 32, numeric: true }),
   uncheckedIconColor = null,
 }) => {
-  const theme = useTheme()
-  const colors = tokens(theme.palette.mode)
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
 
   return (
     <Box
@@ -29,21 +26,21 @@ const CustomCheckBox = ({
         alignItems: 'center',
         justifyContent: 'center',
       }}>
-      {
-        isChecked &&
+      {isChecked && (
         <CheckBoxCheckedIcon
           size={checkedIconSize}
-          color={checkedIconColor || colors.solids.mainButton} />
-      }
+          color={checkedIconColor || colors.solids.mainButton}
+        />
+      )}
 
-      {
-        !isChecked &&
+      {!isChecked && (
         <CheckBoxOutlineIcon
           size={uncheckedIconSize}
-          color={uncheckedIconColor || colors.extra.grey3} />
-      }
+          color={uncheckedIconColor || colors.extra.grey3}
+        />
+      )}
     </Box>
-  )
-}
+  );
+};
 
-export default CustomCheckBox
+export default CustomCheckBox;

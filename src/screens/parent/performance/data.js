@@ -1,18 +1,19 @@
 const SubjectDetails = {
-  summary: 'Your child has demonstrated a basic understanding of the subject matter in all areas. They meet minimum expectations, but there are areas that could benefit from improvement. Encourage them to continue working hard!',
+  summary:
+    'Your child has demonstrated a basic understanding of the subject matter in all areas. They meet minimum expectations, but there are areas that could benefit from improvement. Encourage them to continue working hard!',
   percentage: 73.5,
   topics: [
-    { title: 'Measurement & Data', percentage: 76, },
-    { title: 'Problem solving & Logic', percentage: 49, },
-    { title: 'Geometry & Shapes', percentage: 81, },
-    { title: 'Fractions & Decimals', percentage: 81, },
-    { title: 'Addition & Subtraction', percentage: 94, },
-    { title: 'Multiplication & Devision', percentage: -1, },
-    { title: 'Measurement & Data', percentage: 76, },
-    { title: 'Problem solving & Logic', percentage: 49, },
-    { title: 'Geometry & Shapes', percentage: 81, },
-  ]
-}
+    { title: 'Measurement & Data', percentage: 76 },
+    { title: 'Problem solving & Logic', percentage: 49 },
+    { title: 'Geometry & Shapes', percentage: 81 },
+    { title: 'Fractions & Decimals', percentage: 81 },
+    { title: 'Addition & Subtraction', percentage: 94 },
+    { title: 'Multiplication & Devision', percentage: -1 },
+    { title: 'Measurement & Data', percentage: 76 },
+    { title: 'Problem solving & Logic', percentage: 49 },
+    { title: 'Geometry & Shapes', percentage: 81 },
+  ],
+};
 
 const SubjectData = [
   {
@@ -123,7 +124,7 @@ const SubjectData = [
     grade: 'A',
     details: SubjectDetails,
   },
-]
+];
 
 const StrengthsData = [
   {
@@ -221,7 +222,7 @@ const StrengthsData = [
     color: '#FC99CE',
     iconPath: '/assets/icons/english.svg',
   },
-]
+];
 
 const OverallScoreData = {
   graph: [
@@ -232,18 +233,15 @@ const OverallScoreData = {
     { id: '5', label: 'C+', color: '#C792C8', value: 14 },
   ],
   grade: 'B-',
-  summary: 'Your child has demonstrated a basic understanding of the subject matter in all areas. They meet minimum expectations, but there are areas that could benefit from improvement. Encourage them to continue working hard!',
+  summary:
+    'Your child has demonstrated a basic understanding of the subject matter in all areas. They meet minimum expectations, but there are areas that could benefit from improvement. Encourage them to continue working hard!',
   legend: [
     { label: 'Science, biology, & Environment', color: '#BDEE77' },
     { label: 'English & Coding', color: '#ECC283' },
     { label: 'Math, Money, & Music', color: '#A1D8E4' },
     { label: 'Social Study & Languages', color: '#FC99CE' },
     { label: 'Logic, Life Skills, Emotions, & Innovation', color: '#C792C8' },
-  ]
-}
+  ],
+};
 
-export {
-  SubjectData,
-  StrengthsData,
-  OverallScoreData,
-}
+export { SubjectData, StrengthsData, OverallScoreData };

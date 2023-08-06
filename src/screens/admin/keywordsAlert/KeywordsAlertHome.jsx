@@ -1,11 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const KeywordsAlertHome = () => {
-  return (
-    <div>
+  return <div></div>;
+};
 
-    </div>
-  )
-}
-
-export default KeywordsAlertHome
+export default KeywordsAlertHome;

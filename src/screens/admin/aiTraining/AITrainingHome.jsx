@@ -1,11 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const AITrainingHome = () => {
-  return (
-    <div>
+  return <div></div>;
+};
 
-    </div>
-  )
-}
-
-export default AITrainingHome
+export default AITrainingHome;

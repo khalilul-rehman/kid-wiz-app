@@ -7,7 +7,7 @@ body,
 .content {
   height: 100%;
   width: 100%;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .app {
@@ -26,15 +26,15 @@ body,
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #A7A7A7;
+  background-color: #a7a7a7;
   border-radius: 12px;
 }
 
 @media (max-width: 900px) {
   .pro-sidebar .lg {
-      position: fixed !important;
-      left: -270px !important;
-    }
+    position: fixed !important;
+    left: -270px !important;
+  }
 }
 
 /* PATCH: ADDED THIS TO DISABLE ALL VIEWS EXCEPT DESKTOP */

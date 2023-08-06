@@ -6,7 +6,7 @@ export const ASSETS = {
       GOOGLE: '/assets/images/authentication/google.svg',
       FACEBOOK: '/assets/images/authentication/facebook.svg',
       CONFIRMATION_LIKE: '/assets/images/authentication/confirmation-like.svg',
-    }
+    },
   },
   ON_BOARDING: {
     CHILD: '/assets/images/on-boarding/child.png',
@@ -23,8 +23,7 @@ export const ASSETS = {
       SETTINGS: '/assets/images/parent/settings.svg',
       LOGOUT: '/assets/images/parent/logout.svg',
     },
-    DASHBOARD: {
-    }
+    DASHBOARD: {},
   },
   PLACEHOLDER: {
     CHILD: '/assets/images/on-boarding/child.png',
@@ -44,5 +43,5 @@ export const ASSETS = {
     INNOVATION: '/assets/icons/innovation.svg',
     CODING: '/assets/icons/coding.svg',
     LANGUAGES: '/assets/icons/languages.svg',
-  }
-}
+  },
+};

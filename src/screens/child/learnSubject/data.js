@@ -111,7 +111,7 @@ const SubjectData = [
     color: '#FC99CE',
     isUnlocked: true,
   },
-]
+];
 
 const SubjectDetailData = [
   {
@@ -134,7 +134,7 @@ const SubjectDetailData = [
     id: 5,
     title: 'Weather and Climate',
   },
-]
+];
 
 const GoalsOfTodayData = {
   percentage: 50,
@@ -171,10 +171,6 @@ const GoalsOfTodayData = {
       percentage: 50,
     },
   ],
-}
+};
 
-export {
-  SubjectData,
-  SubjectDetailData,
-  GoalsOfTodayData,
-}
+export { SubjectData, SubjectDetailData, GoalsOfTodayData };
