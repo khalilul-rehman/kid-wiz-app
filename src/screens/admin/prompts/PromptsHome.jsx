@@ -292,6 +292,10 @@ const PromptsHome = () => {
                     outline: 'none',
                     backgroundColor: 'transparent',
                   },
+                  '& .MuiAccordionSummary-content.Mui-expanded>div>div>p': {
+                    fontWeight: '700',
+                    color: colors.solids.black,
+                  },
                 }}>
                 <Box
                   sx={{
@@ -311,9 +315,9 @@ const PromptsHome = () => {
                     }}>
                     <Typography
                       sx={{
-                        color: colors.solids.black,
+                        color: colors.extra.grey1,
                         fontSize: $({ size: 18 }),
-                        fontWeight: '700',
+                        fontWeight: '600',
                       }}>
                       {item.title}
                     </Typography>

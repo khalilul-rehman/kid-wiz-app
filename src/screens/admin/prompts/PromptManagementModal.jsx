@@ -171,7 +171,7 @@ const PromptManagementModal = ({
   return (
     <CustomModal
       showBackdrop={true}
-      title='New Child'
+      title={currentSelectedPrompt ? 'Edit Prompt' : 'New Prompt'}
       onClose={() => setIsModalOpen({ isOpen: false, index: -1 })}
       offset={{
         top: offset.top,
