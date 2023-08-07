@@ -178,9 +178,15 @@ const QuizManagementModal = ({
             multiline={true}
             containerStyle={{
               width: '100%',
+              height: '100%',
+              minHeight: $({ size: 240 }),
             }}
-            maxRows={7}
-            minRows={7}
+            inputContainerStyle={{
+              height: `calc(100% - ${$({ size: 40, numeric: true })}px)`,
+            }}
+            inputStyle={{
+              height: `calc(100% - ${$({ size: 8, numeric: true })}px)`,
+            }}
           />
         </Grid>
       </Grid>

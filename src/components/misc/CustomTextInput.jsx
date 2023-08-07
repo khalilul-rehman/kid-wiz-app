@@ -32,8 +32,6 @@ const CustomTextInput = ({
   type = 'text',
   disabled = false,
   multiline = false,
-  maxRows = 1,
-  minRows = 1,
   onChange = () => {},
   onEnter = () => {},
   onKeyUp = () => {},
@@ -92,8 +90,6 @@ const CustomTextInput = ({
           disabled={disabled}
           type={type}
           multiline={multiline}
-          maxRows={maxRows}
-          minRows={minRows}
           onKeyUp={(e) => {
             if (e.key === 'Enter') {
               onEnter();
@@ -112,6 +108,8 @@ const CustomTextInput = ({
               opacity: 0.7,
               ...inputStyle?.['&::placeholder'],
             },
+            'display': 'flex',
+            'alignItems': 'start',
             ...inputStyle,
           }}
         />

@@ -75,7 +75,7 @@ const SortablePromptContainer = SortableContainer(({ children, colors }) => {
     <Grid
       item
       xs={12}
-      md={5.7}
+      md={6.7}
       sx={{
         'mt': {
           xs: $({ size: 0 }),
@@ -138,21 +138,22 @@ const TrainByPromptsTab = ({ topSectionHeight = 0 }) => {
       <Grid
         item
         xs={12}
-        md={5.7}>
+        md={4.7}>
         <CustomTextInput
           label='Training Prompts'
           placeholder='Separate prompts by a comma e.g. Prompt example 1, prompt example 2, prompt example 3, ...'
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
           multiline={true}
-          maxRows={8}
-          minRows={8}
           containerStyle={{
             width: '100%',
             height: '100%',
           }}
           inputContainerStyle={{
             height: `calc(100% - ${$({ size: 40, numeric: true })}px)`,
+          }}
+          inputStyle={{
+            height: `calc(100% - ${$({ size: 8, numeric: true })}px)`,
           }}
         />
       </Grid>

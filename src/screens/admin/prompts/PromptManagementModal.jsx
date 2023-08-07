@@ -120,9 +120,9 @@ const PromptManagementModal = ({
   setCurrentSelectedPrompt = () => {},
   setPromptsData = () => {},
   offset = {
-    top: 64,
-    left: 64,
-    right: 64,
+    top: 24,
+    left: 48,
+    right: 48,
   },
 }) => {
   const theme = useTheme();
@@ -351,9 +351,14 @@ const PromptManagementModal = ({
             multiline={true}
             containerStyle={{
               width: '100%',
+              height: '100%',
             }}
-            maxRows={7}
-            minRows={7}
+            inputContainerStyle={{
+              height: `calc(100% - ${$({ size: 40, numeric: true })}px)`,
+            }}
+            inputStyle={{
+              height: `calc(100% - ${$({ size: 8, numeric: true })}px)`,
+            }}
           />
         </Grid>
         <Grid
