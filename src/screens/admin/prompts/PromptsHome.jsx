@@ -568,6 +568,8 @@ const PromptsHome = () => {
           }
           currentSelectedPrompt={currentSelectedPrompt}
           setCurrentSelectedPrompt={setCurrentSelectedPrompt}
+          setPromptsData={setPromptsData}
+          promptsData={promptsData}
         />
       )}
 

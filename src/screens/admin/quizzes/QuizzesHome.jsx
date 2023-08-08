@@ -406,6 +406,8 @@ const QuizzesHome = () => {
           setIsModalOpen={setIsModalOpen}
           currentSelectedQuiz={currentSelectedQuiz}
           setCurrentSelectedQuiz={setCurrentSelectedQuiz}
+          quizzesData={quizzesData}
+          setQuizzesData={setQuizzesData}
         />
       )}
 

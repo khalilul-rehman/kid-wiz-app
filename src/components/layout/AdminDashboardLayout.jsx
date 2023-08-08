@@ -70,8 +70,8 @@ const SideBar = ({ isToggled = false, setIsToggled = () => {} }) => {
   const { state } = useLocation();
 
   React.useEffect(() => {
-    const path = window.location.pathname;
-    setSelected(path.split('/').slice(0, 3).join('/'));
+    const path = window.location.pathname.split('/').slice(0, 3).join('/');
+    setSelected(path.replace(/\/$/, ''));
 
     setIsToggled(false);
   }, [navigate, setIsToggled, state]);

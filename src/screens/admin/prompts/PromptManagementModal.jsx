@@ -118,12 +118,13 @@ const PromptManagementModal = ({
   initialPrompt = 'foundational',
   currentSelectedPrompt = null,
   setCurrentSelectedPrompt = () => {},
-  setPromptsData = () => {},
   offset = {
     top: 24,
     left: 48,
     right: 48,
   },
+  promptsData = [],
+  setPromptsData = () => {},
 }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -172,7 +173,10 @@ const PromptManagementModal = ({
     <CustomModal
       showBackdrop={true}
       title={currentSelectedPrompt ? 'Edit Prompt' : 'New Prompt'}
-      onClose={() => setIsModalOpen({ isOpen: false, index: -1 })}
+      onClose={() => {
+        setIsModalOpen({ isOpen: false, index: -1 });
+        setCurrentSelectedPrompt(null);
+      }}
       offset={{
         top: offset.top,
         left: offset.left,
@@ -212,6 +216,7 @@ const PromptManagementModal = ({
           display: 'flex',
           flexDirection: 'row',
           gap: $({ size: 20 }),
+          userSelect: 'none',
         }}>
         {['Foundational', 'Buttons', 'Chat-Command'].map((item, index) => {
           return (
@@ -459,6 +464,7 @@ const PromptManagementModal = ({
           }}
           onClick={() => {
             setIsModalOpen({ isOpen: false, index: -1 });
+            setCurrentSelectedPrompt(null);
           }}
         />
         <CustomButton
@@ -471,7 +477,42 @@ const PromptManagementModal = ({
             )}`,
           }}
           rightIcon={<SaveIcon size={$({ size: 24, numeric: true })} />}
-          onClick={() => {}}
+          onClick={() => {
+            setPromptsData([
+              ...(currentSelectedPrompt?.id
+                ? []
+                : [
+                    {
+                      id: `${promptType}-${promptsData.length + 1}`,
+                      title: promptTitle,
+                      tier: tier.label,
+                      type: promptType,
+                      buttonLabel: buttonLabel,
+                      buttonId: buttonId,
+                      scoring: scoring,
+                      prompts: prompts,
+                    },
+                  ]),
+              ...promptsData.map((prompt) => {
+                if (prompt?.id === currentSelectedPrompt?.id) {
+                  return {
+                    ...prompt,
+                    title: promptTitle,
+                    tier: tier.label,
+                    type: promptType,
+                    buttonLabel: buttonLabel,
+                    buttonId: buttonId,
+                    scoring: scoring,
+                    prompts: prompts,
+                  };
+                }
+                return prompt;
+              }),
+            ]);
+
+            setIsModalOpen({ isOpen: false, index: -1 });
+            setCurrentSelectedPrompt(null);
+          }}
         />
       </Box>
     </CustomModal>

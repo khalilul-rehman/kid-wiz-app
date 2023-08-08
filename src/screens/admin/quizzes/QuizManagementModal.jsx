@@ -25,6 +25,8 @@ const QuizManagementModal = ({
     left: 48,
     right: 48,
   },
+  quizzesData = [],
+  setQuizzesData = () => {},
 }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -38,7 +40,7 @@ const QuizManagementModal = ({
   const [tierDropDownOpen, setTierDropDownOpen] = React.useState(false);
   const [tier, setTier] = React.useState({
     label: currentSelectedQuiz?.tier || '',
-    value: currentSelectedQuiz?.tier.toLowerCase() || '',
+    value: currentSelectedQuiz?.tier?.toLowerCase() || '',
   });
 
   const [subjectDropDownOpen, setSubjectDropDownOpen] = React.useState(false);
@@ -51,7 +53,10 @@ const QuizManagementModal = ({
     <CustomModal
       showBackdrop={true}
       title={currentSelectedQuiz ? 'Edit Quiz' : 'New Quiz'}
-      onClose={() => setIsModalOpen({ isOpen: false, index: -1 })}
+      onClose={() => {
+        setIsModalOpen({ isOpen: false, index: -1 });
+        setCurrentSelectedQuiz(null);
+      }}
       offset={{
         top: offset.top,
         left: offset.left,
@@ -210,6 +215,7 @@ const QuizManagementModal = ({
           }}
           onClick={() => {
             setIsModalOpen({ isOpen: false, index: -1 });
+            setCurrentSelectedQuiz(null);
           }}
         />
         <CustomButton
@@ -222,7 +228,36 @@ const QuizManagementModal = ({
             )}`,
           }}
           rightIcon={<SaveIcon size={$({ size: 24, numeric: true })} />}
-          onClick={() => {}}
+          onClick={() => {
+            setQuizzesData([
+              ...(currentSelectedQuiz?.id
+                ? []
+                : [
+                    {
+                      id: `quiz-${quizzesData.length + 1}`,
+                      title: quizTitle,
+                      prompt: prompt,
+                      tier: tier.label,
+                      subject: subject,
+                    },
+                  ]),
+              ...quizzesData.map((quiz) => {
+                if (quiz?.id === currentSelectedQuiz?.id) {
+                  return {
+                    ...quiz,
+                    title: quizTitle,
+                    prompt: prompt,
+                    tier: tier.label,
+                    subject: subject,
+                  };
+                }
+                return quiz;
+              }),
+            ]);
+
+            setIsModalOpen({ isOpen: false, index: -1 });
+            setCurrentSelectedQuiz(null);
+          }}
         />
       </Box>
     </CustomModal>
