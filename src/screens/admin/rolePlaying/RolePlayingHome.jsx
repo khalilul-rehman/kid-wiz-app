@@ -175,6 +175,7 @@ const RolePlayingHome = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
+                width: 'fit-content',
               }}>
               <AddIcon
                 color={colors.solids.mainButton}

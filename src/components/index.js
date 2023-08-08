@@ -36,6 +36,8 @@ import DashboardContainer from './layout/DashboardContainer';
 import ParentDashboardLayout from './layout/ParentDashboardLayout';
 import ChildDashboardLayout from './layout/ChildDashboardLayout';
 import AdminDashboardLayout from './layout/AdminDashboardLayout';
+import NotificationsTopBar from './layout/topBar/NotificationsTopBar';
+import ChatWithSupportTopBar from './layout/topBar/ChatWithSupportTopBar';
 
 export {
   MainContainer,
@@ -43,6 +45,8 @@ export {
   ParentDashboardLayout,
   ChildDashboardLayout,
   AdminDashboardLayout,
+  NotificationsTopBar,
+  ChatWithSupportTopBar,
 };
 
 /*** LEARN COMPONENTS ************************************************************************************/

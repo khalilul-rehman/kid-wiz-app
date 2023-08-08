@@ -131,6 +131,7 @@ const QuizzesHome = () => {
               gap: $({ size: 16 }),
               alignItems: 'center',
               cursor: 'pointer',
+              width: 'fit-content',
             }}>
             <Box
               sx={{

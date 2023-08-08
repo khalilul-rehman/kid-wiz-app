@@ -36,6 +36,7 @@ import ChevronSlimDownIcon from './misc/ChevronSlimDownIcon';
 import HelpIcon from './misc/HelpIcon';
 import NotificationsIcon from './misc/NotificationsIcon';
 import StarIcon from './misc/StarIcon';
+import DocumentAttachmentIcon from './misc/DocumentAttachmentIcon';
 
 export {
   AddIcon,
@@ -74,6 +75,7 @@ export {
   HelpIcon,
   NotificationsIcon,
   StarIcon,
+  DocumentAttachmentIcon,
 };
 
 /*** ONBOARDING ICONS ******************************************************************************************/

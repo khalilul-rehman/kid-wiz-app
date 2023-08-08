@@ -83,7 +83,7 @@ const Spinner = ({
     _isAccelerating = true;
     setIsAccelerating(_isAccelerating);
 
-    angleMaximumVelocity = GenerateRandomValue(0, 1);
+    angleMaximumVelocity = GenerateRandomValue(0.55, 0.8);
     engine(); // Start engine!
   })();
 };

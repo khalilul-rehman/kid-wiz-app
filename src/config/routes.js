@@ -58,7 +58,8 @@ export const ROUTES = {
       INDEX: '/parent-dashboard/settings',
     },
     LOGOUT: {
-      INDEX: '/parent-dashboard/logout',
+      INDEX: '/login',
+      // INDEX: '/parent-dashboard/logout',
     },
   },
   CHILD: {
@@ -80,7 +81,8 @@ export const ROUTES = {
       INDEX: '/child-dashboard/explore',
     },
     LOGOUT: {
-      INDEX: '/child-dashboard/logout',
+      INDEX: '/login',
+      // INDEX: '/child-dashboard/logout',
     },
   },
   ADMIN: {
@@ -106,7 +108,8 @@ export const ROUTES = {
       INDEX: '/admin-dashboard/keywords-alert',
     },
     LOGOUT: {
-      INDEX: '/admin-dashboard/logout',
+      INDEX: '/login',
+      // INDEX: '/admin-dashboard/logout',
     },
   },
 };

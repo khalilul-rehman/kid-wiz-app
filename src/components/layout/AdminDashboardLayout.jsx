@@ -7,6 +7,8 @@ import 'react-pro-sidebar/dist/css/styles.css';
 
 import MenuIcon from '@mui/icons-material/Menu';
 
+import { ChatWithSupportTopBar, NotificationsTopBar } from './../../components';
+
 import {
   LearnSubjectIcon,
   RibbonIcon,
@@ -270,6 +272,8 @@ const TopBar = ({ isToggled = false, setIsToggled = () => {} }) => {
 
   const navigate = useNavigate();
   const [isOptionMenuOpen, setIsOptionMenuOpen] = useState(false);
+  const [isChatWithSupportOpen, setIsChatWithSupportOpen] = useState(false);
+  const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
 
   return (
     <Box
@@ -349,43 +353,109 @@ const TopBar = ({ isToggled = false, setIsToggled = () => {} }) => {
           }
         </IconButton> */}
 
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: $({ size: 16 }),
-          }}>
-          <Box
-            onClick={() => {}}
-            sx={{
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-            <HelpIcon
-              size={$({ size: 24, numeric: true })}
-              color={colors.extra.grey3}
-            />
-          </Box>
-
-          <Box
-            onClick={() => {}}
-            sx={{
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-            <NotificationsIcon
-              size={$({ size: 24, numeric: true })}
-              color={colors.extra.grey3}
-            />
-          </Box>
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <ChatWithSupportTopBar
+            isToggled={isChatWithSupportOpen}
+            setIsToggled={() => {
+              setIsChatWithSupportOpen(!isChatWithSupportOpen);
+              setIsNotificationsOpen(false);
+              setIsOptionMenuOpen(false);
+              setTimeout(() => {
+                setIsChatWithSupportOpen(false);
+              }, 15000);
+            }}
+            data={[
+              {
+                id: 'message-1',
+                text: 'User message goes here',
+                showOnRight: true,
+              },
+              {
+                id: 'message-2',
+                text: 'User message',
+                showOnRight: true,
+              },
+              {
+                id: 'message-3',
+                text: 'Support message goes here in this field',
+                showOnRight: false,
+              },
+              {
+                id: 'message-4',
+                text: 'User message goes here',
+                showOnRight: true,
+              },
+              {
+                id: 'message-5',
+                text: 'User message',
+                showOnRight: true,
+              },
+              {
+                id: 'message-6',
+                text: 'Support message goes here in this field',
+                showOnRight: false,
+              },
+              {
+                id: 'message-7',
+                text: 'User message goes here',
+                showOnRight: true,
+              },
+              {
+                id: 'message-8',
+                text: 'User message',
+                showOnRight: true,
+              },
+              {
+                id: 'message-9',
+                text: 'Support message goes here in this field',
+                showOnRight: false,
+              },
+            ]}
+          />
+          <NotificationsTopBar
+            isToggled={isNotificationsOpen}
+            setIsToggled={() => {
+              setIsChatWithSupportOpen(false);
+              setIsNotificationsOpen(!isNotificationsOpen);
+              setIsOptionMenuOpen(false);
+              setTimeout(() => {
+                setIsNotificationsOpen(false);
+              }, 5000);
+            }}
+            data={[
+              {
+                text: 'Notification text example goes in this field',
+                time: '2 hours ago',
+                isUnread: true,
+              },
+              {
+                text: 'Notification text example goes in this field',
+                time: '2 hours ago',
+                isUnread: true,
+              },
+              {
+                text: 'Notification text example goes in this field',
+                time: '2 hours ago',
+                isUnread: false,
+              },
+              {
+                text: 'Notification text example goes in this field',
+                time: '2 hours ago',
+                isUnread: false,
+              },
+              {
+                text: 'Notification text example goes in this field',
+                time: '2 hours ago',
+                isUnread: false,
+              },
+            ]}
+          />
         </Box>
 
         <Box
           onClick={() => {
+            setIsChatWithSupportOpen(false);
+            setIsNotificationsOpen(false);
             setIsOptionMenuOpen(!isOptionMenuOpen);
             setTimeout(() => {
               setIsOptionMenuOpen(false);
@@ -471,7 +541,7 @@ const TopBar = ({ isToggled = false, setIsToggled = () => {} }) => {
               position: 'absolute',
               right: $({ size: 28 }),
               top: $({ size: 64 }),
-              zIndex: 10000000,
+              zIndex: 10,
               backgroundColor: colors.white[800],
               width: $({ size: 240 }),
             }}>
@@ -555,6 +625,7 @@ const TopBar = ({ isToggled = false, setIsToggled = () => {} }) => {
             ].map((item, index, _) => {
               return (
                 <Box
+                  key={item.title}
                   onClick={() => {
                     if (item.to) {
                       navigate(item.to);
