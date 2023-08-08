@@ -351,13 +351,14 @@ const PromptManagementModal = ({
             multiline={true}
             containerStyle={{
               width: '100%',
-              height: '100%',
+              height: $({ size: 280 }),
             }}
             inputContainerStyle={{
-              height: `calc(100% - ${$({ size: 40, numeric: true })}px)`,
+              height: $({ size: 240 }),
             }}
             inputStyle={{
-              height: `calc(100% - ${$({ size: 8, numeric: true })}px)`,
+              height: $({ size: 220 }),
+              overflowY: 'scroll',
             }}
           />
         </Grid>

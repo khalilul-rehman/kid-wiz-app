@@ -21,9 +21,9 @@ const QuizManagementModal = ({
   currentSelectedQuiz = null,
   setCurrentSelectedQuiz = () => {},
   offset = {
-    top: 64,
-    left: 64,
-    right: 64,
+    top: 24,
+    left: 48,
+    right: 48,
   },
 }) => {
   const theme = useTheme();
@@ -178,14 +178,14 @@ const QuizManagementModal = ({
             multiline={true}
             containerStyle={{
               width: '100%',
-              height: '100%',
-              minHeight: $({ size: 240 }),
+              height: $({ size: 240 }),
             }}
             inputContainerStyle={{
               height: `calc(100% - ${$({ size: 40, numeric: true })}px)`,
             }}
             inputStyle={{
               height: `calc(100% - ${$({ size: 8, numeric: true })}px)`,
+              overflowY: 'scroll',
             }}
           />
         </Grid>

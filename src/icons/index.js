@@ -32,6 +32,7 @@ import ChevronUpIcon from './misc/ChevronUpIcon';
 import ChevronDownIcon from './misc/ChevronDownIcon';
 import ReorderThreeIcon from './misc/ReorderThreeIcon';
 import CrossIcon from './misc/CrossIcon';
+import ChevronSlimDownIcon from './misc/ChevronSlimDownIcon';
 
 export {
   AddIcon,
@@ -66,6 +67,7 @@ export {
   ChevronDownIcon,
   ReorderThreeIcon,
   CrossIcon,
+  ChevronSlimDownIcon,
 };
 
 /*** ONBOARDING ICONS ******************************************************************************************/
