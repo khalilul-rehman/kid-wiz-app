@@ -18,8 +18,6 @@ import {
   PromptsIcon,
   AITrainingIcon,
   KeywordsAlertIcon,
-  HelpIcon,
-  NotificationsIcon,
   ChevronSlimDownIcon,
   DashboardIcon,
 } from '../../icons';
