@@ -1,16 +1,10 @@
 import React, { useState } from 'react';
 import { ProSidebar, Menu, MenuItem } from 'react-pro-sidebar';
-import { Box, Typography, IconButton } from '@mui/material';
+import { Box, Typography, IconButton, Avatar, alpha } from '@mui/material';
 import { Link, Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 import 'react-pro-sidebar/dist/css/styles.css';
 
-import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
-// import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined'
-// import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
-import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
-// import SearchIcon from '@mui/icons-material/Search'
 import MenuIcon from '@mui/icons-material/Menu';
 
 import {
@@ -24,6 +18,10 @@ import {
   SettingsIcon,
   LogoutIcon,
   CloseIcon,
+  StarIcon,
+  NotificationsIcon,
+  ChevronSlimDownIcon,
+  HelpIcon,
 } from '../../icons';
 
 import {
@@ -297,14 +295,22 @@ const TopBar = ({ isToggled = false, setIsToggled = () => {} }) => {
   // const colorMode = React.useContext(ColorModeContext)
 
   const navigate = useNavigate();
+  const [isOptionMenuOpen, setIsOptionMenuOpen] = useState(false);
 
   return (
     <Box
       sx={{
+        ml: {
+          xs: 0,
+          lg: `-${$({ size: 50 })}`,
+        },
+        width: {
+          xs: '100%',
+          lg: `calc(100% + ${$({ size: 50 })})`,
+        },
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        width: '100%',
         height: $({ size: 60 }),
         padding: {
           xs: `${$({ size: 8 })} ${$({ size: 16 })}`,
@@ -345,7 +351,22 @@ const TopBar = ({ isToggled = false, setIsToggled = () => {} }) => {
         />
       </Box>
 
-      <Box display='flex'>
+      <Box
+        sx={{
+          display: {
+            xs: 'none',
+            lg: 'flex',
+          },
+        }}
+      />
+
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: $({ size: 32 }),
+          mr: $({ size: 24 }),
+        }}>
         {/* <IconButton onClick={colorMode.toggleColorMode}>
           {
             theme.palette.mode === 'dark'
@@ -353,15 +374,334 @@ const TopBar = ({ isToggled = false, setIsToggled = () => {} }) => {
               : <LightModeOutlinedIcon />
           }
         </IconButton> */}
-        <IconButton>
-          <NotificationsOutlinedIcon />
-        </IconButton>
-        <IconButton>
-          <SettingsOutlinedIcon />
-        </IconButton>
-        <IconButton>
-          <PersonOutlinedIcon />
-        </IconButton>
+
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+          }}>
+          <Typography
+            sx={{
+              color: colors.extra.grey1,
+              fontSize: $({ size: 16 }),
+              fontWeight: '700',
+            }}>
+            {`7`}
+          </Typography>
+          <Typography
+            sx={{
+              color: colors.extra.grey1,
+              fontSize: $({ size: 16 }),
+              fontWeight: '300',
+            }}>
+            &nbsp;{`days left`}
+          </Typography>
+        </Box>
+
+        <Box
+          sx={{
+            padding: `${$({ size: 4 })} ${$({ size: 18 })}`,
+            borderRadius: $({ size: 100 }),
+            border: `${$({ size: 2 })} solid ${colors.solids.mainButton}`,
+            display: 'flex',
+            alignItems: 'center',
+            gap: $({ size: 8 }),
+            cursor: 'pointer',
+          }}>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <StarIcon
+              size={$({ size: 18, numeric: true })}
+              color={colors.solids.mainButton}
+            />
+          </Box>
+
+          <Typography
+            sx={{
+              textTransform: 'uppercase',
+              color: colors.extra.grey2,
+              fontSize: $({ size: 16 }),
+              fontWeight: '600',
+              mt: $({ size: 2 }),
+            }}>
+            Upgrade
+          </Typography>
+        </Box>
+
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: $({ size: 16 }),
+          }}>
+          <Box
+            onClick={() => {}}
+            sx={{
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <HelpIcon
+              size={$({ size: 24, numeric: true })}
+              color={colors.extra.grey3}
+            />
+          </Box>
+
+          <Box
+            onClick={() => {}}
+            sx={{
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <NotificationsIcon
+              size={$({ size: 24, numeric: true })}
+              color={colors.extra.grey3}
+            />
+          </Box>
+        </Box>
+
+        <Box
+          onClick={() => {
+            setIsOptionMenuOpen(!isOptionMenuOpen);
+            setTimeout(() => {
+              setIsOptionMenuOpen(false);
+            }, 5000);
+          }}
+          sx={{
+            display: 'flex',
+            gap: $({ size: 12 }),
+            alignItems: 'center',
+            boxShadow: `0 0 ${$({ size: 2 })} 0 ${alpha(
+              colors.solids.black,
+              0.25
+            )}`,
+            padding: `${$({ size: 8 })} ${$({ size: 18 })}`,
+            borderRadius: $({ size: 16 }),
+            cursor: 'pointer',
+          }}>
+          <Avatar
+            src={
+              'https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg'
+            }
+            alt='profile'
+            sx={{
+              width: $({ size: 32 }),
+              height: $({ size: 32 }),
+              borderRadius: $({ size: 8 }),
+              objectFit: 'cover',
+            }}
+          />
+
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: $({ size: 2 }),
+              userSelect: 'none',
+            }}>
+            <Typography
+              sx={{
+                color: colors.extra.grey1,
+                fontSize: $({ size: 11 }),
+                fontWeight: '500',
+                lineHeight: $({ size: 11 }),
+              }}>
+              Welcome back,
+            </Typography>
+            <Typography
+              sx={{
+                color: colors.extra.grey1,
+                fontSize: $({ size: 17 }),
+                fontWeight: '500',
+                lineHeight: $({ size: 17 }),
+              }}>
+              Michael
+            </Typography>
+          </Box>
+
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <ChevronSlimDownIcon
+              size={$({ size: 9, numeric: true })}
+              color={colors.extra.grey1}
+            />
+          </Box>
+        </Box>
+
+        {isOptionMenuOpen && (
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: $({ size: 12 }),
+              boxShadow: `0 0 ${$({ size: 2 })} 0 ${alpha(
+                colors.solids.black,
+                0.25
+              )}`,
+              padding: $({ size: 16 }),
+              borderRadius: $({ size: 8 }),
+              position: 'absolute',
+              right: $({ size: 28 }),
+              top: $({ size: 64 }),
+              zIndex: 10000000,
+              backgroundColor: colors.white[800],
+              width: $({ size: 240 }),
+            }}>
+            <Box
+              sx={{
+                display: 'flex',
+                gap: $({ size: 8 }),
+                mb: $({ size: 12 }),
+              }}>
+              <Avatar
+                src={
+                  'https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg'
+                }
+                alt='profile'
+                sx={{
+                  width: $({ size: 36 }),
+                  height: $({ size: 36 }),
+                  borderRadius: $({ size: 8 }),
+                  objectFit: 'cover',
+                }}
+              />
+
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: $({ size: 6 }),
+                }}>
+                <Typography
+                  sx={{
+                    color: colors.extra.grey1,
+                    fontSize: $({ size: 18 }),
+                    fontWeight: '500',
+                    lineHeight: $({ size: 18 }),
+                  }}>
+                  Michael Johnson
+                </Typography>
+                <Typography
+                  sx={{
+                    color: colors.extra.grey2,
+                    fontSize: $({ size: 11 }),
+                    fontWeight: '400',
+                    lineHeight: $({ size: 11 }),
+                  }}>
+                  liamjohnson@gmail.com
+                </Typography>
+              </Box>
+            </Box>
+
+            {[
+              {
+                icon: (
+                  <DashboardIcon
+                    size={$({ size: 20, numeric: true })}
+                    color={colors.extra.grey2}
+                  />
+                ),
+                title: 'Dashboard',
+                to: ROUTES.PARENT.DASHBOARD.INDEX,
+              },
+              {
+                icon: (
+                  <SettingsIcon
+                    size={$({ size: 20, numeric: true })}
+                    color={colors.extra.grey2}
+                  />
+                ),
+                title: 'Settings',
+                to: ROUTES.PARENT.SETTINGS.INDEX,
+              },
+              {
+                icon: (
+                  <JournalIcon
+                    size={$({ size: 20, numeric: true })}
+                    color={colors.extra.grey2}
+                  />
+                ),
+                title: 'Journal',
+                to: ROUTES.PARENT.JOURNAL.INDEX,
+              },
+              {
+                icon: (
+                  <StarIcon
+                    size={$({ size: 20, numeric: true })}
+                    color={colors.solids.orangeBright}
+                  />
+                ),
+                title: 'Upgrade Tier',
+                to: '',
+              },
+              {
+                icon: (
+                  <LogoutIcon
+                    size={$({ size: 20, numeric: true })}
+                    color={colors.extra.grey2}
+                  />
+                ),
+                title: 'Logout',
+                to: ROUTES.PARENT.LOGOUT.INDEX,
+              },
+            ].map((item, index, _) => {
+              return (
+                <Box
+                  onClick={() => {
+                    if (item.to) {
+                      navigate(item.to);
+                      setIsOptionMenuOpen(false);
+                    }
+                  }}
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: $({ size: 12 }),
+                    cursor: 'pointer',
+                    ...(index === _.length - 1 && {
+                      pt: $({ size: 12 }),
+                      ml: `-${$({ size: 16 })}`,
+                      mr: `-${$({ size: 16 })}`,
+                      pr: $({ size: 16 }),
+                      pl: $({ size: 16 }),
+                      borderTop: `${$({ size: 1.5 })} solid ${
+                        colors.extra.grey4
+                      }`,
+                    }),
+                  }}>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}>
+                    {item.icon}
+                  </Box>
+
+                  <Typography
+                    sx={{
+                      color: colors.solids.black,
+                      fontSize: $({ size: 18 }),
+                      fontWeight: '400',
+                    }}>
+                    {item.title}
+                  </Typography>
+                </Box>
+              );
+            })}
+          </Box>
+        )}
       </Box>
     </Box>
   );

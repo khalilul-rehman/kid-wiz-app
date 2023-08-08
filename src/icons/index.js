@@ -33,6 +33,9 @@ import ChevronDownIcon from './misc/ChevronDownIcon';
 import ReorderThreeIcon from './misc/ReorderThreeIcon';
 import CrossIcon from './misc/CrossIcon';
 import ChevronSlimDownIcon from './misc/ChevronSlimDownIcon';
+import HelpIcon from './misc/HelpIcon';
+import NotificationsIcon from './misc/NotificationsIcon';
+import StarIcon from './misc/StarIcon';
 
 export {
   AddIcon,
@@ -68,6 +71,9 @@ export {
   ReorderThreeIcon,
   CrossIcon,
   ChevronSlimDownIcon,
+  HelpIcon,
+  NotificationsIcon,
+  StarIcon,
 };
 
 /*** ONBOARDING ICONS ******************************************************************************************/

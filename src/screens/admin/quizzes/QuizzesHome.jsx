@@ -159,7 +159,7 @@ const QuizzesHome = () => {
 
       <Box
         sx={{
-          'marginTop': `-${$({ size: 32 })}`,
+          'marginTop': `-${$({ size: 28 })}`,
           'height': '100%',
           'overflowY': 'scroll',
           'maxHeight': `calc(100vh - ${topSectionHeight}px - ${$({

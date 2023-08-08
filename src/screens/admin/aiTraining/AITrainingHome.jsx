@@ -88,7 +88,10 @@ const AITrainingHome = () => {
               xs: $({ size: 16 }),
               md: $({ size: 40 }),
             },
-            margin: `0 -${$({ size: 40 })}`,
+            margin: {
+              xs: `0 -${$({ size: 24 })}`,
+              md: `0 -${$({ size: 40 })}`,
+            },
           }}
         />
       </Box>

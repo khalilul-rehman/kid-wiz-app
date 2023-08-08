@@ -147,7 +147,7 @@ const ExploreHome = () => {
   };
 
   return (
-    <DashboardContainer>
+    <DashboardContainer containerStyle={{ overflow: 'hidden' }}>
       <Typography
         sx={{
           fontSize: $({ size: 31.98 }),
@@ -158,7 +158,12 @@ const ExploreHome = () => {
         Explore
       </Typography>
 
-      <Box sx={{ display: 'flex', gap: $({ size: 24 }), userSelect: 'none' }}>
+      <Box
+        sx={{
+          display: 'flex',
+          gap: $({ size: 24 }),
+          userSelect: 'none',
+        }}>
         <Box
           sx={{
             display: 'flex',
@@ -272,7 +277,6 @@ const ExploreHome = () => {
             </Typography>
           )}
         </Box>
-
         <Box sx={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
           <Box sx={{ position: 'relative' }}>
             <Box
@@ -668,8 +672,15 @@ const ExploreHome = () => {
             </Box>
           </Box>
         </Box>
-
-        <Box sx={{ display: 'flex', flexDirection: 'column', flex: 1 }}></Box>
+        <Box
+          sx={{
+            display: {
+              xs: 'none',
+              md: 'flex',
+            },
+            flexDirection: 'column',
+            flex: 1,
+          }}></Box>
       </Box>
 
       <Box

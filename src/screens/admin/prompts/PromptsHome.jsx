@@ -196,14 +196,17 @@ const PromptsHome = () => {
               xs: $({ size: 16 }),
               md: $({ size: 40 }),
             },
-            margin: `0 -${$({ size: 40 })}`,
+            margin: {
+              xs: `0 -${$({ size: 24 })}`,
+              md: `0 -${$({ size: 40 })}`,
+            },
           }}
         />
       </Box>
 
       <Box
         sx={{
-          'marginTop': `-${$({ size: 32 })}`,
+          'marginTop': `-${$({ size: 20 })}`,
           'height': '100%',
           'overflowY': 'scroll',
           'maxHeight': `calc(100vh - ${topSectionHeight}px - ${$({
