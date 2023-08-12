@@ -10,6 +10,9 @@ const VerticalFillerItem = ({
   value = 0,
   color = '',
   labelStyle = {},
+  height = $({ size: 200 }),
+  space = 0,
+  labelGap = $({ size: 20 }),
 }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -20,12 +23,12 @@ const VerticalFillerItem = ({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        gap: $({ size: 20 }),
+        gap: labelGap,
       }}>
       <Box
         sx={{
-          width: $({ size: 70 }),
-          height: $({ size: 200 }),
+          width: $({ size: 64 }),
+          height: height,
           borderRadius: $({ size: 100 }),
           backgroundColor: colors.extra.grey4,
           display: 'flex',
@@ -34,6 +37,7 @@ const VerticalFillerItem = ({
           alignItems: 'center',
           overflow: 'hidden',
           position: 'relative',
+          mr: space,
         }}>
         <Slider
           disabled
@@ -41,7 +45,7 @@ const VerticalFillerItem = ({
           sx={{
             'overflow': 'hidden',
             'width': $({ size: 70 }),
-            'height': $({ size: 200 }),
+            'height': height,
             'borderRadius': $({ size: 100 }),
             'backgroundColor': colors.extra.grey4,
             '& .MuiSlider-track': { backgroundColor: color, border: 'none' },
@@ -119,6 +123,9 @@ const VerticalFiller = ({ data = [], sx = {} }) => {
             value={item.value}
             color={item.color}
             labelStyle={item.labelStyle}
+            height={item.height}
+            space={item.space}
+            labelGap={item.labelGap}
           />
         );
       })}

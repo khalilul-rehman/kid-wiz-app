@@ -47,10 +47,7 @@ const Item = ({
       active={selected === to}
       onClick={() => setSelected(to)}
       icon={selected === to || hovered === to ? icon.active : icon.inactive}
-      style={{
-        color: colors.grey[500],
-        marginBottom: '5px',
-      }}>
+      style={{ color: colors.grey[500] }}>
       <Typography>{title}</Typography>
       <Link to={to} />
     </MenuItem>
@@ -79,24 +76,57 @@ const SideBar = ({ isToggled = false, setIsToggled = () => {} }) => {
       sx={{
         'backgroundColor': colors.white[800],
         'zIndex': '50',
-        'border': `1px solid ${colors.white[800]}  !important`,
+        'border': `${$({ size: 1 })} solid ${colors.white[800]}  !important`,
         'boxShadow': `7px 2px 59px -1px ${colors.grey[100]}20`,
-        'borderRadius': '0px 24px 24px 0px !important',
-        '& .pro-icon-wrapper': { backgroundColor: 'transparent !important' },
-        '& .pro-inner-item': { padding: '2px 35px 2px 20px !important' },
-        '& .pro-menu-item.active p': { fontWeight: '600 !important' },
-        '& .pro-menu': { height: '100%' },
+        'borderRadius': `0 ${$({ size: 24 })} ${$({ size: 24 })} 0 !important`,
+        '& .pro-icon-wrapper': {
+          backgroundColor: 'transparent !important',
+          height: 'fit-content !important',
+          marginRight: `${$({ size: 16 })} !important`,
+          width: 'fit-content !important',
+          minWidth: 'fit-content !important',
+          lineHeight: '0 !important',
+        },
+        '& .pro-icon': {
+          width: 'fit-content !important',
+        },
+        '& .pro-inner-item': {
+          padding: `${$({ size: 0 })} ${$({ size: 0 })} !important`,
+          margin: `${$({ size: 0 })} ${$({ size: 0 })} !important`,
+        },
+        '& .pro-menu-item': {
+          padding: `${$({ size: 14 })} ${$({ size: 16 })} !important`,
+          width: '100% !important',
+          height: 'wrap-content !important',
+          minHeight: 'fit-content !important',
+        },
+        '& .pro-menu-item p': {
+          fontSize: `${$({ size: 18 })} !important`,
+          fontWeight: '400 !important',
+          padding: `${$({ size: 0 })} ${$({ size: 0 })} !important`,
+          margin: `${$({ size: 0 })} ${$({ size: 0 })} !important`,
+        },
+        '& .pro-menu-item.active p': {
+          fontWeight: '600 !important',
+          padding: `${$({ size: 0 })} ${$({ size: 0 })} !important`,
+          margin: `${$({ size: 0 })} ${$({ size: 0 })} !important`,
+          fontSize: `${$({ size: 18 })} !important`,
+        },
+        '& .pro-menu': { height: '100%', padding: `0 !important` },
         '& ul': { height: '100%' },
-        '& .pro-inner-item:hover': {
-          background: `${colors.greenAccent[500]} !important`,
-          color: `${colors.white[800]} !important`,
-          borderRadius: '8px !important',
+        '& .pro-menu-item:hover': {
+          'background': `${colors.greenAccent[500]} !important`,
+          'borderRadius': '8px !important',
+          '& p': {
+            color: `${colors.white[800]} !important`,
+          },
         },
         '& .pro-menu-item.active': {
           background: `${colors.greenAccent[500]} !important`,
           color: `${colors.white[800]} !important`,
           borderRadius: '8px !important',
-          fontWeight: 'bold !important',
+          fontWeight: '600 !important',
+          fontSize: `${$({ size: 18 })} !important`,
         },
         '& .pro-sidebar-inner': {
           xs: { backgroundColor: colors.white[800] },
@@ -107,7 +137,11 @@ const SideBar = ({ isToggled = false, setIsToggled = () => {} }) => {
           lg: {
             position: 'relative',
             left: '0px !important',
+            width: `${$({ size: 304 })} !important`,
           },
+        },
+        '& .pro-item-content p': {
+          lineHeight: $({ size: 20 }),
         },
       }}>
       <ProSidebar
@@ -141,40 +175,65 @@ const SideBar = ({ isToggled = false, setIsToggled = () => {} }) => {
                   md: 0,
                 },
               }}>
-              <Box mb='20%'>
-                <Box
-                  display='flex'
-                  justifyContent='center'
-                  alignItems='center'
-                  mt='40px'>
-                  <img
-                    alt='profile-user'
-                    width='160px'
-                    height='45px'
-                    src={ASSETS.LOGO}
-                    style={{ cursor: 'pointer' }}
-                  />
-                </Box>
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  mt: $({ size: 40 }),
+                  mb: $({ size: 58 }),
+                }}>
+                <img
+                  alt='profile-user'
+                  width='160px'
+                  height='45px'
+                  src={ASSETS.LOGO}
+                  style={{ cursor: 'pointer' }}
+                />
               </Box>
 
               <Box
-                paddingLeft={'5%'}
-                mr='10px'>
+                sx={{
+                  paddingX: $({ size: 24 }),
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: $({ size: 20 }),
+                }}>
                 {[
                   {
                     title: 'Report Card',
                     to: ROUTES.CHILD.REPORT_CARD.INDEX,
                     icon: {
-                      active: <ReportCardIcon color={colors.white[800]} />,
-                      inactive: <ReportCardIcon color={colors.extra.grey3} />,
+                      active: (
+                        <ReportCardIcon
+                          color={colors.white[800]}
+                          size={$({ size: 20, numeric: true })}
+                        />
+                      ),
+                      inactive: (
+                        <ReportCardIcon
+                          color={colors.extra.grey3}
+                          size={$({ size: 20, numeric: true })}
+                        />
+                      ),
                     },
                   },
                   {
                     title: 'Learn Subject',
                     to: ROUTES.CHILD.LEARN_SUBJECT.INDEX,
                     icon: {
-                      active: <LearnSubjectIcon color={colors.white[800]} />,
-                      inactive: <LearnSubjectIcon color={colors.extra.grey3} />,
+                      active: (
+                        <LearnSubjectIcon
+                          color={colors.white[800]}
+                          size={$({ size: 20, numeric: true })}
+                        />
+                      ),
+                      inactive: (
+                        <LearnSubjectIcon
+                          color={colors.extra.grey3}
+                          size={$({ size: 20, numeric: true })}
+                        />
+                      ),
                     },
                   },
                   {
@@ -184,13 +243,13 @@ const SideBar = ({ isToggled = false, setIsToggled = () => {} }) => {
                       active: (
                         <RibbonIcon
                           color={colors.white[800]}
-                          size={20}
+                          size={$({ size: 20, numeric: true })}
                         />
                       ),
                       inactive: (
                         <RibbonIcon
                           color={colors.extra.grey3}
-                          size={20}
+                          size={$({ size: 20, numeric: true })}
                         />
                       ),
                     },
@@ -202,13 +261,13 @@ const SideBar = ({ isToggled = false, setIsToggled = () => {} }) => {
                       active: (
                         <CompassIcon
                           color={colors.white[800]}
-                          size={20}
+                          size={$({ size: 20, numeric: true })}
                         />
                       ),
                       inactive: (
                         <CompassIcon
                           color={colors.extra.grey3}
-                          size={20}
+                          size={$({ size: 20, numeric: true })}
                         />
                       ),
                     },
@@ -231,14 +290,26 @@ const SideBar = ({ isToggled = false, setIsToggled = () => {} }) => {
             </Box>
 
             <Box
-              paddingLeft='5%'
-              mr='10px'>
+              sx={{
+                paddingX: $({ size: 24 }),
+                mb: $({ size: 24 }),
+              }}>
               <Item
                 title='Logout'
                 to={ROUTES.CHILD.LOGOUT.INDEX}
                 icon={{
-                  active: <LogoutIcon color={colors.white[800]} />,
-                  inactive: <LogoutIcon />,
+                  active: (
+                    <LogoutIcon
+                      color={colors.white[800]}
+                      size={$({ size: 20, numeric: true })}
+                    />
+                  ),
+                  inactive: (
+                    <LogoutIcon
+                      color={colors.extra.grey3}
+                      size={$({ size: 20, numeric: true })}
+                    />
+                  ),
                 }}
                 selected={selected}
                 setSelected={setSelected}
@@ -277,7 +348,7 @@ const TopBar = ({ isToggled = false, setIsToggled = () => {} }) => {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        height: $({ size: 60 }),
+        height: $({ size: 56 }),
         padding: {
           xs: `${$({ size: 8 })} ${$({ size: 16 })}`,
           lg: $({ size: 4 }),
@@ -331,7 +402,6 @@ const TopBar = ({ isToggled = false, setIsToggled = () => {} }) => {
           display: 'flex',
           alignItems: 'center',
           gap: $({ size: 32 }),
-          mr: $({ size: 24 }),
         }}>
         {/* <IconButton onClick={colorMode.toggleColorMode}>
           {
@@ -441,6 +511,12 @@ const TopBar = ({ isToggled = false, setIsToggled = () => {} }) => {
         </Box>
 
         <Box
+          sx={{
+            width: $({ size: 56 }),
+          }}
+        />
+
+        <Box
           onClick={() => {
             setIsChatWithSupportOpen(false);
             setIsNotificationsOpen(false);
@@ -457,9 +533,10 @@ const TopBar = ({ isToggled = false, setIsToggled = () => {} }) => {
               colors.solids.black,
               0.25
             )}`,
-            padding: `${$({ size: 8 })} ${$({ size: 18 })}`,
+            padding: `${$({ size: 8 })} ${$({ size: 16 })}`,
             borderRadius: $({ size: 16 }),
             cursor: 'pointer',
+            width: $({ size: 190 }),
           }}>
           <Avatar
             src={
@@ -680,7 +757,7 @@ const ChildDashboardLayout = () => {
       <Box
         sx={{
           width: '100%',
-          height: `calc(100vh - ${$({ size: 60 })})`,
+          height: `calc(100vh - ${$({ size: 56 })})`,
         }}>
         <TopBar
           isToggled={isToggled}

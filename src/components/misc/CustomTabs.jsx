@@ -63,7 +63,7 @@ const CustomTabs = ({
                 alignItems: 'center',
                 justifyContent: 'center',
                 cursor: 'pointer',
-                padding: `${$({ size: 12 })} ${$({ size: 6 })}`,
+                padding: `${$({ size: 12 })} ${$({ size: 2 })}`,
                 pt: 0,
                 position: 'relative',
               }}>

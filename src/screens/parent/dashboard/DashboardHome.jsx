@@ -13,13 +13,13 @@ import {
 
 import {
   RightArrowIcon,
-  BigFivePersonalityTestIcon,
   ChestIcon,
   ScienceIcon,
   EnglishIcon,
   MathIcon,
   RibbonIcon,
   CompassIcon,
+  PersonalityTestIcon,
 } from '../../../icons';
 
 import { ASSETS } from '../../../config/assets';
@@ -181,7 +181,7 @@ const DashboardHome = () => {
         <Grid
           item
           xs={12}
-          lg={3}
+          lg={2.8}
           sx={{
             flex: '1',
             display: 'flex',
@@ -199,6 +199,7 @@ const DashboardHome = () => {
               )}`,
               borderRadius: $({ size: 12 }),
               height: '100%',
+              minHeight: $({ size: 443 }),
               padding: $({ size: 24 }),
               position: 'relative',
             }}>
@@ -225,15 +226,21 @@ const DashboardHome = () => {
                 labelStyle={{
                   fontWeight: '600',
                   fontSize: $({ size: 13.5 }),
-                  lineHeight: $({ size: 25 }),
+                  lineHeight: $({ size: 8 }),
                 }}
                 placeholderClosedStyle={{
                   fontSize: $({ size: 13.5 }),
-                  lineHeight: $({ size: 25 }),
+                  lineHeight: $({ size: 20 }),
                 }}
                 placeholderOpenStyle={{
                   fontSize: $({ size: 13.5 }),
                   lineHeight: $({ size: 25 }),
+                }}
+                inputClosedStyle={{
+                  padding: `${$({ size: 12 })} ${$({ size: 16 })}`,
+                }}
+                inputOpenStyle={{
+                  padding: `${$({ size: 12 })} ${$({ size: 16 })}`,
                 }}
                 data={childData.map((item) => {
                   return {
@@ -297,13 +304,13 @@ const DashboardHome = () => {
                 })}
               />
 
-              <Box height={`${$({ size: 24 })}`} />
+              <Box height={`${$({ size: 20 })}`} />
 
               <Typography
                 sx={{
                   fontSize: $({ size: 13.5 }),
                   fontWeight: '600',
-                  lineHeight: $({ size: 25 }),
+                  lineHeight: $({ size: 13.5 }),
                   color: colors.extra.grey3,
                   visibility: selectedChild.fullname ? 'visible' : 'hidden',
                 }}>
@@ -314,7 +321,7 @@ const DashboardHome = () => {
                 sx={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: $({ size: 16 }),
+                  gap: $({ size: 8 }),
                   marginTop: $({ size: 8 }),
                   visibility: selectedChild.fullname ? 'visible' : 'hidden',
                 }}>
@@ -335,7 +342,7 @@ const DashboardHome = () => {
                     sx={{
                       fontSize: $({ size: 13.5 }),
                       fontWeight: '500',
-                      lineHeight: $({ size: 25 }),
+                      lineHeight: $({ size: 13.5 }),
                       color: colors.extra.grey1,
                       overflow: 'hidden',
                       textOverflow: 'ellipsis',
@@ -346,7 +353,7 @@ const DashboardHome = () => {
 
                   <Typography
                     sx={{
-                      fontSize: $({ size: 12 }),
+                      fontSize: $({ size: 10 }),
                       fontWeight: '400',
                       color: colors.extra.grey2,
                       overflow: 'hidden',
@@ -364,7 +371,10 @@ const DashboardHome = () => {
               xs={12}
               sm={6}
               md={6}
-              lg={12}>
+              lg={12}
+              sx={{
+                mt: $({ size: -64 }),
+              }}>
               <CustomDropDown
                 label='Dates'
                 value='Choose dates'
@@ -374,19 +384,25 @@ const DashboardHome = () => {
                 labelStyle={{
                   fontWeight: '600',
                   fontSize: $({ size: 13.5 }),
-                  lineHeight: $({ size: 25 }),
+                  lineHeight: $({ size: 8 }),
                 }}
                 placeholderClosedStyle={{
                   fontSize: $({ size: 13.5 }),
-                  lineHeight: $({ size: 25 }),
+                  lineHeight: $({ size: 20 }),
                 }}
                 placeholderOpenStyle={{
                   fontSize: $({ size: 13.5 }),
                   lineHeight: $({ size: 25 }),
                 }}
+                inputClosedStyle={{
+                  padding: `${$({ size: 12 })} ${$({ size: 16 })}`,
+                }}
+                inputOpenStyle={{
+                  padding: `${$({ size: 12 })} ${$({ size: 16 })}`,
+                }}
               />
 
-              <Box height={`${$({ size: 24 })}`} />
+              <Box height={`${$({ size: 16 })}`} />
 
               <Typography
                 sx={{
@@ -427,26 +443,26 @@ const DashboardHome = () => {
             <Box
               sx={{
                 display: 'flex',
-                gap: $({ size: 24 }),
+                gap: $({ size: 16 }),
                 flexDirection: 'column',
               }}>
               <Box
                 sx={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: $({ size: 12 }),
+                  gap: $({ size: 22 }),
                 }}>
                 <Box
                   sx={{
                     borderRadius: $({ size: 150 }),
                     backgroundColor: colors.extra.grey5,
-                    padding: $({ size: 16 }),
+                    width: $({ size: 64 }),
+                    height: $({ size: 64 }),
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    width: 'fit-content',
                   }}>
-                  <BigFivePersonalityTestIcon
+                  <PersonalityTestIcon
                     color={colors.extra.grey1}
                     size={$({ size: 36, numeric: true })}
                   />
@@ -454,7 +470,7 @@ const DashboardHome = () => {
 
                 <Typography
                   sx={{
-                    fontSize: $({ size: 16 }),
+                    fontSize: $({ size: 18 }),
                     fontWeight: '600',
                     color: colors.extra.grey1,
                   }}>
@@ -463,25 +479,31 @@ const DashboardHome = () => {
               </Box>
 
               {isPersonalityTestCompleted ? (
-                <Box>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    gap: $({ size: 3 }),
+                    flexDirection: 'column',
+                  }}>
                   {personalityData.map((item, index) => (
-                    <Box
-                      display='flex'
-                      gap={`${$({ size: 8 })}`}
-                      key={index}>
+                    <Box key={index}>
                       <Typography
                         sx={{
-                          fontSize: $({ size: 16 }),
+                          fontSize: $({ size: 18 }),
                           fontWeight: '500',
                           color: item.color,
+                          display: 'inline',
+                          lineHeight: $({ size: 18 }),
                         }}>
-                        {item.title}
+                        {`${item.title}: `}
                       </Typography>
                       <Typography
                         sx={{
-                          fontSize: $({ size: 16 }),
+                          fontSize: $({ size: 18 }),
                           fontWeight: '600',
                           color: colors.extra.grey1,
+                          display: 'inline',
+                          lineHeight: $({ size: 18 }),
                         }}>{`${item.value}%`}</Typography>
                     </Box>
                   ))}
@@ -490,28 +512,31 @@ const DashboardHome = () => {
                 <Box>
                   <Typography
                     sx={{
-                      fontSize: $({ size: 16 }),
+                      fontSize: $({ size: 18 }),
                       fontWeight: '500',
                       color: colors.extra.grey1,
                       display: 'inline',
+                      lineHeight: $({ size: 24 }),
                     }}>
                     Take the
                   </Typography>
                   <Typography
                     sx={{
-                      fontSize: $({ size: 16 }),
+                      fontSize: $({ size: 18 }),
                       fontWeight: '600',
                       color: colors.extra.grey1,
                       display: 'inline',
+                      lineHeight: $({ size: 24 }),
                     }}>
                     {' Big Five personality test '}
                   </Typography>
                   <Typography
                     sx={{
-                      fontSize: $({ size: 16 }),
+                      fontSize: $({ size: 18 }),
                       fontWeight: '500',
                       color: colors.extra.grey1,
                       display: 'inline',
+                      lineHeight: $({ size: 24 }),
                     }}>
                     for a more customized experience
                   </Typography>
@@ -520,18 +545,20 @@ const DashboardHome = () => {
             </Box>
 
             <CustomButton
-              label='Result'
+              label='Tests & Results'
               rightIcon={
-                <RightArrowIcon size={$({ size: 22, numeric: true })} />
+                <RightArrowIcon
+                  size={$({ size: 15, numeric: true })}
+                  color={colors.white[800]}
+                />
               }
               sx={{
                 'width': 'fit-content',
                 'alignSelf': 'flex-end',
                 'backgroundColor': colors.extra.grey1,
                 '&:hover': { backgroundColor: alpha(colors.extra.grey1, 0.8) },
-                'textTransform': 'none',
                 'fontSize': $({ size: 13.5 }),
-                'padding': `${$({ size: 6 })} ${$({ size: 28 })}`,
+                'padding': `${$({ size: 3 })} ${$({ size: 25 })}`,
                 'fontWeight': '600',
               }}
               onClick={() => {
@@ -545,12 +572,12 @@ const DashboardHome = () => {
           <Grid
             item
             xs={12}
-            lg={9}
+            lg={9.2}
             sx={{
               flex: '1',
               padding: {
-                xs: `${$({ size: 20 })} 0 0 0`,
-                lg: `0 0 0 ${$({ size: 20 })}`,
+                xs: `${$({ size: 24 })} 0 0 0`,
+                lg: `0 0 0 ${$({ size: 24 })}`,
               },
               position: 'relative',
             }}>
@@ -572,7 +599,7 @@ const DashboardHome = () => {
               <Box
                 sx={{
                   display: 'flex',
-                  gap: $({ size: 24 }),
+                  gap: $({ size: 16 }),
                   alignItems: { xs: 'flex-start', sm: 'center' },
                   flexDirection: { xs: 'column', sm: 'row' },
                 }}>
@@ -590,16 +617,17 @@ const DashboardHome = () => {
                 />
 
                 <Box
-                  sx={{
-                    width: { xs: '100%', md: '70%', lg: '50%' },
-                    maxWidth: $({ size: 800 }),
-                  }}>
+                  sx={
+                    {
+                      // width: { xs: '100%', md: '70%', lg: '50%' },
+                      // maxWidth: $({ size: 800 }),
+                    }
+                  }>
                   <Typography
                     sx={{
                       fontWeight: '600',
                       fontSize: $({ size: 24 }),
                       color: colors.solids.black,
-                      marginBottom: $({ size: 8 }),
                     }}>
                     {selectedChild.fullname}
                   </Typography>
@@ -607,16 +635,16 @@ const DashboardHome = () => {
                   <Box
                     sx={{
                       display: 'flex',
-                      gap: $({ size: 24 }),
+                      gap: $({ size: 16 }),
                       alignItems: 'center',
                     }}>
-                    <Box sx={{ width: '100%' }}>
+                    <Box sx={{ width: $({ size: 412 }) }}>
                       <Typography
                         sx={{
                           fontWeight: '600',
                           fontSize: $({ size: 13.5 }),
                           color: colors.extra.grey3,
-                          marginBottom: $({ size: 8 }),
+                          mt: $({ size: 4 }),
                         }}>
                         Time spent learning
                       </Typography>
@@ -695,10 +723,11 @@ const DashboardHome = () => {
                   borderRadius: $({ size: 14 }),
                   padding: $({ size: 24 }),
                   flex: '1',
+                  maxHeight: $({ size: 313 }),
                   display: 'flex',
                   flexDirection: 'column',
                   gap: $({ size: 8 }),
-                  marginTop: $({ size: 12 }),
+                  marginTop: $({ size: 16 }),
                 }}>
                 <Typography
                   sx={{
@@ -706,6 +735,7 @@ const DashboardHome = () => {
                     fontSize: $({ size: 18 }),
                     color: colors.extra.grey1,
                     mb: { xs: $({ size: 8 }), md: 0 },
+                    lineHeight: $({ size: 18 }),
                   }}>
                   Overall Grade
                 </Typography>
@@ -721,6 +751,7 @@ const DashboardHome = () => {
                       position: 'relative',
                       height: $({ size: 160 }),
                       width: $({ size: 160 }),
+                      mt: $({ size: 4 }),
                     }}>
                     <Box
                       sx={{
@@ -763,10 +794,11 @@ const DashboardHome = () => {
                   <Box
                     sx={{
                       display: 'flex',
-                      gap: $({ size: 12 }),
+                      gap: $({ size: 10 }),
                       flex: '1',
                       width: '100%',
                       flexDirection: { xs: 'column', md: 'row' },
+                      mt: $({ size: 14 }),
                     }}>
                     <Box
                       sx={{
@@ -779,9 +811,10 @@ const DashboardHome = () => {
                         sx={{
                           fontWeight: '600',
                           fontSize: $({ size: 13.5 }),
+                          lineHeight: $({ size: 14 }),
                           color: colors.extra.grey1,
                         }}>
-                        Hightest Grade
+                        Highest Grades
                       </Typography>
                       {highestGradeData.map((item, index) => (
                         <Box
@@ -793,7 +826,7 @@ const DashboardHome = () => {
                           key={index}>
                           <Box
                             sx={{
-                              flex: `0 0 ${$({ size: 16 })}`,
+                              flex: `0 0 ${$({ size: 11 })}`,
                               display: 'flex',
                               justifyContent: 'center',
                               alignItems: 'center',
@@ -834,9 +867,10 @@ const DashboardHome = () => {
                         sx={{
                           fontWeight: '600',
                           fontSize: $({ size: 13.5 }),
+                          lineHeight: $({ size: 14 }),
                           color: colors.extra.grey1,
                         }}>
-                        Lowest Grade
+                        Lowest Grades
                       </Typography>
                       {lowestGradeData.map((item, index) => (
                         <Box
@@ -849,7 +883,7 @@ const DashboardHome = () => {
                           {/* TODO: REPLACE ICON WITH SVG PATH */}
                           <Box
                             sx={{
-                              flex: `0 0 ${$({ size: 16 })}`,
+                              flex: `0 0 ${$({ size: 11 })}`,
                               display: 'flex',
                               justifyContent: 'center',
                               alignItems: 'center',
@@ -887,7 +921,10 @@ const DashboardHome = () => {
                 <CustomButton
                   label='Full Report'
                   rightIcon={
-                    <RightArrowIcon size={$({ size: 22, numeric: true })} />
+                    <RightArrowIcon
+                      size={$({ size: 15, numeric: true })}
+                      color={colors.white[800]}
+                    />
                   }
                   sx={{
                     'width': 'fit-content',
@@ -898,7 +935,7 @@ const DashboardHome = () => {
                     },
                     'textTransform': 'none',
                     'fontSize': $({ size: 13.5 }),
-                    'padding': `${$({ size: 6 })} ${$({ size: 24 })}`,
+                    'padding': `${$({ size: 3 })} ${$({ size: 25 })}`,
                     'fontWeight': '600',
                   }}
                   onClick={() => {}}
@@ -907,7 +944,7 @@ const DashboardHome = () => {
 
               <Grid
                 container
-                sx={{ display: 'flex' }}>
+                sx={{ display: 'flex', flex: 1 }}>
                 <Grid
                   item
                   xs={12}
@@ -927,12 +964,12 @@ const DashboardHome = () => {
                       flex: '1',
                       display: 'flex',
                       flexDirection: 'column',
-                      gap: $({ size: 8 }),
+                      gap: $({ size: 20 }),
                     }}>
                     <Box
                       sx={{
                         display: 'flex',
-                        gap: $({ size: 12 }),
+                        gap: $({ size: 16 }),
                         alignItems: 'center',
                       }}>
                       <Box
@@ -941,10 +978,14 @@ const DashboardHome = () => {
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          borderRadius: $({ size: 50 }),
-                          padding: $({ size: 10 }),
+                          borderRadius: $({ size: 64 }),
+                          width: $({ size: 64 }),
+                          height: $({ size: 64 }),
                         }}>
-                        <RibbonIcon size={$({ size: 28, numeric: true })} />
+                        <RibbonIcon
+                          size={$({ size: 32, numeric: true })}
+                          color={colors.extra.grey1}
+                        />
                       </Box>
                       <Typography
                         sx={{
@@ -991,7 +1032,10 @@ const DashboardHome = () => {
                     <CustomButton
                       label='Quiz'
                       rightIcon={
-                        <RightArrowIcon size={$({ size: 22, numeric: true })} />
+                        <RightArrowIcon
+                          size={$({ size: 15, numeric: true })}
+                          color={colors.white[800]}
+                        />
                       }
                       sx={{
                         'width': 'fit-content',
@@ -1002,7 +1046,7 @@ const DashboardHome = () => {
                         },
                         'textTransform': 'none',
                         'fontSize': $({ size: 13.5 }),
-                        'padding': `${$({ size: 6 })} ${$({ size: 24 })}`,
+                        'padding': `${$({ size: 3 })} ${$({ size: 25 })}`,
                         'fontWeight': '600',
                       }}
                       onClick={() => {
@@ -1031,12 +1075,12 @@ const DashboardHome = () => {
                       flex: '1',
                       display: 'flex',
                       flexDirection: 'column',
-                      gap: $({ size: 8 }),
+                      gap: $({ size: 16 }),
                     }}>
                     <Box
                       sx={{
                         display: 'flex',
-                        gap: $({ size: 12 }),
+                        gap: $({ size: 16 }),
                         alignItems: 'center',
                       }}>
                       <Box
@@ -1045,10 +1089,14 @@ const DashboardHome = () => {
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          borderRadius: $({ size: 50 }),
-                          padding: $({ size: 10 }),
+                          borderRadius: $({ size: 64 }),
+                          width: $({ size: 64 }),
+                          height: $({ size: 64 }),
                         }}>
-                        <CompassIcon size={28} />
+                        <CompassIcon
+                          size={$({ size: 32, numeric: true })}
+                          color={colors.extra.grey1}
+                        />
                       </Box>
                       <Typography
                         sx={{
@@ -1067,6 +1115,7 @@ const DashboardHome = () => {
                           fontSize: $({ size: 18 }),
                           color: colors.extra.grey1,
                           display: 'inline',
+                          lineHeight: $({ size: 30 }),
                         }}>
                         {`Spin the wheel of fortune and try your chance with a `}
                       </Typography>
@@ -1095,7 +1144,10 @@ const DashboardHome = () => {
                     <CustomButton
                       label='Explore'
                       rightIcon={
-                        <RightArrowIcon size={$({ size: 22, numeric: true })} />
+                        <RightArrowIcon
+                          size={$({ size: 15, numeric: true })}
+                          color={colors.white[800]}
+                        />
                       }
                       sx={{
                         'width': 'fit-content',
@@ -1106,7 +1158,7 @@ const DashboardHome = () => {
                         },
                         'textTransform': 'none',
                         'fontSize': $({ size: 13.5 }),
-                        'padding': `${$({ size: 6 })} ${$({ size: 24 })}`,
+                        'padding': `${$({ size: 3 })} ${$({ size: 25 })}`,
                         'fontWeight': '600',
                       }}
                       onClick={() => {}}

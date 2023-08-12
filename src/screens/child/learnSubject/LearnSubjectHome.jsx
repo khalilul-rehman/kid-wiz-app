@@ -41,7 +41,13 @@ const LearnSubjectHome = () => {
   return (
     <DashboardContainer
       disableContainer
-      wrapperStyle={{ position: 'relative' }}>
+      wrapperStyle={{
+        position: 'relative',
+        padding: {
+          xs: $({ size: 16 }),
+          md: `${$({ size: 24 })}`,
+        },
+      }}>
       <Grid
         container
         sx={{
@@ -54,7 +60,7 @@ const LearnSubjectHome = () => {
         <Grid
           item
           xs={12}
-          lg={2.75}
+          lg={2.5}
           sx={{
             flex: '1',
             display: 'flex',
@@ -74,13 +80,14 @@ const LearnSubjectHome = () => {
         <Grid
           item
           xs={12}
-          lg={9.25}
+          lg={9.5}
           sx={{
             flex: '1',
             padding: {
               xs: `${$({ size: 20 })} 0 0 0`,
               lg: `0 0 0 ${$({ size: 20 })}`,
             },
+            width: '100%',
             position: 'relative',
           }}>
           <Box
@@ -95,21 +102,27 @@ const LearnSubjectHome = () => {
               width: '100%',
               borderRadius: $({ size: 12 }),
               height: '100%',
-              padding: $({ size: 36 }),
-              gap: $({ size: 24 }),
+              padding: `${$({ size: 32 })} ${$({ size: 40 })}`,
+              gap: $({ size: 40 }),
             }}>
             <Box
               sx={{
                 display: 'flex',
                 flexDirection: 'column',
-                gap: $({ size: 8 }),
+                gap: $({ size: 5 }),
                 width: '100%',
               }}>
-              <CustomBreadcrumbs
-                data={[
-                  { path: ROUTES.CHILD.LEARN_SUBJECT.INDEX, title: 'Home' },
-                ]}
-              />
+              <Box
+                sx={{
+                  mt: `-${$({ size: 4 })}`,
+                  ml: `-${$({ size: 2 })}`,
+                }}>
+                <CustomBreadcrumbs
+                  data={[
+                    { path: ROUTES.CHILD.LEARN_SUBJECT.INDEX, title: 'Home' },
+                  ]}
+                />
+              </Box>
 
               <Box
                 sx={{
@@ -150,7 +163,7 @@ const LearnSubjectHome = () => {
                     },
                     minWidth: {
                       xs: '100%',
-                      sm: $({ size: 300 }),
+                      sm: $({ size: 352 }),
                     },
                   }}
                   handleSearch={handleSearch}
@@ -180,7 +193,7 @@ const LearnSubjectHome = () => {
                 })}, 1fr))`,
                 gridGap: {
                   xs: $({ size: 24 }),
-                  md: $({ size: 36 }),
+                  md: $({ size: 40 }),
                 },
                 gridAutoRows: '1fr', // to make all the rows the same height
               }}>
@@ -215,6 +228,7 @@ const LearnSubjectHome = () => {
                       display: 'flex',
                       flexDirection: 'column',
                       cursor: 'pointer',
+                      minHeight: $({ size: 160 }),
                     }}>
                     <Box
                       sx={{
@@ -251,7 +265,7 @@ const LearnSubjectHome = () => {
                       sx={{
                         fontSize: $({ size: 18 }),
                         fontWeight: '500',
-                        lineHeight: $({ size: 30 }),
+                        lineHeight: $({ size: 20 }),
                         color: subject.isUnlocked
                           ? colors.solids.black
                           : colors.extra.grey2,

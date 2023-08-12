@@ -18,7 +18,20 @@ const OverallScoreTab = ({ topSectionHeight = 0 }) => {
       sx={{
         display: 'flex',
         flexDirection: 'column',
-        gap: $({ size: 20 }),
+        gap: $({ size: 16 }),
+        maxHeight: `calc(100vh - ${topSectionHeight}px - ${$({
+          numeric: true,
+          // ADJUSTMENT
+          size:
+            60 + // TOP BAR HEIGHT
+            24 + // PARENT CONTAINER TOP PADDING
+            24 + // PARENT  CONTAINER BOTTOM PADDING
+            40 + // WRAPPER CONTAINER TOP PADDING
+            40 + // WRAPPER CONTAINER BOTTOM PADDING
+            24 + // HEADER SECTION GAP
+            -8,
+        })}px)`,
+        overflowY: 'scroll',
       }}>
       <Box
         sx={{
@@ -29,7 +42,7 @@ const OverallScoreTab = ({ topSectionHeight = 0 }) => {
           },
           gap: {
             xs: $({ size: 20 }),
-            md: $({ size: 36 }),
+            md: $({ size: 24 }),
           },
           width: '100%',
           alignItems: {
@@ -41,8 +54,12 @@ const OverallScoreTab = ({ topSectionHeight = 0 }) => {
           sx={{
             userSelect: 'none',
             position: 'relative',
-            height: $({ size: 280 + 2 * (70 / 2.5) + 2 * (2 * 1.5) }),
-            width: $({ size: 280 + 2 * (70 / 2.5) + 2 * (2 * 1.5) }),
+            // height: $({ size: 293 + 2 * (70 / 2.5) + 2 * (2 * 1.5) }),
+            // width: $({ size: 293 + 2 * (70 / 2.5) + 2 * (2 * 1.5) }),
+            height: $({ size: 338 }),
+            width: $({ size: 338 }),
+            mt: `-${$({ size: 12 })}`,
+            ml: `-${$({ size: 8 })}`,
           }}>
           <Box
             sx={{
@@ -60,21 +77,21 @@ const OverallScoreTab = ({ topSectionHeight = 0 }) => {
               enableArcLinkLabels={false}
               isInteractive={false}
               width={$({
-                size: 280 + (2 * (70 / 2.5) + 2 * (2 * 1.5)),
+                size: 293 + 2 * (70 / 2.5),
                 numeric: true,
               })}
               height={$({
-                size: 280 + (2 * (70 / 2.5) + 2 * (2 * 1.5)),
+                size: 293 + 2 * (70 / 2.5),
                 numeric: true,
               })}
               animate={false}
               fit={true}
               colors={(d) => d.data.color}
               margin={{
-                top: $({ size: 70 / 2.5 + 2 * (2 * 1.5), numeric: true }),
-                left: $({ size: 70 / 2.5 + 2 * (2 * 1.5), numeric: true }),
-                right: $({ size: 70 / 2.5 + 2 * (2 * 1.5), numeric: true }),
-                bottom: $({ size: 70 / 2.5 + 2 * (2 * 1.5), numeric: true }),
+                top: $({ size: 70 / 2.5, numeric: true }),
+                left: $({ size: 70 / 2.5, numeric: true }),
+                right: $({ size: 70 / 2.5, numeric: true }),
+                bottom: $({ size: 70 / 2.5, numeric: true }),
               }}
               arcLabelsComponent={({ datum }) => {
                 const arc = datum.arc;
@@ -82,7 +99,7 @@ const OverallScoreTab = ({ topSectionHeight = 0 }) => {
                   size: 70 / 2.5,
                   numeric: true,
                 });
-                const x = 100 + radiusOfLabelCircle;
+                const x = 110 + radiusOfLabelCircle;
                 const y = 0;
                 const theta =
                   (arc.endAngle - arc.startAngle) / 2 + arc.startAngle;
@@ -151,13 +168,15 @@ const OverallScoreTab = ({ topSectionHeight = 0 }) => {
               fontWeight: '700',
               fontSize: $({ size: 80 }),
               color: colors.extra.grey1,
-              lineHeight: $({ size: 70 }),
+              lineHeight: 0,
               top: '50%',
               left: '50%',
               transform: 'translate(-50%, -50%)',
               maxWidth: $({ size: 150 }),
               textAlign: 'center',
               position: 'absolute',
+              pl: $({ size: 10 }),
+              pt: $({ size: 10 }),
             }}>
             {OverallScoreData.grade}
           </Typography>
@@ -172,13 +191,12 @@ const OverallScoreTab = ({ topSectionHeight = 0 }) => {
             // },
             display: 'flex',
             flexDirection: 'column',
-            gap: $({ size: 12 }),
+            gap: $({ size: 16 }),
           }}>
           <Box
             sx={{
               display: 'flex',
               flexDirection: 'column',
-              gap: $({ size: 16 }),
               // mt: { xs: 0, md: $({ size: 24 }) }
             }}>
             <Box
@@ -217,6 +235,7 @@ const OverallScoreTab = ({ topSectionHeight = 0 }) => {
                   xs: '100%',
                   md: $({ size: 525 }),
                 },
+                mt: $({ size: 12 }),
               }}>
               {OverallScoreData.summary}
             </Typography>
@@ -230,7 +249,8 @@ const OverallScoreTab = ({ topSectionHeight = 0 }) => {
           flexDirection: 'column',
           gap: $({ size: 16 }),
           // mt: $({ size: 16 }),
-          p: { xs: $({ size: 12 }), md: $({ size: 20 }) },
+          pl: { xs: $({ size: 12 }), md: $({ size: 20 }) },
+          pt: { xs: $({ size: 12 }), md: $({ size: 20 }) },
         }}>
         {OverallScoreData.legend.map((item, index) => {
           return (
@@ -238,7 +258,7 @@ const OverallScoreTab = ({ topSectionHeight = 0 }) => {
               sx={{
                 display: 'flex',
                 flexDirection: 'row',
-                gap: $({ size: 12 }),
+                gap: $({ size: 8 }),
                 alignItems: 'center',
               }}
               key={index}>
@@ -255,7 +275,7 @@ const OverallScoreTab = ({ topSectionHeight = 0 }) => {
                   fontSize: $({ size: 13.5 }),
                   fontWeight: '500',
                   color: colors.extra.grey1,
-                  lineHeight: $({ size: 25 }),
+                  lineHeight: $({ size: 0 }),
                 }}>
                 {item.label}
               </Typography>

@@ -69,7 +69,7 @@ const PromptsHome = () => {
     <DashboardContainer
       wrapperStyle={{ position: 'relative' }}
       containerStyle={{
-        pb: $({ size: 20 }),
+        pb: $({ size: 24 }),
       }}>
       <Box
         ref={topSectionRef}
@@ -82,7 +82,7 @@ const PromptsHome = () => {
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            gap: $({ size: 8 }),
+            gap: $({ size: 0 }),
             width: '100%',
           }}>
           <Box
@@ -92,22 +92,21 @@ const PromptsHome = () => {
                 xs: 'column',
                 sm: 'row',
               },
-              alignItems: {
-                xs: 'flex-start',
-                sm: 'center',
-              },
+              alignItems: 'flex-start',
+              // alignItems: {
+              //   xs: 'flex-start',
+              //   sm: 'center',
+              // },
               justifyContent: 'space-between',
               flexWrap: 'wrap',
-              gap: {
-                xs: $({ size: 24 }),
-                sm: $({ size: 16 }),
-              },
+              gap: $({ size: 24 }),
             }}>
             <Typography
               sx={{
                 fontSize: $({ size: 31.98 }),
                 fontWeight: '600',
                 color: colors.extra.grey1,
+                lineHeight: $({ size: 31.98 * 0.8 }),
               }}>
               Prompts
             </Typography>
@@ -117,14 +116,16 @@ const PromptsHome = () => {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               containerStyle={{
-                maxWidth: {
-                  xs: '100%',
-                  sm: $({ size: 352 }),
-                },
-                minWidth: {
-                  xs: '100%',
-                  sm: $({ size: 300 }),
-                },
+                mt: `-${$({ size: 20 })}`,
+                // maxWidth: {
+                //   xs: '100%',
+                //   sm: $({ size: 352 }),
+                // },
+                // minWidth: {
+                //   xs: '100%',
+                //   sm: $({ size: 352 }),
+                // },
+                width: $({ size: 352 }),
               }}
               handleSearch={handleSearch}
               handleSearchOnEveryKeyStroke={handleSearch}
@@ -218,9 +219,9 @@ const PromptsHome = () => {
               24 + // PARENT CONTAINER TOP PADDING
               24 + // PARENT  CONTAINER BOTTOM PADDING
               40 + // WRAPPER CONTAINER TOP PADDING
-              20 + // WRAPPER CONTAINER BOTTOM PADDING
+              24 + // WRAPPER CONTAINER BOTTOM PADDING
               24 + // HEADER SECTION GAP
-              4,
+              16,
           })}px)`,
           'pr': $({ size: 16 }),
           '&::-webkit-scrollbar': {

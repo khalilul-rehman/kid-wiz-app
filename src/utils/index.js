@@ -31,7 +31,8 @@ const BrightenHexColor = ({ hex, percentage = 17.5 }) => {
     .slice(1)}`;
 };
 
-const $ = ({ size = 12, scale = 0.875, numeric = false }) => {
+//  0.875
+const $ = ({ size = 12, scale = 1, numeric = false }) => {
   if (numeric) return size * scale;
   return `${size * scale}px`;
 };

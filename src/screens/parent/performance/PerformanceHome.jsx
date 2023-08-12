@@ -83,7 +83,7 @@ const PerformanceHome = () => {
   return (
     <DashboardContainer
       disableContainer
-      wrapperStyle={{ position: 'relative' }}>
+      wrapperStyle={{ position: 'relative', overflowY: 'hidden' }}>
       <Grid
         container
         sx={{
@@ -133,7 +133,7 @@ const PerformanceHome = () => {
         <Grid
           item
           xs={12}
-          lg={3}
+          lg={2.8}
           sx={{
             flex: '1',
             display: 'flex',
@@ -177,15 +177,21 @@ const PerformanceHome = () => {
                 labelStyle={{
                   fontWeight: '600',
                   fontSize: $({ size: 13.5 }),
-                  lineHeight: $({ size: 25 }),
+                  lineHeight: $({ size: 8 }),
                 }}
                 placeholderClosedStyle={{
                   fontSize: $({ size: 13.5 }),
-                  lineHeight: $({ size: 25 }),
+                  lineHeight: $({ size: 20 }),
                 }}
                 placeholderOpenStyle={{
                   fontSize: $({ size: 13.5 }),
                   lineHeight: $({ size: 25 }),
+                }}
+                inputClosedStyle={{
+                  padding: `${$({ size: 12 })} ${$({ size: 16 })}`,
+                }}
+                inputOpenStyle={{
+                  padding: `${$({ size: 12 })} ${$({ size: 16 })}`,
                 }}
                 data={childData.map((item) => {
                   return {
@@ -249,13 +255,13 @@ const PerformanceHome = () => {
                 })}
               />
 
-              <Box height={`${$({ size: 24 })}`} />
+              <Box height={`${$({ size: 20 })}`} />
 
               <Typography
                 sx={{
                   fontSize: $({ size: 13.5 }),
                   fontWeight: '600',
-                  lineHeight: $({ size: 25 }),
+                  lineHeight: $({ size: 13.5 }),
                   color: colors.extra.grey3,
                   visibility: selectedChild.fullname ? 'visible' : 'hidden',
                 }}>
@@ -266,7 +272,7 @@ const PerformanceHome = () => {
                 sx={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: $({ size: 16 }),
+                  gap: $({ size: 8 }),
                   marginTop: $({ size: 8 }),
                   visibility: selectedChild.fullname ? 'visible' : 'hidden',
                 }}>
@@ -287,7 +293,7 @@ const PerformanceHome = () => {
                     sx={{
                       fontSize: $({ size: 13.5 }),
                       fontWeight: '500',
-                      lineHeight: $({ size: 25 }),
+                      lineHeight: $({ size: 13.5 }),
                       color: colors.extra.grey1,
                       overflow: 'hidden',
                       textOverflow: 'ellipsis',
@@ -298,7 +304,7 @@ const PerformanceHome = () => {
 
                   <Typography
                     sx={{
-                      fontSize: $({ size: 12 }),
+                      fontSize: $({ size: 10 }),
                       fontWeight: '400',
                       color: colors.extra.grey2,
                       overflow: 'hidden',
@@ -316,7 +322,10 @@ const PerformanceHome = () => {
               xs={12}
               sm={6}
               md={6}
-              lg={12}>
+              lg={12}
+              sx={{
+                mt: $({ size: 24 }),
+              }}>
               <CustomDropDown
                 label='Dates'
                 value='Choose dates'
@@ -326,19 +335,25 @@ const PerformanceHome = () => {
                 labelStyle={{
                   fontWeight: '600',
                   fontSize: $({ size: 13.5 }),
-                  lineHeight: $({ size: 25 }),
+                  lineHeight: $({ size: 8 }),
                 }}
                 placeholderClosedStyle={{
                   fontSize: $({ size: 13.5 }),
-                  lineHeight: $({ size: 25 }),
+                  lineHeight: $({ size: 20 }),
                 }}
                 placeholderOpenStyle={{
                   fontSize: $({ size: 13.5 }),
                   lineHeight: $({ size: 25 }),
                 }}
+                inputClosedStyle={{
+                  padding: `${$({ size: 12 })} ${$({ size: 16 })}`,
+                }}
+                inputOpenStyle={{
+                  padding: `${$({ size: 12 })} ${$({ size: 16 })}`,
+                }}
               />
 
-              <Box height={`${$({ size: 24 })}`} />
+              <Box height={`${$({ size: 16 })}`} />
 
               <Typography
                 sx={{
@@ -364,12 +379,12 @@ const PerformanceHome = () => {
           <Grid
             item
             xs={12}
-            lg={9}
+            lg={9.2}
             sx={{
               flex: '1',
               padding: {
                 xs: `${$({ size: 20 })} 0 0 0`,
-                lg: `0 0 0 ${$({ size: 20 })}`,
+                lg: `0 0 0 ${$({ size: 24 })}`,
               },
               position: 'relative',
             }}>
@@ -392,19 +407,18 @@ const PerformanceHome = () => {
                 sx={{
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: $({ size: 24 }),
+                  gap: $({ size: 12 }),
                 }}
                 ref={topSectionRef}>
                 <Box
-                  id='child-info-section'
                   sx={{
                     display: 'flex',
-                    gap: $({ size: 24 }),
+                    gap: $({ size: 16 }),
                     alignItems: { xs: 'flex-start', sm: 'center' },
                     flexDirection: { xs: 'column', sm: 'row' },
                   }}>
                   <Avatar
-                    src={selectedChild?.photo || ''}
+                    src={selectedChild.photo}
                     sx={{
                       width: $({ size: 112 }),
                       height: $({ size: 112 }),
@@ -417,33 +431,34 @@ const PerformanceHome = () => {
                   />
 
                   <Box
-                    sx={{
-                      width: { xs: '100%', md: '70%', lg: '50%' },
-                      maxWidth: $({ size: 800 }),
-                    }}>
+                    sx={
+                      {
+                        // width: { xs: '100%', md: '70%', lg: '50%' },
+                        // maxWidth: $({ size: 800 }),
+                      }
+                    }>
                     <Typography
                       sx={{
                         fontWeight: '600',
                         fontSize: $({ size: 24 }),
                         color: colors.solids.black,
-                        marginBottom: $({ size: 8 }),
                       }}>
-                      {selectedChild?.fullname || ''}
+                      {selectedChild.fullname}
                     </Typography>
 
                     <Box
                       sx={{
                         display: 'flex',
-                        gap: $({ size: 24 }),
+                        gap: $({ size: 16 }),
                         alignItems: 'center',
                       }}>
-                      <Box sx={{ width: '100%' }}>
+                      <Box sx={{ width: $({ size: 412 }) }}>
                         <Typography
                           sx={{
                             fontWeight: '600',
                             fontSize: $({ size: 13.5 }),
                             color: colors.extra.grey3,
-                            marginBottom: $({ size: 8 }),
+                            mt: $({ size: 4 }),
                           }}>
                           Time spent learning
                         </Typography>

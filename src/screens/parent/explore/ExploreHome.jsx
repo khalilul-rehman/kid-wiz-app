@@ -147,12 +147,29 @@ const ExploreHome = () => {
   };
 
   return (
-    <DashboardContainer containerStyle={{ overflow: 'hidden' }}>
+    <DashboardContainer
+      wrapperStyle={{
+        padding: {
+          xs: $({ size: 20 }),
+          md: $({ size: 48 }),
+        },
+        pr: {
+          xs: $({ size: 20 }),
+          md: $({ size: 48 }),
+        },
+      }}
+      containerStyle={{
+        gap: {
+          xs: $({ size: 20 }),
+          md: $({ size: 16 }),
+        },
+        overflow: 'hidden',
+      }}>
       <Typography
         sx={{
           fontSize: $({ size: 31.98 }),
           fontWeight: '600',
-          lineHeight: $({ size: 40 }),
+          mt: `-${$({ size: 8 })}`,
           color: colors.extra.grey1,
         }}>
         Explore
@@ -187,6 +204,7 @@ const ExploreHome = () => {
                   fontWeight: '600',
                   lineHeight: $({ size: 30 }),
                   color: colors.solids.black,
+                  textAlign: 'center',
                 }}>
                 {selectedCategory?.subjects?.map((subject, index) => {
                   return (
@@ -227,6 +245,7 @@ const ExploreHome = () => {
                   fontWeight: '600',
                   lineHeight: $({ size: 30 }),
                   color: colors.solids.black,
+                  textAlign: 'center',
                 }}>
                 {selectedSubject.title}
               </Typography>
@@ -260,6 +279,7 @@ const ExploreHome = () => {
                   fontWeight: '600',
                   lineHeight: $({ size: 30 }),
                   color: colors.solids.pinkBright,
+                  textAlign: 'center',
                 }}>
                 {selectedTopic.name}
               </Typography>
@@ -272,17 +292,23 @@ const ExploreHome = () => {
                 fontSize: $({ size: 18 }),
                 fontWeight: '600',
                 color: colors.solids.black,
+                textAlign: 'center',
               }}>
               ...
             </Typography>
           )}
         </Box>
-        <Box sx={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            flex: 1,
+          }}>
           <Box sx={{ position: 'relative' }}>
             <Box
               sx={{
                 position: 'absolute',
-                top: `-${$({ size: 8 })}`,
+                // top: `-${$({ size: 8 })}`,
                 left: '50%',
                 transform: 'translate(-50%, -50%)',
                 display: 'flex',
@@ -684,10 +710,15 @@ const ExploreHome = () => {
       </Box>
 
       <Box
-        sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          mt: $({ size: 32 }),
+        }}>
         <CustomButton
           label={selectedTopic ? 'Begin Learning' : 'Spin The Wheel!'}
-          sx={{ maxWidth: 'fit-content' }}
+          sx={{ maxWidth: 'fit-content', px: $({ size: 40 }) }}
           rightIcon={
             selectedTopic ? (
               <RightArrowIcon

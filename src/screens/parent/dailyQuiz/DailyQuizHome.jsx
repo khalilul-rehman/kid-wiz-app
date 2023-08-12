@@ -86,13 +86,26 @@ const DailyQuizHome = () => {
 
   return (
     <DashboardContainer
+      wrapperStyle={{
+        padding: {
+          xs: $({ size: 20 }),
+          md: $({ size: 48 }),
+        },
+        pr: {
+          xs: $({ size: 20 }),
+          md: $({ size: 48 }),
+        },
+      }}
       containerStyle={{
         gap: {
           xs: $({ size: 20 }),
-          md: $({ size: 24 }),
+          md: $({ size: 16 }),
         },
       }}>
-      <Box>
+      <Box
+        sx={{
+          mt: `-${$({ size: 8 })}`,
+        }}>
         <Typography
           sx={{
             fontSize: $({ size: 31.98 }),
@@ -134,9 +147,10 @@ const DailyQuizHome = () => {
           flexDirection: 'column',
           gap: {
             xs: $({ size: 20 }),
-            sm: $({ size: 30 }),
-            md: $({ size: 40 }),
+            sm: $({ size: 24 }),
+            md: $({ size: 32 }),
           },
+          mt: $({ size: 20 }),
         }}>
         <Box
           sx={{

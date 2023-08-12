@@ -63,7 +63,7 @@ const CustomBreadcrumbs = ({ data = [], sx = {}, showHome = true }) => {
                 sx={{
                   fontSize: $({ size: 13.5 }),
                   fontWeight: '400',
-                  lineHeight: $({ size: 25 }),
+                  // lineHeight: $({ size: 25 }),
                   color: colors.extra.grey2,
                 }}>
                 {`${item.title.replace(/\b\w/g, (l) => l.toUpperCase())}`}

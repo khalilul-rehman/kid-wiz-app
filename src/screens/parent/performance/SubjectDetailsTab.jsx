@@ -1,12 +1,8 @@
 import React from 'react';
-import { Box, Typography, useTheme, alpha } from '@mui/material';
+import { Box, Typography, useTheme, alpha, Slider } from '@mui/material';
 import { Pie } from '@nivo/pie';
 
-import {
-  CustomDropDown,
-  CustomTextInput,
-  VerticalFiller,
-} from '../../../components';
+import { CustomDropDown, CustomTextInput } from '../../../components';
 
 import { InfoIcon, SearchIcon } from '../../../icons';
 
@@ -70,6 +66,8 @@ const SubjectDetailsTab = ({
             alignItems: 'center',
             gap: $({ size: 8 }),
             overflow: 'hidden',
+            mt: `-${$({ size: 4 })}`,
+            ml: `-${$({ size: 2 })}`,
           }}>
           <Typography
             onClick={() => {
@@ -158,6 +156,7 @@ const SubjectDetailsTab = ({
           <Box
             sx={{
               position: 'relative',
+              mt: `-${$({ size: 4 })}`,
             }}>
             <CustomDropDown
               preventDefault={true}
@@ -168,12 +167,18 @@ const SubjectDetailsTab = ({
               placeholderClosedStyle={{
                 fontSize: $({ size: 13.5 }),
                 lineHeight: $({ size: 25 }),
-                minWidth: $({ size: 224 }),
+                minWidth: $({ size: 156 }),
               }}
               placeholderOpenStyle={{
                 fontSize: $({ size: 13.5 }),
                 lineHeight: $({ size: 25 }),
-                minWidth: $({ size: 224 }),
+                minWidth: $({ size: 156 }),
+              }}
+              inputClosedStyle={{
+                padding: `${$({ size: 12 })} ${$({ size: 16 })}`,
+              }}
+              inputOpenStyle={{
+                padding: `${$({ size: 12 })} ${$({ size: 16 })}`,
               }}
               itemContainerStyle={{
                 '&:hover': {
@@ -181,7 +186,7 @@ const SubjectDetailsTab = ({
                 },
               }}
               itemsContainerStyle={{
-                'maxHeight': $({ size: 224 }),
+                'maxHeight': $({ size: 204 }),
                 'overflowY': 'scroll',
                 '&::-webkit-scrollbar': {
                   width: $({ size: 6 }),
@@ -207,7 +212,7 @@ const SubjectDetailsTab = ({
                   onKeyUp={handleSearch}
                   inputContainerStyle={{
                     backgroundColor: colors.extra.grey4,
-                    padding: `${$({ size: 8 })} ${$({ size: 20 })}`,
+                    padding: `${$({ size: 4 })} ${$({ size: 20 })}`,
                   }}
                   inputStyle={{
                     fontSize: $({ size: 13.5 }),
@@ -247,15 +252,15 @@ const SubjectDetailsTab = ({
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          width: $({ size: 32 }),
-                          height: $({ size: 32 }),
-                          ml: $({ size: 12 }),
+                          width: $({ size: 12 }),
+                          height: $({ size: 12 }),
+                          ml: $({ size: 2 }),
                         }}>
                         <img
                           src={item.iconPath}
                           alt={item.title}
                           style={{
-                            height: $({ size: 14 }),
+                            height: $({ size: 12 }),
                             objectFit: 'cover',
                             filter: 'invert(0.5)',
                           }}
@@ -275,7 +280,7 @@ const SubjectDetailsTab = ({
                             fontSize: $({ size: 13.5 }),
                             fontWeight: '400',
                             color: colors.extra.grey1,
-                            lineHeight: $({ size: 25 }),
+                            lineHeight: $({ size: 26 }),
                             width: '100%',
                             textOverflow: 'ellipsis',
                             whiteSpace: 'nowrap',
@@ -345,14 +350,16 @@ const SubjectDetailsTab = ({
             },
             gap: {
               xs: $({ size: 24 }),
-              md: $({ size: 32 }),
+              md: $({ size: 24 }),
             },
           }}>
           <Box
             sx={{
-              width: $({ size: 224 }),
-              height: $({ size: 224 }),
+              width: $({ size: 248 }),
+              height: $({ size: 248 }),
               position: 'relative',
+              mt: `-${$({ size: 16 })}`,
+              ml: `${$({ size: 16 })}`,
             }}>
             <Box
               sx={{
@@ -378,8 +385,8 @@ const SubjectDetailsTab = ({
                 enableArcLabels={false}
                 enableArcLinkLabels={false}
                 isInteractive={false}
-                width={$({ size: 224, numeric: true })}
-                height={$({ size: 224, numeric: true })}
+                width={$({ size: 248, numeric: true })}
+                height={$({ size: 248, numeric: true })}
                 animate={false}
                 fit={true}
                 colors={(d) => d.data.color}
@@ -395,7 +402,7 @@ const SubjectDetailsTab = ({
               }}>
               <Typography
                 sx={{
-                  fontSize: $({ size: 72 }),
+                  fontSize: $({ size: 80 }),
                   fontWeight: '700',
                   lineHeight: $({ size: 70 }),
                   color: colors.extra.grey1,
@@ -420,11 +427,7 @@ const SubjectDetailsTab = ({
             sx={{
               display: 'flex',
               flexDirection: 'column',
-              gap: $({ size: 16 }),
-              mt: {
-                xs: 0,
-                md: $({ size: 24 }),
-              },
+              mt: $({ size: 18 }),
             }}>
             <Box
               sx={{
@@ -462,6 +465,7 @@ const SubjectDetailsTab = ({
                   xs: '100%',
                   md: $({ size: 525 }),
                 },
+                mt: $({ size: 12 }),
               }}>
               {subjectDetails?.details?.summary || 'Subject Summary'}
             </Typography>
@@ -488,28 +492,121 @@ const SubjectDetailsTab = ({
             },
             'userSelect': 'none',
           }}>
-          <VerticalFiller
+          <Box
+            sx={{
+              display: 'flex',
+              maxWidth: $({ size: 10 }),
+              width: $({ size: 10 }),
+              pl: $({ size: 5 }),
+            }}>
+            {subjectDetails?.details?.topics?.map((topic) => {
+              const color = subjectDetails?.color;
+              const value = topic.percentage / 100;
+              return (
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    minWidth: $({ size: 120.25 }),
+                    gap: $({ size: 8 }),
+                  }}>
+                  <Box
+                    sx={{
+                      width: $({ size: 64 }),
+                      height: $({ size: 174 }),
+                      borderRadius: $({ size: 100 }),
+                      backgroundColor: colors.extra.grey4,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'flex-end',
+                      alignItems: 'center',
+                      overflow: 'hidden',
+                      position: 'relative',
+                    }}>
+                    <Slider
+                      disabled
+                      orientation='vertical'
+                      sx={{
+                        'overflow': 'hidden',
+                        'width': $({ size: 64 }),
+                        'height': $({ size: 174 }),
+                        'borderRadius': $({ size: 100 }),
+                        'backgroundColor': colors.extra.grey4,
+                        '& .MuiSlider-track': {
+                          backgroundColor: color,
+                          border: 'none',
+                        },
+                        '& .MuiSlider-rail': {
+                          backgroundColor: colors.extra.grey4,
+                          border: 'none',
+                        },
+                        '& .MuiSlider-thumb': { display: 'none' },
+                        '& .MuiSlider-valueLabel': { display: 'none' },
+                        '& .MuiSlider-mark': { display: 'none' },
+                        '& .MuiSlider-markLabel': { display: 'none' },
+                        '& .MuiSlider-markLabelActive': { display: 'none' },
+                      }}
+                      max={1}
+                      min={0}
+                      value={value}
+                    />
+                    <Typography
+                      sx={{
+                        fontWeight: '700',
+                        fontSize: $({ size: 18 }),
+                        lineHeight: $({ size: 30 }),
+                        color: colors.extra.grey1,
+                        position: 'absolute',
+                        bottom: '0',
+                        paddingBottom: `${value * 100}%`,
+                        ...(!(value * 100 > 0 || value > 0) && { top: '50%' }),
+                      }}>
+                      {value * 100 > 0 || value > 0
+                        ? `${(value * 100).toFixed(0)}%`
+                        : 'N/A'}
+                    </Typography>
+                  </Box>
+
+                  <Typography
+                    sx={{
+                      fontWeight: '600',
+                      fontSize: $({ size: 13.5 }),
+                      lineHeight: $({ size: 16 }),
+                      color: colors.extra.grey1,
+                      textAlign: 'center',
+                      maxWidth: $({ size: 110 }),
+                    }}>
+                    {topic.title}
+                  </Typography>
+                </Box>
+              );
+            })}
+          </Box>
+
+          {/* <VerticalFiller
             sx={{
               padding: 0,
               justifyContent: 'flex-start',
               maxWidth: $({ size: 10 }),
               width: $({ size: 10 }),
+              gap: $({ size: 0 }),
             }}
             data={subjectDetails?.details?.topics?.map((topic) => {
               return {
-                labelStyle: {
-                  maxWidth: {
-                    sm: $({ size: 88 }),
-                    md: $({ size: 104 }),
-                    lg: $({ size: 120 }),
-                  },
-                },
+                space: $({ size: 56 }),
+                height: $({ size: 174 }),
                 label: topic.title,
                 value: topic.percentage / 100,
                 color: subjectDetails?.color || colors.extra.grey1,
+                labelGap: $({ size: 8 }),
+                labelStyle: {
+                  minWidth: $({ size: 113 }),
+                  color: 'red',
+                },
               };
             })}
-          />
+          /> */}
         </Box>
       </Box>
     </Box>

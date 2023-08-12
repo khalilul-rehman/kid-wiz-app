@@ -10,7 +10,7 @@ const SubjectDetails = {
     { title: 'Addition & Subtraction', percentage: 94 },
     { title: 'Multiplication & Devision', percentage: -1 },
     { title: 'Measurement & Data', percentage: 76 },
-    { title: 'Problem solving & Logic', percentage: 49 },
+    { title: 'Problem Solving & Logic', percentage: 49 },
     { title: 'Geometry & Shapes', percentage: 81 },
   ],
 };
@@ -154,7 +154,7 @@ const StrengthsData = [
   {
     id: 4,
     subject: 'Math',
-    topic: 'Problem Solving and Logic',
+    topic: 'Problem Solving',
     grade: 'C',
     color: '#C792C8',
     iconPath: '/assets/icons/english.svg',
@@ -217,6 +217,21 @@ const StrengthsData = [
   },
   {
     id: 12,
+    subject: 'Emotions',
+    topic: 'Easing Stress',
+    color: '#FC99CE',
+    iconPath: '/assets/icons/english.svg',
+  },
+  {
+    id: 13,
+    subject: 'Emotions',
+    topic: 'Happy Empathy',
+    grade: 'C',
+    color: '#FC99CE',
+    iconPath: '/assets/icons/english.svg',
+  },
+  {
+    id: 14,
     subject: 'Emotions',
     topic: 'Easing Stress',
     color: '#FC99CE',

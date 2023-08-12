@@ -74,7 +74,7 @@ const GoalSettingTab = ({ topSectionHeight = 0 }) => {
           sx={{
             fontSize: $({ size: 18 }),
             fontWeight: '400',
-            lineHeight: $({ size: 30 }),
+            lineHeight: $({ size: 16 }),
             color: colors.solids.black,
           }}>
           {'Set the daily time goal for your child’s learning journey!'}
@@ -84,11 +84,11 @@ const GoalSettingTab = ({ topSectionHeight = 0 }) => {
       <Box
         sx={{
           display: 'flex',
-          gap: $({ size: 20 }),
+          gap: $({ size: 18 }),
           alignItems: 'center',
         }}>
         <Box
-          sx={{ display: 'flex', gap: $({ size: 8 }), alignItems: 'center' }}>
+          sx={{ display: 'flex', gap: $({ size: 4 }), alignItems: 'center' }}>
           <CustomTextInput
             label={null}
             placeholder={'0'}
@@ -139,13 +139,14 @@ const GoalSettingTab = ({ topSectionHeight = 0 }) => {
               fontWeight: '500',
               lineHeight: $({ size: 30 }),
               color: colors.extra.grey2,
+              pl: $({ size: 4 }),
             }}>
             Hours
           </Typography>
         </Box>
 
         <Box
-          sx={{ display: 'flex', gap: $({ size: 8 }), alignItems: 'center' }}>
+          sx={{ display: 'flex', gap: $({ size: 4 }), alignItems: 'center' }}>
           <CustomTextInput
             label={null}
             placeholder={'0'}
@@ -194,6 +195,7 @@ const GoalSettingTab = ({ topSectionHeight = 0 }) => {
               fontWeight: '500',
               lineHeight: $({ size: 30 }),
               color: colors.extra.grey2,
+              pl: $({ size: 4 }),
             }}>
             Minutes
           </Typography>
@@ -209,9 +211,10 @@ const GoalSettingTab = ({ topSectionHeight = 0 }) => {
             />
           }
           sx={{
-            padding: `${$({ size: 6 })} ${$({ size: 16 })}`,
+            padding: `${$({ size: 4 })} ${$({ size: 16 })}`,
             width: 'fit-content',
-            gap: $({ size: 10 }),
+            gap: $({ size: 8 }),
+            alignSelf: 'flex-end',
           }}
         />
       </Box>
@@ -232,14 +235,14 @@ const GoalSettingTab = ({ topSectionHeight = 0 }) => {
             xs: 'flex-start',
             md: 'center',
           },
-          mt: $({ size: 12 }),
         }}>
         <Box
           sx={{
             position: 'relative',
-            height: $({ size: 280 }),
-            width: $({ size: 280 }),
+            height: $({ size: 293 }),
+            width: $({ size: 293 }),
             userSelect: 'none',
+            mt: $({ size: 20 }),
           }}>
           <Box
             sx={{
@@ -256,8 +259,8 @@ const GoalSettingTab = ({ topSectionHeight = 0 }) => {
               enableArcLabels={false}
               enableArcLinkLabels={false}
               isInteractive={false}
-              width={$({ size: 280, numeric: true })}
-              height={$({ size: 280, numeric: true })}
+              width={$({ size: 293, numeric: true })}
+              height={$({ size: 293, numeric: true })}
               animate={false}
               fit={true}
               colors={(d) => d.data.color}
@@ -303,7 +306,9 @@ const GoalSettingTab = ({ topSectionHeight = 0 }) => {
             maxWidth: $({ size: 440 }),
             display: 'flex',
             flexDirection: 'column',
-            gap: $({ size: 12 }),
+            gap: $({ size: 24 }),
+            pt: $({ size: 22 }),
+            pr: $({ size: 16 }),
           }}>
           {goalGraphData.map((item, index) => {
             return (

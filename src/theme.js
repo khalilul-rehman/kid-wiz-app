@@ -140,6 +140,7 @@ export const tokens = (mode) => ({
           orangeBright: '#D48B1D',
           green: '#BDEE77',
           mainButton: '#72B216',
+          pinkBright: '#DB66A5',
         },
         extra: {
           iconBackground: '#E7F4F8',

@@ -19,8 +19,8 @@ const LearnSubjectGoalsOfToday = () => {
       sx={{
         display: 'flex',
         flexDirection: 'column',
-        padding: $({ size: 28 }),
-        gap: $({ size: 24 }),
+        gap: $({ size: 40 }),
+        padding: `${$({ size: 32 })} ${$({ size: 24 })}}`,
       }}>
       <Box
         sx={{
@@ -38,7 +38,7 @@ const LearnSubjectGoalsOfToday = () => {
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-          <ChestIcon size={$({ size: 18, numeric: true })} />
+          <ChestIcon size={$({ size: 14.52, numeric: true })} />
         </Box>
 
         <Typography
@@ -48,32 +48,32 @@ const LearnSubjectGoalsOfToday = () => {
             lineHeight: $({ size: 24 }),
             color: colors.solids.black,
           }}>
-          Goals of Today
+          Daily Progress
         </Typography>
       </Box>
 
       <Box
-        sx={{ display: 'flex', flexDirection: 'column', gap: $({ size: 4 }) }}>
+        sx={{ display: 'flex', flexDirection: 'column', gap: $({ size: 0 }) }}>
         <Typography
           sx={{
             fontWeight: '600',
             fontSize: $({ size: 13.5 }),
-            lineHeight: $({ size: 25 }),
+            // lineHeight: $({ size: 25 }),
             color: colors.solids.black,
           }}>
-          Total Goal
+          Total Progress
         </Typography>
         <QuestionProgressBar
           showQuestionNumber={false}
           currentQuestion={GoalsOfTodayData.percentage}
           totalQuestions={100}
         />
-        <Box>
+        <Box sx={{ mt: `${$({ size: 2 })}` }}>
           <Typography
             sx={{
               fontWeight: '500',
               fontSize: $({ size: 13.5 }),
-              lineHeight: $({ size: 24 }),
+              lineHeight: $({ size: 0 }),
               color: colors.extra.grey1,
               display: 'inline',
             }}>{`${GoalsOfTodayData.remainingTime} `}</Typography>
@@ -81,7 +81,7 @@ const LearnSubjectGoalsOfToday = () => {
             sx={{
               fontWeight: '400',
               fontSize: $({ size: 13.5 }),
-              lineHeight: $({ size: 24 }),
+              lineHeight: $({ size: 0 }),
               color: colors.extra.grey1,
               display: 'inline',
             }}>
@@ -91,14 +91,15 @@ const LearnSubjectGoalsOfToday = () => {
       </Box>
 
       <Box
-        sx={{ display: 'flex', flexDirection: 'column', gap: $({ size: 16 }) }}>
+        sx={{ display: 'flex', flexDirection: 'column', gap: $({ size: 24 }) }}>
         <Typography
           sx={{
             fontWeight: '600',
             fontSize: $({ size: 13.5 }),
             color: colors.solids.black,
+            mt: `-${$({ size: 8 })}`,
           }}>
-          Goal by Subjects
+          Progress by Subject
         </Typography>
 
         <Box
@@ -109,8 +110,9 @@ const LearnSubjectGoalsOfToday = () => {
               sm: 'row',
               lg: 'column',
             },
-            gap: $({ size: 16 }),
+            gap: $({ size: 18 }),
             flexWrap: 'wrap',
+            mt: `-${$({ size: 6 })}`,
           }}>
           {GoalsOfTodayData.subjectVise.map((item, index) => {
             return (
@@ -119,12 +121,13 @@ const LearnSubjectGoalsOfToday = () => {
                 sx={{
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: $({ size: 6 }),
+                  gap: $({ size: 8 }),
                   width: {
                     xs: '100%',
                     sm: `calc(50% - ${$({ size: 16 })})`,
                     lg: '100%',
                   },
+                  mt: `-${$({ size: 1 })}`,
                 }}>
                 <Box
                   sx={{
@@ -136,7 +139,9 @@ const LearnSubjectGoalsOfToday = () => {
                   <Box
                     sx={{
                       borderRadius: $({ size: 4 }),
+                      height: $({ size: 24 }),
                       minHeight: $({ size: 24 }),
+                      width: $({ size: 24 }),
                       minWidth: $({ size: 24 }),
                       backgroundColor: item.color,
                     }}
@@ -146,7 +151,7 @@ const LearnSubjectGoalsOfToday = () => {
                       fontSize: $({ size: 13.5 }),
                       fontWeight: '500',
                       color: colors.extra.grey1,
-                      lineHeight: $({ size: 16 }),
+                      lineHeight: $({ size: 12 }),
                     }}>
                     {item.title}
                   </Typography>
@@ -163,12 +168,16 @@ const LearnSubjectGoalsOfToday = () => {
                   }}
                 />
 
-                <Box>
+                <Box
+                  sx={{
+                    mt: `-${$({ size: 4 })}`,
+                  }}>
                   <Typography
                     sx={{
                       fontWeight: '500',
                       fontSize: $({ size: 13.5 }),
                       color: colors.extra.grey1,
+                      lineHeight: $({ size: 0 }),
                       display: 'inline',
                     }}>{`${item.remainingTime} `}</Typography>
                   <Typography
@@ -176,6 +185,7 @@ const LearnSubjectGoalsOfToday = () => {
                       fontWeight: '400',
                       fontSize: $({ size: 13.5 }),
                       color: colors.extra.grey1,
+                      lineHeight: $({ size: 0 }),
                       display: 'inline',
                     }}>
                     to go!

@@ -63,6 +63,8 @@ const SubjectsTab = ({
             alignItems: 'center',
             gap: $({ size: 8 }),
             overflow: 'hidden',
+            mt: `-${$({ size: 4 })}`,
+            ml: `-${$({ size: 2 })}`,
           }}>
           <Typography
             onClick={() => {}}
@@ -125,9 +127,9 @@ const SubjectsTab = ({
                 xs: '100%',
                 sm: $({ size: 352 }),
               },
-              minWidth: {
+              width: {
                 xs: '100%',
-                sm: $({ size: 300 }),
+                sm: $({ size: 352 }),
               },
             }}
             handleSearch={handleSearch}
@@ -156,7 +158,7 @@ const SubjectsTab = ({
             size: 160,
           })}, 1fr))`,
           'gridGap': {
-            xs: $({ size: 24 }),
+            xs: $({ size: 0 }),
             md: $({ size: 24 }),
           },
           'gridAutoRows': '1fr', // to make all the rows the same height
@@ -178,21 +180,21 @@ const SubjectsTab = ({
             )}px)`,
           },
           'overflowY': 'scroll',
-          'mr': {
-            xs: `-${$({ size: 6 })}`,
-            md: `-${$({ size: 8 })}`,
-          },
+          // 'mr': {
+          //   xs: `-${$({ size: 6 })}`,
+          //   md: `${$({ size: 24 })}`,
+          // },
           'pr': {
             xs: 0,
-            md: $({ size: 16 }),
+            md: $({ size: 32 }),
           },
           '&::-webkit-scrollbar': {
-            width: $({ size: 8 }),
-            borderRadius: $({ size: 8 }),
+            width: $({ size: 13 }),
+            borderRadius: $({ size: 13 }),
           },
           '&::-webkit-scrollbar-thumb': {
             backgroundColor: colors.extra.grey3,
-            borderRadius: $({ size: 8 }),
+            borderRadius: $({ size: 13 }),
           },
         }}>
         {subjectData.map((subject, index) => {
@@ -217,6 +219,9 @@ const SubjectsTab = ({
                 display: 'flex',
                 flexDirection: 'column',
                 cursor: 'pointer',
+                minWidth: $({ size: 160 }),
+                minHeight: $({ size: 160 }),
+                // mb: $({ size: 24 }),
               }}>
               <Box
                 sx={{
@@ -262,7 +267,7 @@ const SubjectsTab = ({
                 sx={{
                   fontSize: $({ size: 18 }),
                   fontWeight: '500',
-                  lineHeight: $({ size: 30 }),
+                  lineHeight: $({ size: 20 }),
                   color: colors.solids.black,
                 }}>
                 {subject.title}

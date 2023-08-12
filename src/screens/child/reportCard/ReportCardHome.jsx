@@ -29,8 +29,7 @@ const ReportCardHome = () => {
         ],
         grade: 'B-',
         title: 'Good job!',
-        summary:
-          'Your child has demonstrated a basic understanding of the subject matter in all areas. They meet minimum expectations, but there are areas that could benefit from improvement. Encourage them to continue working hard!',
+        summary: `You earned a B- grade on your report card! You've been doing well and showing progress in your studies. You actively learn and have a good understanding of the subjects. Keep up the good work, and with a little more effort, you can achieve even higher grades. We believe in you!`,
         legend: [
           { label: 'Science, biology, & Environment', color: '#BDEE77' },
           { label: 'English & Coding', color: '#ECC283' },
@@ -47,17 +46,24 @@ const ReportCardHome = () => {
 
   return (
     <DashboardContainer
+      wrapperStyle={{
+        padding: {
+          xs: $({ size: 16 }),
+          md: $({ size: 48 }),
+        },
+      }}
       containerStyle={{
         padding: {
           xs: $({ size: 20 }),
           md: $({ size: 24 }),
         },
+        gap: $({ size: 10 }),
       }}>
       <Box
         id='child-info-section'
         sx={{
           display: 'flex',
-          gap: $({ size: 24 }),
+          gap: $({ size: 16 }),
           alignItems: { xs: 'flex-start', sm: 'center' },
           flexDirection: { xs: 'column', sm: 'row' },
         }}>
@@ -82,7 +88,6 @@ const ReportCardHome = () => {
               fontWeight: '600',
               fontSize: $({ size: 24 }),
               color: colors.solids.black,
-              marginBottom: $({ size: 8 }),
             }}>
             {reportData?.fullname || ''}
           </Typography>
@@ -90,16 +95,16 @@ const ReportCardHome = () => {
           <Box
             sx={{
               display: 'flex',
-              gap: $({ size: 24 }),
+              gap: $({ size: 16 }),
               alignItems: 'center',
             }}>
-            <Box sx={{ width: '100%' }}>
+            <Box sx={{ width: $({ size: 412 }) }}>
               <Typography
                 sx={{
                   fontWeight: '600',
                   fontSize: $({ size: 13.5 }),
                   color: colors.extra.grey3,
-                  marginBottom: $({ size: 8 }),
+                  mt: $({ size: 4 }),
                 }}>
                 Time spent learning
               </Typography>
@@ -166,7 +171,7 @@ const ReportCardHome = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
-              <ChestIcon size={$({ size: 18, numeric: true })} />
+              <ChestIcon size={$({ size: 14.52, numeric: true })} />
             </Box>
           </Box>
         </Box>
@@ -176,7 +181,7 @@ const ReportCardHome = () => {
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          gap: $({ size: 20 }),
+          gap: $({ size: 16 }),
         }}>
         <Box
           sx={{
@@ -187,7 +192,7 @@ const ReportCardHome = () => {
             },
             gap: {
               xs: $({ size: 20 }),
-              md: $({ size: 36 }),
+              md: $({ size: 40 }),
             },
             width: '100%',
             alignItems: {
@@ -199,8 +204,12 @@ const ReportCardHome = () => {
             sx={{
               userSelect: 'none',
               position: 'relative',
-              height: $({ size: 280 + 2 * (70 / 2.5) + 2 * (2 * 1.5) }),
-              width: $({ size: 280 + 2 * (70 / 2.5) + 2 * (2 * 1.5) }),
+              // height: $({ size: 293 + 2 * (70 / 2.5) + 2 * (2 * 1.5) }),
+              // width: $({ size: 293 + 2 * (70 / 2.5) + 2 * (2 * 1.5) }),
+              height: $({ size: 338 }),
+              width: $({ size: 338 }),
+              mt: $({ size: 10 }),
+              ml: `-${$({ size: 10 })}`,
             }}>
             <Box
               sx={{
@@ -218,21 +227,21 @@ const ReportCardHome = () => {
                 enableArcLinkLabels={false}
                 isInteractive={false}
                 width={$({
-                  size: 280 + (2 * (70 / 2.5) + 2 * (2 * 1.5)),
+                  size: 293 + 2 * (70 / 2.5),
                   numeric: true,
                 })}
                 height={$({
-                  size: 280 + (2 * (70 / 2.5) + 2 * (2 * 1.5)),
+                  size: 293 + 2 * (70 / 2.5),
                   numeric: true,
                 })}
                 animate={false}
                 fit={true}
                 colors={(d) => d.data.color}
                 margin={{
-                  top: $({ size: 70 / 2.5 + 2 * (2 * 1.5), numeric: true }),
-                  left: $({ size: 70 / 2.5 + 2 * (2 * 1.5), numeric: true }),
-                  right: $({ size: 70 / 2.5 + 2 * (2 * 1.5), numeric: true }),
-                  bottom: $({ size: 70 / 2.5 + 2 * (2 * 1.5), numeric: true }),
+                  top: $({ size: 70 / 2.5, numeric: true }),
+                  left: $({ size: 70 / 2.5, numeric: true }),
+                  right: $({ size: 70 / 2.5, numeric: true }),
+                  bottom: $({ size: 70 / 2.5, numeric: true }),
                 }}
                 arcLabelsComponent={({ datum }) => {
                   const arc = datum.arc;
@@ -240,7 +249,7 @@ const ReportCardHome = () => {
                     size: 70 / 2.5,
                     numeric: true,
                   });
-                  const x = 100 + radiusOfLabelCircle;
+                  const x = 110 + radiusOfLabelCircle;
                   const y = 0;
                   const theta =
                     (arc.endAngle - arc.startAngle) / 2 + arc.startAngle;
@@ -309,13 +318,15 @@ const ReportCardHome = () => {
                 fontWeight: '700',
                 fontSize: $({ size: 80 }),
                 color: colors.extra.grey1,
-                lineHeight: $({ size: 70 }),
+                lineHeight: 0,
                 top: '50%',
                 left: '50%',
                 transform: 'translate(-50%, -50%)',
                 maxWidth: $({ size: 150 }),
                 textAlign: 'center',
                 position: 'absolute',
+                pl: $({ size: 10 }),
+                pt: $({ size: 10 }),
               }}>
               {reportData.report.grade}
             </Typography>
@@ -324,50 +335,37 @@ const ReportCardHome = () => {
           <Box
             sx={{
               width: '100%',
+              maxWidth: $({ size: 605 }),
               // maxWidth: {
               //   xs: '100%',
               //   md: $({ size: 440 })
               // },
               display: 'flex',
               flexDirection: 'column',
-              gap: $({ size: 12 }),
+              gap: $({ size: 8 }),
             }}>
-            <Box
+            <Typography
               sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: $({ size: 16 }),
-                // mt: { xs: 0, md: $({ size: 24 }) }
+                fontSize: $({ size: 42.63 }),
+                fontWeight: '600',
+                color: colors.solids.black,
               }}>
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  gap: $({ size: 16 }),
-                }}>
-                <Typography
-                  sx={{
-                    fontSize: $({ size: 42.63 }),
-                    fontWeight: '600',
-                    color: colors.solids.black,
-                  }}>
-                  {reportData.report.title}
-                </Typography>
-              </Box>
-              <Typography
-                sx={{
-                  fontSize: $({ size: 18 }),
-                  fontWeight: '400',
-                  lineHeight: $({ size: 28 }),
-                  color: colors.solids.black,
-                  maxWidth: {
-                    xs: '100%',
-                    md: $({ size: 800 }),
-                  },
-                }}>
-                {reportData.report.summary}
-              </Typography>
-            </Box>
+              {reportData.report.title}
+            </Typography>
+            <Typography
+              sx={{
+                fontSize: $({ size: 18 }),
+                fontWeight: '400',
+                lineHeight: $({ size: 28 }),
+                color: colors.solids.black,
+                // maxWidth: {
+                //   xs: '100%',
+                //   md: $({ size: 800 }),
+                // },
+                width: '100%',
+              }}>
+              {reportData.report.summary}
+            </Typography>
           </Box>
         </Box>
 
@@ -385,7 +383,7 @@ const ReportCardHome = () => {
                 sx={{
                   display: 'flex',
                   flexDirection: 'row',
-                  gap: $({ size: 12 }),
+                  gap: $({ size: 8 }),
                   alignItems: 'center',
                 }}
                 key={index}>
@@ -402,7 +400,7 @@ const ReportCardHome = () => {
                     fontSize: $({ size: 13.5 }),
                     fontWeight: '500',
                     color: colors.extra.grey1,
-                    lineHeight: $({ size: 25 }),
+                    lineHeight: $({ size: 0 }),
                   }}>
                   {item.label}
                 </Typography>

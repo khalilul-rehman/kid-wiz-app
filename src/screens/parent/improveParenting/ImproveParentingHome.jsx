@@ -63,7 +63,24 @@ const ImproveParentingHome = () => {
   };
 
   return (
-    <DashboardContainer containerStyle={{ paddintTop: $({ size: 32 }) }}>
+    <DashboardContainer
+      wrapperStyle={{
+        padding: {
+          xs: $({ size: 20 }),
+          md: $({ size: 48 }),
+        },
+        pr: {
+          xs: $({ size: 20 }),
+          md: $({ size: 48 }),
+        },
+        overflow: 'hidden',
+      }}
+      containerStyle={{
+        gap: {
+          xs: $({ size: 20 }),
+          md: $({ size: 16 }),
+        },
+      }}>
       <Box
         sx={{
           display: 'flex',
@@ -71,11 +88,17 @@ const ImproveParentingHome = () => {
           gap: $({ size: 8 }),
           flex: '1',
         }}>
-        <CustomBreadcrumbs
-          data={[
-            { path: ROUTES.PARENT.IMPROVE_PARENTING.INDEX, title: 'Home' },
-          ]}
-        />
+        <Box
+          sx={{
+            mt: `-${$({ size: 12 })}`,
+            ml: `-${$({ size: 4 })}`,
+          }}>
+          <CustomBreadcrumbs
+            data={[
+              { path: ROUTES.PARENT.IMPROVE_PARENTING.INDEX, title: 'Home' },
+            ]}
+          />
+        </Box>
 
         <Box
           sx={{
@@ -116,7 +139,7 @@ const ImproveParentingHome = () => {
               },
               minWidth: {
                 xs: '100%',
-                sm: $({ size: 300 }),
+                sm: $({ size: 352 }),
               },
             }}
             handleSearch={handleSearch}
@@ -146,11 +169,10 @@ const ImproveParentingHome = () => {
                 item
                 xs={12}
                 sm={6}
-                md={6}
-                lg={5}
-                xl={4}>
+                md={5.6}>
                 <Box
                   sx={{
+                    mt: $({ size: 8 }),
                     display: 'flex',
                     flexDirection: 'column',
                     gap: $({ size: 12 }),
@@ -219,13 +241,15 @@ const ImproveParentingHome = () => {
                             fontWeight:
                               topic.id === selectedTopic?.id ? '600' : '500',
                             fontSize: $({ size: 18 }),
-                            lineHeight: $({ size: 24 }),
+                            lineHeight: $({ size: 22 }),
                             color: topic.isEnabled
                               ? colors.solids.black
                               : colors.extra.grey3,
                             overflow: 'hidden',
                             textOverflow: 'ellipsis',
                             whiteSpace: 'nowrap',
+                            mt: `-${$({ size: 3 })}`,
+                            mb: `-${$({ size: 3 })}`,
                           }}>
                           {topic.title}
                         </Typography>
@@ -266,9 +290,7 @@ const ImproveParentingHome = () => {
                 item
                 xs={12}
                 sm={6}
-                md={6}
-                lg={7}
-                xl={8}>
+                md={6.4}>
                 <Box
                   sx={{
                     display: 'flex',
@@ -365,7 +387,7 @@ const ImproveParentingHome = () => {
                         size: 160,
                       })}, 1fr))`,
                       'gridAutoRows': `minmax(${$({ size: 160 })}, auto)`, // to make all the rows the same height
-                      'gridGap': $({ size: 20 }),
+                      'gridGap': $({ size: 24 }),
                       'width': {
                         xs: '100%',
                         lg: $({ size: 160 * 2 + 40 * 2 }),
@@ -373,8 +395,8 @@ const ImproveParentingHome = () => {
                       },
                       'maxHeight': {
                         // xs: 'none',
-                        xs: $({ size: 160 * 2 + 20 * 1 }),
-                        md: $({ size: 160 * 2 + 20 * 1 }),
+                        xs: $({ size: 160 * 2 + 24 }),
+                        md: $({ size: 160 * 2 + 24 }),
                       },
                       'overflowY': 'scroll',
                       'overflowX': 'hidden',
@@ -389,7 +411,7 @@ const ImproveParentingHome = () => {
                       'pr': {
                         xs: 0,
                         sm: $({ size: 24 }),
-                        md: $({ size: 36 }),
+                        md: $({ size: 40 }),
                       },
                     }}>
                     {topicDetailData.map((topicDetail, index) => {
@@ -425,16 +447,14 @@ const ImproveParentingHome = () => {
                             display: 'inline-flex',
                             flexDirection: 'column',
                             cursor: 'pointer',
-                            maxWidth: {
-                              xs: '100%',
-                              lg: $({ size: 160 }),
-                            },
+                            minWidth: $({ size: 160 }),
+                            minHeight: $({ size: 160 }),
                           }}>
                           <Typography
                             sx={{
                               fontSize: $({ size: 18 }),
                               fontWeight: '500',
-                              lineHeight: $({ size: 24 }),
+                              lineHeight: $({ size: 25 }),
                               color: colors.solids.black,
                               overflow: 'hidden',
                               textOverflow: 'ellipsis',
@@ -462,7 +482,7 @@ const ImproveParentingHome = () => {
                 onClick={HandleBeginLearning}
                 label='Begin Learning'
                 sx={{
-                  maxWidth: 'max-content',
+                  maxWidth: $({ size: 264 }),
                   alignSelf: 'flex-end',
                   mt: $({ size: 16 }),
                 }}

@@ -29,7 +29,7 @@ const StrengthsTab = ({ topSectionHeight = 0 }) => {
       sx={{
         display: 'flex',
         flexDirection: 'column',
-        gap: $({ size: 24 }),
+        gap: $({ size: 22 }),
       }}>
       <Box
         sx={{
@@ -46,7 +46,7 @@ const StrengthsTab = ({ topSectionHeight = 0 }) => {
           sx={{
             fontSize: $({ size: 18 }),
             fontWeight: '400',
-            lineHeight: $({ size: 30 }),
+            lineHeight: $({ size: 16 }),
             color: colors.solids.black,
           }}>
           {'Find out which specific areas your child excels at the most!'}
@@ -60,7 +60,7 @@ const StrengthsTab = ({ topSectionHeight = 0 }) => {
             size: 160,
           })}, 1fr))`,
           'gridGap': {
-            xs: $({ size: 24 }),
+            xs: $({ size: 0 }),
             md: $({ size: 24 }),
           },
           'gridAutoRows': '1fr', // to make all the rows the same height
@@ -82,21 +82,21 @@ const StrengthsTab = ({ topSectionHeight = 0 }) => {
             )}px)`,
           },
           'overflowY': 'scroll',
-          'mr': {
-            xs: `-${$({ size: 6 })}`,
-            md: `-${$({ size: 8 })}`,
-          },
+          // 'mr': {
+          //   xs: `-${$({ size: 6 })}`,
+          //   md: `${$({ size: 24 })}`,
+          // },
           'pr': {
             xs: 0,
-            md: $({ size: 16 }),
+            md: $({ size: 32 }),
           },
           '&::-webkit-scrollbar': {
-            width: $({ size: 8 }),
-            borderRadius: $({ size: 8 }),
+            width: $({ size: 13 }),
+            borderRadius: $({ size: 13 }),
           },
           '&::-webkit-scrollbar-thumb': {
             backgroundColor: colors.extra.grey3,
-            borderRadius: $({ size: 8 }),
+            borderRadius: $({ size: 13 }),
           },
         }}>
         {strengthsData.map((subject, index) => {
@@ -115,6 +115,9 @@ const StrengthsTab = ({ topSectionHeight = 0 }) => {
                 display: 'flex',
                 flexDirection: 'column',
                 cursor: 'pointer',
+                minWidth: $({ size: 160 }),
+                minHeight: $({ size: 160 }),
+                // mb: $({ size: 24 }),
               }}>
               <Box
                 sx={{

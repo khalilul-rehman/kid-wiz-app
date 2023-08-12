@@ -14,7 +14,13 @@ const CustomSubjectFoucsSlider = ({
   const colors = tokens(theme.palette.mode);
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', userSelect: 'none' }}>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        userSelect: 'none',
+        gap: $({ size: 8 }),
+      }}>
       <Box sx={{ display: 'flex', alignItems: 'center', gap: $({ size: 8 }) }}>
         <Box
           sx={{
@@ -29,7 +35,7 @@ const CustomSubjectFoucsSlider = ({
             fontSize: $({ size: 13.5 }),
             fontWeight: '500',
             color: colors.extra.grey1,
-            lineHeight: $({ size: 25 }),
+            lineHeight: $({ size: 14 }),
           }}>
           {label}
         </Typography>
@@ -41,6 +47,7 @@ const CustomSubjectFoucsSlider = ({
           flexDirection: 'row',
           alignItems: 'center',
           gap: $({ size: 12 }),
+          height: $({ size: 20 }),
         }}>
         <Slider
           value={value}
@@ -52,6 +59,7 @@ const CustomSubjectFoucsSlider = ({
           sx={{
             'width': '100%',
             'boxShadow': 'none',
+            'padding': 6,
             '& .MuiSlider-thumb': {
               'width': $({ size: 20 }),
               'height': $({ size: 20 }),
@@ -83,7 +91,7 @@ const CustomSubjectFoucsSlider = ({
             fontSize: $({ size: 13.5 }),
             fontWeight: '600',
             color: colors.extra.grey1,
-            lineHeight: $({ size: 25 }),
+            lineHeight: $({ size: 14 }),
             width: '100%',
             maxWidth: $({ size: 28 }),
             textAlign: 'right',
