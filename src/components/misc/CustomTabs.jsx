@@ -8,6 +8,7 @@ const CustomTabs = ({
   tabsData = [],
   setTabsData = () => {},
   containerStyle = {},
+  tabContainerStyle = {},
 }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -50,6 +51,7 @@ const CustomTabs = ({
           'overflowX': 'scroll',
           '&::-webkit-scrollbar': { display: 'none' },
           '&::-webkit-scrollbar-thumb': { display: 'none' },
+          ...tabContainerStyle,
         }}>
         {tabsData.map((item, index) => {
           return (
@@ -63,7 +65,7 @@ const CustomTabs = ({
                 alignItems: 'center',
                 justifyContent: 'center',
                 cursor: 'pointer',
-                padding: `${$({ size: 12 })} ${$({ size: 2 })}`,
+                padding: `${$({ size: 12 })} ${$({ size: 0 })}`,
                 pt: 0,
                 position: 'relative',
               }}>

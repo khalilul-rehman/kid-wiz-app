@@ -65,7 +65,7 @@ const ChildInfoCard = ({
         sx={{
           borderRadius: $({ size: 24 }),
           backgroundColor: backgroundColor,
-          padding: `${$({ size: 16 })} ${$({ size: 24 })}`,
+          padding: `${$({ size: 24 })} ${$({ size: 24 })}`,
           display: 'flex',
           maxWidth: $({ size: 450 }),
           width: {
@@ -124,9 +124,9 @@ const ChildInfoCard = ({
             sx={{
               fontSize: $({ size: 18 }),
               fontWeight: '600',
-              lineHeight: $({ size: 30 }),
+              lineHeight: $({ size: 22 }),
               color: detailColor,
-              marginBottom: $({ size: 8 }),
+              // marginBottom: $({ size: 8 }),
             }}>
             {disabled ? 'Add Child' : fullname || 'Add Child'}
           </Typography>
@@ -136,7 +136,7 @@ const ChildInfoCard = ({
               sx={{
                 fontSize: $({ size: 13.5 }),
                 fontWeight: '400',
-                lineHeight: $({ size: 25 }),
+                lineHeight: $({ size: 22 }),
                 color: detailHeadingColor,
               }}>
               Age:&nbsp;
@@ -146,7 +146,7 @@ const ChildInfoCard = ({
               sx={{
                 fontSize: $({ size: 13.5 }),
                 fontWeight: '600',
-                lineHeight: $({ size: 25 }),
+                lineHeight: $({ size: 22 }),
                 color: detailColor,
               }}>
               {age}
@@ -158,7 +158,7 @@ const ChildInfoCard = ({
               sx={{
                 fontSize: $({ size: 13.5 }),
                 fontWeight: '400',
-                lineHeight: $({ size: 25 }),
+                lineHeight: $({ size: 22 }),
                 color: detailHeadingColor,
               }}>
               Gender:&nbsp;
@@ -168,7 +168,7 @@ const ChildInfoCard = ({
               sx={{
                 fontSize: $({ size: 13.5 }),
                 fontWeight: '600',
-                lineHeight: $({ size: 25 }),
+                lineHeight: $({ size: 22 }),
                 color: detailColor,
               }}>
               {gender}
@@ -180,7 +180,7 @@ const ChildInfoCard = ({
               sx={{
                 fontSize: $({ size: 13.5 }),
                 fontWeight: '400',
-                lineHeight: $({ size: 25 }),
+                lineHeight: $({ size: 22 }),
                 color: detailHeadingColor,
               }}>
               Difficulty:&nbsp;
@@ -190,7 +190,7 @@ const ChildInfoCard = ({
               sx={{
                 fontSize: $({ size: 13.5 }),
                 fontWeight: '600',
-                lineHeight: $({ size: 25 }),
+                lineHeight: $({ size: 22 }),
                 color: detailColor,
               }}>
               {difficulty}

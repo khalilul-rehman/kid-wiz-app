@@ -36,25 +36,31 @@ const SettingsHome = () => {
 
   return (
     <DashboardContainer
-      wrapperStyle={{ position: 'relative' }}
-      containerStyle={{
+      wrapperStyle={{
         padding: {
           xs: $({ size: 20 }),
-          md: $({ size: 36 }),
+          md: $({ size: 48 }),
         },
+        pr: {
+          xs: $({ size: 20 }),
+          md: $({ size: 48 }),
+        },
+        overflow: 'hidden',
+      }}
+      containerStyle={{
         gap: {
           xs: $({ size: 20 }),
-          md: $({ size: 36 }),
+          md: $({ size: 16 }),
         },
       }}>
       <Box
-        sx={{ display: 'flex', flexDirection: 'column', gap: $({ size: 24 }) }}
+        sx={{ display: 'flex', flexDirection: 'column', gap: $({ size: 16 }) }}
         ref={topSectionRef}>
         <Typography
           sx={{
             fontSize: $({ size: 31.98 }),
             fontWeight: '600',
-            lineHeight: $({ size: 40 }),
+            lineHeight: $({ size: 30 }),
             color: colors.extra.grey1,
           }}>
           Settings
@@ -72,11 +78,17 @@ const SettingsHome = () => {
           containerStyle={{
             paddingLeft: {
               xs: $({ size: 16 }),
-              md: $({ size: 36 }),
+              md: $({ size: 40 }),
             },
             margin: {
               xs: `0 -${$({ size: 20 })}`,
-              md: `0 -${$({ size: 36 })}`,
+              md: `0 -${$({ size: 40 })}`,
+            },
+          }}
+          tabContainerStyle={{
+            gap: {
+              xs: $({ size: 24 }),
+              md: $({ size: 40 }),
             },
           }}
         />

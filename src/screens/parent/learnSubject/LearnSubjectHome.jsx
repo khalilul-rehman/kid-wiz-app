@@ -38,7 +38,24 @@ const LearnSubjectHome = () => {
   };
 
   return (
-    <DashboardContainer>
+    <DashboardContainer
+      wrapperStyle={{
+        padding: {
+          xs: $({ size: 20 }),
+          md: $({ size: 48 }),
+        },
+        pr: {
+          xs: $({ size: 20 }),
+          md: $({ size: 48 }),
+        },
+        overflow: 'hidden',
+      }}
+      containerStyle={{
+        gap: {
+          xs: $({ size: 20 }),
+          md: $({ size: 16 }),
+        },
+      }}>
       <Box
         sx={{
           display: 'flex',
@@ -46,9 +63,15 @@ const LearnSubjectHome = () => {
           gap: $({ size: 8 }),
           width: '100%',
         }}>
-        <CustomBreadcrumbs
-          data={[{ path: ROUTES.PARENT.LEARN_SUBJECT.INDEX, title: 'Home' }]}
-        />
+        <Box
+          sx={{
+            mt: `-${$({ size: 12 })}`,
+            ml: `-${$({ size: 4 })}`,
+          }}>
+          <CustomBreadcrumbs
+            data={[{ path: ROUTES.PARENT.LEARN_SUBJECT.INDEX, title: 'Home' }]}
+          />
+        </Box>
 
         <Box
           sx={{
@@ -74,6 +97,7 @@ const LearnSubjectHome = () => {
               fontWeight: '600',
               lineHeight: $({ size: 40 }),
               color: colors.extra.grey1,
+              mt: `-${$({ size: 2 })}`,
             }}>
             Choose a Subject
           </Typography>
@@ -89,8 +113,9 @@ const LearnSubjectHome = () => {
               },
               minWidth: {
                 xs: '100%',
-                sm: $({ size: 300 }),
+                sm: $({ size: 352 }),
               },
+              mt: `-${$({ size: 2 })}`,
             }}
             handleSearch={handleSearch}
             handleSearchOnEveryKeyStroke={handleSearch}
@@ -115,13 +140,14 @@ const LearnSubjectHome = () => {
         sx={{
           display: 'grid',
           gridTemplateColumns: `repeat(auto-fill, minmax(${$({
-            size: 160,
+            size: 150,
           })}, 1fr))`,
           gridGap: {
             xs: $({ size: 24 }),
             md: $({ size: 40 }),
           },
           gridAutoRows: '1fr', // to make all the rows the same height
+          mt: $({ size: 24 }),
         }}>
         {subjectData.map((subject, index) => {
           return (
@@ -154,6 +180,8 @@ const LearnSubjectHome = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 cursor: 'pointer',
+                width: $({ size: 160 }),
+                height: $({ size: 160 }),
               }}>
               <Box
                 sx={{
@@ -190,7 +218,7 @@ const LearnSubjectHome = () => {
                 sx={{
                   fontSize: $({ size: 18 }),
                   fontWeight: '500',
-                  lineHeight: $({ size: 30 }),
+                  lineHeight: $({ size: 20 }),
                   color: subject.isUnlocked
                     ? colors.solids.black
                     : colors.extra.grey2,

@@ -25,6 +25,7 @@ const PlanTab = ({ topSectionHeight = 0 }) => {
         flexDirection: 'column',
         gap: $({ size: 20 }),
         flex: 1,
+        mt: $({ size: 20 }),
       }}>
       <Box
         sx={{
@@ -156,7 +157,7 @@ const PlanTab = ({ topSectionHeight = 0 }) => {
                   display: 'flex',
                   flexDirection: 'column',
                   gap: $({ size: 16 }),
-                  padding: $({ size: 24 }),
+                  padding: $({ size: 22 }),
                 }}>
                 <Box
                   sx={{
@@ -168,7 +169,7 @@ const PlanTab = ({ topSectionHeight = 0 }) => {
                     sx={{
                       fontSize: $({ size: 31.98 }),
                       fontWeight: '600',
-                      lineHeight: $({ size: 40 }),
+                      lineHeight: $({ size: 31.98 }),
                       color: colors.solids.black,
                       display: 'inline',
                     }}>
@@ -190,7 +191,7 @@ const PlanTab = ({ topSectionHeight = 0 }) => {
                   sx={{
                     fontSize: $({ size: 13.5 }),
                     fontWeight: '400',
-                    lineHeight: $({ size: 25 }),
+                    lineHeight: $({ size: 14 }),
                     color: colors.solids.black,
                   }}>
                   {item.introLine}
@@ -204,7 +205,7 @@ const PlanTab = ({ topSectionHeight = 0 }) => {
                         display: 'flex',
                         flexDirection: 'row',
                         alignItems: 'center',
-                        gap: $({ size: 12 }),
+                        gap: $({ size: 8 }),
                       }}>
                       <Box
                         sx={{
@@ -221,7 +222,7 @@ const PlanTab = ({ topSectionHeight = 0 }) => {
                         sx={{
                           fontSize: $({ size: 13.5 }),
                           fontWeight: '400',
-                          lineHeight: $({ size: 16 }),
+                          lineHeight: $({ size: 14 }),
                           color: colors.solids.black,
                         }}>
                         {detail}

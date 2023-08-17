@@ -54,6 +54,7 @@ const AuthenticationFormBackground = ({ children, title, sx = {} }) => {
                         textAlign: 'center',
                         lineHeight: $({ size: 40 }),
                         color: colors.solids.black,
+                        mt: `-${$({ size: 6 })}`,
                       }}>
                       {title}
                     </Typography>

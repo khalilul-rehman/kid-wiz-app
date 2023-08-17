@@ -149,7 +149,7 @@ const DashboardHome = () => {
   return (
     <DashboardContainer
       disableContainer
-      wrapperStyle={{ position: 'relative' }}>
+      wrapperStyle={{ position: 'relative', overflowY: 'hidden' }}>
       <Grid
         container
         sx={{

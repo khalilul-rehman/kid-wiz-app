@@ -51,6 +51,7 @@ const ReportCardHome = () => {
           xs: $({ size: 16 }),
           md: $({ size: 48 }),
         },
+        overflow: 'hidden',
       }}
       containerStyle={{
         padding: {

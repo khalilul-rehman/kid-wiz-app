@@ -38,6 +38,7 @@ const NotificationsTab = ({ topSectionHeight = 0 }) => {
         display: 'flex',
         flexDirection: 'column',
         gap: $({ size: 20 }),
+        mt: $({ size: 20 }),
         flex: 1,
       }}>
       <Box
@@ -45,6 +46,7 @@ const NotificationsTab = ({ topSectionHeight = 0 }) => {
         <Typography
           sx={{
             fontSize: $({ size: 18 }),
+            lineHeight: $({ size: 18 }),
             fontWeight: '600',
             color: colors.solids.black,
           }}>
@@ -73,6 +75,7 @@ const NotificationsTab = ({ topSectionHeight = 0 }) => {
                 <Typography
                   sx={{
                     fontSize: $({ size: 18 }),
+                    lineHeight: $({ size: 30 }),
                     fontWeight: '500',
                     color: colors.solids.black,
                   }}>
@@ -93,9 +96,10 @@ const NotificationsTab = ({ topSectionHeight = 0 }) => {
       </Box>
 
       <Box
-        sx={{ display: 'flex', flexDirection: 'column', gap: $({ size: 16 }) }}>
+        sx={{ display: 'flex', flexDirection: 'column', gap: $({ size: 22 }) }}>
         <Typography
           sx={{
+            mt: $({ size: 8 }),
             fontSize: $({ size: 18 }),
             fontWeight: '600',
             color: colors.solids.black,
@@ -124,6 +128,7 @@ const NotificationsTab = ({ topSectionHeight = 0 }) => {
               <Typography
                 sx={{
                   fontSize: $({ size: 18 }),
+                  lineHeight: $({ size: 18 }),
                   fontWeight: '500',
                   color: colors.solids.black,
                 }}>

@@ -38,11 +38,11 @@ const ResetPasswordScreen = () => {
           borderRadius: $({ size: 24 }),
           padding: {
             xs: `${$({ size: 48 })} ${$({ size: 32 })}`,
-            lg: `${$({ size: 64 })}`,
+            lg: `${$({ size: 80 })}`,
           },
-          margin: `${$({ size: 16 })}`,
-          maxWidth: $({ size: 600 }),
-          gap: $({ size: 32 }),
+          minWidth: $({ size: 600 }),
+          minHeight: $({ size: 564 }),
+          gap: $({ size: 48 }),
         }}>
         <Box
           sx={{
@@ -52,13 +52,18 @@ const ResetPasswordScreen = () => {
             justifyContent: 'center',
             gap: {
               xs: $({ size: 24 }),
-              lg: $({ size: 48 }),
+              lg: $({ size: 80 }),
             },
           }}>
           <img
             src={ASSETS.LOGO}
             alt='logo'
-            style={{ height: $({ size: 65 }) }}
+            style={{
+              height: $({ size: 65 }),
+              // width: $({ size: 231 }),
+              paddingRight: $({ size: 16 }),
+              marginTop: `-${$({ size: 4 })}`,
+            }}
           />
           <Typography
             sx={{
@@ -67,6 +72,8 @@ const ResetPasswordScreen = () => {
               lineHeight: $({ size: 40 }),
               textAlign: 'center',
               color: colors.solids.black,
+              mt: `-${$({ size: 8 })}`,
+              mb: `-${$({ size: 8 })}`,
             }}>
             Recover your password
           </Typography>
@@ -77,7 +84,7 @@ const ResetPasswordScreen = () => {
             width: '100%',
             display: 'flex',
             flexDirection: 'column',
-            gap: $({ size: 32 }),
+            gap: $({ size: 48 }),
           }}>
           <CustomTextInput
             label='Email address'
@@ -85,6 +92,7 @@ const ResetPasswordScreen = () => {
             type='email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            labelStyle={{ pb: $({ size: 2 }) }}
           />
           <CustomButton
             label='Reset Password'

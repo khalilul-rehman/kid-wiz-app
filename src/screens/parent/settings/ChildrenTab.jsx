@@ -25,12 +25,12 @@ const ChildrenTab = ({ topSectionHeight = 0 }) => {
         gap: $({ size: 20 }),
         justifyContent: 'center',
         alignItems: 'center',
+        mt: $({ size: 20 }),
       }}>
       <Box
         sx={{
           display: 'flex',
           flexDirection: 'row',
-          flexWrap: 'wrap',
           gap: $({ size: 24 }),
           justifyContent: 'center',
         }}>
@@ -57,12 +57,17 @@ const ChildrenTab = ({ topSectionHeight = 0 }) => {
                 setChildrenData(newChildrenData);
               }}
               wrapperStyle={{
-                padding: '0',
-                minWidth: $({ size: 288 }),
-                flex: 1,
+                padding: 0,
+                maxWidth: $({ size: 304 }),
+                height: $({ size: 128 }),
+                gap: $({ size: 16 }),
               }}
               addButtonStyle={{
                 width: '100%',
+              }}
+              containerStyle={{
+                maxWidth: $({ size: 304 }),
+                height: $({ size: 128 }),
               }}
             />
           );

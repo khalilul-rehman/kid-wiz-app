@@ -47,6 +47,7 @@ const LearnSubjectHome = () => {
           xs: $({ size: 16 }),
           md: `${$({ size: 24 })}`,
         },
+        overflow: 'hidden',
       }}>
       <Grid
         container

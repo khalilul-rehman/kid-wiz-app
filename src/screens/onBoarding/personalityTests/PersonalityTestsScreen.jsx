@@ -39,7 +39,7 @@ const TestInfoCard = ({
         backgroundColor: colors.greenAccent[500],
         padding: $({ size: 16 }),
         width: $({ size: 256 }),
-        maxWidth: $({ size: 320 }),
+        // maxWidth: $({ size: 320 }),
       }}>
       <Box
         sx={{
@@ -142,6 +142,7 @@ const PersonalityTestsScreen = () => {
             alignItems: 'center',
             width: '100%',
             height: '100%',
+            mt: $({ size: 8 }),
           }}>
           <Box
             component='img'
@@ -150,12 +151,12 @@ const PersonalityTestsScreen = () => {
             sx={{
               width: {
                 xs: $({ size: 140 }),
-                lg: $({ size: 160 }),
+                md: $({ size: 160 }),
               },
               alignSelf: 'flex-start',
               margin: {
                 xs: `${$({ size: 32 })} 0 0 ${$({ size: 32 })}`,
-                lg: `${$({ size: 40 })} 0 0 ${$({ size: 40 })}`,
+                md: `${$({ size: 40 })} 0 0 ${$({ size: 40 })}`,
               },
             }}
           />
@@ -204,7 +205,7 @@ const PersonalityTestsScreen = () => {
                 lineHeight: $({ size: 40 }),
                 textAlign: 'center',
                 color: colors.grey[200],
-                margin: `${$({ size: 24 })} 0`,
+                margin: `${$({ size: 16 })} 0`,
               }}>
               Personality Tests
             </Typography>
@@ -218,7 +219,7 @@ const PersonalityTestsScreen = () => {
                 color: colors.solids.black,
                 width: '100%',
                 maxWidth: $({ size: 540 }),
-                margin: `-${$({ size: 8 })} 0 ${$({ size: 24 })} 0`,
+                margin: `0 0 ${$({ size: 24 })} 0`,
               }}>
               Taking any of these tests and quizzes is optional and will allow
               us to personalize your experience more.
@@ -229,7 +230,7 @@ const PersonalityTestsScreen = () => {
             container
             sx={{
               minWidth: $({ size: 256 }),
-              width: $({ size: 256 * 3 + 24 * 2 }),
+              width: $({ size: 256 * 3 + 24 * 3 }),
               maxWidth: '100%',
               rowGap: $({ size: 24 }),
             }}>
@@ -302,7 +303,8 @@ const PersonalityTestsScreen = () => {
           label='Continue'
           rightIcon={<RightArrowIcon />}
           sx={{
-            width: 'fit-content',
+            minWidth: 'fit-content',
+            width: $({ size: 210 }),
             margin: {
               xs: `0 ${$({ size: 24 })} ${$({ size: 24 })} 0`,
               lg: `0 ${$({ size: 40 })} ${$({ size: 40 })} 0`,

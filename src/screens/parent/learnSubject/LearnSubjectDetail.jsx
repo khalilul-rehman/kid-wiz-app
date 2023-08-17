@@ -46,18 +46,41 @@ const LearnSubjectTopic = () => {
   };
 
   return (
-    <DashboardContainer containerStyle={{ paddintTop: $({ size: 32 }) }}>
+    <DashboardContainer
+      wrapperStyle={{
+        padding: {
+          xs: $({ size: 20 }),
+          md: $({ size: 48 }),
+        },
+        pr: {
+          xs: $({ size: 20 }),
+          md: $({ size: 48 }),
+        },
+        overflow: 'hidden',
+      }}
+      containerStyle={{
+        gap: {
+          xs: $({ size: 20 }),
+          md: $({ size: 16 }),
+        },
+      }}>
       <Box
         sx={{ display: 'flex', flexDirection: 'column', gap: $({ size: 8 }) }}>
-        <CustomBreadcrumbs
-          data={[
-            { path: ROUTES.PARENT.LEARN_SUBJECT.INDEX, title: 'Home' },
-            {
-              path: ROUTES.PARENT.LEARN_SUBJECT.DETAIL,
-              title: state?.title || 'N/A',
-            },
-          ]}
-        />
+        <Box
+          sx={{
+            mt: `-${$({ size: 12 })}`,
+            ml: `-${$({ size: 4 })}`,
+          }}>
+          <CustomBreadcrumbs
+            data={[
+              { path: ROUTES.PARENT.LEARN_SUBJECT.INDEX, title: 'Home' },
+              {
+                path: ROUTES.PARENT.LEARN_SUBJECT.DETAIL,
+                title: state?.title || 'N/A',
+              },
+            ]}
+          />
+        </Box>
 
         <Box
           sx={{
@@ -76,13 +99,15 @@ const LearnSubjectTopic = () => {
               xs: $({ size: 24 }),
               sm: $({ size: 16 }),
             },
+            mt: `-${$({ size: 6 })}`,
           }}>
           <Box
             sx={{
               display: 'flex',
               flexDirection: 'row',
               alignItems: 'center',
-              gap: $({ size: 16 }),
+              gap: $({ size: 20 }),
+              mt: `-${$({ size: 2 })}`,
             }}>
             <Box
               onClick={() => navigate(ROUTES.PARENT.LEARN_SUBJECT.INDEX)}
@@ -138,7 +163,8 @@ const LearnSubjectTopic = () => {
               },
               minWidth: {
                 xs: '100%',
-                sm: $({ size: 300 }),
+                sm: $({ size: 352 }),
+                mt: `-${$({ size: 2 })}`,
               },
             }}
             handleSearch={handleSearch}
@@ -164,13 +190,14 @@ const LearnSubjectTopic = () => {
         sx={{
           display: 'grid',
           gridTemplateColumns: `repeat(auto-fill, minmax(${$({
-            size: 160,
+            size: 150,
           })}, 1fr))`,
           gridGap: {
             xs: $({ size: 24 }),
             md: $({ size: 40 }),
           },
           gridAutoRows: '1fr', // to make all the rows the same height
+          mt: $({ size: 24 }),
         }}>
         {subjectDetailData.map((subjectDetail, index) => {
           return (
@@ -197,6 +224,8 @@ const LearnSubjectTopic = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 cursor: 'pointer',
+                width: $({ size: 160 }),
+                height: $({ size: 160 }),
               }}>
               <Box
                 sx={{
@@ -229,7 +258,7 @@ const LearnSubjectTopic = () => {
                 sx={{
                   fontSize: $({ size: 18 }),
                   fontWeight: '500',
-                  lineHeight: $({ size: 30 }),
+                  lineHeight: $({ size: 25 }),
                   color: colors.solids.black,
                 }}>
                 {subjectDetail.title}

@@ -49,7 +49,7 @@ const LearnSubjectHome = () => {
   return (
     <DashboardContainer
       disableContainer
-      wrapperStyle={{ position: 'relative' }}>
+      wrapperStyle={{ position: 'relative', overflow: 'hidden' }}>
       <Grid
         container
         sx={{
@@ -62,7 +62,7 @@ const LearnSubjectHome = () => {
         <Grid
           item
           xs={12}
-          lg={2.75}
+          lg={2.5}
           sx={{
             flex: '1',
             display: 'flex',
@@ -82,7 +82,7 @@ const LearnSubjectHome = () => {
         <Grid
           item
           xs={12}
-          lg={9.25}
+          lg={9.5}
           sx={{
             flex: '1',
             padding: {
@@ -112,15 +112,21 @@ const LearnSubjectHome = () => {
                 flexDirection: 'column',
                 gap: $({ size: 8 }),
               }}>
-              <CustomBreadcrumbs
-                data={[
-                  { path: ROUTES.CHILD.LEARN_SUBJECT.INDEX, title: 'Home' },
-                  {
-                    path: ROUTES.CHILD.LEARN_SUBJECT.DETAIL,
-                    title: state?.title || 'N/A',
-                  },
-                ]}
-              />
+              <Box
+                sx={{
+                  mt: `-${$({ size: 12 })}`,
+                  ml: `-${$({ size: 4 })}`,
+                }}>
+                <CustomBreadcrumbs
+                  data={[
+                    { path: ROUTES.CHILD.LEARN_SUBJECT.INDEX, title: 'Home' },
+                    {
+                      path: ROUTES.CHILD.LEARN_SUBJECT.DETAIL,
+                      title: state?.title || 'N/A',
+                    },
+                  ]}
+                />
+              </Box>
 
               <Box
                 sx={{
@@ -201,7 +207,7 @@ const LearnSubjectHome = () => {
                     },
                     width: {
                       xs: '100%',
-                      sm: $({ size: 300 }),
+                      sm: $({ size: 352 }),
                     },
                   }}
                   handleSearch={handleSearch}
@@ -227,7 +233,7 @@ const LearnSubjectHome = () => {
               sx={{
                 display: 'grid',
                 gridTemplateColumns: `repeat(auto-fill, minmax(${$({
-                  size: 160,
+                  size: 150,
                 })}, 1fr))`,
                 gridGap: {
                   xs: $({ size: 24 }),
@@ -260,6 +266,8 @@ const LearnSubjectHome = () => {
                       display: 'flex',
                       flexDirection: 'column',
                       cursor: 'pointer',
+                      width: $({ size: 160 }),
+                      height: $({ size: 160 }),
                     }}>
                     <Box
                       sx={{
@@ -292,7 +300,7 @@ const LearnSubjectHome = () => {
                       sx={{
                         fontSize: $({ size: 18 }),
                         fontWeight: '500',
-                        lineHeight: $({ size: 30 }),
+                        lineHeight: $({ size: 25 }),
                         color: colors.solids.black,
                       }}>
                       {subjectDetail.title}

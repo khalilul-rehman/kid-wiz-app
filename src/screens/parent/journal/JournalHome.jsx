@@ -76,7 +76,7 @@ const JournalHome = () => {
   return (
     <DashboardContainer
       disableContainer
-      wrapperStyle={{ position: 'relative' }}>
+      wrapperStyle={{ position: 'relative', overflow: 'hidden' }}>
       <Grid
         container
         sx={{
@@ -108,7 +108,7 @@ const JournalHome = () => {
         <Grid
           item
           xs={12}
-          lg={3}
+          lg={2.8}
           sx={{
             flex: '1',
             display: 'flex',
@@ -152,15 +152,21 @@ const JournalHome = () => {
                 labelStyle={{
                   fontWeight: '600',
                   fontSize: $({ size: 13.5 }),
-                  lineHeight: $({ size: 25 }),
+                  lineHeight: $({ size: 8 }),
                 }}
                 placeholderClosedStyle={{
                   fontSize: $({ size: 13.5 }),
-                  lineHeight: $({ size: 25 }),
+                  lineHeight: $({ size: 20 }),
                 }}
                 placeholderOpenStyle={{
                   fontSize: $({ size: 13.5 }),
                   lineHeight: $({ size: 25 }),
+                }}
+                inputClosedStyle={{
+                  padding: `${$({ size: 12 })} ${$({ size: 16 })}`,
+                }}
+                inputOpenStyle={{
+                  padding: `${$({ size: 12 })} ${$({ size: 16 })}`,
                 }}
                 data={childData.map((item) => {
                   return {
@@ -224,13 +230,13 @@ const JournalHome = () => {
                 })}
               />
 
-              <Box height={`${$({ size: 24 })}`} />
+              <Box height={`${$({ size: 20 })}`} />
 
               <Typography
                 sx={{
                   fontSize: $({ size: 13.5 }),
                   fontWeight: '600',
-                  lineHeight: $({ size: 25 }),
+                  lineHeight: $({ size: 13.5 }),
                   color: colors.extra.grey3,
                   visibility: selectedChild.fullname ? 'visible' : 'hidden',
                 }}>
@@ -241,7 +247,7 @@ const JournalHome = () => {
                 sx={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: $({ size: 16 }),
+                  gap: $({ size: 8 }),
                   marginTop: $({ size: 8 }),
                   visibility: selectedChild.fullname ? 'visible' : 'hidden',
                 }}>
@@ -262,7 +268,7 @@ const JournalHome = () => {
                     sx={{
                       fontSize: $({ size: 13.5 }),
                       fontWeight: '500',
-                      lineHeight: $({ size: 25 }),
+                      lineHeight: $({ size: 13.5 }),
                       color: colors.extra.grey1,
                       overflow: 'hidden',
                       textOverflow: 'ellipsis',
@@ -273,7 +279,7 @@ const JournalHome = () => {
 
                   <Typography
                     sx={{
-                      fontSize: $({ size: 12 }),
+                      fontSize: $({ size: 10 }),
                       fontWeight: '400',
                       color: colors.extra.grey2,
                       overflow: 'hidden',
@@ -291,7 +297,10 @@ const JournalHome = () => {
               xs={12}
               sm={6}
               md={6}
-              lg={12}>
+              lg={12}
+              sx={{
+                mt: $({ size: 24 }),
+              }}>
               <CustomDropDown
                 label='Dates'
                 value='Choose dates'
@@ -301,19 +310,25 @@ const JournalHome = () => {
                 labelStyle={{
                   fontWeight: '600',
                   fontSize: $({ size: 13.5 }),
-                  lineHeight: $({ size: 25 }),
+                  lineHeight: $({ size: 8 }),
                 }}
                 placeholderClosedStyle={{
                   fontSize: $({ size: 13.5 }),
-                  lineHeight: $({ size: 25 }),
+                  lineHeight: $({ size: 20 }),
                 }}
                 placeholderOpenStyle={{
                   fontSize: $({ size: 13.5 }),
                   lineHeight: $({ size: 25 }),
                 }}
+                inputClosedStyle={{
+                  padding: `${$({ size: 12 })} ${$({ size: 16 })}`,
+                }}
+                inputOpenStyle={{
+                  padding: `${$({ size: 12 })} ${$({ size: 16 })}`,
+                }}
               />
 
-              <Box height={`${$({ size: 24 })}`} />
+              <Box height={`${$({ size: 16 })}`} />
 
               <Typography
                 sx={{
@@ -339,17 +354,18 @@ const JournalHome = () => {
           <Grid
             item
             xs={12}
-            lg={9}
+            lg={9.2}
             sx={{
               flex: '1',
               padding: {
                 xs: `${$({ size: 20 })} 0 0 0`,
-                lg: `0 0 0 ${$({ size: 20 })}`,
+                lg: `0 0 0 ${$({ size: 24 })}`,
               },
               position: 'relative',
             }}>
             <Box
               sx={{
+                position: 'relative',
                 display: 'flex',
                 flexDirection: 'column',
                 backgroundColor: colors.white[800],
@@ -363,6 +379,21 @@ const JournalHome = () => {
                 padding: $({ size: 24 }),
                 gap: $({ size: 24 }),
               }}>
+              {isModalOpen.isOpen && (
+                <Box
+                  onClick={() => {}}
+                  sx={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+                    zIndex: 99,
+                    borderRadius: $({ size: 12 }),
+                  }}
+                />
+              )}
               <Box
                 sx={{
                   display: 'flex',
@@ -371,15 +402,14 @@ const JournalHome = () => {
                 }}
                 ref={topSectionRef}>
                 <Box
-                  id='child-info-section'
                   sx={{
                     display: 'flex',
-                    gap: $({ size: 24 }),
+                    gap: $({ size: 16 }),
                     alignItems: { xs: 'flex-start', sm: 'center' },
                     flexDirection: { xs: 'column', sm: 'row' },
                   }}>
                   <Avatar
-                    src={selectedChild?.photo || ''}
+                    src={selectedChild.photo}
                     sx={{
                       width: $({ size: 112 }),
                       height: $({ size: 112 }),
@@ -392,33 +422,34 @@ const JournalHome = () => {
                   />
 
                   <Box
-                    sx={{
-                      width: { xs: '100%', md: '70%', lg: '50%' },
-                      maxWidth: $({ size: 800 }),
-                    }}>
+                    sx={
+                      {
+                        // width: { xs: '100%', md: '70%', lg: '50%' },
+                        // maxWidth: $({ size: 800 }),
+                      }
+                    }>
                     <Typography
                       sx={{
                         fontWeight: '600',
                         fontSize: $({ size: 24 }),
                         color: colors.solids.black,
-                        marginBottom: $({ size: 8 }),
                       }}>
-                      {selectedChild?.fullname || ''}
+                      {selectedChild.fullname}
                     </Typography>
 
                     <Box
                       sx={{
                         display: 'flex',
-                        gap: $({ size: 24 }),
+                        gap: $({ size: 16 }),
                         alignItems: 'center',
                       }}>
-                      <Box sx={{ width: '100%' }}>
+                      <Box sx={{ width: $({ size: 412 }) }}>
                         <Typography
                           sx={{
                             fontWeight: '600',
                             fontSize: $({ size: 13.5 }),
                             color: colors.extra.grey3,
-                            marginBottom: $({ size: 8 }),
+                            mt: $({ size: 4 }),
                           }}>
                           Time spent learning
                         </Typography>
@@ -497,6 +528,7 @@ const JournalHome = () => {
                     flexDirection: { xs: 'column', sm: 'row' },
                     alignItems: 'center',
                     justifyContent: 'space-between',
+                    mt: $({ size: 2 }),
                   }}>
                   <Box
                     onClick={() => {
@@ -539,11 +571,11 @@ const JournalHome = () => {
                     containerStyle={{
                       maxWidth: {
                         xs: '100%',
-                        sm: $({ size: 372 }),
+                        sm: $({ size: 352 }),
                       },
                       minWidth: {
                         xs: '100%',
-                        sm: $({ size: 320 }),
+                        sm: $({ size: 352 }),
                       },
                     }}
                     handleSearch={handleSearch}
@@ -568,13 +600,14 @@ const JournalHome = () => {
                   })}px)`,
                   'overflowY': 'scroll',
                   'pr': $({ size: 16 }),
+                  'mr': `${$({ size: 2 })}`,
                   '&::-webkit-scrollbar': {
-                    width: $({ size: 8 }),
-                    borderRadius: $({ size: 8 }),
+                    width: $({ size: 13 }),
+                    borderRadius: $({ size: 13 }),
                   },
                   '&::-webkit-scrollbar-thumb': {
                     backgroundColor: colors.extra.grey3,
-                    borderRadius: $({ size: 8 }),
+                    borderRadius: $({ size: 13 }),
                   },
                 }}>
                 {journals.map((journal, index) => {
@@ -584,16 +617,17 @@ const JournalHome = () => {
                         display: 'flex',
                         flexDirection: 'column',
                         gap: $({ size: 4 }),
-                        pb: $({ size: 16 }),
                         borderBottom: `${$({ size: 1 })} solid ${
                           colors.extra.grey4
                         }`,
-                        mb: $({ size: 16 }),
+                        mb: $({ size: 20 }),
+                        pb: $({ size: 20 }),
                       }}>
                       <Typography
                         sx={{
                           fontWeight: '700',
                           fontSize: $({ size: 13.5 }),
+                          lineHeight: $({ size: 23 }),
                           color: colors.extra.grey3,
                         }}>
                         {journal.date}
@@ -622,15 +656,17 @@ const JournalHome = () => {
                           sx={{
                             display: 'flex',
                             alignItems: 'center',
-                            gap: $({ size: 8 }),
+                            gap: $({ size: 12 }),
                             cursor: 'pointer',
                             userSelect: 'none',
+                            mr: $({ size: 12 }),
                           }}>
                           <Box
                             sx={{
                               display: 'flex',
                               alignItems: 'center',
                               justifyContent: 'center',
+                              mt: `-${$({ size: 4 })}`,
                             }}>
                             <EditIcon
                               size={$({ size: 16, numeric: true })}
@@ -656,6 +692,7 @@ const JournalHome = () => {
                           fontSize: $({ size: 18 }),
                           color: colors.extra.grey1,
                           lineHeight: $({ size: 28 }),
+                          mt: $({ size: 4 }),
                         }}>
                         {journal.content}
                       </Typography>
@@ -674,8 +711,9 @@ const JournalHome = () => {
               <CustomButton
                 label='Use AI Magic'
                 sx={{
-                  maxWidth: 'fit-content',
+                  // maxWidth: 'fit-content',
                   alignSelf: 'flex-end',
+                  width: $({ size: 239 }),
                 }}
                 onClick={() => {}}
                 rightIcon={
@@ -686,20 +724,19 @@ const JournalHome = () => {
                 }
               />
             </Box>
+            {isModalOpen.isOpen && (
+              <JournalManagementModal
+                isModalOpen={isModalOpen}
+                setIsModalOpen={setIsModalOpen}
+                currentSelectedJournal={currentSelectedJournal}
+                setCurrentSelectedJournal={setCurrentSelectedJournal}
+                jounalsData={journals}
+                setJournalsData={setJournals}
+              />
+            )}
           </Grid>
         )}
       </Grid>
-
-      {isModalOpen.isOpen && (
-        <JournalManagementModal
-          isModalOpen={isModalOpen}
-          setIsModalOpen={setIsModalOpen}
-          currentSelectedJournal={currentSelectedJournal}
-          setCurrentSelectedJournal={setCurrentSelectedJournal}
-          jounalsData={journals}
-          setJournalsData={setJournals}
-        />
-      )}
     </DashboardContainer>
   );
 };

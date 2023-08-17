@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Checkbox, Typography, alpha, useTheme } from '@mui/material';
 
-import { CustomButton } from '../../../components';
+import { CustomButton, CustomCheckBox } from '../../../components';
 
 import { DownloadIcon, VisaIcon, EditIcon, MailIcon } from '../../../icons';
 
@@ -26,7 +26,12 @@ const BillingTab = ({ topSectionHeight = 0 }) => {
 
   return (
     <Box
-      sx={{ display: 'flex', flexDirection: 'column', gap: $({ size: 20 }) }}>
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: $({ size: 20 }),
+        mt: $({ size: 20 }),
+      }}>
       <Box
         sx={{
           display: 'flex',
@@ -56,7 +61,7 @@ const BillingTab = ({ topSectionHeight = 0 }) => {
                 fontSize: $({ size: 18 }),
                 fontWeight: '600',
                 color: colors.solids.black,
-                lineHeight: $({ size: 30 }),
+                lineHeight: $({ size: 18 }),
               }}>
               {BillingDetails.title}
             </Typography>
@@ -65,7 +70,7 @@ const BillingTab = ({ topSectionHeight = 0 }) => {
                 fontSize: $({ size: 18 }),
                 fontWeight: '500',
                 color: colors.solids.black,
-                lineHeight: $({ size: 30 }),
+                lineHeight: $({ size: 18 }),
               }}>
               {BillingDetails.daysRemaining}
             </Typography>
@@ -178,6 +183,7 @@ const BillingTab = ({ topSectionHeight = 0 }) => {
             justifyContent: 'space-between',
             alignItems: 'center',
             gap: $({ size: 20 }),
+            mt: $({ size: 12 }),
           }}>
           <Typography
             sx={{
@@ -196,7 +202,7 @@ const BillingTab = ({ topSectionHeight = 0 }) => {
               />
             }
             onClick={() => {}}
-            sx={{ maxWidth: 'fit-content' }}
+            sx={{ maxWidth: $({ size: 260 }), mr: $({ size: 16 }) }}
           />
         </Box>
       </Box>
@@ -213,8 +219,8 @@ const BillingTab = ({ topSectionHeight = 0 }) => {
               // ADJUSTMENT
               size:
                 60 + // TOP BAR HEIGHT
-                24 + // PARENT CONTAINER TOP PADDING
-                24 + // PARENT  CONTAINER BOTTOM PADDING
+                48 + // PARENT CONTAINER TOP PADDING
+                48 + // PARENT  CONTAINER BOTTOM PADDING
                 36 + // WRAPPER CONTAINER TOP PADDING
                 36 + // WRAPPER CONTAINER BOTTOM PADDING
                 40 + // HEADER SECTION TOTAL GAP
@@ -223,17 +229,18 @@ const BillingTab = ({ topSectionHeight = 0 }) => {
           },
           'overflowY': 'scroll',
           '&::-webkit-scrollbar': {
-            width: $({ size: 10 }),
-            borderRadius: $({ size: 10 }),
+            width: $({ size: 13 }),
+            borderRadius: $({ size: 13 }),
           },
           '&::-webkit-scrollbar-thumb': {
             backgroundColor: colors.extra.grey3,
-            borderRadius: $({ size: 10 }),
+            borderRadius: $({ size: 13 }),
           },
           'pr': {
             xs: 0,
-            md: $({ size: 16 }),
+            md: $({ size: 18 }),
           },
+          'mr': `-${$({ size: 14 })}`,
         }}>
         {billingHistory.map((item, index) => {
           return (
@@ -245,27 +252,30 @@ const BillingTab = ({ topSectionHeight = 0 }) => {
                 padding: $({ size: 16 }),
                 display: 'flex',
                 justifyContent: 'space-between',
+                mt: `-${$({ size: 4 })}`,
               }}>
               <Box
                 sx={{
                   display: 'flex',
-                  gap: $({ size: 20 }),
+                  gap: $({ size: 12 }),
                   alignItems: 'flex-start',
                 }}>
-                <Checkbox
-                  checked={item.isSelected}
+                <CustomCheckBox
+                  isChecked={item.isSelected}
+                  checkedIconSize={$({ size: 16, numeric: true })}
+                  uncheckedIconSize={$({ size: 16, numeric: true })}
                   onChange={() => {
                     const newBillingHistory = [...billingHistory];
                     newBillingHistory[index].isSelected =
                       !newBillingHistory[index].isSelected;
                     setBillingHistory(newBillingHistory);
                   }}
-                  sx={{
-                    'color': colors.extra.grey2,
-                    'padding': '0',
-                    '&.Mui-checked': { color: colors.extra.grey2 },
-                    '&:hover': { backgroundColor: 'transparent' },
-                  }}
+                  // sx={{
+                  //   'color': colors.extra.grey2,
+                  //   'padding': '0',
+                  //   '&.Mui-checked': { color: colors.extra.grey2 },
+                  //   '&:hover': { backgroundColor: 'transparent' },
+                  // }}
                 />
                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                   <Typography
@@ -301,7 +311,7 @@ const BillingTab = ({ topSectionHeight = 0 }) => {
                   'fontSize': $({ size: 13.5 }),
                   'fontWeight': '600',
                   'width': 'fit-content',
-                  'padding': `${$({ size: 4 })} ${$({ size: 24 })}`,
+                  'padding': `${$({ size: 4 })} ${$({ size: 17 })}`,
                   'gap': $({ size: 12 }),
                   '&:hover': {
                     backgroundColor: alpha(colors.extra.grey1, 0.8),

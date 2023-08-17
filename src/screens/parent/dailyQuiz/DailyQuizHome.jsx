@@ -95,6 +95,7 @@ const DailyQuizHome = () => {
           xs: $({ size: 20 }),
           md: $({ size: 48 }),
         },
+        overflow: 'hidden',
       }}
       containerStyle={{
         gap: {

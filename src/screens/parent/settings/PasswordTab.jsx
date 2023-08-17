@@ -21,8 +21,9 @@ const PasswordTab = ({ topSectionHeight = 0 }) => {
       sx={{
         display: 'flex',
         flexDirection: 'column',
-        gap: $({ size: 20 }),
+        gap: $({ size: 8 }),
         flex: 1,
+        mt: $({ size: 15 }),
       }}>
       <Typography
         sx={{
@@ -52,6 +53,7 @@ const PasswordTab = ({ topSectionHeight = 0 }) => {
             value={currentPassword}
             onChange={(e) => setCurrentPassword(e.target.value)}
             containerStyle={{ flex: 1, width: '100%' }}
+            labelStyle={{ pb: 0 }}
           />
 
           <Box
@@ -79,6 +81,7 @@ const PasswordTab = ({ topSectionHeight = 0 }) => {
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
             containerStyle={{ flex: 1, width: '100%' }}
+            labelStyle={{ pb: 0 }}
           />
 
           <CustomTextInput
@@ -86,6 +89,7 @@ const PasswordTab = ({ topSectionHeight = 0 }) => {
             value={confirmNewPassword}
             onChange={(e) => setConfirmNewPassword(e.target.value)}
             containerStyle={{ flex: 1, width: '100%' }}
+            labelStyle={{ pb: 0 }}
           />
         </Box>
       </Box>

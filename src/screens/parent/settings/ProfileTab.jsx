@@ -25,6 +25,7 @@ const ProfileTab = ({ topSectionHeight = 0 }) => {
         flexDirection: 'column',
         gap: $({ size: 20 }),
         flex: 1,
+        mt: $({ size: 20 }),
       }}>
       <Box
         sx={{
@@ -75,7 +76,11 @@ const ProfileTab = ({ topSectionHeight = 0 }) => {
       </Box>
 
       <Box
-        sx={{ display: 'flex', flexDirection: 'column', gap: $({ size: 20 }) }}>
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: $({ size: 20 }),
+        }}>
         <Box
           sx={{
             display: 'flex',
@@ -91,6 +96,7 @@ const ProfileTab = ({ topSectionHeight = 0 }) => {
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             containerStyle={{ flex: 1, width: '100%' }}
+            labelStyle={{ pb: 0 }}
           />
 
           <CustomTextInput
@@ -98,6 +104,7 @@ const ProfileTab = ({ topSectionHeight = 0 }) => {
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             containerStyle={{ flex: 1, width: '100%' }}
+            labelStyle={{ pb: 0 }}
           />
         </Box>
         <Box
@@ -116,6 +123,7 @@ const ProfileTab = ({ topSectionHeight = 0 }) => {
             onChange={(e) => setEmail(e.target.value)}
             type='email'
             containerStyle={{ flex: 1, width: '100%' }}
+            labelStyle={{ pb: 0 }}
           />
 
           <CustomTextInput
@@ -124,6 +132,7 @@ const ProfileTab = ({ topSectionHeight = 0 }) => {
             onChange={(e) => setPhone(e.target.value)}
             type='tel'
             containerStyle={{ flex: 1, width: '100%' }}
+            labelStyle={{ pb: 0 }}
           />
         </Box>
       </Box>

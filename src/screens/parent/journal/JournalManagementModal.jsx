@@ -19,7 +19,7 @@ const JournalManagementModal = ({
   currentSelectedJournal = null,
   setCurrentSelectedJournal = () => {},
   offset = {
-    top: 24,
+    top: 152,
     left: 48,
     right: 48,
   },
@@ -44,7 +44,6 @@ const JournalManagementModal = ({
 
   return (
     <CustomModal
-      showBackdrop={true}
       title={
         currentSelectedJournal ? 'Edit Journal Entry' : 'New Journal Entry'
       }
@@ -58,10 +57,13 @@ const JournalManagementModal = ({
         right: offset.right,
       }}
       containerStyle={{
-        maxWidth: $({ size: 760 }),
+        minWidth: $({ size: 760 }),
         display: 'flex',
         flexDirection: 'column',
-        gap: $({ size: 20 }),
+        gap: $({ size: 18 }),
+      }}
+      headerContainerStyle={{
+        mt: `-${$({ size: 8 })}`,
       }}
       wrapperStyle={{
         left: '50%',
@@ -78,7 +80,7 @@ const JournalManagementModal = ({
             position: 'absolute',
             top: 0,
             left: 0,
-            right: 0,
+            minWidth: $({ size: 760 }),
             bottom: $({ size: 20 }),
             borderRadius: $({ size: 12 }),
             zIndex: 80,
@@ -99,6 +101,9 @@ const JournalManagementModal = ({
             placeholder='Entry title'
             value={journalTitle}
             onChange={(e) => setJournalTitle(e.target.value)}
+            labelStyle={{
+              pb: 0,
+            }}
           />
         </Grid>
         <Grid
@@ -111,6 +116,10 @@ const JournalManagementModal = ({
             placeholder='Choose date'
             dropDownOpen={dateDropDownOpen}
             setDropDownOpen={setDateDropDownOpen}
+            labelStyle={{
+              pb: 0,
+              mt: $({ size: 4 }),
+            }}
           />
         </Grid>
         <Grid
@@ -123,12 +132,16 @@ const JournalManagementModal = ({
             value={journalContent}
             onChange={(e) => setJournalContent(e.target.value)}
             multiline={true}
+            labelStyle={{
+              pb: 0,
+              mt: $({ size: 4 }),
+            }}
             containerStyle={{
               width: '100%',
               height: $({ size: 240 }),
             }}
             inputContainerStyle={{
-              height: `calc(100% - ${$({ size: 40, numeric: true })}px)`,
+              height: `calc(100% - ${$({ size: 55, numeric: true })}px)`,
               pr: `${$({ size: 12 })}`,
             }}
             inputStyle={{
@@ -153,12 +166,13 @@ const JournalManagementModal = ({
           display: 'flex',
           justifyContent: 'flex-end',
           gap: $({ size: 24 }),
+          mt: `-${$({ size: 16 })}`,
         }}>
         <CustomButton
           label='Cancel'
           isSecondary
           sx={{
-            maxWidth: $({ size: 160 }),
+            maxWidth: $({ size: 143 }),
             boxShadow: `0 0 ${$({ size: 4 })} 0 ${alpha(
               colors.solids.black,
               0.25
@@ -172,7 +186,7 @@ const JournalManagementModal = ({
         <CustomButton
           label='Save'
           sx={{
-            maxWidth: $({ size: 160 }),
+            maxWidth: $({ size: 163 }),
             boxShadow: `0 0 ${$({ size: 4 })} 0 ${alpha(
               colors.solids.black,
               0.25
